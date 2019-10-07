@@ -1,0 +1,21 @@
+package br.com.alelo.qa;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+
+import br.com.alelo.integrations.vsts.controllers.RunController;
+import br.com.alelo.utils.PropertiesFile;
+import br.com.alelo.utils.SimpleCacheManager;
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(strict = false, features = { "src/test/resources/features/[CUCABLE:FEATURE].feature"} , plugin = {
+		"json:target/cluecumber-report/[CUCABLE:RUNNER].json" }, glue = { "classpath:br.com.alelo.qa.features.steps" })
+public class [CUCABLE:RUNNER] {}
