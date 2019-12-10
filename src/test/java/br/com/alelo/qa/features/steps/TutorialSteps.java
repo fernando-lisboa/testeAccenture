@@ -1,3 +1,9 @@
+/**
+  * Autor: Fernando Lisboa
+ * Empresa: Taking
+ * Data: 12/12/2019
+ * Caminho: Portal Estabelecimento Comercial  --> Tutorial
+ */
 package br.com.alelo.qa.features.steps;
 
 import br.com.alelo.qa.features.support.ParentSteps;

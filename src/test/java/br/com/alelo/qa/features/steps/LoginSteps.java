@@ -1,3 +1,11 @@
+
+/**
+  * Autor: Fernando Lisboa
+ * Empresa: Taking
+ * Data: 12/12/2019
+ * Caminho: Portal Estabelecimento Comercial  --> Login
+ */
+
 package br.com.alelo.qa.features.steps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
