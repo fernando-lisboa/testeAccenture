@@ -19,7 +19,7 @@ public class UrlPage extends PageObject{
 	String url_configuracoes =	"http://meuestabelecimento-hml.siteteste.inf.br/configuracoes";
 	String url_inicial_credenciamento =	"http://meuestabelecimento-frontend-accreditation-hml.siteteste.inf.br/productData";
 	String url_inicial =	"http://meuestabelecimento-hml.siteteste.inf.br/login";
-
+	String url_inicialArv =	"http://meuestabelecimento-hml.siteteste.inf.br/about";
 	
 	
 	
