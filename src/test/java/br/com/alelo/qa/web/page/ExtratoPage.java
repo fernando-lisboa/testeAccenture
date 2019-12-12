@@ -52,6 +52,9 @@ public class ExtratoPage extends PageObject{
 	@FindBy(id = "textCardNumber0")
 	protected WebElement numero_do_cartao;
 	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
+	
 	@FindBy(id = "buttonFindCardTails")
 	protected WebElement botao_ok_cartao;
 	
@@ -81,15 +84,6 @@ public class ExtratoPage extends PageObject{
 	
 	@FindBy(id = "Null")
 	protected WebElement numero_final_cartao;	
-	
-		
-		
-		
-		
-		
-		
-		
-
 	
 	public ExtratoPage(WebDriver driver) {
 		super(driver);

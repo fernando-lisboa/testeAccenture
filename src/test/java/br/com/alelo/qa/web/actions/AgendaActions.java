@@ -12,6 +12,7 @@ public class AgendaActions extends AgendaPage {
 
 	
 	
+	
 	public void telaAgenda() throws InterruptedException {
 		aguardarGif(elementoGif);
 		Thread.sleep(2000);

@@ -14,6 +14,9 @@ private String path = "content/pesim/home.html";
 	@FindBy(id="panelTitleId")
 	protected WebElement bemvindo;
 	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
+	
 	 
 	
 	public HomePage(WebDriver driver) {

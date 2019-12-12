@@ -15,7 +15,7 @@ Funcionalidade: Planos
   Para ter a flexibilidade de receber quando necessito
 
   Contexto: 
-    Dado que estou logado em qualquer tela do Portal EC
+    Dado que estou na logado no portal EC "<54621917072>", "Alelo2018@"
 
   @Release-15
 	@portalEC

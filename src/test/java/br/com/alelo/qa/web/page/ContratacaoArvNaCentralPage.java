@@ -92,6 +92,9 @@ public class ContratacaoArvNaCentralPage extends PageObject{
 	@FindBy(id = "btnCancelar")
 	protected WebElement btnCancelar;
 	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
+	
 	@FindBy(id = "labelAlterarRecorrencia")
 	protected WebElement labelAlterarRecorrencia;
 	

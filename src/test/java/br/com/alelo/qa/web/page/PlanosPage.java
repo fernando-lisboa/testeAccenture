@@ -38,6 +38,9 @@ public class PlanosPage extends PageObject{
 	@FindBy(id="antecipation-accept-button")
 	protected WebElement botao_contratar;
 	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
+	
 	@FindBy(id="antecipation-terms-check")
 	protected WebElement check_aceite_termos;
 	

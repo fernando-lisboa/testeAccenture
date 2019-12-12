@@ -30,6 +30,9 @@ public class ConsultarDirfPorCnpjPage extends PageObject{
 	@FindBy(xpath = "//img[@id='dirfWebButtonDownload'])[5]")
 	protected WebElement btnBaixarArquivo_5;
 	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
+	
 	@FindBy(xpath = "//img[@id='dirfWebButtonDownload'])[6]")
 	protected WebElement btnBaixarArquivo_6;
 	

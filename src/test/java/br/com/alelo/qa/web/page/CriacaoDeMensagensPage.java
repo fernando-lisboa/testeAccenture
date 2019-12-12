@@ -39,6 +39,9 @@ public class CriacaoDeMensagensPage extends PageObject{
 	@FindBy(id = "notificationDefaultMessage")
 	protected WebElement tipo_da_mensagem;
 	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
+	
 	@FindBy(id = "notificationName")
 	protected WebElement nome_da_mensagem;
 	

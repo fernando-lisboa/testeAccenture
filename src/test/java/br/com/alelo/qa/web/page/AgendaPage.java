@@ -10,6 +10,10 @@ public class AgendaPage extends PageObject {
 
 	@FindBy(id = "navbarDesktopAgenda")
 	protected WebElement menuAgenda;
+	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
+	
 
 	@FindBy(id = "ScheDay_today")
 	protected WebElement elementoHoje;

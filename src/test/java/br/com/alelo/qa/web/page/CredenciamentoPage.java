@@ -166,6 +166,9 @@ public class CredenciamentoPage extends PageObject {
 
 	@FindBy(id = "cardSelectedLabel31")
 	protected WebElement cartao_dois_cred_tres;
+	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
 
 	@FindBy(id = "cardSelectedLabel30")
 	protected WebElement cartao_um_cred_tres;

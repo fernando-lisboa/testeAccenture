@@ -68,6 +68,9 @@ public class AntecipacaoPage extends PageObject{
 	
 	@FindBy(id = "cardRecurr-WEEKLY")
 	protected WebElement checkSemanal;
+	
+	@FindBy(id = "imageLoader")
+	protected WebElement loader;
 		
 
 	public AntecipacaoPage(WebDriver driver) {
