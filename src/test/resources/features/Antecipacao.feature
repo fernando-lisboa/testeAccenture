@@ -15,42 +15,30 @@ Funcionalidade: Antecipacao
   Para ter a flexibilidade de receber quando necessito
 
   Contexto: 
-    Dado que estou logado em qualquer tela no Portal EC
+    Dado que estou na logado no portal EC "<54621917072>", "Alelo2018@"
 
-  @Release-15
-  @portalEC 
-  @#felipe_lourenco 
-  @realizar_antecipacao
+@Release-33  @Regressivo
   Cenario: Realizar antecipacao de vendas
     Quando clico no SideKick no menu expansivel lateral de antecipacao de recebiveis
     E clico em concordo com os termos de antecipacao de recebiveis
     E clico em Antecipar Agora
     Entao Portal EC realiza a antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @cancelar_antecipacao
+  @Release-33  @Regressivo
   Cenario: Cancelar antecipacao de planos
     Quando clico no SideKick no menu expansivel lateral de antecipacao de recebiveis
     E clico em concordo com os termos de antecipacao de recebiveis
     E clico em Cancelar antecipacao de recebiveis
     Entao o Portal EC cancela a antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @fechar_antecipacao
+  @Release-33  @Regressivo
   Cenario: Fechar antecipacao de planos
     Quando clico no SideKick no menu expansivel lateral de antecipacao de recebiveis
     E clico em concordo com os termos de antecipacao de recebiveis
     E clico no botao Fechar antecipacao de recebiveis
     Entao o Portal EC fecha o modal da antecipacao
 
-  @Release-15
-	@portalEC 
-	@#felipe_lourenco 
-	@alterar_valores_antecipacao
+ @Release-33  @Regressivo
   Cenario: Realizar alteracao de valor da antecipacao de vendas
     Quando clico no SideKick no menu expansivel lateral de antecipacao de recebiveis
     E clico em alterar valor
@@ -62,10 +50,7 @@ Funcionalidade: Antecipacao
     E clico em Antecipar Agora
     Entao Portal EC realiza a antecipacao
     
-  @Release-15
-	@portalEC 
-	@#felipe_lourenco 
-	@cancelar_alteracao_valores_antecipacao
+ @Release-33  @Regressivo
   Cenario: Cancelar alteracao de valor da antecipacao de vendas
     Quando clico no SideKick no menu expansivel lateral de antecipacao de recebiveis
     E clico em alterar valor
@@ -75,10 +60,7 @@ Funcionalidade: Antecipacao
     E clico no botao cancelar alteracao valores
     Entao o Portal EC retorna para o modal da antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @alterar_recorrencia_antecipacao_semanal
+  @Release-33  @Regressivo
   Cenario: Alterar recorrencia antecipacao de vendas
     Quando clico no SideKick no menu expansivel lateral de antecipacao de recebiveis
     E clico no botao alterar recorrencia antecipacao de recebiveis
@@ -88,10 +70,7 @@ Funcionalidade: Antecipacao
     E clico em concordo com os termos de antecipacao de recebiveis
     Entao o Portal EC retorna para o modal da antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @desativar_recorrencia_antecipacao
+ @Release-33  @Regressivo
   Cenario: Desativar recorrencia antecipacao de vendas
     Quando clico no SideKick no menu expansivel lateral de antecipacao de recebiveis
     E clico no botao alterar recorrencia antecipacao de recebiveis
@@ -101,10 +80,7 @@ Funcionalidade: Antecipacao
     E clico em Antecipar Agora
     Entao o Portal EC retorna para o modal da antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @cancelar_processo_recorrencia
+ @Release-33  @Regressivo
   Cenario: Cancelar recorrencia
     Quando clico no SideKick no menu expansivel lateral de antecipacao de recebiveis
     E clico no botao alterar recorrencia antecipacao de recebiveis
@@ -112,11 +88,7 @@ Funcionalidade: Antecipacao
     E clico no botao cancelar recorrencia
     Entao o Portal EC retorna para o modal da antecipacao
 
-  @Release-22
-	@portalEC
-	@api
-	@#samuel_milani
-	@logar_acessar_api_sidekick_arv
+  @Release-33  @Regressivo
   Cenario: Validar informacoes da API do Sidekick de ARV
    	Dado que informo os parametros de Login da api
    	E que realizo o post para obter o access token
@@ -132,40 +104,28 @@ Funcionalidade: Antecipacao
 # * Caminho: Portal Estabelecimento Comercial / Antecipação ARV nova tela sem modal
 # */
 
-@Release-15
-  @portalEC 
-  @#felipe_lourenco 
-  @realizar_antecipacaoLink
+@Release-33  @Regressivo
   Cenario: Realizar antecipacao de vendas via link no Banner
     Quando clicar no banner com campanha de antecipacao de recebiveis
     E clico em concordo com os termos de antecipacao de recebiveis
     E clico em Antecipar Agora
     Entao Portal EC realiza a antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @cancelar_antecipacao
+ @Release-33  @Regressivo
   Cenario: Cancelar antecipacao de planos
     Quando clicar no banner com campanha de antecipacao de recebiveis
     E clico em concordo com os termos de antecipacao de recebiveis
     E clico em Cancelar antecipacao de recebiveis
     Entao o Portal EC cancela a antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @fechar_antecipacao
+  @Release-33  @Regressivo
   Cenario: Fechar antecipacao de planos
     Quando clicar no banner com campanha de antecipacao de recebiveis
     E clico em concordo com os termos de antecipacao de recebiveis
     E clico no botao Fechar antecipacao de recebiveis
     Entao o Portal EC fecha o modal da antecipacao
 
-  @Release-15
-	@portalEC 
-	@#felipe_lourenco 
-	@alterar_valores_antecipacao
+  @Release-33  @Regressivo
   Cenario: Realizar alteracao de valor da antecipacao de vendas
     Quando clicar no banner com campanha de antecipacao de recebiveis
     E clico em alterar valor
@@ -177,10 +137,7 @@ Funcionalidade: Antecipacao
     E clico em Antecipar Agora
     Entao Portal EC realiza a antecipacao
     
-  @Release-15
-	@portalEC 
-	@#felipe_lourenco 
-	@cancelar_alteracao_valores_antecipacao
+  @Release-33  @Regressivo
   Cenario: Cancelar alteracao de valor da antecipacao de vendas
     Quando clicar no banner com campanha de antecipacao de recebiveis
     E clico em alterar valor
@@ -190,10 +147,7 @@ Funcionalidade: Antecipacao
     E clico no botao cancelar alteracao valores
     Entao o Portal EC retorna para o modal da antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @alterar_recorrencia_antecipacao_semanal
+  @Release-33  @Regressivo
   Cenario: Alterar recorrencia antecipacao de vendas
     Quando clicar no banner com campanha de antecipacao de recebiveis
     E clico no botao alterar recorrencia antecipacao de recebiveis
@@ -203,10 +157,7 @@ Funcionalidade: Antecipacao
     E clico em concordo com os termos de antecipacao de recebiveis
     Entao o Portal EC retorna para o modal da antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @desativar_recorrencia_antecipacao
+  @Release-33  @Regressivo
   Cenario: Desativar recorrencia antecipacao de vendas
     Quando clicar no banner com campanha de antecipacao de recebiveis
     E clico no botao alterar recorrencia antecipacao de recebiveis
@@ -216,10 +167,7 @@ Funcionalidade: Antecipacao
     E clico em Antecipar Agora
     Entao o Portal EC retorna para o modal da antecipacao
 
-  @Release-15 
-  @portalEC 
-  @#felipe_lourenco 
-  @cancelar_processo_recorrencia
+  @Release-33  @Regressivo
   Cenario: Cancelar recorrencia
     Quando clicar no banner com campanha de antecipacao de recebiveis
     E clico no botao alterar recorrencia antecipacao de recebiveis

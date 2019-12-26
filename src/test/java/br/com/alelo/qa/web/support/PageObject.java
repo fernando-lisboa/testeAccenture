@@ -1,5 +1,7 @@
 package br.com.alelo.qa.web.support;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -36,6 +38,10 @@ public class PageObject {
 		this.webdriver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 		this.webdriver.manage().window().maximize();
 		
+	}
+	
+	public void validarUrlAtual(String url) {
+		assertEquals(url, webdriver.getCurrentUrl());
 	}
 	
 	public void waitForElementPageToLoad(WebElement element) {

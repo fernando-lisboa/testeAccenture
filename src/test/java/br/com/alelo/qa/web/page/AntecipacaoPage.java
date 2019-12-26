@@ -8,6 +8,31 @@ import br.com.alelo.qa.web.support.PageObject;
 
 public class AntecipacaoPage extends PageObject{
 	
+	String urlInicio = "http://meuestabelecimento-hml.siteteste.inf.br/inicio";
+	String urlInicioArv = "https://meuestabelecimento-hml.siteteste.inf.br/antecipe";
+	
+	public String getUrlInicioArv() {
+		return urlInicioArv;
+	}
+
+
+	public void setUrlInicioArv(String urlInicioArv) {
+		this.urlInicioArv = urlInicioArv;
+	}
+
+
+	public String getUrlInicio() {
+		return urlInicio;
+	}
+
+
+	public void setUrlInicio(String urlInicio) {
+		this.urlInicio = urlInicio;
+	}
+
+
+	@FindBy(xpath = "//input[@role='combobox']")
+	protected WebElement comboCnpj;
 	
 	@FindBy(id = "simulate-terms-check")
 	protected WebElement checkAceiteTermosRecebiveis;
@@ -71,6 +96,12 @@ public class AntecipacaoPage extends PageObject{
 	
 	@FindBy(id = "imageLoader")
 	protected WebElement loader;
+	
+	@FindBy(id = "textNormalSidekick")
+	protected WebElement clicaArv;
+	
+	@FindBy(id = "btnSimulateNormalSidekick")
+	protected WebElement btnSideKick;
 		
 
 	public AntecipacaoPage(WebDriver driver) {

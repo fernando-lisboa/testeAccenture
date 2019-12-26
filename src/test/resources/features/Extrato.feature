@@ -15,8 +15,7 @@ Funcionalidade: Extrato
 		Para visualizar o detalhamento das minhas vendas e cobranças
 
     Contexto: 
-        Dado que estou logado no Portal EC
-        E clico na aba Extrato
+    Dado que estou na logado no portal EC "<54621917072>", "Alelo2018@"
         
   @Release-15
 	@portalEC

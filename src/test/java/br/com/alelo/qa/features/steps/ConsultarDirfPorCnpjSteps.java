@@ -10,46 +10,42 @@ package br.com.alelo.qa.features.steps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import basePages.ConsultarDirfPorCnpjPage;
 import br.com.alelo.qa.features.support.ParentSteps;
-import br.com.alelo.qa.web.actions.HomeActions;
+import br.com.alelo.qa.web.actions.ConsultarDirfPorCnpjActions;
 import br.com.alelo.qa.web.actions.OfertaAtivaActions;
 import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
-import driver.web.DriverWeb;
 
 public class ConsultarDirfPorCnpjSteps extends ParentSteps {
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	OfertaAtivaActions oferta;
-	HomeActions homeActions;
+	ConsultarDirfPorCnpjActions dirf;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 	
 	@Dado("^eu clique no link de informacoes$")
 	public void eu_clique_no_link_de_informacoes() throws Throwable {
-		telaInformacoes();
-		
+		dirf.telaDocumentos();
 	}
 
 	@Dado("^e visualizar a lista de anos disponiveis$")
 	public void e_visualizar_a_lista_de_anos_disponiveis() throws Throwable {
-		validarHomepage();
-		
+		dirf.validarHomepage();
 		
 	}
 
 	@Quando("^clicar no botao baixar arquivo \"([^\"]*)\"$")
 	public void clicar_no_botao_baixar_arquivo(int anoReferencia) throws Throwable {
 		
-		abrirPdf(anoReferencia);
+		dirf.abrirPdf(anoReferencia);
 	}
 
 	@Entao("^o arquivo deve ser baixado no local informado$")
 	public void o_arquivo_deve_ser_baixado_no_local_informado() throws Throwable {
 		
-		baixarPdf();
+		dirf.baixarPdf();
 	}
 }

@@ -7,9 +7,60 @@ import org.openqa.selenium.support.FindBy;
 import br.com.alelo.qa.web.support.PageObject;
 
 public class AgendaPage extends PageObject {
+	
+	protected String url_agenda =	"http://meuestabelecimento-hml.siteteste.inf.br/agenda";
+	protected String urlAgendaResumo =	"http://meuestabelecimento-hml.siteteste.inf.br/agenda";
+	protected String urlBannerEsquerdo =	"verificar se ainda se aplica";
+	protected String urlBannerDireito =	"verificar se ainda se aplica";
+	
+	public String getUrlBannerEsquerdo() {
+		return urlBannerEsquerdo;
+	}
+
+
+	public void setUrlBannerEsquerdo(String urlBannerEsquerdo) {
+		this.urlBannerEsquerdo = urlBannerEsquerdo;
+	}
+
+
+	public String getUrlBannerDireito() {
+		return urlBannerDireito;
+	}
+
+
+	public void setUrlBannerDireito(String urlBannerDireito) {
+		this.urlBannerDireito = urlBannerDireito;
+	}
+
+
+	public String getUrlAgendaResumo() {
+		return urlAgendaResumo;
+	}
+
+
+	public void setUrlAgendaResumo(String urlAgendaResumo) {
+		this.urlAgendaResumo = urlAgendaResumo;
+	}
+
+
+	public String getUrl_agenda() {
+		return url_agenda;
+	}
+
+
+	public void setUrl_agenda(String url_agenda) {
+		this.url_agenda = url_agenda;
+	}
+
 
 	@FindBy(id = "navbarDesktopAgenda")
 	protected WebElement menuAgenda;
+	
+	@FindBy(id = "navbarDesktopAgenda")
+	protected WebElement bannerEsquerdo;
+	
+	@FindBy(id = "navbarDesktopAgenda")
+	protected WebElement bannerDireito;
 	
 	@FindBy(id = "imageLoader")
 	protected WebElement loader;
@@ -59,6 +110,9 @@ public class AgendaPage extends PageObject {
 	
 	@FindBy(id = "summary-print-button-2")
 	protected WebElement ImprimirInferiorAgenda;
+	
+	@FindBy(xpath = "//input[@role='combobox']")
+	protected WebElement comboCnpj;
 	
 
 	public AgendaPage(WebDriver driver) {

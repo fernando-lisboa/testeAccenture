@@ -7,38 +7,38 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 
 import br.com.alelo.qa.web.page.AgendaPage;
+import br.com.alelo.qa.web.page.UrlPage;
 
 public class AgendaActions extends AgendaPage {
 
-	
-	
-	
+	// UrlPage urls = new UrlPage(webdriver);
+
 	public void telaAgenda() throws InterruptedException {
-		aguardarGif(elementoGif);
+		waitForElementPageToLoad(loader);
 		Thread.sleep(2000);
-		esperarSerClicavel(menuAgenda, 20);
-		clicar(menuAgenda);
-		aguardarGif(elementoGif);
+		waitForElementPageToBeClickable(menuAgenda);
+		menuAgenda.click();
+		waitForElementPageToLoad(loader);
 	}
 
 	public void diaAtual() throws InterruptedException {
-		aguardarGif(elementoGif);
+		waitForElementPageToLoad(loader);
 		Thread.sleep(5000);
-		esperarSerClicavel(elementoHoje, 30);
-		clicar(elementoHoje);
+		waitForElementPageToBeClickable(elementoHoje);
+		elementoHoje.click();
 		Thread.sleep(5000);
-		aguardarGif(elementoGif);
+		waitForElementPageToLoad(loader);
 	}
 
-	public void AvacarMes() throws InterruptedException {
+	public void avacarMes() throws InterruptedException {
 		Thread.sleep(5000);
-		String textoMesAtual = obterTexto(mes);
-		esperarSerClicavel(avancarMes, 30);
-		clicar(avancarMes);
-		aguardarGif(elementoGif);
-		
-		String textoMesFuturo = obterTexto(mes);
-		
+		String textoMesAtual = elementoMes.getText();
+		waitForElementPageToLoad(avancarMes);
+		avancarMes.click();
+		waitForElementPageToLoad(loader);
+
+		String textoMesFuturo = elementoMes.getText();
+
 		if (!textoMesAtual.equals(textoMesFuturo)) {
 			System.out.println("Teste realizado com sucesso.");
 		} else {
@@ -46,15 +46,15 @@ public class AgendaActions extends AgendaPage {
 		}
 	}
 
-	public void RetrocederMes() throws InterruptedException {
+	public void retrocederMes() throws InterruptedException {
 		Thread.sleep(5000);
-		String textoMesAtual = obterTexto(mes);
-		esperarSerClicavel(retrocederMes, 30);
-		clicar(retrocederMes);
-		aguardarGif(elementoGif);
-		
+		String textoMesAtual = elementoMes.getText();
+		waitForElementPageToBeClickable(retrocederMes);
+		retrocederMes.click();
+		waitForElementPageToLoad(loader);
+
 		System.out.println(textoMesAtual);
-		String textoMesPassado = obterTexto(mes);
+		String textoMesPassado = elementoMes.getText();
 		System.out.println(textoMesPassado);
 
 		if (!textoMesAtual.equals(textoMesPassado)) {
@@ -64,44 +64,44 @@ public class AgendaActions extends AgendaPage {
 		}
 	}
 
-	public void TelaExtratoMes() {
-		aguardarGif(elementoGif);
-		validarUrlAtual(urlAgenda);
+	public void telaExtratoMes() {
+		waitForElementPageToLoad(loader);
+		validarUrlAtual(getUrl_agenda());
 	}
 
 	public void TelaExtratoDia() throws InterruptedException {
-		aguardarGif(elementoGif);
-		esperarSerClicavel(elementoData, 15);
-		esperarSerClicavel(elementoResumo, 15);
-		clicar(elementoResumo);
-		validarUrlAtual(urlAgendaResumo);
+		waitForElementPageToLoad(loader);
+		waitForElementPageToBeClickable(elementoData);
+		waitForElementPageToBeClickable(elementoResumo);
+		elementoResumo.click();
+		validarUrlAtual(getUrlAgendaResumo());
 		Thread.sleep(3000);
 	}
 
 	public void validarHomepage() throws InterruptedException {
 		Thread.sleep(5000);
-		validarUrlAtual(urlInicio);
+		validarUrlAtual(getUrl_agenda());
 	}
 
 	public void clicarMaisDetalhes() throws InterruptedException {
-		aguardarGif(elementoGif);
-		esperarSerClicavel(botaoVejaMaisDetalhes, 15);
+		waitForElementPageToLoad(loader);
+		waitForElementPageToBeClickable(botaoVejaMaisDetalhes);
 		Thread.sleep(5000);
-		clicar(botaoVejaMaisDetalhes);
+		botaoVejaMaisDetalhes.click();
 	}
 
 	public void validarAgenda() {
-		validarUrlAtual(urlAgenda);
+		validarUrlAtual(getUrl_agenda());
 	}
 
 	public void clicarBannerEsquerdo() {
-		esperarSerClicavel(bannerEsquerdo, 15);
-		clicar(bannerEsquerdo);
+		waitForElementPageToBeClickable(bannerEsquerdo);
+		bannerEsquerdo.click();
 	}
 
 	public void clicarBannerDireito() {
-		esperarSerClicavel(bannerDireito, 15);
-		clicar(bannerDireito);
+		waitForElementPageToBeClickable(bannerDireito);
+		bannerDireito.click();
 	}
 
 	public void validaBannerEsquerdo() {
@@ -112,54 +112,50 @@ public class AgendaActions extends AgendaPage {
 		validarUrlAtual(urlBannerDireito);
 	}
 
-	public void clicarComprovantes() throws InterruptedException, IOException {
-		super.alterarCNPJ(elementoGif, opcaoSelect, opcao_ec);
-		esperarSerClicavel(botaoComprovante, 15);
+	public void clicarComprovantes(String cnpjAgenda) throws InterruptedException, IOException {
+		alterarCNPJ(cnpjAgenda);
+		waitForElementPageToBeClickable(botaoComprovante);
 		Thread.sleep(5000);
-		clicar(botaoComprovante);
-		aguardarGif(elementoGif);
+		botaoComprovante.click();
+		waitForElementPageToLoad(loader);
 	}
 
 	public void clicarPDFSuperior() {
-		esperarSerClicavel(botaoPDFSuperior, 15);
-		clicar(botaoPDFSuperior);
+		waitForElementPageToBeClickable(pdfSuperiorAgenda);
+		pdfSuperiorAgenda.click();
 	}
 
 	public void clicarPDFInferior() {
-		esperarSerClicavel(botaoPDFInferior, 15);
-		clicar(botaoPDFInferior);
+		waitForElementPageToBeClickable(pdfInferiorAgenda);
+		pdfInferiorAgenda.click();
 	}
 
 	public void clicarCSVSuperior() {
-		esperarSerClicavel(botaoCSVSuperior, 15);
-		clicar(botaoCSVSuperior);
+		waitForElementPageToBeClickable(csvSuperiorAgenda);
+		csvSuperiorAgenda.click();
 	}
 
 	public void clicarCSVInferior() {
-		esperarSerClicavel(botaoCSVInferior, 15);
-		clicar(botaoCSVInferior);
+		waitForElementPageToBeClickable(csvInferiorAgenda);
+		csvInferiorAgenda.click();
 	}
 
 	public void clicarImprimirSuperior() throws InterruptedException {
-		esperarSerClicavel(botaoImprimirSuperior, 15);
-		clicar(botaoImprimirSuperior);
-//		Thread.sleep(5000);
-//		trocarJanela(1);
-//		Thread.sleep(5000);
-//		esperarSerClicavel(confirmaImpressao, 20);
-//		Thread.sleep(5000);
-//		clicar(confirmaImpressao);
+		waitForElementPageToBeClickable(ImprimirSuperiorAgenda);
+		ImprimirSuperiorAgenda.click();
 	}
 
 	public void clicarImprimirInferior() throws InterruptedException {
-		esperarSerClicavel(botaoImprimirInferior, 15);
-		clicar(botaoImprimirInferior);
-//		Thread.sleep(5000);
-//		trocarJanela(1);
-//		Thread.sleep(5000);
-//		esperarSerClicavel(confirmaImpressao, 20);
-//		Thread.sleep(5000);
-//		clicar(confirmaImpressao);
+		waitForElementPageToBeClickable(ImprimirInferiorAgenda);
+		ImprimirInferiorAgenda.click();
+	}
+
+	public void alterarCNPJ(String cnpjAgenda) throws IOException, InterruptedException {
+		waitForElementPageToLoad(loader);
+		comboCnpj.click();
+		Thread.sleep(5000);
+		// clicar("xpath", elemento3); TODO aplicar o cnpj a ser selecionado
+		// após clicar no combo
 	}
 
 	public void validarDownloadPDF() {
@@ -173,7 +169,7 @@ public class AgendaActions extends AgendaPage {
 	public void validarImpressao() {
 		System.out.println("Impressão efetuada!");
 	}
-	
+
 	public AgendaActions(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub

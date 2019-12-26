@@ -14,13 +14,10 @@ Funcionalidade: Configuracoes
     Quero inserir, visualizar, editar e excluir os estabelecimentos que administro
     Para manter os dados da minha conta atualizados
 
-    Contexto: 
-        Dado que estou logado no Portal EC
+     Contexto: 
+    Dado que estou na logado no portal EC "<54621917072>", "Alelo2018@"
         
-    @Release-15
-	  @portalEC
-	  @#felipe_lourenco
-	  @inserir_novo_estabeleciomento_superior
+    @Release-33  @Regressivo
     Cenario: Inserir novo estabelecimento superior com sucesso
         Dado que estou na pagina Configuracoes
         Quando aciono o botao Adicionar CNPJ superior
@@ -28,10 +25,7 @@ Funcionalidade: Configuracoes
         E aciono o botao Confirmar
         Entao o Portal EC me redireciona para a pagina de configuracoes com o novo estabelecimento inserido
         
-    @Release-15
-	  @portalEC
-	  @#felipe_lourenco
-	  @inserir_novo_estabeleciomento_inferior
+    @Release-33  @Regressivo
     Cenario: Inserir novo estabelecimento inferior com sucesso
         Dado que estou na pagina Configuracoes
         Quando aciono o botao Adicionar CNPJ inferior
@@ -39,10 +33,7 @@ Funcionalidade: Configuracoes
         E aciono o botao Confirmar
         Entao o Portal EC me redireciona para a pagina de configuracoes com o novo estabelecimento inserido
     
-    @Release-15
-	  @portalEC
-	  @#felipe_lourenco
-	  @inserir_novo_estabeleciomento_dados_invalidos
+   @Release-33  @Regressivo
     Cenario: Inserir novo estabelecimento utilizando dados invalidos
         Dado que estou na pagina Configuracoes
         Quando aciono o botao Adicionar CNPJ 

@@ -7,13 +7,25 @@ import org.openqa.selenium.support.FindBy;
 import br.com.alelo.qa.web.support.PageObject;
 
 public class ConsultarDirfPorCnpjPage extends PageObject{
+	
+	String urlDocumentos = "https://meuestabelecimento-hml.siteteste.inf.br/documentos";
 
 	
+	public String getUrlDocumentos() {
+		return urlDocumentos;
+	}
+
+
+	public void setUrlDocumentos(String urlDocumentos) {
+		this.urlDocumentos = urlDocumentos;
+	}
+
+
 	@FindBy(id = "icon")
 	protected WebElement iconeDownloadPdf;
 	
-	@FindBy(xpath = "//h1[contains(.,'Informações')]")
-	protected WebElement botaoInformacoes;
+	@FindBy(id = "menuDocumentos")
+	protected WebElement menuDocumentos;
 	
 	@FindBy(xpath = "//img[@id='dirfWebButtonDownload'])[1]")
 	protected WebElement btnBaixarArquivo_1;

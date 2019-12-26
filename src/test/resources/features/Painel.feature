@@ -14,9 +14,8 @@ Funcionalidade: Painel
   Quero navegar no sistema
   Para validar informacoes respectivas da Home Page
     
-  Contexto:
-    Dado que estou na logado no portal EC
-    Quando acesso o painel no menu 
+   Contexto: 
+    Dado que estou na logado no portal EC "<54621917072>", "Alelo2018@"
     
   @Release-15
   @portalEC

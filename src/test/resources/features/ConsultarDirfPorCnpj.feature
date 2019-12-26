@@ -13,10 +13,10 @@ Funcionalidade: Consulta DIRF
   Desejo consultar meses e anos disponíveis de informações do imposto de renda DIRF por estabelecimento comercial
   Para uso de informativo de IR
 
-  Contexto: 
-    Dado que estou logado no Portal EC
+   Contexto: 
+    Dado que estou na logado no portal EC "<54621917072>", "Alelo2018@"
 
-  @Release-15 @consultaDirf
+  @Release-33  @Regressivo @consultaDirf
   Esquema do Cenario: [Busca web] "<Cenario>"-"<DescricaoDoCenario>"
     Dado eu clique no link de informacoes
     E e visualizar a lista de anos disponiveis
