@@ -7,6 +7,11 @@ import org.openqa.selenium.support.FindBy;
 import br.com.alelo.qa.web.support.PageObject;
 
 public class CredenciamentoPage extends PageObject {
+	
+	public CredenciamentoPage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
 
 	@FindBy(xpath = "//button[text() = \"PREENCHER FORMULÁRIO\"]")
 	protected WebElement btnPreencherFormulario;
@@ -349,10 +354,5 @@ public class CredenciamentoPage extends PageObject {
 
 	@FindBy(xpath = "//*[@id='cardSelected21']/../../../h5")
 	protected WebElement nome_cartao_dois_cred_dois;
-
-	public CredenciamentoPage(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
 
 }

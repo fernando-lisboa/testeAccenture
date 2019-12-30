@@ -75,7 +75,6 @@ public class OfertaAtivaPage extends PageObject{
 	@FindBy(id="btnAlterarValor")
 	protected WebElement btnAlterarvalor;
 	
-	
 	@FindBy(xpath = "//input[contains(@min,'1000')]")
 	protected WebElement btnBarraValor;
 	

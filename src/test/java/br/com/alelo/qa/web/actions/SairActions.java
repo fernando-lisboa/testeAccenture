@@ -8,8 +8,6 @@ import br.com.alelo.qa.web.page.SairPage;
 
 public class SairActions extends SairPage {
 
-	
-
 	public void validarAreaLogada() throws InterruptedException {
 		waitForElementPageToLoad(loader);
 		if (webdriver.getCurrentUrl().contains("inicio")) {
