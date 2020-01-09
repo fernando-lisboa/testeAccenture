@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.HomeActions;
+import br.com.alelo.qa.web.actions.IsamActions;
 import br.com.alelo.qa.web.actions.OfertaAtivaActions;
 import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.java.pt.Dado;
@@ -21,10 +22,11 @@ import cucumber.api.java.pt.Quando;
 public class ISAMStep extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
+
+	IsamActions isam;
 	OfertaAtivaActions oferta;
-	HomeActions homeActions;
+	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
-	
 
 	@Dado("^que estou na tela de login IBM$")
 	public void que_estou_na_tela_de_login_IBM() throws Throwable {

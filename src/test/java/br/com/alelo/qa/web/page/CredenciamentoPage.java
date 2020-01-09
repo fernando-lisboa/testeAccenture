@@ -1,3 +1,9 @@
+/**
+ * Caminho: Portal Estabelecimento Comercial  --> Credenciamento
+ * Create: 12/12/2019 | Author: Fernando Lisboa - Taking 
+ * Change: 03/01/2019 | Author: Jessé Dantas - Taking
+ */
+
 package br.com.alelo.qa.web.page;
 
 import org.openqa.selenium.WebDriver;
@@ -7,10 +13,21 @@ import org.openqa.selenium.support.FindBy;
 import br.com.alelo.qa.web.support.PageObject;
 
 public class CredenciamentoPage extends PageObject {
-	
+
 	public CredenciamentoPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
+	}
+
+	protected String urlInicio = "http://meuestabelecimento-hml.siteteste.inf.br/inicio";
+	protected String urlCredenciamento = "https://meuestabelecimento-frontend-accreditation-hml.siteteste.inf.br/cadastro";
+
+	public String getUrlInicio() {
+		return urlInicio;
+	}
+
+	public String getUrlCredenciamento() {
+		return urlCredenciamento;
 	}
 
 	@FindBy(xpath = "//button[text() = \"PREENCHER FORMULÁRIO\"]")
@@ -43,9 +60,6 @@ public class CredenciamentoPage extends PageObject {
 	@FindBy(id = "dddCompany")
 	protected WebElement campoDDD;
 
-	@FindBy(id = "cnaeNumber")
-	protected WebElement campoCnae;
-
 	@FindBy(id = "tradingName")
 	protected WebElement campoNomeFantasia;
 
@@ -76,6 +90,9 @@ public class CredenciamentoPage extends PageObject {
 	@FindBy(id = "numberCompany")
 	protected WebElement campo_numero;
 
+	@FindBy(id = "complementCompany")
+	protected WebElement campo_complemento;
+
 	@FindBy(id = "birthDateProprietary2")
 	protected WebElement campo_data_nascimento_terceiro_proprietario;
 
@@ -98,7 +115,72 @@ public class CredenciamentoPage extends PageObject {
 	protected WebElement campo_numero_correspondencia;
 
 	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae;
+	public String campoCnae = "4722902";
+
+	@FindBy(id = "cnaeNumber")
 	protected WebElement campo_cnae_sem_pat;
+	public String cnaeSemPat = "7319099";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_refeicao_alimentacao;
+	public String cnaeRefeicaoAlim = "4693100";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_refeicao_multi;
+	public String cnaeRefeicaoMulti = "4721104";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_refeicao_multi_auto;
+	public String cnaeRefeicaoMultiAuto = "8299705";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_multi;
+	public String cnaeMulti = "4761001";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_auto;
+	public String cnaeAuto = "7719599";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_refeicao_alimentacao_multi;
+	public String cnaeRefeicaoAlimentacaoMulti = "4722902";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_multi_auto;
+	public String cnaeMultiAuto = "";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_refeicao_auto;
+	public String cnaeRefeicaoAuto = "";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_refeicao;
+	public String cnaeRefeicao = "";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_alimentacao;
+	public String cnaeAlimentacao = "";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_alimentacao_multi;
+	public String cnaeAlimentacaoMulti = "";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_alimentacao_multi_auto;
+	public String cnaeAlimentacaoMultiAuto = "";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_alimentacao_auto;
+	public String cnaeAlimentacaoAuto = "";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_refeicao_alimentacao_auto;
+	public String cnaeRefeicaoAlimentacaoAuto = "";
+
+	@FindBy(id = "cnaeNumber")
+	protected WebElement campo_cnae_incorreto;
+	public String cnaeIncorreto = "123456789";
 
 	@FindBy(id = "seatsCount")
 	protected WebElement campo_quantidade_assentos;
@@ -121,9 +203,6 @@ public class CredenciamentoPage extends PageObject {
 	@FindBy(id = "dddProprietary2")
 	protected WebElement campo_ddd_terceiro_proprietario;
 
-	@FindBy(id = "cnaeNumber")
-	protected WebElement campo_cnae_refeicao_alimentacao;
-
 	@FindBy(id = "neighborhoodCompany")
 	protected WebElement campo_bairro;
 
@@ -136,23 +215,35 @@ public class CredenciamentoPage extends PageObject {
 	@FindBy(id = "districtCompany")
 	protected WebElement campo_estado;
 
-	@FindBy(id = "vanCheckLabel0")
-	protected WebElement credenciadora_um;
-
 	@FindBy(id = "mealDays0")
 	protected WebElement cb_refeicao_2_a_6;
 
+	public String codigoVan1 = "1234567889";
+	public String codigoVanX = "1234567890";
+
 	@FindBy(id = "codeVan0")
 	protected WebElement campo_codigo_um;
+
+	@FindBy(id = "codeVan2")
+	protected WebElement campo_codigo_dois;
+
+	@FindBy(id = "codeVan3")
+	protected WebElement campo_codigo_tres;
+
+	@FindBy(id = "vanCheckLabel0")
+	protected WebElement credenciadora_um;
+
+	@FindBy(id = "vanCheckLabel2")
+	protected WebElement credenciadora_dois;
+
+	@FindBy(id = "vanCheckLabel3")
+	protected WebElement credenciadora_tres;
 
 	@FindBy(id = "checkoutsCount")
 	protected WebElement campo_quantidade_caixas;
 
 	@FindBy(id = "foodArea")
 	protected WebElement campo_tamanho_est_alimentacao;
-
-	@FindBy(id = "cnaeNumber")
-	protected WebElement campoTipoBeneficio;
 
 	@FindBy(id = "cardSelectedLabel02")
 	protected WebElement cartao_tres_cred_um;
@@ -163,15 +254,9 @@ public class CredenciamentoPage extends PageObject {
 	@FindBy(id = "cardSelectedLabel00")
 	protected WebElement cartao_um_cred_um;
 
-	@FindBy(id = "vanCheckLabel3")
-	protected WebElement credenciadora_tres;
-
-	@FindBy(id = "vanCheckLabel2")
-	protected WebElement credenciadora_dois;
-
 	@FindBy(id = "cardSelectedLabel31")
 	protected WebElement cartao_dois_cred_tres;
-	
+
 	@FindBy(id = "imageLoader")
 	protected WebElement loader;
 
@@ -256,9 +341,6 @@ public class CredenciamentoPage extends PageObject {
 	@FindBy(id = "productBottomText")
 	protected WebElement msg_credenciadoras_um;
 
-	@FindBy(id = "codeVan2")
-	protected WebElement campo_codigo_dois;
-
 	@FindBy(id = "swal2-title")
 	protected WebElement msg_validacao_credenciamento;
 
@@ -293,7 +375,7 @@ public class CredenciamentoPage extends PageObject {
 	protected WebElement btn_prim_prorietario;
 
 	@FindBy(id = "campo_conta_corrente_credenciamento")
-	protected WebElement accountNumber;
+	protected WebElement campo_conta_corrente_credenciamento;
 
 	@FindBy(id = "agencyCode")
 	protected WebElement campo_agencia_credenciamento;
@@ -334,12 +416,6 @@ public class CredenciamentoPage extends PageObject {
 	@FindBy(xpath = "//input[@id='cardSelected20']/..")
 	protected WebElement cartao_multi_tres;
 
-	@FindBy(id = "codeVan3")
-	protected WebElement campo_codigo_tres;
-
-	@FindBy(id = "cnaeNumber")
-	protected WebElement campo_cnae_incorreto;
-
 	@FindBy(xpath = "//*[@id='cardSelected20']/../../../h5")
 	protected WebElement nome_cartao_um_cred_dois;
 
@@ -354,5 +430,11 @@ public class CredenciamentoPage extends PageObject {
 
 	@FindBy(xpath = "//*[@id='cardSelected21']/../../../h5")
 	protected WebElement nome_cartao_dois_cred_dois;
+
+	@FindBy(id = "create-account-button")
+	protected WebElement btnCadastreSeuEstabelecimento;
+
+	@FindBy(id = "tooltip-bottom")
+	protected WebElement tooltip_bottom;
 
 }

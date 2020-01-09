@@ -34,10 +34,10 @@ public class ContratacaoArvNaCentralActions extends ContratacaoArvNaCentralPage 
 		getUrlCentral();
 	}
 
-	public void loginInicial() throws InterruptedException {
+	public void loginInicial(String cpfComAcesso, String cpfSenhaValida) throws InterruptedException {
 
 		telaLogin();
-		formularioLogin(urlArvCentral, urlArvCentral);
+		formularioLogin(cpfComAcesso, cpfSenhaValida);
 		clicarEntrar();
 		paginaInicial();
 	}
@@ -167,7 +167,6 @@ public class ContratacaoArvNaCentralActions extends ContratacaoArvNaCentralPage 
 
 	public void cpfComAcesso(String cpfComAcesso) {
 		inputLogin.sendKeys(cpfComAcesso);
-
 	}
 
 	public void cpfSenhaValida(String cpfSenhaValida) {

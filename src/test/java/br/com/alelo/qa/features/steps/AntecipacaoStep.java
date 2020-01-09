@@ -24,7 +24,7 @@ public class AntecipacaoStep extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	AntecipacaoActions antecipacao;
-	HomeActions homeActions;
+	HomeActions home;
 	SairActions sair;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
@@ -34,19 +34,19 @@ public class AntecipacaoStep extends ParentSteps {
 
 	@Quando("^clico no SideKick no menu expansivel lateral de antecipacao de recebiveis$")
 	public void clico_no_SideKick_no_menu_expansivel_lateral_de_antecipacao_de_recebiveis() throws Throwable {
-		
+
 		String cnpjCombo = "Xpath do cnpj a ser selecionado"; // TODO colocar o cnpj a ser antecipado
 		antecipacao.alterarEstabelecimento(cnpjCombo);
 		antecipacao.antecipacaoARV();
 	}
-	
+
 	@Quando("^clicar no banner com campanha de antecipacao de recebiveis$")
 	public void clicar_no_banner_com_campanha_de_antecipacao_de_recebiveis() throws Throwable {
-		
+
 		String cnpjCombo = "Xpath do cnpj a ser selecionado"; // TODO colocar o cnpj a ser antecipado
 		antecipacao.telaArv();
 		antecipacao.alterarEstabelecimentoArv(cnpjCombo);
-		
+
 	}
 
 	@Quando("^clico em concordo com os termos de antecipacao de recebiveis$")
@@ -71,7 +71,7 @@ public class AntecipacaoStep extends ParentSteps {
 		antecipacao.clicarCancelar();
 	}
 
-	@Entao("^o Portal EC cancela a antecipacao$")
+	@Entao("^o Portal EC cancela antecipacao$")
 	public void o_Portal_EC_cancela_a_antecipacao() throws Throwable {
 		antecipacao.validaCancelamentoAntecipacao();
 		sair.sairGeral();
@@ -82,7 +82,7 @@ public class AntecipacaoStep extends ParentSteps {
 		antecipacao.clicarFechar();
 	}
 
-	@Entao("^o Portal EC fecha o modal da antecipacao$")
+	@Entao("^o Portal EC fecha o modal antecipacao$")
 	public void o_Portal_EC_fecha_o_modal_da_antecipacao() throws Throwable {
 		antecipacao.modalfechado();
 		sair.sairGeral();
@@ -149,7 +149,7 @@ public class AntecipacaoStep extends ParentSteps {
 	public void clico_no_botao_cancelar_recorrencia() throws Throwable {
 		antecipacao.clicarCancelarRecorrencia();
 	}
-	
+
 	@E("^clico no botao cancelar alteracao valores$")
 	public void clico_no_botao_cancelar_alteracao_valores() throws Throwable {
 		antecipacao.clicarCancelarParcial();

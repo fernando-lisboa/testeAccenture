@@ -24,7 +24,7 @@ public class AgendaStep extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	AgendaActions agenda;
-	HomeActions homeActions;
+	HomeActions home;
 	SairActions sair;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 

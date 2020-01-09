@@ -24,7 +24,7 @@ public class OfertaAtivaSteps extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	OfertaAtivaActions oferta;
-	HomeActions homeActions;
+	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
 	@Dado("^que estou  com CNPJ elegível \"([^\"]*)\"$")

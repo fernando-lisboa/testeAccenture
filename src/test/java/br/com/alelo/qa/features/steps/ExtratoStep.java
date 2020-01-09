@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import basePages.SairPage;
 import br.com.alelo.qa.features.support.ParentSteps;
+import br.com.alelo.qa.web.actions.ExtratoActions;
 import br.com.alelo.qa.web.actions.HomeActions;
 import br.com.alelo.qa.web.actions.OfertaAtivaActions;
 import br.com.alelo.utils.SimpleCacheManager;
@@ -23,14 +24,14 @@ import cucumber.api.java.pt.Quando;
 public class ExtratoStep extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
+	ExtratoActions extrato;
 	OfertaAtivaActions oferta;
-	HomeActions homeActions;
+	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
-	
-	
+
 	@Dado("^clico na aba Extrato$")
 	public void clico_na_aba_Extrato() throws Throwable {
-		clicarAbaExtrato();
+		extrato.clicarAbaExtrato();
 	}
 
 	@Quando("^seleciono um periodo$")

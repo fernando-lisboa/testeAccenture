@@ -13,7 +13,10 @@ import org.slf4j.LoggerFactory;
 import basePages.SairPage;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.HomeActions;
+import br.com.alelo.qa.web.actions.LoginActions;
 import br.com.alelo.qa.web.actions.OfertaAtivaActions;
+import br.com.alelo.qa.web.actions.PainelActions;
+import br.com.alelo.qa.web.actions.SairActions;
 import br.com.alelo.qa.web.page.LoginPage;
 import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.java.pt.Dado;
@@ -24,70 +27,72 @@ import cucumber.api.java.pt.Quando;
 public class PainelStep extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
+	LoginActions login;
+	SairActions sair;
+	PainelActions painel;
 	OfertaAtivaActions oferta;
-	HomeActions homeActions;
+	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
-	
 
 	@Dado("^que estou na logado no portal EC$")
 	public void que_estou_na_logado_no_portal_EC() throws Throwable {
-		LoginPage.loginGeral();
+		login.loginGeral();
 	}
 
 	@Quando("^acesso o painel no menu$")
 	public void acesso_o_painel_no_menu() throws Throwable {
-		validarPainel();
+		painel.validarPainel();
 	}
 
 	@E("^seleciono um CNPJ diferente no combo Estabelecimento$")
 	public void seleciono_um_CNPJ_diferente_no_combo_Estabelecimento() throws Throwable {
-		alterarEstabelecimento();
+		painel.alterarEstabelecimento();
 	}
 
 	@E("^seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento$")
 	public void seleciono_um_CNPJ_diferente_com_Arv_no_combo_Estabelecimento() throws Throwable {
-		alterarEstabelecimentoArv();
+		painel.alterarEstabelecimentoArv();
 	}
-	
+
 	@E("^seleciono um CNPJ diferente que tenha plano e sem saldo no combo Estabelecimento$")
 	public void seleciono_um_CNPJ_diferente_com_plano_no_combo_Estabelecimento() throws Throwable {
-		alterarEstabelecimentoPlano();
+		painel.alterarEstabelecimentoPlano();
 	}
-	
+
 	@E("^seleciono um CNPJ diferente que tenha plano e com saldo no combo Estabelecimento$")
 	public void seleciono_um_CNPJ_diferente_com_plano_com_saldo_no_combo_Estabelecimento() throws Throwable {
-		alterarEstabelecimentoPlanoSaldo();
+		painel.alterarEstabelecimentoPlanoSaldo();
 	}
-	
+
 	@E("^seleciono um CNPJ diferente que nao tenha plano ou saldo no combo Estabelecimento$")
 	public void seleciono_um_CNPJ_diferente_sem_plano_sem_saldo_no_combo_Estabelecimento() throws Throwable {
-		alterarEstabelecimentoSemPlanoSemSaldo();
+		painel.alterarEstabelecimentoSemPlanoSemSaldo();
 	}
 
 	@Entao("^o painel carrega as informacoes respectivas ao CNPJ selecionado$")
 	public void o_painel_carrega_as_informacoes_respectivas_ao_CNPJ_selecionado() throws Throwable {
-		validarCNPJPainel();
-		SairPage.sairGeral();
+		painel.validarCNPJPainel();
+		sair.sairGeral();
 	}
 
 	@E("^clico no banner superior$")
 	public void clico_no_banner_superior() throws Throwable {
-		clicarBannerSuperior();
+		painel.clicarBannerSuperior();
 	}
 
 	@Entao("^o sistema redireciona para a tela marketing cadastrada superior$")
 	public void o_sistema_redireciona_para_a_tela_marketing_cadastrada_superior() throws Throwable {
-		validaLinkBannerSuperior();
+		painel.validaLinkBannerSuperior();
 	}
 
 	@E("^clico nos banners inferiores$")
 	public void clico_nos_banners_inferiores() throws Throwable {
-		clicarBannerInferior();
+		painel.clicarBannerInferior();
 	}
 
 	@Entao("^o sistema redireciona para a tela marketing cadastrada inferior$")
 	public void o_sistema_redireciona_para_a_tela_marketing_cadastrada_inferior() throws Throwable {
-		validaLinkBannerInferiores();
+		painel.validaLinkBannerInferiores();
 	}
 
 	@E("^clico na imagem correspondente ao Twitter$")
@@ -119,20 +124,20 @@ public class PainelStep extends ParentSteps {
 	public void o_sistema_redireciona_para_a_url_da_Alelo_no_Linkedin() throws Throwable {
 		validaURLLinkedin();
 	}
-	
+
 	@Entao("^o sistema apresenta o sidekick de ARV$")
 	public void o_sistema_apresenta_o_sidekick_de_ARV() throws Throwable {
 		validaSidekickArv();
 	}
-	
+
 	@Entao("^o sistema apresenta o sidekick de Planos$")
 	public void o_sistema_apresenta_o_sidekick_de_Planos() throws Throwable {
 		validaSidekickPlano();
 	}
-	
+
 	@Entao("^o sistema nao apresenta o sidekick$")
 	public void o_sistema_nao_apresenta_o_sidekick() throws Throwable {
 		validaNaoAparicaoSidekick();
 	}
-	
+
 }

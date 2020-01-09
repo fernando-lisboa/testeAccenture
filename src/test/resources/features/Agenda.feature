@@ -1,99 +1,82 @@
 #language: pt
 #/**
-# * Autor: Fernando Lisboa
-# * Empresa: Taking
-# * Data: 06/12/2019
+# * @author Fernando Lisboa - Taking
+# * Change: 08/01/2019 | Author: Jessé Dantas - Taking
 # * Caminho: Portal Estabelecimento Comercial
 # */
-
 @Regressivo
 Funcionalidade: Agenda
   Permite a consulta dos valores a serem disponibilizados ao usuario ao longo do mes
 
-   Contexto: 
-    Dado que estou na logado no portal EC "<54621917072>", "Alelo2018@"
+  Contexto: 
+    Dado que estou na logado no portal EC "54621917072", "Alelo2018@"
 
-  @Release-33  @Regressivo
-  Cenario: Realizar consulta do dia atual com sucesso
+  @Release-33 @Regressivo
+  Esquema do Cenario: <VSTS> - Realizar consulta do dia atual com sucesso
     Quando que estou na tela Agenda
     E seleciono o campo correspondente ao dia atual
     Entao o Portal EC apresenta a tela de Extrato do respectivo dia
 
-  @Release-33  @Regressivo
-  Cenario: Realizar consulta em Agenda com botao Avancar
+    Exemplos: 
+      | VSTS |
+      |      |
+
+  @Release-33 @Regressivo
+  Esquema do Cenario: <VSTS> - Realizar consulta em Agenda com botao <botao>
     Quando que estou na tela Agenda
-    E seleciono o botao avancar no mes
+    E seleciono o botao <botao> no mes
     Entao o Portal EC apresenta a tela de Agenda do respectivo mes
 
-  @Release-33  @Regressivo
-  Cenario: Realizar consulta em Agenda com botao Retroceder
-    Quando que estou na tela Agenda
-    E seleciono o botao retroceder no mes
-    Entao o Portal EC apresenta a tela de Agenda do respectivo mes
+    Exemplos: 
+      | VSTS | botao      |
+      |      | avancar    |
+      |      | retroceder |
 
-  @Release-33  @Regressivo
-  Cenario: Acessar a tela Agenda atraves do painel
+  @Release-33 @Regressivo
+  Esquema do Cenario: <VSTS> - Acessar a tela Agenda atraves do painel
     Quando estou na home page
     E clico no botao Veja mais detalhes
     Entao o Portal EC apresenta a tela de agenda
 
- @Release-33  @Regressivo
-  Cenario: Validar link do banner superior esquerdo com sucesso
-    Quando que estou na tela Agenda
-    E clico no banner esquerdo
-    Entao o sistema redireciona para a tela marketing cadastrada esquerdo
+    Exemplos: 
+      | VSTS |
+      |      |
 
- @Release-33  @Regressivo
-  Cenario: Validar link do banner superior direito com sucesso
+  @Release-33 @Regressivo
+  Esquema do Cenario: <VSTS> - Validar link do banner superior <banner>
     Quando que estou na tela Agenda
-    E clico no banner direito
-    Entao o sistema redireciona para a tela marketing cadastrada direito
+    E clico no banner <banner>
+    Entao o sistema redireciona para a tela marketing cadastrada <banner>
 
-  @Release-33  @Regressivo
-  Cenario: Extrair comprovante em PDF - superior
+    Exemplos: 
+      | VSTS | banner   |
+      |      | esquerdo |
+      |      | direito  |
+
+  @Release-33 @Regressivo
+  Esquema do Cenario: <VSTS> - Extrair comprovante em <tipo_arquivo> <angulo>
     Quando que estou na tela Agenda
     E seleciono o campo correspondente ao dia atual
     E clico no botao comprovantes
-    E clico no botao Baixar em PDF superior
-    Entao o sistema baixa o extrato em PDF
+    E clico no botao Baixar em <tipo_arquivo> <angulo>
+    Entao o sistema baixa o extrato em <tipo_arquivo>
 
- @Release-33  @Regressivo
-  Cenario: Extrair comprovante em PDF - inferior
+    Exemplos: 
+      | VSTS | tipo_arquivo | angulo   |
+      |      | PDF          | superior |
+      |      | PDF          | inferior |
+      |      | CSV          | superior |
+      |      | CSV          | inferior |
+
+  @Release-33 @Regressivo
+  Esquema do Cenario: <VSTS> - <angulo>
     Quando que estou na tela Agenda
     E seleciono o campo correspondente ao dia atual
     E clico no botao comprovantes
-    E clico no botao Baixar em PDF inferior
-    Entao o sistema baixa o extrato em PDF
-
-  @Release-33  @Regressivo
-  Cenario: Extrair comprovante em CSV - superior
-    Quando que estou na tela Agenda
-    E seleciono o campo correspondente ao dia atual
-    E clico no botao comprovantes
-    E clico no botao Baixar em CSV superior
-    Entao o sistema baixa o extrato em CSV
-
- @Release-33  @Regressivo
-  Cenario: Extrair comprovante em CSV - inferior
-    Quando que estou na tela Agenda
-    E seleciono o campo correspondente ao dia atual
-    E clico no botao comprovantes
-    E clico no botao Baixar em CSV inferior
-    Entao o sistema baixa o extrato em CSV
-
-  @Release-33  @Regressivo
-  Cenario: Imprimir comprovante - superior
-    Quando que estou na tela Agenda
-    E seleciono o campo correspondente ao dia atual
-    E clico no botao comprovantes
-    E clico no botao Imprimir comprovante superior
+    E clico no botao Imprimir comprovante <angulo>
     Entao o sistema imprime o comprovante
 
-  @Release-33  @Regressivo
-  Cenario: Imprimir comprovante - inferior
-    Quando que estou na tela Agenda
-    E seleciono o campo correspondente ao dia atual
-    E clico no botao comprovantes
-    E clico no botao Imprimir comprovante inferior
-    Entao o sistema imprime o comprovante
-
+    Exemplos: 
+      | VSTS | angulo   |
+      |      | superior |
+      |      | inferior |

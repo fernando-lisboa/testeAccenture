@@ -1,11 +1,9 @@
 #language: pt
 #/**
-# * Autor: Fernando Lisboa
-# * Empresa: Taking
-# * Data: 06/12/2019
-# * Caminho: Portal Estabelecimento Comercial 
+# * @author Fernando Lisboa - Taking
+# * Change: 08/01/2019 | Author: Jessé Dantas - Taking
+# * Caminho: Portal Estabelecimento Comercial
 # */
-
 @Planos @front @Regressao
 Funcionalidade: Planos
   Permite realizar a contratação de planos
@@ -17,69 +15,29 @@ Funcionalidade: Planos
   Contexto: 
     Dado que estou na logado no portal EC "<54621917072>", "Alelo2018@"
 
-  @Release-15
-	@portalEC
-	@#felipe_lourenco
-	@realizar_contratacao_1
-  Cenario: Realizar contratacao 1 com sucesso
+  @Release-15 @portalEC @realizar_contratacao_opcao
+  Esquema do Cenario: <VSTS> - Realizar contratacao <cenario> com sucesso
     Quando clico no SideKick no menu expansivel lateral de contratacao
-    E seleciono a opcao 1
-    E clico em Aceitar Termos
-    E clico em Contratar
-    Entao o Portal EC realiza a contratacao
-  
-  @Release-15
-	@portalEC
-	@#felipe_lourenco
-	@realizar_contratacao_2
-  Cenario: Realizar contratacao 2 com sucesso
-    Quando clico no SideKick no menu expansivel lateral de contratacao
-    E seleciono a opcao 2
-    E clico em Aceitar Termos
-    E clico em Contratar
-    Entao o Portal EC realiza a contratacao
-  
-  @Release-15
-	@portalEC
-	@#felipe_lourenco
-	@realizar_contratacao_3
-  Cenario: Realizar contratacao 3 com sucesso
-    Quando clico no SideKick no menu expansivel lateral de contratacao
-    E seleciono a opcao 3
+    E seleciono a opcao <cenario>
     E clico em Aceitar Termos
     E clico em Contratar
     Entao o Portal EC realiza a contratacao
 
-  @Release-15
-	@portalEC
-	@#felipe_lourenco
-	@cancelar_contratacao
-  Cenario: Cancelar contratacao de planos
-   	Quando clico no SideKick no menu expansivel lateral de contratacao
+    Exemplos: 
+      | VSTS | cenario |
+      |      |       1 |
+      |      |       2 |
+      |      |       3 |
+
+  @Release-15 @portalEC @#felipe_lourenco @cancelar_contratacao @fechar_contratacao
+  Esquema do Cenario: <VSTS> - <cenario> contratacao de planos
+    Quando clico no SideKick no menu expansivel lateral de contratacao
     E seleciono uma opcao
     E clico em Aceitar Termos
-    E clico em Cancelar contratacao
-    Entao o Portal EC cancela a antecipacao
-  
-  @Release-15
-	@portalEC
-	@#felipe_lourenco
-	@fechar_contratacao
-  Cenario: Fechar contratacao de planos
-   	Quando clico no SideKick no menu expansivel lateral de contratacao
-    E seleciono uma opcao
-    E clico em Aceitar Termos
-    E clico no botao Fechar contratacao
-    Entao o Portal EC fecha o modal da contratacao
- 
-	@Release-22
-	@portalEC
-	@api
-	@#samuel_milani
-	@logar_acessar_api_sidekick_planos
-  Cenario: Validar informacoes da API do Sidekick de Planos
-   	Dado que informo os parametros de Login da api
-   	E que realizo o post para obter o access token
-    Quando executo o comando get com access token na api do Sidekick de Planos
-		Entao valido o retorno da api
-		E imprimo a resposta
+    E clico em <cenario> contratacao
+    Entao o Portal EC <validacao> antecipacao
+
+    Exemplos: 
+      | VSTS | cenario  | validacao     |
+      |      | Cancelar | cancela       |
+      |      | Fechar   | fecha o modal |

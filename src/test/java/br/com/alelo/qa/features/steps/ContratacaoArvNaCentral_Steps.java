@@ -23,13 +23,13 @@ public class ContratacaoArvNaCentral_Steps extends ParentSteps {
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	OfertaAtivaActions oferta;
 	ContratacaoArvNaCentralActions ContratacaoArvNaCentral;
-	HomeActions homeActions;
+	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
 	// ############################## Métodos Given ##############################
 
-	@Dado("^que estou logado em qualquer tela arv na central com CPF \"([^\"]*)\" e senha \"([^\"]*)\"$")
-	public void que_estou_logado_em_qualquer_tela_arv_na_central(String cpfComAcesso, String cpfSenhaValida)
+	@Dado("^que eu esteja logado no portal ARV na central com CPF \"([^\"]*)\" e senha \"([^\"]*)\"$")
+	public void que_eu_esteja_logado_no_portal_ARV_na_central(String cpfComAcesso, String cpfSenhaValida)
 			throws Throwable {
 		ContratacaoArvNaCentral.telaLogin();
 		ContratacaoArvNaCentral.formularioLogin(cpfComAcesso, cpfSenhaValida);
@@ -55,20 +55,6 @@ public class ContratacaoArvNaCentral_Steps extends ParentSteps {
 	@Dado("^eu clicar no botao logar$")
 	public void eu_clicar_no_botao_logar() throws Throwable {
 		ContratacaoArvNaCentral.clicarEntrar();
-	}
-
-	@Dado("^que eu esteja logado no portal ARV na central com CPF \"([^\"]*)\" e senha \"([^\"]*)\"$")
-	public void que_eu_esteja_logado_no_portal_ARV_na_central(String cpfComAcesso, String cpfSenhaValida)
-			throws Throwable {
-		ContratacaoArvNaCentral.telaLogin();
-		ContratacaoArvNaCentral.formularioLogin(cpfComAcesso, cpfSenhaValida);
-		ContratacaoArvNaCentral.clicarEntrar();
-		ContratacaoArvNaCentral.paginaInicial();
-	}
-
-	@Dado("^inserir um CNPJ \"([^\"]*)\" ARV disponível(.*)$")
-	public void inserir_um_CNPJ_com_ou_sem_ARV(String cnpj) throws Throwable {
-		ContratacaoArvNaCentral.consultaCnpj(cnpj);
 	}
 
 	@Dado("^inserir um CNPJ com ARV disponível \"([^\"]*)\"$")
@@ -104,7 +90,6 @@ public class ContratacaoArvNaCentral_Steps extends ParentSteps {
 	@Dado("^que inserir um CNPJ com mais de um EC com ARV disponível para contratacao \"([^\"]*)\"$")
 	public void que_inserir_um_CNPJ_com_mais_de_um_EC_com_ARV_disponível_para_contratacao(String cnpj)
 			throws Throwable {
-		ContratacaoArvNaCentral.loginInicial();
 		ContratacaoArvNaCentral.consultaCnpjContrataco(cnpj);
 	}
 
@@ -252,7 +237,7 @@ public class ContratacaoArvNaCentral_Steps extends ParentSteps {
 	 * exibir_uma_mensagem_que_não_há_saldo_disponível_para_antecipacao() throws
 	 * Throwable { ContratacaoArvNaCentral.validarMensagemArvNaoDisponivel(); }
 	 */
-	
+
 	@Entao("^deve exibir a mensagem \"([^\"]*)\"$")
 	public void deve_exibir_a_mensagem(String arg1) throws Throwable {
 		ContratacaoArvNaCentral.validaConsultaInexistente();
