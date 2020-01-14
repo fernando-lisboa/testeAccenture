@@ -13,6 +13,11 @@ public class AgendaActions extends AgendaPage {
 
 	// UrlPage urls = new UrlPage(webdriver);
 
+	public AgendaActions(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void telaAgenda() throws InterruptedException {
 		waitForElementPageToLoad(loader);
 		Thread.sleep(2000);
@@ -168,11 +173,6 @@ public class AgendaActions extends AgendaPage {
 
 	public void validarImpressao() {
 		System.out.println("Impressão efetuada!");
-	}
-
-	public AgendaActions(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 }

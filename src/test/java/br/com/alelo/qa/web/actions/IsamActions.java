@@ -8,8 +8,7 @@ import static org.junit.Assert.fail;
 import org.openqa.selenium.WebDriver;
 
 import br.com.alelo.qa.web.page.IsamPage;
-import driver.web.DriverWeb;
-import stepsweb.ISAMStep;
+import br.com.alelo.qa.features.steps.ISAMStep;
 
 /**
  * @author Fernando Lisboa
@@ -23,32 +22,32 @@ public class IsamActions extends IsamPage {
 	}
 
 	public void telaLoginISAM() {
-		System.out.println(urlISAM);
-		abrirUrl(urlISAM);
+		System.out.println(getUrlISAM());
+		getUrlISAM();
 	}
 
 	public void preencherUsuario() {
-		escrever(usuarioISAM, escreverUsuarioISAM);
+		usuario_ISAM.sendKeys("");
 	}
 
 	public void preencherSenha() {
-		escrever(senhaISAM, escreverSenhaISAM);
+		senha_ISAM.sendKeys("");
 	}
 
 	public void clicarLogin() {
-		clicar(botaoLogin);
+		botao_login.click();
 	}
 
 	public void validarInicialISAM() {
-		validarUrlAtual(urlInternaISAM);
+		getUrlInternaISAM();
 	}
 
-	public static void loginISAMGeral() throws Throwable {
+	public void loginISAMGeral() throws Throwable {
 		try {
 			ISAMStep login = new ISAMStep();
 			login.que_estou_na_tela_de_login_IBM();
 
-			if (!DriverWeb.getDriver().getCurrentUrl().contains("apisec.siteteste.inf.br")) {
+			if (!webdriver.getCurrentUrl().contains("apisec.siteteste.inf.br")) {
 				Thread.sleep(5000);
 			} else {
 				login.preencho_nome_de_usuario_e_senha();
@@ -62,12 +61,12 @@ public class IsamActions extends IsamPage {
 
 	public void removerSessao() throws InterruptedException {
 		try {
-			Boolean on = elementExiste(removerSessao);
+			Boolean on = remover_sessao.isEnabled();// elementExiste(removerSessao);
 
 			while (on = true) {
 				if (!on == false) {
-					clicar(removerSessao);
-					on = elementExiste(removerSessao);
+					remover_sessao.click();
+					on = remover_sessao.isEnabled();// elementExiste(removerSessao);
 					Thread.sleep(1000);
 				} else {
 					break;
@@ -80,7 +79,7 @@ public class IsamActions extends IsamPage {
 
 	public void validarSessao() {
 		try {
-			elementExiste(removerSessao);
+			remover_sessao.isEnabled();
 			System.out.println("Teste realizado com sucesso.");
 		} catch (Exception e) {
 			fail("Existem sessões ativas!");

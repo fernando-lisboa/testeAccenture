@@ -14,52 +14,55 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 public class PageObject {
-	
+
 	protected WebDriver webdriver;
-	
+
 	@Autowired
 	private int maxTimeWaitLoadPage = 300;
-	
+
 	private WebDriverWait wait;
-	
-	protected WebElement encontraElementoPorParteDoTexto(String partialText){
-		return webdriver.findElement(By.xpath("//*[contains(text(),'"+partialText+"')]"));
+
+	protected WebElement encontraElementoPorParteDoTexto(String partialText) {
+		return webdriver.findElement(By.xpath("//*[contains(text(),'" + partialText + "')]"));
 	}
-	
-	protected WebElement encontraElementoPorParteDoId(String partialId){
-		return webdriver.findElement(By.xpath("//*[contains(@id,'"+partialId+"')]"));
+
+	protected WebElement encontraElementoPorParteDoId(String partialId) {
+		return webdriver.findElement(By.xpath("//*[contains(@id,'" + partialId + "')]"));
 	}
-	
+
 	public PageObject(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.webdriver = driver;
 		this.webdriver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 		this.webdriver.manage().window().maximize();
-		
+
 	}
-	
+
 	public void validarUrlAtual(String url) {
 		assertEquals(url, webdriver.getCurrentUrl());
 	}
-	
+
+	public void validarUrlPedaco(String urlPartial) {
+		assertEquals(urlPartial, webdriver.getCurrentUrl().contains(urlPartial));
+	}
+
 	public void waitForElementPageToLoad(WebElement element) {
 		wait = new WebDriverWait(webdriver, maxTimeWaitLoadPage);
 		wait.until(ExpectedConditions.visibilityOfAllElements(element));
-    }
-	
-	public void waitForElementPageToBeClickable(WebElement element){
+	}
+
+	public void waitForElementPageToBeClickable(WebElement element) {
 		wait = new WebDriverWait(webdriver, maxTimeWaitLoadPage);
 		wait.until(ExpectedConditions.visibilityOfAllElements(element));
-		
+
 	}
-	
-	public void waitforFormToBeLoad(List<WebElement> elements){
+
+	public void waitforFormToBeLoad(List<WebElement> elements) {
 		wait = new WebDriverWait(webdriver, maxTimeWaitLoadPage);
 		wait.until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
-	
+
 	public void arrastar(WebElement element, WebElement element2) {
 		Actions action = new Actions(webdriver);
 		try {
@@ -71,7 +74,5 @@ public class PageObject {
 			throw new java.lang.Error(valorError);
 		}
 	}
-	
-	
 
 }

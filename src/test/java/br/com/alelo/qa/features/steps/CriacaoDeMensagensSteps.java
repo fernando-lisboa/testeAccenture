@@ -53,7 +53,7 @@ public class CriacaoDeMensagensSteps extends ParentSteps {
 
 	@Entao("^deve ser criada uma nova mensagem com os dados informados$")
 	public void deve_ser_criada_uma_nova_mensagem_com_os_dados_informados() throws Throwable {
-		validarExibicaoMensagemNoPortal();
+		criacaoDeMensagens.validarExibicaoMensagemNoPortal();
 	}
 
 	@Dado("^e clicar no botao editar mensagem$")

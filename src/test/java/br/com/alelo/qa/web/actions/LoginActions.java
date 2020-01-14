@@ -6,12 +6,13 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import br.com.alelo.qa.web.page.LoginPage;
+import br.com.alelo.qa.features.steps.LoginSteps;
 import br.com.alelo.qa.web.page.OfertaAtivaPage;
-import driver.web.DriverWeb;
-import stepsweb.LoginStep;
 
 public class LoginActions extends LoginPage {
 
@@ -42,31 +43,31 @@ public class LoginActions extends LoginPage {
 	}
 
 	public void telaLoginWebAdmin() {
-		System.out.println(urlInicioWebAdmin);
-		abrirUrl(urlInicioWebAdmin);
+		System.out.println(UrlInicioWebAdmin);
+		getUrlInicioWebAdmin();
 	}
 
 	public void telaLogin() {
-		System.out.println(url);
-		abrirUrl(url);
+		System.out.println(urlInicial);
+		getUrlInicial();
 	}
 
-	public void formularioLoginWebAdmin() {
-		escrever(escreverCPFWebAdmin, CPFWebAdmin);
-		escrever(escreverSenhaWebAdmin, SenhaWebAdmin);
-	}
+//	public void formularioLoginWebAdmin() {
+//		escrever(escreverCPFWebAdmin, CPFWebAdmin);
+//		escrever(escreverSenhaWebAdmin, SenhaWebAdmin);
+//	}
 
 	public void formularioLogin() {
-		escrever(escreverCPF, CPF);
-		escrever(escreverSenha, Senha);
+		campo_cpf.sendKeys(Cpf);
+		campo_senha.sendKeys(Senha);
 	}
 
 	public void botaoEntrar() {
-		clicar(botaoEntrar);
+		botao_entrar.click();
 	}
 
 	public void botaoEntrarWebAdmin() {
-		clicar(botaoEntrarWebAdmin);
+		botao_entrar_webAdmin.click();
 	}
 
 	public void paginaInicial() throws InterruptedException {
@@ -75,29 +76,29 @@ public class LoginActions extends LoginPage {
 		validarUrlAtual(urlInicio);
 	}
 
-	public void paginaInicialWebAdmin() throws InterruptedException {
-		Thread.sleep(5000);
-		System.out.println(urlInicioWebAdminValidate);
-		validarUrlAtual(urlInicioWebAdminValidate);
-	}
+//	public void paginaInicialWebAdmin() throws InterruptedException {
+//		Thread.sleep(5000);
+//		System.out.println(UrlInicioWebAdminValidate);
+//		validarUrlAtual(urlInicioWebAdminValidate);
+//	}
 
 	public void cpfInvalido() {
-		escrever(escreverCPF, numCpfInvalido);
+		campo_cpf_invalido.sendKeys(cpfInvalido);
+	}
+
+	public void senhaInvalida() {
+		campo_cpf.sendKeys(Cpf);
+		campo_senha_invalida.sendKeys(senhaInvalida);
 	}
 
 	public void bloqueiaBotaoEntrar() {
-		boolean botaoEntrarHabilitado = VerificarElementoEstaHabilitado(botaoEntrar);
+		boolean botaoEntrarHabilitado = botao_entrar.isEnabled();// VerificarElementoEstaHabilitado(botao_entrar);
 
 		if (!botaoEntrarHabilitado) {
 			System.out.println("Teste realizado com sucesso.");
 		} else {
 			fail("Botão 'Entrar' está habilitado!");
 		}
-	}
-
-	public void senhaInvalida() {
-		escrever(escreverCPF, CPF);
-		escrever(escreverSenha, numSenhaInvalida);
 	}
 
 	public void modalFalha() throws InterruptedException {
@@ -114,45 +115,60 @@ public class LoginActions extends LoginPage {
 		}
 		Thread.sleep(3000);
 
-		String leituraConteudoModal = obterTexto(textoModal);
+		String leituraConteudoModal = texto_modal_falha.getText();// obterTexto(textoModal);
 		System.out.print(leituraConteudoModal);
-		clicar(botaoFecharModal);
+		botao_fechar_modal.click();
 	}
 
 	public void habilitarConta() {
-		clicar(botaoHabilitarConta);
+		botao_habilitar_conta.click();
 	}
 
 	public void validacaoPrimeiroAcesso() throws InterruptedException {
 		Thread.sleep(5000);
-		escrever(campoEmail, escreverCampoEmail);
-		super.validarMensagem(textoPrimeiroAcesso, textoCompararPrimeiroAcesso);
+		campo_email.sendKeys(Email);
+		validarMensagem(txtPrimeiroAcesso, comparar_primeiro_acesso);
 	}
 
 	public void esqueciSenha() {
-		clicar(botaoEsqueciSenha);
+		botao_esqueci_senha.click();
 	}
 
 	public void validacaoEsqueciSenha() throws InterruptedException {
 		Thread.sleep(5000);
-		escrever(campoCPFsenha, escreverCPFsenha);
+		esqueci_senha_cpf.sendKeys(esqueciSenhaCpf);
 
 		// ISAM
 		// escrever(campoEmail, escreverCampoEmail);
 		// escrever(campoSobrenome, escreverCampoSobrenome);
 
-		super.validarMensagem(textoEsqueciSenha, textoCompararEsqueciSenha);
+		validarMensagem(txtEsqueciSenha, comparar_esqueci_senha);
 	}
 
-	public static void loginGeralWebAdmin() throws Throwable {
+	public void validarMensagem(String textoOriginal, WebElement elemento) {
 		try {
-			LoginStep login = new LoginStep();
-			login.que_estou_na_tela_de_login_WebAdmin();
+			String textoDeComparacao = elemento.getText();// obterTexto(elemento);
+
+			if (textoOriginal.equalsIgnoreCase(textoDeComparacao)) {
+				System.out.println("Teste realizado com sucesso.");
+			} else {
+				Assert.fail();
+			}
+		} catch (Exception e) {
+			Assert.fail();
+			System.out.println(e);
+		}
+	}
+
+	public void loginGeralWebAdmin() throws Throwable {
+		try {
+			LoginSteps login = new LoginSteps();
+			login.que_estou_logado_em_qualquer_tela_no_Web_Admin();
 
 			// if (DriverWeb.getDriver().getCurrentUrl().contains("login") &&
 			// !DriverWeb.getDriver().findElements(By.name(escreverCPF)).isEmpty())
 			// {
-			if (DriverWeb.getDriver().getCurrentUrl().contains("login")) {
+			if (webdriver.getCurrentUrl().contains("login")) {
 				System.out.println("Fazer Login");
 				login.preencho_o_formulario_de_login_webAdmin();
 				login.aciono_o_botao_Entrar_webAdmin();

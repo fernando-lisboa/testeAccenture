@@ -3,16 +3,12 @@
  */
 package br.com.alelo.qa.web.actions;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.alelo.qa.web.page.ExtratoPage;
-import driver.web.DriverWeb;
 
 /**
  * @author Fernando Lisboa
@@ -25,15 +21,15 @@ public class ExtratoActions extends ExtratoPage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void clicarAbaExtrato() throws IOException, InterruptedException {
-		Thread.sleep(5000);
-		waitForElementPageToLoad(aguardar_gif);
-		menu_extrato.wait(20);
-		menu_extrato.click();
-		waitForElementPageToLoad(aguardar_gif);
-		Thread.sleep(5000);
-		super.alterarCNPJ(elementoGif, opcaoSelect, opcaoEcExtrato);
-	}
+//	public void clicarAbaExtrato() throws IOException, InterruptedException {
+//		Thread.sleep(5000);
+//		waitForElementPageToLoad(aguardar_gif);
+//		menu_extrato.wait(20);
+//		menu_extrato.click();
+//		waitForElementPageToLoad(aguardar_gif);
+//		Thread.sleep(5000);
+//		super.alterarCNPJ(elementoGif, opcaoSelect, opcaoEcExtrato);
+//	}
 
 	public void selecionarPeriodo() throws InterruptedException {
 		waitForElementPageToLoad(aguardar_gif);
@@ -54,7 +50,7 @@ public class ExtratoActions extends ExtratoPage {
 
 	public void validarTransacoes() throws InterruptedException {
 		Thread.sleep(5000);
-		validarMensagem("VENDAS", primeiraLinhaExtrato);
+		assertEquals("VENDAS", primeira_linha_extrato.getText());
 	}
 
 	public void clicarLinhaVendas() throws InterruptedException {
@@ -66,7 +62,7 @@ public class ExtratoActions extends ExtratoPage {
 	public void validarDetalheVendasDia() throws InterruptedException {
 		clicarLinhaVendas();
 		clicarLinhaVendas();
-		validarMensagem("DESCRIÇÃO", detalhesLinhaVenda);
+		assertEquals("DESCRIÇÃO", detalhes_linha_venda.getText());
 	}
 
 	public void clicarLinhaOutrastransacoes() throws InterruptedException {
@@ -75,10 +71,10 @@ public class ExtratoActions extends ExtratoPage {
 		waitForElementPageToLoad(aguardar_gif);
 	}
 
-	public void validarDetalheOutrastransacoesDia() {
+	public void validarDetalheOutrastransacoesDia() throws InterruptedException {
 		clicarLinhaOutrastransacoes();
 		clicarLinhaOutrastransacoes();
-		validarMensagem("DESCRIÇÃO", detalhesLinhaOutrasTransacoes);
+		assertEquals("DESCRIÇÃO", detalhes_linha_outras_transacoes.getText());
 	}
 
 	public void buscarNumeroCartao() {
@@ -91,7 +87,7 @@ public class ExtratoActions extends ExtratoPage {
 	public void validarResultadosNumeroCartao() throws InterruptedException {
 		Thread.sleep(5000);
 
-		if (obterTexto(numero).contains(numeroFinalCartao)) {
+		if (numero_final_cartao.getText() == numeroCartao) {
 			System.out.println("Teste realizado com sucesso.");
 		} else {
 			fail("Numero de cartão diferente do pesquisado.");

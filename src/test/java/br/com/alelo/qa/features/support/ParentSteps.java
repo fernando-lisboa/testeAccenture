@@ -7,30 +7,27 @@ import org.springframework.test.context.ContextConfiguration;
 
 import br.com.alelo.utils.PropertiesFile;
 
-
-@ContextConfiguration(classes={CucumberContext.class, PropertiesContext.class})
+@ContextConfiguration(classes = { CucumberContext.class, PropertiesContext.class })
 public class ParentSteps {
-	
-	
 
 	@Autowired
 	protected WebDriver webdriver;
-	
+
 	@Autowired
 	protected WebDriverWait wait;
-	
+
 	@Autowired
 	protected boolean screenshotOnFailure;
-	
+
 	@Autowired
 	protected String screenshotDestinationFolder;
-	
+
 	@Autowired
 	protected String baseurl;
-	
+
 	@Autowired
 	protected boolean vsts;
-	
+
 	protected PropertiesFile props;
-	
+
 }

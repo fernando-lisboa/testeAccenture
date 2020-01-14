@@ -10,7 +10,6 @@ package br.com.alelo.qa.features.steps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import basePages.SairPage;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.HomeActions;
 import br.com.alelo.qa.web.actions.LoginActions;
@@ -34,9 +33,12 @@ public class PainelStep extends ParentSteps {
 	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
-	@Dado("^que estou na logado no portal EC$")
-	public void que_estou_na_logado_no_portal_EC() throws Throwable {
-		login.loginGeral();
+	@Dado("^que estou na logado no portal EC \"([^\"]*)\", \"([^\"]*)\"$")
+	public void que_estou_na_logado_no_portal_EC(String user, String senha) throws Throwable {
+		webdriver.get(baseurl); // Abre url
+		login = new LoginActions(webdriver);
+		login.loginGeral(user, senha);
+		System.out.println("logado..");
 	}
 
 	@Quando("^acesso o painel no menu$")
@@ -97,47 +99,47 @@ public class PainelStep extends ParentSteps {
 
 	@E("^clico na imagem correspondente ao Twitter$")
 	public void clico_na_imagem_correspondente_ao_Twitter() throws Throwable {
-		clicaTwitter();
+		painel.clicaTwitter();
 	}
 
 	@Entao("^o sistema redireciona para a url da Alelo no Twitter$")
 	public void o_sistema_redireciona_para_a_url_da_Alelo_no_Twitter() throws Throwable {
-		validaURLTwitter();
+		painel.validaURLTwitter();
 	}
 
 	@E("^clico na imagem correspondente ao Facebook$")
 	public void clico_na_imagem_correspondente_ao_Facebook() throws Throwable {
-		clicaFacebook();
+		painel.clicaFacebook();
 	}
 
 	@Entao("^o sistema redireciona para a url da Alelo no Facebook$")
 	public void o_sistema_redireciona_para_a_url_da_Alelo_no_Facebook() throws Throwable {
-		validaURLFacebook();
+		painel.validaURLFacebook();
 	}
 
 	@E("^clico na imagem correspondente ao Linkedin$")
 	public void clico_na_imagem_correspondente_ao_Linkedin() throws Throwable {
-		clicaLinkedin();
+		painel.clicaLinkedin();
 	}
 
 	@Entao("^o sistema redireciona para a url da Alelo no Linkedin$")
 	public void o_sistema_redireciona_para_a_url_da_Alelo_no_Linkedin() throws Throwable {
-		validaURLLinkedin();
+		painel.validaURLLinkedin();
 	}
 
 	@Entao("^o sistema apresenta o sidekick de ARV$")
 	public void o_sistema_apresenta_o_sidekick_de_ARV() throws Throwable {
-		validaSidekickArv();
+		painel.validaSidekickArv();
 	}
 
 	@Entao("^o sistema apresenta o sidekick de Planos$")
 	public void o_sistema_apresenta_o_sidekick_de_Planos() throws Throwable {
-		validaSidekickPlano();
+		painel.validaSidekickPlano();
 	}
 
 	@Entao("^o sistema nao apresenta o sidekick$")
 	public void o_sistema_nao_apresenta_o_sidekick() throws Throwable {
-		validaNaoAparicaoSidekick();
+		painel.validaNaoAparicaoSidekick();
 	}
 
 }

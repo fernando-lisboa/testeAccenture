@@ -30,38 +30,38 @@ public class ISAMStep extends ParentSteps {
 
 	@Dado("^que estou na tela de login IBM$")
 	public void que_estou_na_tela_de_login_IBM() throws Throwable {
-		telaLoginISAM();
+		isam.telaLoginISAM();
 	}
 
 	@Quando("^preencho nome de usuario e senha$")
 	public void preencho_nome_de_usuario_e_senha() throws Throwable {
-		preencherUsuario();
-		preencherSenha();
+		isam.preencherUsuario();
+		isam.preencherSenha();
 	}
 
 	@Quando("^clico no botao login$")
 	public void clico_no_botao_login() throws Throwable {
-		clicarLogin();
+		isam.clicarLogin();
 	}
 
 	@Entao("^o usuario e redirecionado para a pagina inicial do ISAM$")
 	public void o_usuario_e_redirecionado_para_a_pagina_inicial_do_ISAM() throws Throwable {
-		validarInicialISAM();
+		isam.validarInicialISAM();
 	}
 
 	@Dado("^que estou logado na plataforma$")
 	public void que_estou_logado_na_plataforma() throws Throwable {
-		loginISAMGeral();
+		isam.loginISAMGeral();
 	}
 
 	@Quando("^removo todas as sessos ativas$")
 	public void removo_todas_as_sessos_ativas() throws Throwable {
-		removerSessao();
+		isam.removerSessao();
 	}
 
 	@Entao("^os usuarios ficam livres para acesso ao Portal EC$")
 	public void os_usuarios_ficam_livres_para_acesso_ao_Portal_EC() throws Throwable {
-		validarSessao();
+		isam.validarSessao();
 	}
 
 }

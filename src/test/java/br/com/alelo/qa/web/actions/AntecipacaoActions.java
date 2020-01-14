@@ -10,6 +10,11 @@ import br.com.alelo.qa.web.page.AntecipacaoPage;
 
 public class AntecipacaoActions extends AntecipacaoPage {
 
+	public AntecipacaoActions(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void alterarEstabelecimento(String cnpjAgenda) throws IOException, InterruptedException {
 		waitForElementPageToLoad(loader);
 		alterarCNPJ(cnpjAgenda);
@@ -174,11 +179,6 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 	public void navegarUrl(String url) {
 		webdriver.navigate().to(url);
-	}
-
-	public AntecipacaoActions(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 }

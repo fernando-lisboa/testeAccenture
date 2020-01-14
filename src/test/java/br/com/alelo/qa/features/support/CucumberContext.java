@@ -1,4 +1,3 @@
-
 package br.com.alelo.qa.features.support;
 
 import java.net.MalformedURLException;
