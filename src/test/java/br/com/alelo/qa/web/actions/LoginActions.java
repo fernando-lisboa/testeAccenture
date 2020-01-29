@@ -27,6 +27,9 @@ public class LoginActions extends LoginPage {
 		userLogin.sendKeys(user);
 		password.sendKeys(senha);
 		btnEntrar.click();
+		System.out.println(webdriver.getCurrentUrl());
+		
+		
 	}
 
 	public void loginGeral(String user, String senha) throws Throwable {
@@ -52,15 +55,6 @@ public class LoginActions extends LoginPage {
 		getUrlInicial();
 	}
 
-//	public void formularioLoginWebAdmin() {
-//		escrever(escreverCPFWebAdmin, CPFWebAdmin);
-//		escrever(escreverSenhaWebAdmin, SenhaWebAdmin);
-//	}
-
-	public void formularioLogin() {
-		campo_cpf.sendKeys(Cpf);
-		campo_senha.sendKeys(Senha);
-	}
 
 	public void botaoEntrar() {
 		botao_entrar.click();
@@ -71,16 +65,21 @@ public class LoginActions extends LoginPage {
 	}
 
 	public void paginaInicial() throws InterruptedException {
-		Thread.sleep(5000);
-		System.out.println(urlInicio);
+		Thread.sleep(10000);
+		System.out.println(webdriver.getCurrentUrl());
 		validarUrlAtual(urlInicio);
+		iconePerfil.click();
+		waitForElementPageToBeClickable(btnSair);
+		btnSair.click();
+		
+	}
+	
+	public void erroLogin(){
+		waitForElementPageToLoad(texto_modal_falha);
+		validarModalErro("VERIFIQUE AS INFORMAÇÕES DIGITADAS E TENTE NOVAMENTE.", texto_modal_falha.getText());
 	}
 
-//	public void paginaInicialWebAdmin() throws InterruptedException {
-//		Thread.sleep(5000);
-//		System.out.println(UrlInicioWebAdminValidate);
-//		validarUrlAtual(urlInicioWebAdminValidate);
-//	}
+	
 
 	public void cpfInvalido() {
 		campo_cpf_invalido.sendKeys(cpfInvalido);

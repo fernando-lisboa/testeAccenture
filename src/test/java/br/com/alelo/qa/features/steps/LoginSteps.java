@@ -27,7 +27,7 @@ public class LoginSteps extends ParentSteps {
 	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
-	@Dado("^que estou na logado no portal EC \"([^\"]*)\", \"([^\"]*)\"$")
+	@Dado("^que estou na logado no portal \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_EC(String user, String senha) throws Throwable {
 		webdriver.get(baseurl); // Abre url
 		login = new LoginActions(webdriver);
@@ -37,6 +37,7 @@ public class LoginSteps extends ParentSteps {
 
 	@Dado("^que esteja na tela inicial do portal$")
 	public void que_esteja_na_tela_inicial_do_portal() throws Throwable {
+		Thread.sleep(2000);
 		webdriver.get(baseurl);
 	}
 
@@ -49,10 +50,17 @@ public class LoginSteps extends ParentSteps {
 
 	@Entao("^devo visualizar a tela do painel$")
 	public void devo_visualizar_a_tela_do_painel() throws Throwable {
+		login.paginaInicial();
 		System.out.println("LOGADO...");
 	}
+	@Entao("^devo receber msg de erro no acesso$")
+	public void devo_receber_msg_de_erro_no_acesso() throws Throwable {
+	   
+		login.erroLogin();
+		
+	}
 
-	@Dado("^que estou logado em qualquer tela no Web Admin$")
+	@Dado("^que estou logado em qualquer tela no Web Adminn$")
 	public void que_estou_logado_em_qualquer_tela_no_Web_Admin() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		throw new PendingException();

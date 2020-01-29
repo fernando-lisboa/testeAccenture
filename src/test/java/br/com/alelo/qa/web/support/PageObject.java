@@ -42,6 +42,10 @@ public class PageObject {
 	public void validarUrlAtual(String url) {
 		assertEquals(url, webdriver.getCurrentUrl());
 	}
+	
+	public void validarModalErro(String textoEsperado, String textoCapturado) {
+		assertEquals(textoEsperado,textoCapturado);
+	}
 
 	public void validarUrlPedaco(String urlPartial) {
 		assertEquals(urlPartial, webdriver.getCurrentUrl().contains(urlPartial));
