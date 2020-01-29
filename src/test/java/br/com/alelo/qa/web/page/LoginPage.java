@@ -14,7 +14,7 @@ public class LoginPage extends PageObject {
 	}
 
 	public String urlInicial = "http://meuestabelecimento-hml.siteteste.inf.br/login";
-	public String urlInicio = "http://meuestabelecimento-hml.siteteste.inf.br/inicio";
+	public String urlInicio = "https://meuestabelecimento-sit.siteteste.inf.br/inicio";
 	public String UrlInicioWebAdmin = "http://meuestabelecimento-webadmin-hml.siteteste.inf.br/portalec-webadmin/login";
 	public String UrlInicioWebAdminValidate = "http://meuestabelecimento-webadmin-hml.siteteste.inf.br/portalec-webadmin/offers/campanha";
 
@@ -34,10 +34,10 @@ public class LoginPage extends PageObject {
 		return UrlInicioWebAdminValidate;
 	}
 
-	@FindBy(id = "login-cpf-input")
+	@FindBy(id = "cpf")
 	protected WebElement userLogin;
 
-	@FindBy(id = "formInlinePassword")
+	@FindBy(id = "password")
 	protected WebElement password;
 
 	@FindBy(id = "imageLoader")
@@ -45,6 +45,14 @@ public class LoginPage extends PageObject {
 
 	@FindBy(id = "AccountLoginBtnSubmitHandler")
 	protected WebElement btnEntrar;
+	
+	@FindBy(id = "iconProfileId")
+	protected WebElement iconePerfil;
+	
+	@FindBy(id = "navbarDesktopSair")
+	protected WebElement btnSair;
+	
+	
 
 	@FindBy(id = "panelPageCnpjContainerIndicator")
 	protected WebElement painelInicial;
@@ -89,7 +97,7 @@ public class LoginPage extends PageObject {
 	protected WebElement esqueci_senha_cpf;
 	public String esqueciSenhaCpf = "12345678910";
 
-	@FindBy(xpath = "//div[@id=\"customModalCallbackBody\"]/div")
+	@FindBy(id = "customModalText")
 	protected WebElement texto_modal_falha;
 
 	@FindBy(id = "customBtnCloseModal")
