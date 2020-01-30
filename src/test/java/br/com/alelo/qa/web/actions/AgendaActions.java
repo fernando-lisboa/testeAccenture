@@ -7,7 +7,6 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 
 import br.com.alelo.qa.web.page.AgendaPage;
-import br.com.alelo.qa.web.page.UrlPage;
 
 public class AgendaActions extends AgendaPage {
 

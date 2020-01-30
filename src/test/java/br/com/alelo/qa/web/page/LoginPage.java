@@ -13,7 +13,7 @@ public class LoginPage extends PageObject {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String urlInicial = "http://meuestabelecimento-hml.siteteste.inf.br/login";
+	public String urlInicial = "https://meuestabelecimento-hml.siteteste.inf.br/inicio";
 	public String urlInicio = "https://meuestabelecimento-sit.siteteste.inf.br/inicio";
 	public String UrlInicioWebAdmin = "http://meuestabelecimento-webadmin-hml.siteteste.inf.br/portalec-webadmin/login";
 	public String UrlInicioWebAdminValidate = "http://meuestabelecimento-webadmin-hml.siteteste.inf.br/portalec-webadmin/offers/campanha";

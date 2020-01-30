@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.Properties;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -64,15 +65,7 @@ public class LoginActions extends LoginPage {
 		botao_entrar_webAdmin.click();
 	}
 
-	public void paginaInicial() throws InterruptedException {
-		Thread.sleep(10000);
-		System.out.println(webdriver.getCurrentUrl());
-		validarUrlAtual(urlInicio);
-		iconePerfil.click();
-		waitForElementPageToBeClickable(btnSair);
-		btnSair.click();
-		
-	}
+	
 	
 	public void erroLogin(){
 		waitForElementPageToLoad(texto_modal_falha);
@@ -157,6 +150,15 @@ public class LoginActions extends LoginPage {
 			Assert.fail();
 			System.out.println(e);
 		}
+	}
+	
+	public void paginaInicial() throws InterruptedException {
+		Thread.sleep(10000);
+		validarUrlAtual(urlInicial);
+		iconePerfil.click();
+		waitForElementPageToBeClickable(btnSair);
+		//btnSair.click();
+		
 	}
 
 	public void loginGeralWebAdmin() throws Throwable {
