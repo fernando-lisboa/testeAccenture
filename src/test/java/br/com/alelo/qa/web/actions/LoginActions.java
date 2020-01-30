@@ -35,7 +35,6 @@ public class LoginActions extends LoginPage {
 
 	public void loginGeral(String user, String senha) throws Throwable {
 		waitForElementPageToBeClickable(userLogin);
-		userLogin.click();
 		userLogin.sendKeys(user);
 		password.sendKeys(senha);
 		btnEntrar.click();

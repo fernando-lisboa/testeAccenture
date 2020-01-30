@@ -53,19 +53,25 @@ public class PainelPage extends PageObject {
 	@FindBy(id = "cnpj")
 	protected WebElement opcao_select;
 
-	@FindBy(id = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"14.931.844/0009-18 - 1015001294\")]")
-	protected WebElement opcao_ec;
-
-	@FindBy(id = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"82.143.278/0001-82 - 1012770645\")]")
+	@FindBy(xpath = "//span[@class='space10-left'][contains(.,'@ 49.447.829/0001-26 - 2000493330')]")
+	protected WebElement opcao_ec1;
+	@FindBy(xpath = "//span[@class='space10-left'][contains(.,'@ 43.023.070/0010-69 - 2000189185')]")
+	protected WebElement opcao_ec2;
+	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
+	protected WebElement opcao_ec3;
+	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
+	protected WebElement opcao_ec4;
+	
+	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
 	protected WebElement opcao_ec_plano;
 
-	@FindBy(id = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"67.140.569/0001-23 - 2000494743\")]")
+	@FindBy(xpath = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"67.140.569/0001-23 - 2000494743\")]")
 	protected WebElement opcao_ec_plano_saldo;
 
-	@FindBy(id = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"14.931.844/0009-18 - 1015001294\")]")
+	@FindBy(xpath = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"14.931.844/0009-18 - 1015001294\")]")
 	protected WebElement opcao_ec_arv;
 
-	@FindBy(id = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"00.304.562/0009-86 - 1015000654\")]")
+	@FindBy(xpath = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"00.304.562/0009-86 - 1015000654\")]")
 	protected WebElement opcao_ec_sp_ss;
 
 	@FindBy(xpath = "//*[@id=\"menuContentContainer\"]/div/div/div/div[2]/div/img")

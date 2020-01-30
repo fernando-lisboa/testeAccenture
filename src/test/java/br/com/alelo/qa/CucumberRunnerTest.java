@@ -18,7 +18,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = { "src/test/resources/features" }, plugin = {
 		"json:target/cluecumber-report/cucumber.json" }, glue = {
-				"classpath:br.com.alelo.qa.features.steps" }, tags = { "@Regressivo" })
+				"classpath:br.com.alelo.qa.features.steps" }, tags = { "@Painel1" })
 public class CucumberRunnerTest {
 
 	private static RunController newRun = null;
