@@ -27,7 +27,7 @@ public class LoginSteps extends ParentSteps {
 	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
-	@Dado("^que estou na logado no portal \"([^\"]*)\", \"([^\"]*)\"$")
+	@Dado("^que estou na logado no portal EC \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_EC(String user, String senha) throws Throwable {
 		webdriver.get(baseurl); // Abre url
 		login = new LoginActions(webdriver);

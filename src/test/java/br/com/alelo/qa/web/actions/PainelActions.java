@@ -31,31 +31,35 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void alterarEstabelecimento() throws IOException, InterruptedException {
-		alterarCNPJ(aguardar_gif, opcao_select, opcao_ec);
+		alterarCNPJ(opcao_ec1);
+		alterarCNPJ(opcao_ec2);
+		alterarCNPJ(opcao_ec3);
+		alterarCNPJ(opcao_ec4);
+		
 	}
 
 	public void alterarEstabelecimentoPlano() throws IOException, InterruptedException {
-		alterarCNPJ(aguardar_gif, opcao_select, opcao_ec_plano);
+		alterarCNPJ(opcao_ec_plano);
 	}
 
 	public void alterarEstabelecimentoPlanoSaldo() throws IOException, InterruptedException {
-		alterarCNPJ(aguardar_gif, opcao_select, opcao_ec_plano_saldo);
+		alterarCNPJ(opcao_ec_plano_saldo);
 	}
 
 	public void alterarEstabelecimentoArv() throws IOException, InterruptedException {
-		alterarCNPJ(aguardar_gif, opcao_select, opcao_ec_arv);
+		alterarCNPJ(opcao_ec_arv);
 	}
 
 	public void alterarEstabelecimentoSemPlanoSemSaldo() throws IOException, InterruptedException {
-		alterarCNPJ(aguardar_gif, opcao_select, opcao_ec_sp_ss);
+		alterarCNPJ(opcao_ec_sp_ss);
 	}
 
-	private void alterarCNPJ(WebElement aguardar_gif, WebElement opcao_select, WebElement opcao_ec)
+	private void alterarCNPJ(WebElement elemento)
 			throws IOException, InterruptedException {
-		waitForElementPageToLoad(aguardar_gif);
 		opcao_select.click();
-		Thread.sleep(5000);
-		opcao_ec.click();
+		Thread.sleep(3000);
+		elemento.click();
+		Thread.sleep(4000);
 	}
 
 	public void validarCNPJPainel() throws InterruptedException {
