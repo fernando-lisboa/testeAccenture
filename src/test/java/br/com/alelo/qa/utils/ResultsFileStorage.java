@@ -28,6 +28,7 @@ public class ResultsFileStorage {
 	
 
 	public static void saveResult(String result) {
+		file = new File(fileName);
 		try (FileWriter writer = new FileWriter(file, true);
 				 BufferedWriter bw = new BufferedWriter(writer)) {
 				bw.append(result);

@@ -11,7 +11,7 @@ Funcionalidade: Login
   Quero logar no sistema
   Para acessar informacaos respectivas da conta
 
-  @loginSucesso
+  @ligin @release50
   Esquema do Cenario: <VSTS> - Login com sucesso <cenario>
     Dado que esteja na tela inicial do portal
     Quando preencher o formulario de login "<user>", "<password>"
@@ -21,7 +21,7 @@ Funcionalidade: Login
       | VSTS | cenario           | user           | password   |
       | 0000 | Login com sucesso | 546.219.170-72 | Alelo2018@ |
 
-  @loginSemSucesso
+  @ligin @release50
   Esquema do Cenario: <VSTS> - Login com sucesso <cenario>
     Dado que esteja na tela inicial do portal
     Quando preencher o formulario de login "<user>", "<password>"

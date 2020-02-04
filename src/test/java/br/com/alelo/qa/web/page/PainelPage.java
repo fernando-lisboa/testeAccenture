@@ -68,8 +68,11 @@ public class PainelPage extends PageObject {
 	@FindBy(xpath = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"67.140.569/0001-23 - 2000494743\")]")
 	protected WebElement opcao_ec_plano_saldo;
 
-	@FindBy(xpath = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"14.931.844/0009-18 - 1015001294\")]")
+	@FindBy(xpath = "//b[contains(.,'• 28.339.982/0001-60 - 2000496258')]")
 	protected WebElement opcao_ec_arv;
+	
+	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
+	protected WebElement ofertaPainel;
 
 	@FindBy(xpath = "//*[@id=\"cnpj\"]/../div/div/b[contains(text(), \"00.304.562/0009-86 - 1015000654\")]")
 	protected WebElement opcao_ec_sp_ss;
@@ -80,18 +83,18 @@ public class PainelPage extends PageObject {
 	@FindBy(xpath = "//*[@id=\"footerAleloLogo\"]")
 	protected WebElement banner_inferior;
 
-	@FindBy(id = "footerRedesSociaisTwitter")
-	protected WebElement botao_twitter;
-
-	@FindBy(id = "footerRedesSociaisFacebook")
-	protected WebElement botao_facebook;
-
-	@FindBy(id = "footerRedesSociaisLinkedin")
-	protected WebElement botao_linkedin;
-
-	@FindBy(id = "textNormalSidekick")
-	protected WebElement sidekick_arv;
-	public String textSidekickArv = "Antecipe suas vendas";
+//	@FindBy(class = "advertisingDashboardSideKick")
+//	protected WebElement sidekickPainel;
+//	public String textSidekickPainel = "30 dias grátis";
+	
+	@FindBy(className ="fontBold textDarkGreen3")
+	protected WebElement linkDetalhes;
+	
+	
+	@FindBy(id = "advertisingDashboardSideKick")
+	protected WebElement sidekickPainel;
+	public String textSidekickPainel = "30 dias grátis";
+	
 
 	@FindBy(id = "textNormalSidekick")
 	protected WebElement sidekick_Plano;
@@ -100,5 +103,16 @@ public class PainelPage extends PageObject {
 	@FindBy(id = "Null")
 	protected WebElement estabelecimento_comparar;
 	public String estabelecimentoComparar = "Quer ter o seu caixa sempre em dia?";
+	
+	@FindBy(id = "textNormalSidekick")
+	protected WebElement sidekick_arv;
+	public String textSidekickArv = "Antecipe suas vendas";
+	
+	@FindBy(className ="fontBold")
+	protected WebElement vouReceber;
+	public String aReceber = "VER DETALHES";
+	
+	
+	
 
 }

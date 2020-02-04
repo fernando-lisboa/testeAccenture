@@ -156,7 +156,7 @@ public class LoginActions extends LoginPage {
 		validarUrlAtual(urlInicial);
 		iconePerfil.click();
 		waitForElementPageToBeClickable(btnSair);
-		//btnSair.click();
+		btnSair.click();
 		
 	}
 
