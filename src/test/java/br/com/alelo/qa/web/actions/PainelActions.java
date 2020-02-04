@@ -20,10 +20,7 @@ import br.com.alelo.qa.web.page.PainelPage;
  */
 public class PainelActions extends PainelPage {
 
-	public PainelActions(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public void validarPainel() throws IOException {
 		waitForElementPageToLoad(aguardar_gif);
@@ -35,6 +32,11 @@ public class PainelActions extends PainelPage {
 		alterarCNPJ(opcao_ec2);
 		alterarCNPJ(opcao_ec3);
 		alterarCNPJ(opcao_ec4);
+		
+	}
+	
+	public void alterarEstabelecimentoPainel() throws IOException, InterruptedException {
+		alterarCNPJ(ofertaPainel);
 		
 	}
 
@@ -53,6 +55,8 @@ public class PainelActions extends PainelPage {
 	public void alterarEstabelecimentoSemPlanoSemSaldo() throws IOException, InterruptedException {
 		alterarCNPJ(opcao_ec_sp_ss);
 	}
+	
+	
 
 	private void alterarCNPJ(WebElement elemento)
 			throws IOException, InterruptedException {
@@ -88,7 +92,9 @@ public class PainelActions extends PainelPage {
 
 	public void validarTextoElemento(WebElement elemento, String textoComparacao) {
 		try {
+			Thread.sleep(5000);
 			String textoDeComparacao = elemento.getText();
+			System.out.println(textoDeComparacao);
 			if (textoComparacao.equalsIgnoreCase(textoDeComparacao)) {
 				System.out.println("Teste realizado com sucesso.");
 			} else {
@@ -118,9 +124,6 @@ public class PainelActions extends PainelPage {
 		validarUrlAtual(urlInicio);
 	}
 
-	public void clicaTwitter() {
-		botao_twitter.click();
-	}
 
 	public void validaURLTwitter() throws InterruptedException {
 		Thread.sleep(5000);
@@ -128,9 +131,6 @@ public class PainelActions extends PainelPage {
 		validarUrlAtual(getLinkTwitter());
 	}
 
-	public void clicaFacebook() {
-		botao_facebook.click();
-	}
 
 	public void validaURLFacebook() throws InterruptedException {
 		Thread.sleep(5000);
@@ -138,9 +138,6 @@ public class PainelActions extends PainelPage {
 		validarUrlAtual(getLinkFacebook());
 	}
 
-	public void clicaLinkedin() {
-		botao_linkedin.click();
-	}
 
 	public void validaURLLinkedin() throws InterruptedException {
 		Thread.sleep(5000);
@@ -152,6 +149,10 @@ public class PainelActions extends PainelPage {
 		Thread.sleep(5000);
 		validarTextoElemento(sidekick_arv, textSidekickArv);
 	}
+	
+	public void validaSidekickPainel() throws InterruptedException {
+		validarTextoElemento(sidekickPainel, textSidekickPainel);
+	}
 
 	public void validaSidekickPlano() throws InterruptedException {
 		Thread.sleep(5000);
@@ -162,5 +163,16 @@ public class PainelActions extends PainelPage {
 		Thread.sleep(5000);
 		validarUrlAtual(urlInicio);
 	}
+	
+	public void validarValorAReceber() {
+		Assert.assertTrue(vouReceber.isDisplayed());
+		
+	}
+	public PainelActions(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 }

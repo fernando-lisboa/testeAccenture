@@ -11,9 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.com.alelo.qa.features.support.ParentSteps;
-import br.com.alelo.qa.web.actions.HomeActions;
-import br.com.alelo.qa.web.actions.LoginActions;
-import br.com.alelo.qa.web.actions.OfertaAtivaActions;
 import br.com.alelo.qa.web.actions.PainelActions;
 import br.com.alelo.qa.web.actions.SairActions;
 import br.com.alelo.utils.SimpleCacheManager;
@@ -25,11 +22,8 @@ import cucumber.api.java.pt.Quando;
 public class PainelStep extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
-	LoginActions login;
 	SairActions sair;
 	PainelActions painel;
-	OfertaAtivaActions oferta;
-	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
 	@Quando("^acesso o painel no menu$")
@@ -45,6 +39,7 @@ public class PainelStep extends ParentSteps {
 
 	@E("^seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento$")
 	public void seleciono_um_CNPJ_diferente_com_Arv_no_combo_Estabelecimento() throws Throwable {
+		painel = new PainelActions(webdriver);
 		painel.alterarEstabelecimentoArv();
 	}
 
@@ -69,56 +64,6 @@ public class PainelStep extends ParentSteps {
 		sair.sairGeral();
 	}
 
-	@E("^clico no banner superior$")
-	public void clico_no_banner_superior() throws Throwable {
-		painel.clicarBannerSuperior();
-	}
-
-	@Entao("^o sistema redireciona para a tela marketing cadastrada superior$")
-	public void o_sistema_redireciona_para_a_tela_marketing_cadastrada_superior() throws Throwable {
-		painel.validaLinkBannerSuperior();
-	}
-
-	@E("^clico nos banners inferiores$")
-	public void clico_nos_banners_inferiores() throws Throwable {
-		painel.clicarBannerInferior();
-	}
-
-	@Entao("^o sistema redireciona para a tela marketing cadastrada inferior$")
-	public void o_sistema_redireciona_para_a_tela_marketing_cadastrada_inferior() throws Throwable {
-		painel.validaLinkBannerInferiores();
-	}
-
-	@E("^clico na imagem correspondente ao Twitter$")
-	public void clico_na_imagem_correspondente_ao_Twitter() throws Throwable {
-		painel.clicaTwitter();
-	}
-
-	@Entao("^o sistema redireciona para a url da Alelo no Twitter$")
-	public void o_sistema_redireciona_para_a_url_da_Alelo_no_Twitter() throws Throwable {
-		painel.validaURLTwitter();
-	}
-
-	@E("^clico na imagem correspondente ao Facebook$")
-	public void clico_na_imagem_correspondente_ao_Facebook() throws Throwable {
-		painel.clicaFacebook();
-	}
-
-	@Entao("^o sistema redireciona para a url da Alelo no Facebook$")
-	public void o_sistema_redireciona_para_a_url_da_Alelo_no_Facebook() throws Throwable {
-		painel.validaURLFacebook();
-	}
-
-	@E("^clico na imagem correspondente ao Linkedin$")
-	public void clico_na_imagem_correspondente_ao_Linkedin() throws Throwable {
-		painel.clicaLinkedin();
-	}
-
-	@Entao("^o sistema redireciona para a url da Alelo no Linkedin$")
-	public void o_sistema_redireciona_para_a_url_da_Alelo_no_Linkedin() throws Throwable {
-		painel.validaURLLinkedin();
-	}
-
 	@Entao("^o sistema apresenta o sidekick de ARV$")
 	public void o_sistema_apresenta_o_sidekick_de_ARV() throws Throwable {
 		painel.validaSidekickArv();
@@ -132,6 +77,25 @@ public class PainelStep extends ParentSteps {
 	@Entao("^o sistema nao apresenta o sidekick$")
 	public void o_sistema_nao_apresenta_o_sidekick() throws Throwable {
 		painel.validaNaoAparicaoSidekick();
+	}
+
+	@Dado("^seleciono um CNPJ diferente que seja elegivel para contratação do painel meu negocio$")
+	public void seleciono_um_CNPJ_diferente_que_seja_elegivel_para_contratação_do_painel_meu_negocio()
+			throws Throwable {
+		painel = new PainelActions(webdriver);
+		painel.alterarEstabelecimentoPainel();
+	}
+
+	@Entao("^o sistema apresenta o sidekick de painel$")
+	public void o_sistema_apresenta_o_sidekick_de_painel() throws Throwable {
+
+		painel.validaSidekickPainel();
+	}
+	
+	@Entao("^devo validar a apresentação de infomaçoes de valores a receber$")
+	public void devo_validar_a_apresentação_de_infomaçoes_de_valores_a_receber() throws Throwable {
+	    
+		painel.validarValorAReceber();
 	}
 
 }
