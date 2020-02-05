@@ -26,7 +26,7 @@ public class OfertaAtivaSteps extends ParentSteps {
 	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
-	@Dado("^que estou  com CNPJ elegível \"([^\"]*)\"$")
+	@Dado("^que estou  com CNPJ elegível  \"([^\"]*)\"$")
 	public void que_estou_com_CNPJ_elegível(String cnpj) throws Throwable {
 		
 		
@@ -48,9 +48,8 @@ public class OfertaAtivaSteps extends ParentSteps {
 
 		oferta.alterarValor();
 		oferta.simularNovamente();
-		
-		
 	}
+	
 	
 	@Entao("^o valor total deve ser alterado$")
 	public void o_valor_total_deve_ser_alterado() throws Throwable {

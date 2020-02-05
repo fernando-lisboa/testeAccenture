@@ -88,14 +88,23 @@ public class PainelStep extends ParentSteps {
 
 	@Entao("^o sistema apresenta o sidekick de painel$")
 	public void o_sistema_apresenta_o_sidekick_de_painel() throws Throwable {
-
 		painel.validaSidekickPainel();
 	}
-	
+
 	@Entao("^devo validar a apresentação de infomaçoes de valores a receber$")
 	public void devo_validar_a_apresentação_de_infomaçoes_de_valores_a_receber() throws Throwable {
-	    
 		painel.validarValorAReceber();
+	}
+
+	@Entao("^devo validar a apresentação de infomaçoes de valores já recebidos$")
+	public void devo_validar_a_apresentação_de_infomaçoes_de_valores_já_recebidos() throws Throwable {
+		painel.validarValorRecebido();
+	}
+
+	@Entao("^devo validar a apresentação de infomaçoes painel com resumo de faturamento e graficos do painel meu negocio \"([^\"]*)\"$")
+	public void devo_validar_a_apresentação_de_infomaçoes_painel_com_resumo_de_faturamento_e_graficos_do_painel_meu_negocio(
+			String graficoEsperado) throws Throwable {
+		painel.validarMenuDosGraficos(graficoEsperado);
 	}
 
 }

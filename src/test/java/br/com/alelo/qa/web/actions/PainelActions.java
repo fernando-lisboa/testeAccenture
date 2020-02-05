@@ -168,10 +168,30 @@ public class PainelActions extends PainelPage {
 		Assert.assertTrue(vouReceber.isDisplayed());
 		
 	}
+
+	public void validarValorRecebido() {
+		Assert.assertTrue(jaRecebi.isDisplayed());
+		
+	}
+	public void validarMenuDosGraficos(String grafico) {
+		if(grafico.equalsIgnoreCase("faturamento")){
+			validarTextoElemento(graficoFaturamento, resumoUltmosTrintaDias);
+		}else if (grafico.equalsIgnoreCase("Mensal")){
+			validarTextoElemento(graficoMensal, munuMensal);
+			
+		}else if(grafico.equalsIgnoreCase("Semanal")){
+			validarTextoElemento(graficoSemana, munuSemanal);
+		}else {
+			validarTextoElemento(graficodiario, munuDiario);
+			
+		}
+		
+	}
 	public PainelActions(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+
 
 
 

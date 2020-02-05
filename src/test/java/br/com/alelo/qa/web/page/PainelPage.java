@@ -112,6 +112,26 @@ public class PainelPage extends PageObject {
 	protected WebElement vouReceber;
 	public String aReceber = "VER DETALHES";
 	
+	@FindBy(className ="textGray12")
+	protected WebElement jaRecebi;
+	public String recebido = "Já recebi esse mês";
+	
+	@FindBy(id ="freePanel")
+	protected WebElement graficoFaturamento;
+	public String resumoUltmosTrintaDias = "RESUMO DOS ÚLTIMOS 30 DIAS";
+	
+	@FindBy(id ="monthlyPanel")
+	protected WebElement graficoMensal;
+	public String munuMensal = "MENSAL";
+	
+	@FindBy(id ="transactionPanel")
+	protected WebElement graficoSemana;
+	public String munuSemanal = "SEMANAL";
+	
+	@FindBy(id ="painelDiario")
+	protected WebElement graficodiario;
+	public String munuDiario = "DIÁRIO";
+	
 	
 	
 

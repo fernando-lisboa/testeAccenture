@@ -17,8 +17,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = { "src/test/resources/features" }, plugin = {
-		"json:target/cluecumber-report/cucumber.json" }, glue = {
-				"classpath:br.com.alelo.qa.features.steps" }, tags = { "@VouReceber" })
+		"json:target/cluecumber-report/cucumber.json","junit:target/junit.xml" }, glue = {
+				"classpath:br.com.alelo.qa.features.steps" }, tags = { "@PainelFree" })
 public class CucumberRunnerTest {
 
 	private static RunController newRun = null;
