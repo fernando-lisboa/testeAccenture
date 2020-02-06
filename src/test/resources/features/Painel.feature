@@ -49,5 +49,26 @@ Funcionalidade: Painel
     Entao devo validar a apresentação de infomaçoes de valores a receber
 
     Exemplos: 
-      | VSTS  | cenario                                                      |
+      | VSTS | cenario                                                      |
       | 9999 | Validar informação de agenda na tela de Painel "Vou receber" |
+
+  @Painel @JaRecebi
+  Esquema do Cenario: <VSTS> - Painel - <cenario>
+    E seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento
+    Entao devo validar a apresentação de infomaçoes de valores já recebidos
+
+    Exemplos: 
+      | VSTS | cenario                                                      |
+      | 9999 | Validar informação de agenda na tela de Painel "Vou receber" |
+
+  @Painel @PainelFree
+  Esquema do Cenario: <VSTS> - Painel - <cenario>
+    E seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento
+    Entao devo validar a apresentação de infomaçoes painel com resumo de faturamento e graficos do painel meu negocio "<graficoEsperado>"
+
+    Exemplos: 
+      | VSTS | cenario                                            | graficoEsperado |
+      | 9999 | Validar informação de painel resumo de faturamento | faturamento     |
+      | 9999 | Validar informação de painel free mensal           | mensal          |
+      | 9999 | Validar informação de painel free semanal          | semanal         |
+     # | 9999 | Validar informação de painel free diário           | diario      |
