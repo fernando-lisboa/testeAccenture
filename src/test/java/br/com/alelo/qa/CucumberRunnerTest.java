@@ -18,7 +18,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = { "src/test/resources/features" }, plugin = {
 		"json:target/cluecumber-report/cucumber.json","junit:target/junit.xml" }, glue = {
-				"classpath:br.com.alelo.qa.features.steps" }, tags = { "@PainelFree" })
+				"classpath:br.com.alelo.qa.features.steps" }, tags = { "@DesbloqueioWA" })
 public class CucumberRunnerTest {
 
 	private static RunController newRun = null;
@@ -27,6 +27,8 @@ public class CucumberRunnerTest {
 
 	@BeforeClass
 	public static void setup() throws IOException {
+		
+		
 		PropertiesFile props = new PropertiesFile();
 		System.out.println("------------------------------");
 		System.out.println("CARREGANDO DADOS DA EXECUÇÃO");

@@ -8,6 +8,8 @@
 
 package br.com.alelo.qa.features.steps;
 
+import java.util.Properties;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,31 +55,19 @@ public class LoginSteps extends ParentSteps {
 		login.paginaInicial();
 		System.out.println("LOGADO...");
 	}
+
 	@Entao("^devo receber msg de erro no acesso$")
 	public void devo_receber_msg_de_erro_no_acesso() throws Throwable {
-	   
 		login.erroLogin();
+	}
+	
+	@Dado("^que estou na logado no portal webadmim EC \"([^\"]*)\", \"([^\"]*)\"$")
+	public void que_estou_na_logado_no_portal_webadmim_EC(String user, String password) throws Throwable {
+		webdriver.get(baseurlAdm); // Abre url
+		login = new LoginActions(webdriver);
+		login.loginGeralWebAdmin(user, password);
+		
 		
 	}
 
-	@Dado("^que estou logado em qualquer tela no Web Adminn$")
-	public void que_estou_logado_em_qualquer_tela_no_Web_Admin() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
-
-	public void preencho_o_formulario_de_login_webAdmin() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
-
-	public void aciono_o_botao_Entrar_webAdmin() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
-
-	public void o_usuario_e_redirecionado_para_a_pagina_inicial_webAdmin() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
 }

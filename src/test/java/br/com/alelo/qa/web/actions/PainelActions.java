@@ -3,14 +3,18 @@
  */
 package br.com.alelo.qa.web.actions;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 
 import br.com.alelo.qa.web.page.PainelPage;
 
@@ -19,8 +23,6 @@ import br.com.alelo.qa.web.page.PainelPage;
  *
  */
 public class PainelActions extends PainelPage {
-
-	
 
 	public void validarPainel() throws IOException {
 		waitForElementPageToLoad(aguardar_gif);
@@ -32,12 +34,10 @@ public class PainelActions extends PainelPage {
 		alterarCNPJ(opcao_ec2);
 		alterarCNPJ(opcao_ec3);
 		alterarCNPJ(opcao_ec4);
-		
 	}
-	
+
 	public void alterarEstabelecimentoPainel() throws IOException, InterruptedException {
 		alterarCNPJ(ofertaPainel);
-		
 	}
 
 	public void alterarEstabelecimentoPlano() throws IOException, InterruptedException {
@@ -52,14 +52,39 @@ public class PainelActions extends PainelPage {
 		alterarCNPJ(opcao_ec_arv);
 	}
 
+	public void alterarEstabelecimentoBloq(String cnpj) throws IOException, InterruptedException {
+
+		if (cnpj.equals("1")) {
+			alterarCNPJ(opcao_ec1);
+		} else if (cnpj.equals("2")) {
+			alterarCNPJ(opcao_ec3);
+		} else if (cnpj.equals("3")) {
+			alterarCNPJ(opcao_ec1);
+		} else if (cnpj.equals("5")) {
+			alterarCNPJ(opcao_ec1);
+		}
+	}
+
+	public void alterarEstabelecimentoDesbloq(String cnpj) throws IOException, InterruptedException {
+
+		if (cnpj.equals("2")) {
+			alterarCNPJ(desbloq_2);
+		} else if (cnpj.equals("1")) {
+			alterarCNPJ(desbloq_1);
+		} else if (cnpj.equals("3")) {
+			alterarCNPJ(desbloq_3);
+		} else if (cnpj.equals("1")) {
+			alterarCNPJ(desbloq_1);
+		} else if (cnpj.equals("1")) {
+			alterarCNPJ(desbloq_1);
+		}
+	}
+
 	public void alterarEstabelecimentoSemPlanoSemSaldo() throws IOException, InterruptedException {
 		alterarCNPJ(opcao_ec_sp_ss);
 	}
-	
-	
 
-	private void alterarCNPJ(WebElement elemento)
-			throws IOException, InterruptedException {
+	private void alterarCNPJ(WebElement elemento) throws IOException, InterruptedException {
 		opcao_select.click();
 		Thread.sleep(3000);
 		elemento.click();
@@ -124,32 +149,11 @@ public class PainelActions extends PainelPage {
 		validarUrlAtual(urlInicio);
 	}
 
-
-	public void validaURLTwitter() throws InterruptedException {
-		Thread.sleep(5000);
-		trocarJanela(1);
-		validarUrlAtual(getLinkTwitter());
-	}
-
-
-	public void validaURLFacebook() throws InterruptedException {
-		Thread.sleep(5000);
-		trocarJanela(1);
-		validarUrlAtual(getLinkFacebook());
-	}
-
-
-	public void validaURLLinkedin() throws InterruptedException {
-		Thread.sleep(5000);
-		trocarJanela(1);
-		validarUrlAtual(getLinkLinkedin());
-	}
-
 	public void validaSidekickArv() throws InterruptedException {
 		Thread.sleep(5000);
 		validarTextoElemento(sidekick_arv, textSidekickArv);
 	}
-	
+
 	public void validaSidekickPainel() throws InterruptedException {
 		validarTextoElemento(sidekickPainel, textSidekickPainel);
 	}
@@ -163,36 +167,63 @@ public class PainelActions extends PainelPage {
 		Thread.sleep(5000);
 		validarUrlAtual(urlInicio);
 	}
-	
+
 	public void validarValorAReceber() {
 		Assert.assertTrue(vouReceber.isDisplayed());
-		
 	}
 
 	public void validarValorRecebido() {
 		Assert.assertTrue(jaRecebi.isDisplayed());
-		
 	}
+
+	public void bloqueiaEc(String path, String nomeArquivo) {
+
+		linkPainelMeuNegocio.click();
+		String usingSystemProperty = System.getProperty("user.dir");
+		inputFileBlock.sendKeys(usingSystemProperty + path + nomeArquivo);
+		btnFazerUpload.click();
+		waitForElementPageToBeClickable(btnFechar);
+		Assert.assertThat(sucesso.getText(), is(sucessoText));
+		btnFechar.click();
+
+		System.out.println("DONE");
+	}
+
+	public static Resource getUserFileResource(String path, String nomeArquivo) throws IOException {
+		File file = new File(path + nomeArquivo);
+		return new FileSystemResource(file);
+	}
+
 	public void validarMenuDosGraficos(String grafico) {
-		if(grafico.equalsIgnoreCase("faturamento")){
+		if (grafico.equalsIgnoreCase("faturamento")) {
 			validarTextoElemento(graficoFaturamento, resumoUltmosTrintaDias);
-		}else if (grafico.equalsIgnoreCase("Mensal")){
+		} else if (grafico.equalsIgnoreCase("Mensal")) {
 			validarTextoElemento(graficoMensal, munuMensal);
-			
-		}else if(grafico.equalsIgnoreCase("Semanal")){
+
+		} else if (grafico.equalsIgnoreCase("Semanal")) {
 			validarTextoElemento(graficoSemana, munuSemanal);
-		}else {
+		} else {
 			validarTextoElemento(graficodiario, munuDiario);
-			
 		}
-		
 	}
+
 	public PainelActions(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
-
-
+	public void consultarStatusContratacaoPainel() throws InterruptedException {
+		waitForElementPageToBeClickable(menuDocumentos);
+		menuDocumentos.click();
+		Thread.sleep(10000);
+		validarTextoElemento(statusContrato, statusContratoText);
+	}
+	
+	public void consultarStatusDesbloqueio(String statusEsperado) throws InterruptedException {
+		waitForElementPageToBeClickable(menuDocumentos);
+		menuDocumentos.click();
+		Thread.sleep(10000);
+		validarTextoElemento(statusContrato, statusContratoText);
+	}
 
 }

@@ -5,7 +5,7 @@
 # * Data: 06/12/2019
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Painel
+@Painel @Regressivo
 Funcionalidade: Painel
   Permite a realizacao de navegacao no Portal EC
   
@@ -16,7 +16,7 @@ Funcionalidade: Painel
   Contexto: 
     Dado que estou na logado no portal EC "546.219.170-72", "Alelo2018@"
 
-  @Paine @release50
+  @Paine @Regressivo
   Esquema do Cenario: <VSTS> - Alterar SUCESSIVAMENTE CNPJ no combo selecao com Sucesso <cenario>
     E seleciono um CNPJ diferente no combo Estabelecimento
     Entao o painel carrega as informacoes respectivas ao CNPJ selecionado
@@ -25,7 +25,7 @@ Funcionalidade: Painel
       | VSTS  | cenario                                                  |
       | 46121 | Alterar SUCESSIVAMENTE CNPJ no combo selecao com Sucesso |
 
-  @Painel @release50
+  @Painel @Regressivo
   Esquema do Cenario: <VSTS> - Validar Side-Kick de ARV com EC com saldo e sem planos <cenario>
     E seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento
     Entao o sistema apresenta o sidekick de ARV
@@ -34,7 +34,7 @@ Funcionalidade: Painel
       | VSTS  | cenario                                                |
       | 64124 | Validar Side-Kick de ARV com EC com saldo e sem planos |
 
-  @Painel @release50
+  @Painel @Regressivo
   Esquema do Cenario: <VSTS> - Painel meu negocio - Elegivel <cenario>
     E seleciono um CNPJ diferente que seja elegivel para contratação do painel meu negocio
     Entao o sistema apresenta o sidekick de painel
@@ -43,7 +43,7 @@ Funcionalidade: Painel
       | VSTS  | cenario           |
       | 64121 | Validar Side-Kick |
 
-  @Painel @VouReceber
+  @Painel @Regressivo
   Esquema do Cenario: <VSTS> - Painel - <cenario>
     E seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento
     Entao devo validar a apresentação de infomaçoes de valores a receber
@@ -52,7 +52,7 @@ Funcionalidade: Painel
       | VSTS | cenario                                                      |
       | 9999 | Validar informação de agenda na tela de Painel "Vou receber" |
 
-  @Painel @JaRecebi
+  @Painel @Regressivo
   Esquema do Cenario: <VSTS> - Painel - <cenario>
     E seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento
     Entao devo validar a apresentação de infomaçoes de valores já recebidos
@@ -61,7 +61,7 @@ Funcionalidade: Painel
       | VSTS | cenario                                                      |
       | 9999 | Validar informação de agenda na tela de Painel "Vou receber" |
 
-  @Painel @PainelFree
+  @Painel @Regressivo
   Esquema do Cenario: <VSTS> - Painel - <cenario>
     E seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento
     Entao devo validar a apresentação de infomaçoes painel com resumo de faturamento e graficos do painel meu negocio "<graficoEsperado>"
@@ -71,4 +71,6 @@ Funcionalidade: Painel
       | 9999 | Validar informação de painel resumo de faturamento | faturamento     |
       | 9999 | Validar informação de painel free mensal           | mensal          |
       | 9999 | Validar informação de painel free semanal          | semanal         |
-     # | 9999 | Validar informação de painel free diário           | diario      |
+
+  # | 9999 | Validar informação de painel free diário           | diario      |
+ 
