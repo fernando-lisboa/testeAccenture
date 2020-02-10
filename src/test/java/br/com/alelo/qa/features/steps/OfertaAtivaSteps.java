@@ -1,3 +1,10 @@
+/**
+  * Autor: Fernando Lisboa
+ * Empresa: Taking
+ * Data: 12/12/2019
+ * Caminho: Portal Estabelecimento Comercial  --> OfertaAtiva
+ */
+
 package br.com.alelo.qa.features.steps;
 
 import org.slf4j.Logger;
@@ -6,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.HomeActions;
 import br.com.alelo.qa.web.actions.OfertaAtivaActions;
-import br.com.alelo.qa.web.page.OfertaAtivaPage;
 import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
@@ -17,10 +23,10 @@ public class OfertaAtivaSteps extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	OfertaAtivaActions oferta;
-	HomeActions homeActions;
+	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
-	@Dado("^que estou  com CNPJ elegível \"([^\"]*)\"$")
+	@Dado("^que estou  com CNPJ elegível  \"([^\"]*)\"$")
 	public void que_estou_com_CNPJ_elegível(String cnpj) throws Throwable {
 		
 		
@@ -42,9 +48,8 @@ public class OfertaAtivaSteps extends ParentSteps {
 
 		oferta.alterarValor();
 		oferta.simularNovamente();
-		
-		
 	}
+	
 	
 	@Entao("^o valor total deve ser alterado$")
 	public void o_valor_total_deve_ser_alterado() throws Throwable {
