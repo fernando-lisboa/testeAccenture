@@ -1,0 +1,184 @@
+package br.com.alelo.utils.setupTestes.query;
+
+/**
+ * @author Fernando Lisbos
+ *
+ */
+public class QueryPreparaBancoIndicadoresPainel {
+
+	public StringBuilder retornaInsertContratacao1() {
+		StringBuilder sql = new StringBuilder(
+				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT) VALUES (SIBX_CONTR.nextval,'28339982000160',	current_timestamp ,null, 'N', null) ");
+		return sql;
+	}
+	
+
+	public StringBuilder retornaInsertContratacao2() {
+		StringBuilder sql = new StringBuilder(
+				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT) VALUES (SIBX_CONTR.nextval,'37491504000161', current_timestamp ,null, 'N', null) ");
+
+		return sql;
+	}
+
+	public StringBuilder retornaInsertContratacao3() {
+		StringBuilder sql = new StringBuilder(
+				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT) VALUES (SIBX_CONTR.nextval,'12259140000168', current_timestamp ,null, 'N', null) ");
+
+		return sql;
+	}
+
+	public StringBuilder retornaInsertContratacao4() {
+		StringBuilder sql = new StringBuilder(
+				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT) VALUES (SIBX_CONTR.nextval,'41707658000115', current_timestamp ,null, 'N', null) ");
+
+		return sql;
+	}
+
+	public StringBuilder retornaInsertOferta() {
+		StringBuilder sql = new StringBuilder("INSERT ALL ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('28339982000160', current_timestamp) ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('37491504000161', current_timestamp) ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('12259140000168', current_timestamp) ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('41707658000115', current_timestamp) ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('11699141000160', current_timestamp) ")
+				.append(" SELECT 1 FROM DUAL ");
+
+		return sql;
+	}
+
+	public StringBuilder retornaInsertLocalidade() {
+		StringBuilder sql = new StringBuilder(" INSERT ALL ")
+				.append(" INTO TACS_EC_LOC(NU_CNPJ, NU_CEP, DT_PROCM) VALUES ('28339982000160','55000', current_timestamp) ")
+				.append(" INTO TACS_EC_LOC(NU_CNPJ, NU_CEP, DT_PROCM) VALUES ('37491504000161','55000', current_timestamp) ")
+				.append(" INTO TACS_EC_LOC(NU_CNPJ, NU_CEP, DT_PROCM) VALUES ('12259140000168','55000', current_timestamp) ")
+				.append(" INTO TACS_EC_LOC(NU_CNPJ, NU_CEP, DT_PROCM) VALUES ('41707658000115','55000', current_timestamp) ")
+				.append(" INTO TACS_EC_LOC(NU_CNPJ, NU_CEP, DT_PROCM) VALUES ('11699141000160','55000', current_timestamp) ")
+				.append("  SELECT 1 FROM DUAL ");
+
+		return sql;
+	}
+
+	public StringBuilder retornaDeleteLocalidade() {
+		StringBuilder sql = new StringBuilder(
+				
+				
+				" DELETE FROM TACS_EC_LOC WHERE NU_CNPJ IN (28339982000160, 37491504000161, 12259140000168, 41707658000115, 11699141000160) ");
+
+		return sql;
+	}
+
+	public StringBuilder retornaDeleteOferta() {
+		StringBuilder sql = new StringBuilder(
+				" DELETE FROM OWADQ.TACS_OFERT WHERE NU_CNPJ IN (28339982000160, 37491504000161, 12259140000168, 41707658000115, 11699141000160) ");
+
+		return sql;
+	}
+
+	public StringBuilder retornaInsertTransacoes() {
+		StringBuilder sql = new StringBuilder(" INSERT ALL ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição','201901',5,391.01,99.71,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição','201902',3,892.03,99.73,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição','201904',4,1396.02,99.72,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição','201908',2,2393.04,99.74,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','201901',10,123.75,25.30,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','201902',12,283.50,86.27,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','201905',40,1027.85,235.67,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','201906',12,283.50,23.63,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','201908',17,530.01,31.18,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','201910',50,102.09,2.04,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição','201902',4,32.21,8.05,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação','201902',3,123.76,41.25,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição','201910',19,268.93,14.15,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação','201910',20,123.12,6.16,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição','201906',17,830.18,46.12,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação','201906',16,601.14,37.57,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição','201904',65,768.11,11.82,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação','201904',15,233.47,15.56,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','201901',10,1223.75,25.30,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','201902',12,2833.50,86.27,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','201905',40,11027.85,235.67,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','201906',12,283.50,23.63,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','201908',17,5320.00,31.18,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_MENSAL (NU_CNPJ,DS_PRODT,DS_MES,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','201910',50,1032.09,2.04,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição',   '3',5,391.01,99.71,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição',   '2',3,892.03,99.73,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição',   '2',4,1396.02,99.72,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição',   '3',2,2393.04,99.74,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','2',18,123.75,25.30,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','4',12,283.50,86.27,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','3',40,1027.85,235.67,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','2',12,283.50,23.63,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','3',17,530.00,31.18,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação','2',50,102.09,2.04,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição',   '2',4,32.21,8.05,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação','3',4,123.76,41.25,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição',   '3',19,268.93,14.15,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação','6',8,123.12,6.16,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição',   '7',17,830.18,46.12,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação','7',16,601.14,37.57,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição',   '2',65,768.11,11.82,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação','2',15,233.47,15.56,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','2',10,1223.75,25.30,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','2',12,2833.50,86.27,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','3',40,11027.85,235.67,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','4',12,283.50,23.63,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','4',17,5320.00,31.18,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_SMNAL (NU_CNPJ,DS_PRODT,DS_DIA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação','5',50,1032.09,2.04,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição',1,5,391.01,99.71,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição',2,3,892.03,99.73,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição',3,4,1396.02,99.72,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('12259140000168','Refeição',12,2,2393.04,99.74,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação',4,10,123.75,25.30,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação',13,12,283.50,86.27,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação',14,40,1027.85,235.67,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação',15,12,283.50,23.63,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação',17,17,530.00,31.18,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('28339982000160','Alimentação',19,50,102.09,2.04,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição',23,4,32.21,8.05,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação',21,3,123.76,41.25,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição',22,19,268.93,14.15,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação',23,20,123.12,6.16,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição',00,17,830.18,46.12,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação',5,16,601.14,37.57,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Refeição',8,65,768.11,11.82,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('37491504000161','Alimentação',9,15,233.47,15.56,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação',12,10,1223.75,25.30,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação',12,12,2833.50,86.27,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação',13,40,11027.85,235.67,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação',14,12,283.50,23.63,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação',15,17,5320.00,31.18,to_date('05/11/19','DD/MM/RR')) ")
+				.append(" into TADQ_INDCD_HORA (NU_CNPJ,DS_PRODT,CD_HORA_SMNAL,QT_TRANS,VR_FATMT,VR_TICKET_MED,DT_PROCM) values ('41707658000115','Alimentação',19,50,1032.09,2.04,to_date('05/11/19','DD/MM/RR')) ")
+				.append("  SELECT 1 FROM DUAL ");
+
+		return sql;
+	}
+
+	public StringBuilder retornaDeleteIndicadoresMensal() {
+		StringBuilder sql = new StringBuilder(
+				" DELETE FROM TADQ_INDCD_MENSAL WHERE NU_CNPJ IN (28339982000160, 37491504000161, 12259140000168, 41707658000115)");
+
+		return sql;
+	}
+
+	public StringBuilder retornaDeleteIndicadoresSemanal() {
+		StringBuilder sql = new StringBuilder(
+				" DELETE FROM TADQ_INDCD_SMNAL WHERE NU_CNPJ IN (28339982000160, 37491504000161, 12259140000168, 41707658000115)");
+
+		return sql;
+	}
+
+	public StringBuilder retornaDeleteIndicadoresDiario() {
+		StringBuilder sql = new StringBuilder(
+				" DELETE FROM TADQ_INDCD_HORA WHERE NU_CNPJ IN (28339982000160, 37491504000161, 12259140000168, 41707658000115)");
+
+		return sql;
+	}
+	
+	public StringBuilder retornaDeletecontratos() {
+		StringBuilder sql = new StringBuilder(
+				" DELETE FROM owadq.tacs_contr_indcd WHERE NU_CNPJ IN (28339982000160, 37491504000161, 12259140000168, 41707658000115, 82143278000182 )");
+
+		return sql;
+	}
+
+}

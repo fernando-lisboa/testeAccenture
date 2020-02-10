@@ -73,11 +73,9 @@ public class LoginPage extends PageObject {
 
 	@FindBy(id = "username")
 	protected WebElement campo_cpf_webAdmin;
-	public String cpfWebAdmin = "61223719049";
 
 	@FindBy(id = "password")
 	protected WebElement campo_senha_web_admin;
-	public String senhaWebAdmin = "98485008049";
 
 	@FindBy(id = "AccountLoginBtnSubmitHandler")
 	protected WebElement botao_entrar;
@@ -129,5 +127,5 @@ public class LoginPage extends PageObject {
 	@FindBy(id = "formInlineEmail")
 	protected WebElement campo_email;
 	public String Email = "teste_address@mailinator.com";
-
+	
 }

@@ -29,8 +29,7 @@ public class LoginActions extends LoginPage {
 		password.sendKeys(senha);
 		btnEntrar.click();
 		System.out.println(webdriver.getCurrentUrl());
-		
-		
+
 	}
 
 	public void loginGeral(String user, String senha) throws Throwable {
@@ -46,7 +45,7 @@ public class LoginActions extends LoginPage {
 	}
 
 	public void telaLoginWebAdmin() {
-		System.out.println(UrlInicioWebAdmin);
+
 		getUrlInicioWebAdmin();
 	}
 
@@ -54,7 +53,6 @@ public class LoginActions extends LoginPage {
 		System.out.println(urlInicial);
 		getUrlInicial();
 	}
-
 
 	public void botaoEntrar() {
 		botao_entrar.click();
@@ -64,14 +62,10 @@ public class LoginActions extends LoginPage {
 		botao_entrar_webAdmin.click();
 	}
 
-	
-	
-	public void erroLogin(){
+	public void erroLogin() {
 		waitForElementPageToLoad(texto_modal_falha);
 		validarModalErro("VERIFIQUE AS INFORMAÇÕES DIGITADAS E TENTE NOVAMENTE.", texto_modal_falha.getText());
 	}
-
-	
 
 	public void cpfInvalido() {
 		campo_cpf_invalido.sendKeys(cpfInvalido);
@@ -150,44 +144,24 @@ public class LoginActions extends LoginPage {
 			System.out.println(e);
 		}
 	}
-	
+
 	public void paginaInicial() throws InterruptedException {
 		Thread.sleep(10000);
 		validarUrlAtual(urlInicial);
 		iconePerfil.click();
 		waitForElementPageToBeClickable(btnSair);
 		btnSair.click();
-		
+
 	}
 
-	public void loginGeralWebAdmin() throws Throwable {
-		try {
-			LoginSteps login = new LoginSteps();
-			login.que_estou_logado_em_qualquer_tela_no_Web_Admin();
+	public void loginGeralWebAdmin(String user, String password) throws Throwable {
 
-			// if (DriverWeb.getDriver().getCurrentUrl().contains("login") &&
-			// !DriverWeb.getDriver().findElements(By.name(escreverCPF)).isEmpty())
-			// {
-			if (webdriver.getCurrentUrl().contains("login")) {
-				System.out.println("Fazer Login");
-				login.preencho_o_formulario_de_login_webAdmin();
-				login.aciono_o_botao_Entrar_webAdmin();
-				login.o_usuario_e_redirecionado_para_a_pagina_inicial_webAdmin();
-			} else {
-				System.out.println("Ja esta logado");
-				Thread.sleep(5000);
-			}
-
-			/*
-			 * if (!DriverWeb.getDriver().getCurrentUrl().contains("login")) {
-			 * System.out.println("Ja esta logado"); Thread.sleep(5000); } else {
-			 * System.out.println("Fazer Login"); login.preencho_o_formulario_de_login();
-			 * login.aciono_o_botao_Entrar();
-			 * login.o_usuario_e_redirecionado_para_a_pagina_inicial(); }
-			 */
-		} catch (Exception e) {
-			fail("Dados de login inválidos!");
+		if (webdriver.getCurrentUrl().contains("login")) {
+			campo_cpf_webAdmin.sendKeys(user);
+			campo_senha_web_admin.sendKeys(password);
+			botao_entrar_webAdmin.click();
 		}
+
 	}
 
 }
