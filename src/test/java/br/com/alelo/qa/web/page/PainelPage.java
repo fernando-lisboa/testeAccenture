@@ -56,8 +56,6 @@ public class PainelPage extends PageObject {
 	@FindBy(xpath = "//b[contains(.,'• 41.707.658/0001-15 - 1010745139')]")
 	protected WebElement desbloq_2;
 	
-	@FindBy(xpath = "//b[contains(.,'• 82.143.278/0001-82 - 1012770645')]")
-	protected WebElement desbloq_3;
 
 	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
 	protected WebElement opcao_ec_plano;
@@ -150,7 +148,7 @@ public class PainelPage extends PageObject {
 	public String sucessoText = "SUCESSO!";
 
 	@FindBy(xpath = "//h5[@class='canceled'][contains(.,'Suspenso')]")
-	protected WebElement statusContrato;
+	protected WebElement statusContratoSuspenso;
 	public String statusContratoText = "Suspenso";
 
 	@FindBy(id = "btnContratarAgora")
@@ -170,5 +168,8 @@ public class PainelPage extends PageObject {
 
 	@FindBy(xpath = "//h5[@class='freeTestPill'][contains(.,'TESTE GRÁTIS')]")
 	protected WebElement labelTesteGratis;
+	
+	@FindBy(xpath = "//h5[@class='hired'][contains(.,'Contratado')]")
+	protected WebElement Contratado;
 
 }
