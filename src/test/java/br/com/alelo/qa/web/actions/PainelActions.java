@@ -71,12 +71,6 @@ public class PainelActions extends PainelPage {
 			alterarCNPJ(desbloq_2);
 		} else if (cnpj.equals("1")) {
 			alterarCNPJ(desbloq_1);
-		} else if (cnpj.equals("3")) {
-			alterarCNPJ(desbloq_3);
-		} else if (cnpj.equals("1")) {
-			alterarCNPJ(desbloq_1);
-		} else if (cnpj.equals("1")) {
-			alterarCNPJ(desbloq_1);
 		}
 	}
 
@@ -216,14 +210,17 @@ public class PainelActions extends PainelPage {
 		waitForElementPageToBeClickable(menuDocumentos);
 		menuDocumentos.click();
 		Thread.sleep(10000);
-		validarTextoElemento(statusContrato, statusContratoText);
+		validarTextoElemento(statusContratoSuspenso, statusContratoText);
 	}
-	
+
 	public void consultarStatusDesbloqueio(String statusEsperado) throws InterruptedException {
 		waitForElementPageToBeClickable(menuDocumentos);
 		menuDocumentos.click();
 		Thread.sleep(10000);
-		validarTextoElemento(statusContrato, statusContratoText);
+		if (statusEsperado.equals("TESTE GRÁTIS")) {
+			validarTextoElemento(labelTesteGratis, statusEsperado);
+		} else
+			validarTextoElemento(Contratado, statusEsperado);
 	}
 
 }

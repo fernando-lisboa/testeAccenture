@@ -2,6 +2,7 @@ package br.com.alelo.qa;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,6 +10,10 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
+import br.com.alelo.integrations.db.ConnBuc;
+import br.com.alelo.integrations.db.ConnPpoint;
+import br.com.alelo.integrations.db.ConnUsadq;
+import br.com.alelo.integrations.db.DBConnection;
 import br.com.alelo.integrations.vsts.controllers.RunController;
 import br.com.alelo.utils.PropertiesFile;
 import br.com.alelo.utils.SimpleCacheManager;
@@ -28,6 +33,17 @@ public class CucumberRunnerTest {
 	@BeforeClass
 	public static void setup() throws IOException {
 		
+		new DBConnection();
+		Connection dbUsadq = DBConnection.getConnectionHml();
+		ConnUsadq.setConexao(dbUsadq);
+
+		new DBConnection();
+		Connection dbPpoint = DBConnection.getConnectionPpoint();
+		ConnPpoint.setConexao(dbPpoint);
+
+		new DBConnection();
+		Connection dbBuc = DBConnection.getConnectionBuc();
+		ConnBuc.setConexao(dbBuc);
 		
 		PropertiesFile props = new PropertiesFile();
 		System.out.println("------------------------------");

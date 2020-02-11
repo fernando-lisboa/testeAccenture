@@ -10,21 +10,29 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.4.RELEASE</version>
 	</parent>
-
+	<repositories>
+		<repository>
+			<id>alelo-artifactory</id>
+			<name>Codehaus Snapshots</name>
+			<url>http://10.236.2.126:8081/artifactory/libs-release</url>
+		</repository>
+	</repositories>
 	<properties>
 		<!-- got some issues with later Selenium versions -->
 		<selenium-version>3.8.1</selenium-version>
 		<cucumber-version>1.2.5</cucumber-version>
-		<spring-version>5.1.9.RELEASE</spring-version>
+		<spring-version>5.0.2.RELEASE</spring-version>
 		<slf4j-version>1.7.25</slf4j-version>
 		<logback-version>1.2.3</logback-version>
-		<restassured-version>4.0.0</restassured-version>
+		<restassured-version>3.3.0</restassured-version>
+		<vsts-library-version>0.6.4</vsts-library-version>
+		<cucable-plugin-version>1.5.2</cucable-plugin-version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<cucumber.report.json.location>relatorio</cucumber.report.json.location>
-		<generated.report.location>relatorio</generated.report.location>
+		<cucumber.report.json.location>${project.build.directory}/cluecumber-report</cucumber.report.json.location>
+		<generated.report.location>${project.build.directory}/cluecumber-report</generated.report.location>
 		<generated.runner.directory>${project.build.directory}/parallel/runners</generated.runner.directory>
 		<generated.feature.directory>${project.build.directory}/parallel/features</generated.feature.directory>
 	</properties>
@@ -39,15 +47,45 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
-
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.11</version>
+		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${restassured-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-path</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>${restassured-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-mock-mvc</artifactId>
+			<version>${restassured-version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -131,7 +169,6 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
