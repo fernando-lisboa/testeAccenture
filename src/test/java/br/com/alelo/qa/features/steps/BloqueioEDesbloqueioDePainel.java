@@ -8,6 +8,7 @@ import br.com.alelo.qa.web.actions.LoginActions;
 import br.com.alelo.qa.web.actions.PainelActions;
 import br.com.alelo.qa.web.actions.SairActions;
 import br.com.alelo.utils.SimpleCacheManager;
+import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 
@@ -17,10 +18,14 @@ public class BloqueioEDesbloqueioDePainel  extends ParentSteps {
 	SairActions sair;
 	PainelActions actions;
 	LoginActions login;
+	CommonsActions comm = new CommonsActions();
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
 	@Dado("^enviar uma planilha de bloqueio de painel \"([^\"]*)\", \"([^\"]*)\"$")
 	public void enviar_uma_planilha_de_bloqueio_de_painel(String path, String nomeArquivo) throws Throwable {
+		
+		comm.tearDown();
+		comm.insertMassaDeBloqueio();
 		actions = new PainelActions(webdriver);
 		actions.bloqueiaEc(path, nomeArquivo);
 	}

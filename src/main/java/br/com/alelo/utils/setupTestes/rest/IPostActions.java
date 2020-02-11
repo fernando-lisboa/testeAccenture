@@ -26,7 +26,7 @@ public class IPostActions {
 		String jsonBody = objJSON.writeValueAsString(param);
 
 		Token token = CommonsActions.getToken();
-		Response response = given().log().all()
+		 given().log().all()
 				.body(jsonBody)
 				.header("X-IBM-Client-Id", token.getClientId())
 				.header("X-IBM-Client-Secret", token.getClientSecret())

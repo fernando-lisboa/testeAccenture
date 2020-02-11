@@ -158,3 +158,4 @@ Validar login com sucesso;failed;
 9999 - Upload de planilha Desbloquear CNPJ que esteja contratado com mais de um id de contrato fora do periodo de testes via upload de planilha;undefined;
 9999 - Upload de planilha Desbloquear mais de um CNPJ dentro do periodo de testes via upload de planilha;undefined;
 9999 - Upload de planilha Desbloquear CNPJ que esteja contratado no periodo de testes via upload de planilha;failed;
+9999 - Upload de planilha Desbloquear CNPJ que esteja contratado no periodo de testes via upload de planilha;failed;
