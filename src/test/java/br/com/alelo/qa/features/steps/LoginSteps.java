@@ -8,16 +8,13 @@
 
 package br.com.alelo.qa.features.steps;
 
-import java.util.Properties;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.com.alelo.qa.features.support.ParentSteps;
-import br.com.alelo.qa.web.actions.HomeActions;
 import br.com.alelo.qa.web.actions.LoginActions;
 import br.com.alelo.utils.SimpleCacheManager;
-import cucumber.api.PendingException;
+import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 import cucumber.api.java.it.Quando;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
@@ -26,7 +23,7 @@ public class LoginSteps extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	LoginActions login;
-	HomeActions home;
+	CommonsActions comm = new CommonsActions();
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
 	@Dado("^que estou na logado no portal EC \"([^\"]*)\", \"([^\"]*)\"$")
