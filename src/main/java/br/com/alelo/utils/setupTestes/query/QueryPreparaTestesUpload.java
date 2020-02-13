@@ -12,6 +12,7 @@ public class QueryPreparaTestesUpload {
 	public StringBuilder retornaInsertBloqueioContratoTestGratis() {
 		StringBuilder sql = new StringBuilder(
 				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT, DT_BLOQ,nm_usuar_bloq) VALUES (SIBX_CONTR.nextval,'28339982000160',	current_timestamp ,null, 'N', null, '','') ");
+		System.out.println(sql);
 		return sql;
 	}
 	
@@ -30,7 +31,7 @@ public class QueryPreparaTestesUpload {
 	
 	public StringBuilder retornaInsertDesbloqueioContratoTestGratis() {
 		StringBuilder sql = new StringBuilder(
-				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT,DT_BLOQ,nm_usuar_bloq) VALUES (SIBX_CONTR.nextval,'11699141000160',	current_timestamp ,null, 'S', null, current_timestamp,'FERNANDO LISBOA' ) ");
+				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT,DT_BLOQ,nm_usuar_bloq) VALUES (SIBX_CONTR.nextval,'41707658000115',	current_timestamp ,null, 'S', null, current_timestamp,'FERNANDO LISBOA' ) ");
 		return sql;
 	}
 	

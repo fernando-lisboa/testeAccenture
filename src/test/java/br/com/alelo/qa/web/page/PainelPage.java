@@ -23,7 +23,6 @@ public class PainelPage extends PageObject {
 	protected String urlInicio = "http://meuestabelecimento-hml.siteteste.inf.br/inicio";
 	protected String urlExtrato = "http://meuestabelecimento-hml.siteteste.inf.br/extrato";
 
-	
 	public String getUrlInicio() {
 		return urlInicio;
 	}
@@ -38,24 +37,26 @@ public class PainelPage extends PageObject {
 	@FindBy(id = "cnpj")
 	protected WebElement opcao_select;
 
-	@FindBy(xpath = "//span[@class='space10-left'][contains(.,'@ 49.447.829/0001-26 - 2000493330')]")
+	@FindBy(xpath = "//b[contains(.,'• 37.491.504/0001-61 - 1010745147')]")
 	protected WebElement opcao_ec1;
-	
+
 	@FindBy(xpath = "//span[@class='space10-left'][contains(.,'@ 43.023.070/0010-69 - 2000189185')]")
 	protected WebElement opcao_ec2;
-	
-	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
+
+	@FindBy(xpath = "//b[contains(.,'• 28.339.982/0001-60 - 2000496258')]")
 	protected WebElement opcao_ec3;
-	
+
 	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
 	protected WebElement opcao_ec4;
-	
+
 	@FindBy(xpath = "//b[contains(.,'• 37.491.504/0001-61 - 1010745147')]")
 	protected WebElement desbloq_1;
-	
+
 	@FindBy(xpath = "//b[contains(.,'• 41.707.658/0001-15 - 1010745139')]")
 	protected WebElement desbloq_2;
-	
+
+	@FindBy(xpath = "//b[contains(.,'• 82.143.278/0001-82 - 1012770645')]")
+	protected WebElement testeGratis;
 
 	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
 	protected WebElement opcao_ec_plano;
@@ -81,16 +82,15 @@ public class PainelPage extends PageObject {
 	@FindBy(xpath = "//button[@type='button'][contains(.,'DIRF')]")
 	protected WebElement btnDirf;
 
-	// @FindBy(class = "advertisingDashboardSideKick")
-	// protected WebElement sidekickPainel;
-	// public String textSidekickPainel = "30 dias grátis";
-
-	@FindBy(className = "fontBold textDarkGreen3")
+		@FindBy(className = "fontBold textDarkGreen3")
 	protected WebElement linkDetalhes;
 
 	@FindBy(id = "advertisingDashboardSideKick")
 	protected WebElement sidekickPainel;
 	public String textSidekickPainel = "30 dias grátis";
+
+	@FindBy(id = "btnAtivarAgoraSidekick")
+	protected WebElement btnSidekickPainel;
 
 	@FindBy(id = "textNormalSidekick")
 	protected WebElement sidekick_Plano;
@@ -154,7 +154,7 @@ public class PainelPage extends PageObject {
 	@FindBy(id = "btnContratarAgora")
 	protected WebElement btnContratarAgora;
 
-	@FindBy(id = "flagTermoDeAceite")
+	@FindBy(xpath = "//label[contains(@for,'flagTermoDeAceite')]")
 	protected WebElement flagTermoDeAceite;
 
 	@FindBy(id = "btnAtivarGratis")
@@ -162,14 +162,53 @@ public class PainelPage extends PageObject {
 
 	@FindBy(id = "labelMsgSucesso")
 	protected WebElement labelMsgSucesso;
+	public String textMsgSucesso = "Parabéns! A partir de agora, você conta com o Alelo Painel Meu Negócio para turbinar sua gestão";
 
-	@FindBy(className = "btnFormLight fontBolder btn btn-lg btn-default")
+	@FindBy(id = "panelTitleId")
+	protected WebElement panelTitleId;
+	public String textPanelTitleId = "Painel Meu Negócio";
+
+	@FindBy(xpath = "//button[@type='button'][contains(.,'VOLTAR PARA O PAINEL')]")
 	protected WebElement btnVoltarPainel;
 
 	@FindBy(xpath = "//h5[@class='freeTestPill'][contains(.,'TESTE GRÁTIS')]")
 	protected WebElement labelTesteGratis;
-	
+
 	@FindBy(xpath = "//h5[@class='hired'][contains(.,'Contratado')]")
 	protected WebElement Contratado;
+
+	@FindBy(xpath = "//span[@class='canceled'][contains(.,'dias restantes')]")
+	protected WebElement contratadoGratis;
+
+	@FindBy(xpath = "//h5[@class='canceled'][contains(.,'Cancelado')]")
+	protected WebElement statusCancelado;
+
+	@FindBy(xpath = "//h5[contains(.,'Data da Contratação:')]")
+	protected WebElement dtContratacao;
+	public String textdtContratacao = "Data da Contratação:";
+
+	@FindBy(xpath = "//h5[contains(.,'Primeira Mensalidade:')]")
+	protected WebElement primeiraMensalidade;
+	public String textprimeiraMensalidade = "Primeira Mensalidade:";
+
+	@FindBy(xpath = "//h5[@class='cardLabel undefined'][contains(.,'Última Mensalidade:')]")
+	protected WebElement ultimaMensalidade;
+	public String textUltimaMensalidade = "Última Mensalidade:";
+
+	@FindBy(xpath = "//button[@type='button'][contains(.,'experimente 30 dias grátis')]")
+	protected WebElement btnExperimenteGratis;
+	
+	@FindBy(xpath = "//div[@class='actionText'][contains(.,'CANCELAR')]")
+	protected WebElement btnCancelar;
+
+	@FindBy(xpath = "//h5[@class='singleText'][contains(.,'82.143.278/0001-82')]")
+	protected WebElement cnpjContratado;
+
+	@FindBy(xpath = "//button[@type='button'][contains(.,'CANCELAR')]")
+	protected WebElement btnConfirmarCancelar;
+
+	@FindBy(id = "valorContratado")
+	protected WebElement valorContratado;
+	public String textvalorContratado = "R$ 19,90";
 
 }

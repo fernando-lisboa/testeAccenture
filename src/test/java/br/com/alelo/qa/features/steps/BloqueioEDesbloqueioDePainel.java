@@ -23,23 +23,19 @@ public class BloqueioEDesbloqueioDePainel  extends ParentSteps {
 
 	@Dado("^enviar uma planilha de bloqueio de painel \"([^\"]*)\", \"([^\"]*)\"$")
 	public void enviar_uma_planilha_de_bloqueio_de_painel(String path, String nomeArquivo) throws Throwable {
-		
-		comm.tearDown();
-		comm.insertMassaDeBloqueio();
+		comm.prepararBancoParaInicioDosTestesBloqueio();
 		actions = new PainelActions(webdriver);
 		actions.bloqueiaEc(path, nomeArquivo);
 	}
 
+
 	@Entao("^devo verificar que o ec foi bloqueado \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
 	public void devo_verificar_que_o_ec_foi_bloqueado(String statusEsperado, String user, String password, String cnpj) throws Throwable{
-		
 		webdriver.get(baseurl); // Abre url
 		login = new LoginActions(webdriver);
 		login.loginGeral(user,password);
 		actions.alterarEstabelecimentoBloq(cnpj);
-		System.out.println("logando..");
 		actions.consultarStatusContratacaoPainel();
-		
 	}
 	
 	@Entao("^devo verificar que o ec foi Desbloqueado \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
@@ -48,7 +44,6 @@ public class BloqueioEDesbloqueioDePainel  extends ParentSteps {
 		login = new LoginActions(webdriver);
 		login.loginGeral(user,password);
 		actions.alterarEstabelecimentoDesbloq(cnpj);
-		System.out.println("Upload efetuado com sucesso...");
 		actions.consultarStatusDesbloqueio(statusEsperado);
 	}
 
