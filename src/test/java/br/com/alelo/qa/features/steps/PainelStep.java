@@ -29,6 +29,7 @@ public class PainelStep extends ParentSteps {
 	@Quando("^acesso o painel no menu$")
 	public void acesso_o_painel_no_menu() throws Throwable {
 		painel.validarPainel();
+		
 	}
 
 	@E("^seleciono um CNPJ diferente no combo Estabelecimento$")

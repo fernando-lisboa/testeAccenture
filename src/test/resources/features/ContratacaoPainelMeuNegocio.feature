@@ -18,7 +18,7 @@ Funcionalidade: Painel
     #SDado que estou na logado no portal EC "077.422.686-20", "F3@6t6x8"
 
   @PainelContratacaoWeb @Regressivo
-  Esquema do Cenario: <VSTS> - Bloqueio <cenario>
+  Esquema do Cenario: <VSTS> - Painel <cenario>
     Quando efetuar uma contratacao via sidekick "<cnpj>"
     Entao devo validar o status da contratacao e suas respectivas datas "<statusEsperado>"
  
@@ -28,7 +28,7 @@ Funcionalidade: Painel
      | 9999 | Efetivar contratação fora do periodo gratuito   | Contratado     | 12259140000168 |
 
   @PainelCancelamento @Regressivo
-  Esquema do Cenario: <VSTS> - Bloqueio <cenario>
+  Esquema do Cenario: <VSTS> - Painel <cenario>
     Quando efetuar o cancelamento do produto painel meu negocio "<cnpj>"
     Entao devo validar o status do cancelamento e suas respectivas datas "<statusEsperado>"
 
