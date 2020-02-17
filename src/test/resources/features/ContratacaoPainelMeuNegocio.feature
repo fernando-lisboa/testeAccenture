@@ -14,8 +14,7 @@ Funcionalidade: Painel
   Para clientes inadimplentes
 
   Contexto: 
-    Dado que estou na logado no portal EC "546.219.170-72", "Alelo2018@"
-    #SDado que estou na logado no portal EC "077.422.686-20", "F3@6t6x8"
+    Dado que estou na logado no portal EC "594.114.000-27", "Alelo2020@"
 
   @PainelContratacaoWeb @Regressivo
   Esquema do Cenario: <VSTS> - Painel <cenario>

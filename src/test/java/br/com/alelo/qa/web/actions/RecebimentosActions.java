@@ -43,7 +43,7 @@ public class RecebimentosActions extends RecebimentosPage {
 			System.out.println("Ocorreu um erro..." + e);
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void valitarTelaConteudoRecebiveis() {
@@ -76,9 +76,9 @@ public class RecebimentosActions extends RecebimentosPage {
 		String textoMesAtual = mesReferencia.getText();
 		waitForElementPageToLoad(avancarMes);
 		avancarMes.click();
-		waitForElementPageToLoad(loader);
-
+		Thread.sleep(2000);
 		String textoMesFuturo = mesReferencia.getText();
+		System.out.println(textoMesFuturo);
 
 		if (!textoMesAtual.equals(textoMesFuturo)) {
 			System.out.println("Teste realizado com sucesso.");
@@ -92,8 +92,7 @@ public class RecebimentosActions extends RecebimentosPage {
 		String textoMesAtual = mesReferencia.getText();
 		waitForElementPageToBeClickable(retrocederMes);
 		retrocederMes.click();
-		waitForElementPageToLoad(loader);
-
+		Thread.sleep(2000);
 		System.out.println(textoMesAtual);
 		String textoMesPassado = mesReferencia.getText();
 		System.out.println(textoMesPassado);
@@ -103,6 +102,18 @@ public class RecebimentosActions extends RecebimentosPage {
 		} else {
 			fail("Problemas ao retroceder o mês");
 		}
+	}
+
+	public void validarPeriodos(String periodo) throws InterruptedException {
+		if (periodo.equals("mês atual")) {
+			valitarTelaConteudoRecebiveis();
+		} else if (periodo.equals("mês seguinte")) {
+			avacarMes();
+		} else {
+			retrocederMes();
+			Assert.assertTrue("valor recebido não está visivel", valorrecebido.isDisplayed());
+		}
+
 	}
 
 }
