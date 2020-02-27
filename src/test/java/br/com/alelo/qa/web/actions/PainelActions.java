@@ -40,6 +40,19 @@ public class PainelActions extends PainelPage {
 		alterarCNPJ(ofertaPainel);
 	}
 
+	public void alterarEstabelecimentoPainelContratacaoCancelamento(String cnpj)
+			throws IOException, InterruptedException {
+
+		if (cnpj.equals("82143278000182")) {
+			alterarCNPJ(testeGratis);
+		} else if (cnpj.equals("12259140000168")) {
+			alterarCNPJ(opcao_ec4);
+		} else if (cnpj.equals("28339982000160")) {
+			alterarCNPJ(opcao_ec3);
+		} else
+			alterarCNPJ(desbloq_2);
+	}
+
 	public void alterarEstabelecimentoPlano() throws IOException, InterruptedException {
 		alterarCNPJ(opcao_ec_plano);
 	}
@@ -55,13 +68,9 @@ public class PainelActions extends PainelPage {
 	public void alterarEstabelecimentoBloq(String cnpj) throws IOException, InterruptedException {
 
 		if (cnpj.equals("1")) {
-			alterarCNPJ(opcao_ec1);
-		} else if (cnpj.equals("2")) {
 			alterarCNPJ(opcao_ec3);
-		} else if (cnpj.equals("3")) {
-			alterarCNPJ(opcao_ec1);
-		} else if (cnpj.equals("5")) {
-			alterarCNPJ(opcao_ec1);
+		} else if (cnpj.equals("2")) {
+			alterarCNPJ(opcao_ec4);
 		}
 	}
 
@@ -127,18 +136,6 @@ public class PainelActions extends PainelPage {
 		}
 	}
 
-	public void clicarBannerSuperior() {
-		banner_superior.click();
-	}
-
-	public void validaLinkBannerSuperior() {
-		validarUrlAtual(urlInicio);
-	}
-
-	public void clicarBannerInferior() {
-		banner_inferior.click();
-	}
-
 	public void validaLinkBannerInferiores() {
 		validarUrlAtual(urlInicio);
 	}
@@ -201,15 +198,10 @@ public class PainelActions extends PainelPage {
 		}
 	}
 
-	public PainelActions(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
-
 	public void consultarStatusContratacaoPainel() throws InterruptedException {
+		Thread.sleep(15000);
 		waitForElementPageToBeClickable(menuDocumentos);
 		menuDocumentos.click();
-		Thread.sleep(10000);
 		validarTextoElemento(statusContratoSuspenso, statusContratoText);
 	}
 
@@ -221,6 +213,65 @@ public class PainelActions extends PainelPage {
 			validarTextoElemento(labelTesteGratis, statusEsperado);
 		} else
 			validarTextoElemento(Contratado, statusEsperado);
+	}
+
+	public void contrataPainel(String cnpjContratado) throws IOException, InterruptedException {
+		graficoMensal.click();
+		Thread.sleep(3000);
+		btnExperimenteGratis.click();
+		Thread.sleep(3000);
+		btnContratarAgora.click();
+		Thread.sleep(3000);
+		flagTermoDeAceite.click();
+		Thread.sleep(3000);
+		btnAtivarGratis.click();
+		labelMsgSucesso.isDisplayed();
+		validarTextoElemento(labelMsgSucesso, textMsgSucesso);
+		btnVoltarPainel.click();
+
+	}
+
+	public void validarContratacao(String cnpjEsperado, String statusEsperado) throws InterruptedException {
+
+		validarTextoElemento(panelTitleId, textPanelTitleId);
+		menuDocumentos.click();
+		Thread.sleep(10000);
+		Assert.assertTrue("Status diferente do esperado para contratação no período de testes",
+				contratadoGratis.getText().contains("dias restantes"));
+		validarTextoElemento(dtContratacao, textdtContratacao);
+		validarTextoElemento(primeiraMensalidade, textprimeiraMensalidade);
+		// String cnpjContrato = cnpjContratado.getText().replaceAll("\\.",
+		// "").replaceAll("\\", "");
+		// Assert.assertThat(cnpjContrato, is(cnpjEsperado));
+		// validarTextoElemento(valorContratado, textvalorContratado);
+
+	}
+
+	public void cancelamentoPainel(String cnpjContratado) throws IOException, InterruptedException {
+		menuDocumentos.click();
+		Thread.sleep(30000);
+		btnCancelar.click();
+		waitForElementPageToBeClickable(btnConfirmarCancelar);
+		btnConfirmarCancelar.click();
+
+	}
+
+	public void validarCancelamentoPainel(String status) throws IOException, InterruptedException {
+		if (status.equals("TESTE GRÁTIS")) {
+			// Assert.assertTrue("Status diferente do esperado para contratação
+			// no período de testes",
+			// contratadoGratis.getText().contains(" do Alelo Painel Meu
+			// Negócio"));
+		} else if (status.equals("Cancelado")) {
+
+			validarTextoElemento(statusCancelado, status);
+		}
+		validarTextoElemento(ultimaMensalidade, textUltimaMensalidade);
+	}
+
+	public PainelActions(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
 	}
 
 }

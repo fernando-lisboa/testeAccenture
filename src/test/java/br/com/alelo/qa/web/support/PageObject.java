@@ -38,6 +38,11 @@ public class PageObject {
 		this.webdriver.manage().window().maximize();
 
 	}
+	
+	public void waitForElementToBeInvisible(WebElement element){
+		   wait = new WebDriverWait(webdriver, maxTimeWaitLoadPage);
+		   wait.until(ExpectedConditions.invisibilityOf(element));
+		}
 
 	public void validarUrlAtual(String url) {
 		assertEquals(url, webdriver.getCurrentUrl());

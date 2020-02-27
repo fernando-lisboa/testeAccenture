@@ -117,15 +117,24 @@ import br.com.alelo.utils.setupTestes.rest.IPostActions;
 			consultaBancoHmlPoint(ConnPpoint.getConexao(), queryIndicadores.retornaInsertTransacoes().toString());
 			System.out.println("Banco populado para inicio dos testes...");
 		}
+		
+		public void insertMassaCancelamentoEContratacaoWeb() throws Exception {
+			System.out.println("Inserindo massa de testes no Banco de dados...");
+			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertOferta().toString());
+			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertLocalidade().toString()); 
+			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacao1().toString()); //28339982000160
+			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacaoForaPeriodoTestes().toString()); //41707658000115
+			consultaBancoHmlPoint(ConnPpoint.getConexao(), queryIndicadores.retornaInsertTransacoes().toString());
+			System.out.println("Banco populado para inicio dos testes...");
+		}
+
 
 		public void insertMassaDeBloqueio() throws Exception {
 			System.out.println("Inserindo massa de testes no Banco de dados...");
 			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertOferta().toString());
 			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertLocalidade().toString());
-			consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertBloqueioContratoCancelado().toString());
 			consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertBloqueioContratoForaDoTesteGratis().toString());
-			consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertBloqueioContratoForaDoTesteGratis().toString());
-			consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertDesbloqueioContratoCancelado().toString());
+			consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertBloqueioContratoTestGratis().toString());
 			consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertDesbloqueioContratoForaDoTesteGratis().toString());
 			consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertDesbloqueioContratoTestGratis().toString());
 			System.out.println("Inserido dados para teste de Bloqueio...");
@@ -175,5 +184,17 @@ import br.com.alelo.utils.setupTestes.rest.IPostActions;
 		public void limpaPlanos() throws Exception {
 			System.out.println("Limpando Banco de dados para inicio dos testes de Upload de Planos...");
 			consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteNovosPlanos().toString());
+		}
+		
+		public void prepararBancoParaInicioDosTestesBloqueio() throws Exception {
+			tearDown();
+			tearDowntransactions();
+			insertMassaDeBloqueio();
+		}
+		
+		public void prepararBancoParaInicioDosTestesContratacao() throws Exception {
+			tearDown();
+			tearDowntransactions();
+			insertMassaCancelamentoEContratacaoWeb();
 		}
 }

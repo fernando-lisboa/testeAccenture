@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 import br.com.alelo.qa.web.page.LoginPage;
 import br.com.alelo.qa.features.steps.LoginSteps;
 import br.com.alelo.qa.web.page.OfertaAtivaPage;
+import net.bytebuddy.asm.Advice.Exit;
 
 public class LoginActions extends LoginPage {
 
@@ -33,15 +34,24 @@ public class LoginActions extends LoginPage {
 	}
 
 	public void loginGeral(String user, String senha) throws Throwable {
-		waitForElementPageToBeClickable(userLogin);
-		userLogin.sendKeys(user);
-		password.sendKeys(senha);
-		btnEntrar.click();
-		aguardarTelaInicial();
+		
+			waitForElementPageToBeClickable(userLogin);
+			userLogin.sendKeys(user);
+			password.sendKeys(senha);
+			btnEntrar.click();
+			aguardarTelaInicial();
+		
+			if (webdriver.getCurrentUrl().equals("https://meuestabelecimento-hml.siteteste.inf.br/pkmslogout")){
+				
+				System.out.println("Excedeu quantidade de token...");
+				
+			}
+		
+
 	}
 
 	public void aguardarTelaInicial() throws InterruptedException {
-		Thread.sleep(10000);
+		Thread.sleep(3000);
 	}
 
 	public void telaLoginWebAdmin() {

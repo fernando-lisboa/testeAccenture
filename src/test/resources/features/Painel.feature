@@ -14,7 +14,7 @@ Funcionalidade: Painel
   Para validar informacoes respectivas da Home Page
 
   Contexto: 
-    Dado que estou na logado no portal EC "546.219.170-72", "Alelo2018@"
+    Dado que estou na logado no portal EC "376.805.440-34", "Alelo2020@"
 
   @Paine @Regressivo
   Esquema do Cenario: <VSTS> - Alterar SUCESSIVAMENTE CNPJ no combo selecao com Sucesso <cenario>

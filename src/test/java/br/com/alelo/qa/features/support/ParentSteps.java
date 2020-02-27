@@ -31,6 +31,9 @@ public class ParentSteps {
 	
 	@Value("${urlInicio}")
 	protected String urlInicio;
+	
+	@Value("${baseUrlPainel}")
+	protected String baseUrlPainel;
 
 	@Autowired
 	protected boolean vsts;
