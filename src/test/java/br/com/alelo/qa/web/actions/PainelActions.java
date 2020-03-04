@@ -91,11 +91,11 @@ public class PainelActions extends PainelPage {
 		opcao_select.click();
 		Thread.sleep(3000);
 		elemento.click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 	}
 
 	public void validarCNPJPainel() throws InterruptedException {
-		Thread.sleep(5000);
+		waitForElementToBeInvisible(loader);
 		String compararEstabelecimento = opcao_select.getAttribute("value");
 		// obterValorDoElementoAttribute(opcao_select, "value");
 		if (compararEstabelecimento.contains(estabelecimentoComparar)) {
@@ -120,7 +120,7 @@ public class PainelActions extends PainelPage {
 
 	public void validarTextoElemento(WebElement elemento, String textoComparacao) {
 		try {
-			Thread.sleep(5000);
+			waitForElementToBeInvisible(loader);
 			String textoDeComparacao = elemento.getText();
 			System.out.println(textoDeComparacao);
 			if (textoComparacao.equalsIgnoreCase(textoDeComparacao)) {
@@ -141,7 +141,7 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void validaSidekickArv() throws InterruptedException {
-		Thread.sleep(5000);
+		waitForElementToBeInvisible(loader);
 		validarTextoElemento(sidekick_arv, textSidekickArv);
 	}
 
@@ -150,12 +150,12 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void validaSidekickPlano() throws InterruptedException {
-		Thread.sleep(5000);
+		waitForElementToBeInvisible(loader);
 		validarTextoElemento(sidekick_Plano, textSidekickPlano);
 	}
 
 	public void validaNaoAparicaoSidekick() throws InterruptedException {
-		Thread.sleep(5000);
+		waitForElementToBeInvisible(loader);
 		validarUrlAtual(urlInicio);
 	}
 
@@ -177,7 +177,7 @@ public class PainelActions extends PainelPage {
 		Assert.assertThat(sucesso.getText(), is(sucessoText));
 		btnFechar.click();
 
-		System.out.println("DONE");
+		System.out.println("Bloqueio Efetivado com sucesso");
 	}
 
 	public static Resource getUserFileResource(String path, String nomeArquivo) throws IOException {
@@ -199,16 +199,17 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void consultarStatusContratacaoPainel() throws InterruptedException {
-		Thread.sleep(15000);
+		waitForElementToBeInvisible(loader);
 		waitForElementPageToBeClickable(menuDocumentos);
 		menuDocumentos.click();
 		validarTextoElemento(statusContratoSuspenso, statusContratoText);
 	}
 
 	public void consultarStatusDesbloqueio(String statusEsperado) throws InterruptedException {
+		waitForElementToBeInvisible(loader);
 		waitForElementPageToBeClickable(menuDocumentos);
 		menuDocumentos.click();
-		Thread.sleep(10000);
+		waitForElementToBeInvisible(loader);
 		if (statusEsperado.equals("TESTE GRÁTIS")) {
 			validarTextoElemento(labelTesteGratis, statusEsperado);
 		} else
@@ -217,13 +218,13 @@ public class PainelActions extends PainelPage {
 
 	public void contrataPainel(String cnpjContratado) throws IOException, InterruptedException {
 		graficoMensal.click();
-		Thread.sleep(3000);
+		waitForElementToBeInvisible(loader);
 		btnExperimenteGratis.click();
-		Thread.sleep(3000);
+		waitForElementToBeInvisible(loader);
 		btnContratarAgora.click();
-		Thread.sleep(3000);
+		waitForElementToBeInvisible(loader);
 		flagTermoDeAceite.click();
-		Thread.sleep(3000);
+		waitForElementToBeInvisible(loader);
 		btnAtivarGratis.click();
 		labelMsgSucesso.isDisplayed();
 		validarTextoElemento(labelMsgSucesso, textMsgSucesso);
@@ -235,21 +236,17 @@ public class PainelActions extends PainelPage {
 
 		validarTextoElemento(panelTitleId, textPanelTitleId);
 		menuDocumentos.click();
-		Thread.sleep(10000);
+		waitForElementToBeInvisible(loader);
 		Assert.assertTrue("Status diferente do esperado para contratação no período de testes",
 				contratadoGratis.getText().contains("dias restantes"));
 		validarTextoElemento(dtContratacao, textdtContratacao);
 		validarTextoElemento(primeiraMensalidade, textprimeiraMensalidade);
-		// String cnpjContrato = cnpjContratado.getText().replaceAll("\\.",
-		// "").replaceAll("\\", "");
-		// Assert.assertThat(cnpjContrato, is(cnpjEsperado));
-		// validarTextoElemento(valorContratado, textvalorContratado);
 
 	}
 
 	public void cancelamentoPainel(String cnpjContratado) throws IOException, InterruptedException {
 		menuDocumentos.click();
-		Thread.sleep(30000);
+		waitForElementToBeInvisible(loader);
 		btnCancelar.click();
 		waitForElementPageToBeClickable(btnConfirmarCancelar);
 		btnConfirmarCancelar.click();
@@ -258,6 +255,8 @@ public class PainelActions extends PainelPage {
 
 	public void validarCancelamentoPainel(String status) throws IOException, InterruptedException {
 		if (status.equals("TESTE GRÁTIS")) {
+			//TODO
+			
 			// Assert.assertTrue("Status diferente do esperado para contratação
 			// no período de testes",
 			// contratadoGratis.getText().contains(" do Alelo Painel Meu

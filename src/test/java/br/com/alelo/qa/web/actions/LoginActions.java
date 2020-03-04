@@ -34,28 +34,22 @@ public class LoginActions extends LoginPage {
 	}
 
 	public void loginGeral(String user, String senha) throws Throwable {
-		
-			waitForElementPageToBeClickable(userLogin);
-			userLogin.sendKeys(user);
-			password.sendKeys(senha);
-			btnEntrar.click();
-			aguardarTelaInicial();
-		
-			if (webdriver.getCurrentUrl().equals("https://meuestabelecimento-hml.siteteste.inf.br/pkmslogout")){
-				
-				System.out.println("Excedeu quantidade de token...");
-				
-			}
-		
 
-	}
+		waitForElementPageToBeClickable(userLogin);
+		userLogin.sendKeys(user);
+		password.sendKeys(senha);
+		btnEntrar.click();
+		
+		waitForElementToBeInvisible(loader);
 
-	public void aguardarTelaInicial() throws InterruptedException {
-		Thread.sleep(3000);
+		if (webdriver.getCurrentUrl().equals("https://meuestabelecimento-hml.siteteste.inf.br/pkmslogout")) {
+
+			System.out.println("Excedeu quantidade de token...");
+
+		}
 	}
 
 	public void telaLoginWebAdmin() {
-
 		getUrlInicioWebAdmin();
 	}
 

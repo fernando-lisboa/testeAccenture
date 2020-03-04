@@ -7,18 +7,22 @@ import java.io.IOException;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import static org.hamcrest.CoreMatchers.is;
 
 import br.com.alelo.qa.web.page.RecebimentosPage;
+import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 
 public class RecebimentosActions extends RecebimentosPage {
 
+	CommonsActions comm = new CommonsActions();
+	
 	public RecebimentosActions(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void alterarEstabelecimento(String cnpj) throws IOException, InterruptedException {
-		Thread.sleep(3000);
+		waitForElementToBeInvisible(loader);
 		if (cnpj.equals("28339982000160")) {
 			alterarCNPJ(ecRecebiveis_1);
 		} else if (cnpj.equals("12259140000168")) {
@@ -29,25 +33,19 @@ public class RecebimentosActions extends RecebimentosPage {
 
 	private void alterarCNPJ(WebElement elemento) throws IOException, InterruptedException {
 		opcao_select.click();
-		Thread.sleep(3000);
+		waitForElementToBeInvisible(loader);
 		elemento.click();
-		Thread.sleep(4000);
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void valitarTelaRecebiveis() {
 		menuRecebimentos.click();
-		try {
-			Thread.sleep(2000);
-			validarTextoElemento(labelTelaRecebimentos, textLabelTelaRecebimentos);
-		} catch (InterruptedException e) {
-			System.out.println("Ocorreu um erro..." + e);
-			e.printStackTrace();
-		}
-
+		waitForElementToBeInvisible(loader);
+		validarTextoElemento(labelTelaRecebimentos, textLabelTelaRecebimentos);
 	}
 
 	public void valitarTelaConteudoRecebiveis() {
-		Assert.assertTrue("valor recebido não está visivel", valorrecebido.isDisplayed());
+		Assert.assertTrue("valor recebido não está visivel", valorRecebido.isDisplayed());
 		Assert.assertTrue("valor recebido não está visivel", valorAReceber.isDisplayed());
 		Assert.assertTrue("valor recebido não está visivel", mesReferencia.isDisplayed());
 		validarTextoElemento(labelTelaRecebimentos, textLabelTelaRecebimentos);
@@ -55,7 +53,7 @@ public class RecebimentosActions extends RecebimentosPage {
 
 	public void validarTextoElemento(WebElement elemento, String textoComparacao) {
 		try {
-			Thread.sleep(5000);
+			waitForElementToBeInvisible(loader);
 			String textoDeComparacao = elemento.getText();
 			System.out.println(textoDeComparacao);
 			if (textoComparacao.equalsIgnoreCase(textoDeComparacao)) {
@@ -71,12 +69,12 @@ public class RecebimentosActions extends RecebimentosPage {
 		}
 	}
 
-	public void avacarMes() throws InterruptedException {
-		Thread.sleep(5000);
+	public void avacarMes() {
+		waitForElementToBeInvisible(loader);
 		String textoMesAtual = mesReferencia.getText();
 		waitForElementPageToLoad(avancarMes);
 		avancarMes.click();
-		Thread.sleep(2000);
+		waitForElementToBeInvisible(loader);
 		String textoMesFuturo = mesReferencia.getText();
 		System.out.println(textoMesFuturo);
 
@@ -87,12 +85,12 @@ public class RecebimentosActions extends RecebimentosPage {
 		}
 	}
 
-	public void retrocederMes() throws InterruptedException {
-		Thread.sleep(5000);
+	public void retrocederMes() {
+		waitForElementToBeInvisible(loader);
 		String textoMesAtual = mesReferencia.getText();
 		waitForElementPageToBeClickable(retrocederMes);
 		retrocederMes.click();
-		Thread.sleep(2000);
+		waitForElementToBeInvisible(loader);
 		System.out.println(textoMesAtual);
 		String textoMesPassado = mesReferencia.getText();
 		System.out.println(textoMesPassado);
@@ -104,16 +102,56 @@ public class RecebimentosActions extends RecebimentosPage {
 		}
 	}
 
-	public void validarPeriodos(String periodo) throws InterruptedException {
+	public void validarPeriodos(String periodo) {
 		if (periodo.equals("mês atual")) {
 			valitarTelaConteudoRecebiveis();
 		} else if (periodo.equals("mês seguinte")) {
 			avacarMes();
 		} else {
 			retrocederMes();
-			Assert.assertTrue("valor recebido não está visivel", valorrecebido.isDisplayed());
+			Assert.assertTrue("valor recebido não está visivel", valorRecebido.isDisplayed());
 		}
 
 	}
 
+	public void validarCampoCabecalho(String produto) {
+		Assert.assertThat(valorVouReceber, is(!campoVouReceber.equals(null)));
+		Assert.assertThat(mesReferencia.getText(), is(comm.dataAtual().toString()));
+		Assert.assertThat(comboProduto.getText(), is(produto));
+
+	}
+
+	public void validarListaRecebimentos() {
+		
+		localizaDataRecebiveis();
+
+	}
+
+	public void selecionarProduto(String produto) {
+
+		if (produto.equals("REFEIÇÃO")) {
+			comboProduto.click();
+			produtoRefeicao.click();
+
+		} else if (produto.equals("ALIMENTAÇÃO")) {
+			comboProduto.click();
+			produtoAlimentacao.click();
+
+		} else {
+			comboProduto.click();
+			produtoTodos.click();
+		}
+	}
+
+	public void localizaDataRecebiveis() {
+
+		for (WebElement list : listAReceber) {
+			if (list.getAttribute("Innertext").isEmpty()) {
+				list.click();
+				break;
+			}
+
+		}
+
+	}
 }

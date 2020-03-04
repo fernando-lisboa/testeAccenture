@@ -40,9 +40,6 @@ public class LoginPage extends PageObject {
 	@FindBy(id = "password")
 	protected WebElement password;
 
-	@FindBy(id = "imageLoader")
-	protected WebElement loader;
-
 	@FindBy(id = "AccountLoginBtnSubmitHandler")
 	protected WebElement btnEntrar;
 	
