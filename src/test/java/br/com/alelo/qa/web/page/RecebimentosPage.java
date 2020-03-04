@@ -1,5 +1,7 @@
 package br.com.alelo.qa.web.page;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,13 +22,16 @@ public class RecebimentosPage extends PageObject{
 	public String textLabelTelaRecebimentos = "Recebimentos";
 
 	@FindBy(id = "scheduleTopBarTotalReceivedValue")
-	protected WebElement valorrecebido;
+	protected WebElement valorRecebido;
 
 	@FindBy(id = "scheduleTopBarTotalValueToReceive")
 	protected WebElement valorAReceber;
 	
 	@FindBy(id = "scheduleTopBarNextImage")
 	protected WebElement avancarMes;
+	
+	@FindBy(css = ".totalValue")
+	protected List<WebElement> listAReceber;
 
 	@FindBy(id = "scheduleTopBarPreviousImage")
 	protected WebElement retrocederMes;
@@ -42,6 +47,55 @@ public class RecebimentosPage extends PageObject{
 	
 	@FindBy(id = "imageLoader")
 	protected WebElement loader;
+	
+	@FindBy(id = "ScheDay_today")
+	protected WebElement elementoHoje;
+
+	@FindBy(id = "receiveSummaryComboText")
+	protected WebElement campoVouReceber;
+	public String valorVouReceber= campoVouReceber.getText();
+	
+	@FindBy(id = "product")
+	protected WebElement comboProduto;
+	
+	@FindBy(xpath = "//input[@value='ALELO ALIMENTACAO']")
+	protected WebElement produtoAlimentacao;
+	
+	@FindBy(xpath = "//input[@value='ALELO REFEICAO']")
+	protected WebElement produtoRefeicao;
+	
+	@FindBy(xpath = "//input[@value='TODOS']")
+	protected WebElement produtoTodos;
+	
+	@FindBy(id = "tableSummaryOperationListDesktop")
+	protected WebElement tableListaDeOperacoes;
+	
+	@FindBy(id = "datetimmecustomDiv")
+	protected WebElement elementoData;
+	
+	@FindBy(id = "buttonComprovantes0")
+	protected WebElement botaoComprovante;
+
+	@FindBy(id = "summary-export-pdf-button-1")
+	protected WebElement pdfSuperiorAgenda;
+	
+	@FindBy(id = "summary-export-pdf-button-2")
+	protected WebElement pdfInferiorAgenda;
+	
+	@FindBy(id = "summary-export-csv-button-1")
+	protected WebElement csvSuperiorAgenda;
+	
+	@FindBy(id = "summary-export-csv-button-2")
+	protected WebElement csvInferiorAgenda;
+	
+	@FindBy(id = "summary-print-button-1")
+	protected WebElement ImprimirSuperiorAgenda;
+	
+	@FindBy(id = "summary-print-button-2")
+	protected WebElement ImprimirInferiorAgenda;
+	
+	@FindBy(xpath = "//input[@role='combobox']")
+	protected WebElement comboCnpj;
 	
 	public RecebimentosPage(WebDriver driver) {
 		super(driver);

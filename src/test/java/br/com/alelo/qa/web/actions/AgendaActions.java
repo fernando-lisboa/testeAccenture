@@ -18,20 +18,21 @@ public class AgendaActions extends AgendaPage {
 	}
 
 	public void telaAgenda() throws InterruptedException {
-		waitForElementPageToLoad(loader);
+		//waitForElementPageToLoad(loader);
 		Thread.sleep(2000);
 		waitForElementPageToBeClickable(menuAgenda);
 		menuAgenda.click();
-		waitForElementPageToLoad(loader);
+		//waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 	}
 
 	public void diaAtual() throws InterruptedException {
-		waitForElementPageToLoad(loader);
+		//waitForElementPageToLoad(loader);
 		Thread.sleep(5000);
 		waitForElementPageToBeClickable(elementoHoje);
 		elementoHoje.click();
 		Thread.sleep(5000);
-		waitForElementPageToLoad(loader);
+		//waitForElementPageToLoad(loader);
 	}
 
 	public void avacarMes() throws InterruptedException {
@@ -39,7 +40,8 @@ public class AgendaActions extends AgendaPage {
 		String textoMesAtual = elementoMes.getText();
 		waitForElementPageToLoad(avancarMes);
 		avancarMes.click();
-		waitForElementPageToLoad(loader);
+		//waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 
 		String textoMesFuturo = elementoMes.getText();
 
@@ -55,7 +57,8 @@ public class AgendaActions extends AgendaPage {
 		String textoMesAtual = elementoMes.getText();
 		waitForElementPageToBeClickable(retrocederMes);
 		retrocederMes.click();
-		waitForElementPageToLoad(loader);
+		//waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 
 		System.out.println(textoMesAtual);
 		String textoMesPassado = elementoMes.getText();
@@ -68,13 +71,15 @@ public class AgendaActions extends AgendaPage {
 		}
 	}
 
-	public void telaExtratoMes() {
-		waitForElementPageToLoad(loader);
+	public void telaExtratoMes() throws InterruptedException {
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 		validarUrlAtual(getUrl_agenda());
 	}
 
 	public void TelaExtratoDia() throws InterruptedException {
-		waitForElementPageToLoad(loader);
+		//waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 		waitForElementPageToBeClickable(elementoData);
 		waitForElementPageToBeClickable(elementoResumo);
 		elementoResumo.click();
@@ -88,7 +93,8 @@ public class AgendaActions extends AgendaPage {
 	}
 
 	public void clicarMaisDetalhes() throws InterruptedException {
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 		waitForElementPageToBeClickable(botaoVejaMaisDetalhes);
 		Thread.sleep(5000);
 		botaoVejaMaisDetalhes.click();
@@ -121,7 +127,8 @@ public class AgendaActions extends AgendaPage {
 		waitForElementPageToBeClickable(botaoComprovante);
 		Thread.sleep(5000);
 		botaoComprovante.click();
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 	}
 
 	public void clicarPDFSuperior() {
@@ -158,8 +165,6 @@ public class AgendaActions extends AgendaPage {
 		waitForElementPageToLoad(loader);
 		comboCnpj.click();
 		Thread.sleep(5000);
-		// clicar("xpath", elemento3); TODO aplicar o cnpj a ser selecionado
-		// após clicar no combo
 	}
 
 	public void validarDownloadPDF() {

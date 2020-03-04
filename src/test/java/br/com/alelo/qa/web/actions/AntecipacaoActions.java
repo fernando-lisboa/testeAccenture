@@ -16,20 +16,22 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	}
 
 	public void alterarEstabelecimento(String cnpjAgenda) throws IOException, InterruptedException {
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 		alterarCNPJ(cnpjAgenda);
 		Thread.sleep(2000);
 	}
 
 	public void alterarEstabelecimentoArv(String cnpjAgenda) throws IOException, InterruptedException {
 
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 		alterarCNPJ(cnpjAgenda);
 		Thread.sleep(2000);
 	}
 
 	public void antecipacaoARV() throws InterruptedException {
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
 		Thread.sleep(5000);
 		clicaArv.click();
 		String sidekick;
@@ -51,7 +53,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	public void clicarAntecipar() throws InterruptedException {
 		Thread.sleep(3000);
 		btnAntecipar.click();
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 	}
 
 	public void validaAntecipacao() throws InterruptedException {
@@ -123,7 +126,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 	public void clicarVizualizarValores() throws InterruptedException {
 		btnVisualizarValores.click();
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 	}
 
 	public void selecionarOpcao() throws InterruptedException {
@@ -134,8 +138,9 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		celularValorLiquido.click();
 	}
 
-	public void clicarAlterar() {
-		waitForElementPageToLoad(loader);
+	public void clicarAlterar() throws InterruptedException {
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 		waitForElementPageToBeClickable(btnAlteraValor);
 		btnAlterarRecorrencia.click();
 	}
@@ -170,7 +175,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	}
 
 	public void alterarCNPJ(String cnpjAgenda) throws IOException, InterruptedException {
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+		Thread.sleep(3000);
 		comboCnpj.click();
 		Thread.sleep(5000);
 		// clicar("xpath", elemento3); TODO aplicar o cnpj a ser selecionado
