@@ -2,7 +2,7 @@
  * Create: 30/12/2019 | Author: Jessé Dantas - Taking 
  */
 
-package br.com.alelo.qa.utils;
+package br.com.alelo.utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

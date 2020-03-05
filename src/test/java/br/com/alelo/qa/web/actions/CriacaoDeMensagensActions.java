@@ -15,8 +15,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import br.com.alelo.qa.utils.RandomUtils;
 import br.com.alelo.qa.web.page.CriacaoDeMensagensPage;
+import br.com.alelo.utils.RandomUtils;
 
 /**
  * @author Fernando Lisboa

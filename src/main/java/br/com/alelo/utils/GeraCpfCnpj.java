@@ -1,20 +1,20 @@
-package br.com.alelo.qa.utils;
+package br.com.alelo.utils;
 
 import java.util.InputMismatchException;
 import java.util.Random;
 
 public class GeraCpfCnpj {
 
-	private int randomiza(int n) {
+	private static int randomiza(int n) {
         int ranNum = (int) (Math.random() * n);
 		return ranNum;
 	}
 
-	private int mod(int dividendo, int divisor) {
+	private static int mod(int dividendo, int divisor) {
 		return (int) Math.round(dividendo - (Math.floor(dividendo / divisor) * divisor));
 	}
 
-	public String cpf(boolean comPontos) {
+	public static String cpf(boolean comPontos) {
 		int n = 9;
 		int n1 = randomiza(n);
 		int n2 = randomiza(n);
@@ -50,7 +50,7 @@ public class GeraCpfCnpj {
 		return retorno;
 	}
 
-	public String cnpj(boolean comPontos) {
+	public static String cnpj(boolean comPontos) {
 		int n = 9;
 		int n1 = randomiza(n);
 		int n2 = randomiza(n);
@@ -88,8 +88,7 @@ public class GeraCpfCnpj {
 		return retorno;
 	}
 
-
-	public String rg(boolean comPontos) {
+	public static String rg(boolean comPontos) {
 		String  nDigResult;
 		String numerosContatenados;
 		String numeroGerado;
@@ -201,15 +200,15 @@ public class GeraCpfCnpj {
 		char dig13, dig14;
 		int sm, i, r, num, peso;
 
-		// "try" - protege o código para eventuais erros de conversao de tipo (int)
+		// "try" - protege o cÃ³digo para eventuais erros de conversao de tipo (int)
 		try {
 			// Calculo do 1o. Digito Verificador
 			sm = 0;
 			peso = 2;
 			for (i = 11; i >= 0; i--) {
-				// converte o i-ésimo caractere do CNPJ em um número:
+				// converte o i-Ã©simo caractere do CNPJ em um nÃºmero:
 				// por exemplo, transforma o caractere '0' no inteiro 0
-				// (48 eh a posição de '0' na tabela ASCII)
+				// (48 eh a posiÃ§Ã£o de '0' na tabela ASCII)
 				num = (int) (CNPJ.charAt(i) - 48);
 				sm = sm + (num * peso);
 				peso = peso + 1;
@@ -240,7 +239,7 @@ public class GeraCpfCnpj {
 			else
 				dig14 = (char) ((11 - r) + 48);
 
-			// Verifica se os dígitos calculados conferem com os dígitos informados.
+			// Verifica se os dÃ­gitos calculados conferem com os dÃ­gitos informados.
 			if ((dig13 == CNPJ.charAt(12)) && (dig14 == CNPJ.charAt(13)))
 				return (true);
 			else
@@ -264,7 +263,80 @@ public class GeraCpfCnpj {
 	}
 
 	public static String imprimeCNPJ(String CNPJ) {
-		// máscara do CNPJ: 99.999.999.9999-99
+		// mÃ¡scara do CNPJ: 99.999.999.9999-99
 		return (CNPJ.substring(0, 2) + "." + CNPJ.substring(2, 5) + "." + CNPJ.substring(5, 8) + "." + CNPJ.substring(8, 12) + "-" + CNPJ.substring(12, 14));
+	}
+	public static String cnpjInvalido(boolean comPontos) {
+		int n = 9;
+		int n1 = randomiza(n);
+		int n2 = randomiza(n);
+		int n3 = randomiza(n);
+		int n4 = randomiza(n);
+		int n5 = randomiza(n);
+		int n6 = randomiza(n);
+		int n7 = randomiza(n);
+		int n8 = randomiza(n);
+		int n9 = 0; //randomiza(n);
+		int n10 = 0; //randomiza(n);
+		int n11 = 0; //randomiza(n);
+		int n12 = 1; //randomiza(n);
+		int d1 = n12 * 1 + n11 * 2 + n10 * 3 + n9 * 4 + n8 * 5 + n7 * 6 + n6 * 7 + n5 * 8 + n4 * 5 + n3 * 4 + n2 * 3 + n1 * 9; // alterado para gerar CNPJ invalido
+
+		d1 = 11 - (mod(d1, 11));
+
+		if (d1 >= 10)
+			d1 = 0;
+
+		int d2 = d1 * 2 + n12 * 3 + n11 * 4 + n10 * 5 + n9 * 6 + n8 * 7 + n7 * 8 + n6 * 9 + n5 * 2 + n4 * 3 + n3 * 4 + n2 * 5 + n1 * 6;
+
+		d2 = 11 - (mod(d2, 11));
+
+		if (d2 >= 10)
+			d2 = 0;
+
+		String retorno = null;
+
+		if (comPontos)
+			retorno = "" + n1 + n2 + "." + n3 + n4 + n5 + "." + n6 + n7 + n8 + "/" + n9 + n10 + n11 + n12 + "-" + d1 + d2;
+		else
+			retorno = "" + n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9 + n10 + n11 + n12 + d1 + d2;
+
+		return retorno;
+	}
+
+	public static String cpfInvalido(boolean comPontos) {
+		int n = 9;
+		int n1 = randomiza(n);
+		int n2 = randomiza(n);
+		int n3 = randomiza(n);
+		int n4 = randomiza(n);
+		int n5 = randomiza(n);
+		int n6 = randomiza(n);
+		int n7 = randomiza(n);
+		int n8 = randomiza(n);
+		int n9 = randomiza(n);
+		int d1 = n9 * 7 + n8 * 9 + n7 * 1 + n6 * 2 + n5 * 0 + n4 * 8 + n3 * 8 + n2 * 9 + n1 * 15;
+
+		d1 = 11 - (mod(d1, 11));
+
+		if (d1 >= 10)
+			d1 = 0;
+
+		int d2 = d1 * 2 + n9 * 3 + n8 * 4 + n7 * 5 + n6 * 6 + n5 * 7 + n4 * 8 + n3 * 9 + n2 * 10 + n1 * 11;
+
+		d2 = 11 - (mod(d2, 11));
+
+		String retorno = null;
+
+		if (d2 >= 10)
+			d2 = 0;
+		retorno = "";
+
+		if (comPontos)
+			retorno = "" + n1 + n2 + n3 + '.' + n4 + n5 + n6 + '.' + n7 + n8 + n9 + '-' + d1 + d2;
+		else
+			retorno = "" + n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9 + d1 + d2;
+
+		return retorno;
 	}
 }

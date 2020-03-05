@@ -3,14 +3,12 @@
  */
 package br.com.alelo.qa.web.page;
 
-import java.time.LocalDate;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import br.com.alelo.qa.utils.RandomUtils;
 import br.com.alelo.qa.web.support.PageObject;
+import br.com.alelo.utils.RandomUtils;
 
 /**
  * @author Fernando Lisboa
