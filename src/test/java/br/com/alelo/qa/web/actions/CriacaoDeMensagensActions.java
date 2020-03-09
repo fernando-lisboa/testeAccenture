@@ -13,6 +13,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.ClickAction;
 import org.openqa.selenium.support.ui.Select;
 
 import br.com.alelo.qa.utils.RandomUtils;
@@ -31,7 +32,7 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 
 	Alert alert;
 	Select select;
-	WebElement we;
+	WebElement dateWidget;
 	RandomUtils random;
 
 	public void criarMensagem() throws InterruptedException {
@@ -46,24 +47,22 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 	}
 
 	public void preencherMensagem(String tipoDaMensagem, String tipoDeEnvio) throws InterruptedException {
+		
 		nome_da_mensagem.sendKeys(nomeDaMensagem);
 		assunto_da_mensagem.sendKeys(notificationSubject);
 		descricao_da_mensagem.sendKeys(notificationMessage);
+		select = new Select(comboTipoDeMensagem);
 		select.selectByVisibleText(tipoDaMensagem);
+		select = new Select(comboTipoDeEnvio);
 		select.selectByVisibleText(tipoDeEnvio);
-
-		data_inicial_de_vigencia.click();
 		preencherData(dataInicialVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 0);
+		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 35);
 
-		data_final_de_vigencia.click();
-		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 20);
-
-		Thread.sleep(2000);
+		waitForElementPageToBeClickable(btn_salvar_mensagem);
 		btn_salvar_mensagem.click();
-		Thread.sleep(5000);
-		alert.accept();
+		waitForElementPageToBeClickable(btnConfirmaMensagem);
+		aceitarAlerta();
 		System.out.println("");
-
 	}
 
 	public void validarExibicaoMensagemNoPortal() {
@@ -73,7 +72,8 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 
 	}
 
-	public void preencherData(String elemento, String tableCalendar1, String tableCalendar2, int dias) {
+	public void preencherData(WebElement elemento, WebElement dataInicioDaMensagemTable, WebElement dataFinalDaMensagemTable, int dias) {
+		elemento.click();
 		DateFormat dateFormat2 = new SimpleDateFormat("d");
 		Date date2 = new Date();
 		Calendar c = Calendar.getInstance();
@@ -83,11 +83,11 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 
 		String today = dateFormat2.format(date2);
 		if (dias == 0) {
-			we.findElement(By.xpath(tableCalendar1));
+			dateWidget = dataInicioDaMensagemTable;
 		} else {
-			we.findElement(By.xpath(tableCalendar2));
+			dateWidget = dataFinalDaMensagemTable;
 		}
-		List<WebElement> columns = we.findElements(By.tagName("td"));
+		List<WebElement> columns = dateWidget.findElements(By.tagName("td"));
 
 		for (WebElement cell : columns) {
 
@@ -99,5 +99,8 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 			}
 		}
 	}
-
+	public void aceitarAlerta() {
+		btnConfirmaMensagem.click();
+    }
+	
 }

@@ -28,22 +28,30 @@ public class CriacaoDeMensagensPage extends PageObject {
 	@FindBy(xpath = "/html/body/div[2]/nav[1]/div/div/ul/li[2]/a")
 	protected WebElement mensagens_link;
 
+	@FindBy (xpath = "//*[@id=\"notificationDefaultMessage\"]")
+	protected WebElement comboTipoDeMensagem;
+
+	@FindBy (id = "notificationType")
+	protected WebElement comboTipoDeEnvio;
+
 	@FindBy(id = "btnAdicionarOferta")
 	protected WebElement btn_adicionar_mensagem;
 
-	@FindBy(id = "btnBeginDate")
-	protected WebElement data_inicial;
-
-	@FindBy(id = "btnEndDate")
-	protected WebElement credenciadora_dois;
+//	@FindBy(id = "btnBeginDate")
+//	protected WebElement data_inicial;
+//
+//	@FindBy(id = "btnEndDate")
+//	protected WebElement credenciadora_dois;
 
 	@FindBy(id = "vanCheckLabel2")
 	protected WebElement data_final;
 
-	@FindBy(id = "beginDate")
-	protected WebElement data_inicial_de_vigencia;
-	public String dataInicialVigencia;
+	@FindBy(id = "btnBeginDate")
+	protected WebElement dataInicialVigencia;
 
+	@FindBy(id = "btnEndDate")
+	protected WebElement dataFinalVigencia;
+	
 	@FindBy(id = "notificationType")
 	protected WebElement tipo_de_envio;
 
@@ -71,17 +79,12 @@ public class CriacaoDeMensagensPage extends PageObject {
 	@FindBy(id = "endDate")
 	protected WebElement status_message;
 
-	@FindBy(id = "notificationName")
-	protected WebElement data_final_de_vigencia;
-	public String dataFinalVigencia;
 
 	@FindBy(xpath = "/html/body/div[6]/div[3]/table")
-	protected WebElement data_inicial_de_vigencia_conteudo;
-	public String dataInicioDaMensagemTable;
+	protected WebElement dataInicioDaMensagemTable;
 
 	@FindBy(xpath = "/html/body/div[7]/div[3]/table")
-	protected WebElement data_final_de_vigencia_conteudo;
-	public String dataFinalDaMensagemTable;
+	protected WebElement dataFinalDaMensagemTable;
 
 	@FindBy(xpath = "/html/body/div[4]/div[3]/div/div/div[2]/div/h1[2]")
 	protected WebElement mensagem_confirmacao;
@@ -92,4 +95,6 @@ public class CriacaoDeMensagensPage extends PageObject {
 	@FindBy(id = "btnGrayLight")
 	protected WebElement btn_cancelar;
 
+	@FindBy(xpath = "//button[contains(@class,'btn btn-default btnRedir')]")
+	protected WebElement btnConfirmaMensagem;
 }
