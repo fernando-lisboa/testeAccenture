@@ -20,7 +20,7 @@ import br.com.alelo.qa.utils.RandomUtils;
 import br.com.alelo.qa.web.page.CriacaoDeMensagensPage;
 
 /**
- * @author Fernando Lisboa
+ * @author Matheus Lisboa
  *
  */
 public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
