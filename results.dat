@@ -1,4 +1,4 @@
-
+cenario;status;
 9999 - Bloqueio Bloquear CNPJ que esteja contratado no periodo de testes via upload de planilha;passed;
 9999 - Bloqueio Bloquear CNPJ que esteja contratado fora periodo de testes via upload de planilha;failed;
 9999 - Bloqueio Bloquear CNPJ que esteja contratado no periodo de testes via upload de planilha;failed;
