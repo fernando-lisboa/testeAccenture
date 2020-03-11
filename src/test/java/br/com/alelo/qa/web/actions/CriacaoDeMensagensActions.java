@@ -3,12 +3,15 @@
  */
 package br.com.alelo.qa.web.actions;
 
+import static org.hamcrest.CoreMatchers.is;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +22,7 @@ import br.com.alelo.qa.web.page.CriacaoDeMensagensPage;
 import br.com.alelo.utils.RandomUtils;
 
 /**
- * @author Fernando Lisboa
+ * @author Matheus Lisboa
  *
  */
 public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
@@ -31,11 +34,11 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 
 	Alert alert;
 	Select select;
-	WebElement we;
+	WebElement dateWidget;
 	RandomUtils random;
 
 	public void criarMensagem() throws InterruptedException {
-		Thread.sleep(2000);
+		waitForElementPageToBeClickable(mensagens_link);
 		mensagens_link.click();
 		System.out.println("aguardando abrir formulário");
 	}
@@ -46,34 +49,27 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 	}
 
 	public void preencherMensagem(String tipoDaMensagem, String tipoDeEnvio) throws InterruptedException {
+
 		nome_da_mensagem.sendKeys(nomeDaMensagem);
 		assunto_da_mensagem.sendKeys(notificationSubject);
 		descricao_da_mensagem.sendKeys(notificationMessage);
+		select = new Select(comboTipoDeMensagem);
 		select.selectByVisibleText(tipoDaMensagem);
+		select = new Select(comboTipoDeEnvio);
 		select.selectByVisibleText(tipoDeEnvio);
-
-		data_inicial_de_vigencia.click();
 		preencherData(dataInicialVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 0);
+		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 35);
 
-		data_final_de_vigencia.click();
-		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 20);
-
-		Thread.sleep(2000);
+		waitForElementPageToBeClickable(btn_salvar_mensagem);
 		btn_salvar_mensagem.click();
-		Thread.sleep(5000);
-		alert.accept();
-		System.out.println("");
-
+		waitForElementPageToBeClickable(btnConfirmaMensagem);
+		aceitarAlerta();
 	}
 
-	public void validarExibicaoMensagemNoPortal() {
-		// acessar portalEC
-		// clicar em notificações
-		// percorrer a lista e localizar mensagem criada
 
-	}
-
-	public void preencherData(String elemento, String tableCalendar1, String tableCalendar2, int dias) {
+	public void preencherData(WebElement elemento, WebElement dataInicioDaMensagemTable,
+			WebElement dataFinalDaMensagemTable, int dias) {
+		elemento.click();
 		DateFormat dateFormat2 = new SimpleDateFormat("d");
 		Date date2 = new Date();
 		Calendar c = Calendar.getInstance();
@@ -83,11 +79,11 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 
 		String today = dateFormat2.format(date2);
 		if (dias == 0) {
-			we.findElement(By.xpath(tableCalendar1));
+			dateWidget = dataInicioDaMensagemTable;
 		} else {
-			we.findElement(By.xpath(tableCalendar2));
+			dateWidget = dataFinalDaMensagemTable;
 		}
-		List<WebElement> columns = we.findElements(By.tagName("td"));
+		List<WebElement> columns = dateWidget.findElements(By.tagName("td"));
 
 		for (WebElement cell : columns) {
 
@@ -100,4 +96,56 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 		}
 	}
 
+	public void aceitarAlerta() {
+		btnConfirmaMensagem.click();
+	}
+
+	public void editarMensagem() {
+		waitForElementPageToBeClickable(mensagens_link);
+		mensagens_link.click();
+		waitForElementPageToBeClickable(img_btn_edicao);
+		img_btn_edicao.click();
+		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 35);
+		waitForElementPageToBeClickable(btn_salvar_mensagem);
+		btn_salvar_mensagem.click();
+	}
+
+
+	public void validarEdicao() {
+
+		Assert.assertThat(editarSucesso.getText(), is(msgEsperada));
+	}
+
+	// Metodo para Alterar Status da Mensagem
+
+	public void alterarStatusMensagem(String status) {
+		waitForElementPageToBeClickable(status_notification);
+		status_notification.click();
+		select = new Select(status_notification);
+		select.selectByVisibleText(status);
+		waitForElementPageToBeClickable(btn_filtrar);
+		btn_filtrar.click();
+	}
+
+	public void excluirMensagem() {
+		waitForElementPageToBeClickable(btnExcluirMensagem);
+		btnExcluirMensagem.click();
+		waitForElementPageToBeClickable(botaoConfirmaExcluir);
+		botaoConfirmaExcluir.click();
+	}
+
+	public void validarMensagemDeExclusao() {
+		try {
+			Thread.sleep(2000);
+			List<WebElement> list = msgConfirmacao.findElements(By.tagName("h1"));
+			String el1 = list.get(0).getText();
+			String el2 = list.get(1).getText();
+			Assert.assertThat(el1 + " " + el2, is(msgEsperadaExclusao));
+		} catch (InterruptedException e) {
+			System.out.println("Botáo não está presente na tela "+e);
+			e.printStackTrace();
+		}
+		
+
+	}
 }
