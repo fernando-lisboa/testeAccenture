@@ -162,6 +162,15 @@ import br.com.alelo.utils.setupTestes.rest.IPostActions;
 			String dataFormatada = new SimpleDateFormat("dd/MM/yyyy").format(data.getTime());
 			return dataFormatada;
 		}
+		
+		public String dataRecebiveis(int index) {
+			Calendar data = Calendar.getInstance();
+			data.setTime(new Date());
+			 data.add(Calendar.DAY_OF_MONTH, +index-1);
+			String dataFormatada = new SimpleDateFormat("dd/MM/yyyy").format(data.getTime());
+			return dataFormatada;
+		}
+		
 
 		public Token gerarToken() {
 			if (token == null) {

@@ -1,32 +1,52 @@
-##language: pt
-##/**
-## * Autor: Fernando Lisboa
-## * Empresa: Taiking
-## * Data: 23/05/2019
-## * Caminho: Portal Estabelecimento Web Admin
-## */
-#@Antecipacao1 @front @Regressao
-#Funcionalidade: CriaçãoDeMensagem
-#    Criar e enviar um comunicado para cliente estabelecimento comercial
-#  
-#  Eu como usuário
-#  Desejo criar uma mensagem
-#  Para enviar um comunicado para cliente estabelecimento comercial
-#
-#  Contexto: 
-#    Dado que estou logado em qualquer tela no Web Admin
-#
-#  @Release-15 @criacaoDemensagens
-#  Esquema do Cenario: [Busca web] "<Cenario>"-"<DescricaoDoCenario>"
-#    Dado eu clique no botao de mensagem
-#    E e clicar no botao adicionar
-#    E quando eu preencher o formulario de mensagens e clicar em adicionar, "<tipoMensagem>","<tipoEnvio>"
-#    Entao deve ser criada uma nova mensagem com os dados informados
-#
-#    Exemplos: 
-#      | Cenario | DescricaoDoCenario                     | tipoMensagem | tipoEnvio |
-#      | CT01.1  | Crirar mensagens ativas Simples padrão | Padrão       | Simples   |
-#    #Exemplos: 
-#     # | Cenario | DescricaoDoCenario         |
-#     # | CT01.1  | excluir mensagens ativas   |
-#    #S  | CT01.2  | excluir mensagens pendente |
+#language: pt
+#/**
+#* Autor: Matheus Lisboa
+#* Empresa: Taiking
+#* Data: 06/0232020
+#* Caminho: Portal Estabelecimento Web Admin
+#*/
+@Antecipacao1 @front @Regressao
+Funcionalidade: CriaçãoDeMensagem
+    Criar e enviar um comunicado para cliente estabelecimento comercial
+  
+  Eu como usuário
+  Desejo criar uma mensagem
+  Para enviar um comunicado para cliente estabelecimento comercial
+
+  Contexto: 
+    Dado que estou na logado no portal webadmim EC "22222222222", "12345678!"
+
+  @Release-15 @criacaoDemensagens
+  Esquema do Cenario: <VSTS> notification - <cenario>
+    Dado eu clique no botao de mensagem
+    E e clicar no botao adicionar
+    E quando eu preencher o formulario de mensagens e clicar em adicionar, "<tipoMensagem>","<tipoEnvio>"
+    Entao deve ser criada uma nova mensagem com os dados informados
+
+    Exemplos: 
+      | VSTS | cenario                                    | tipoMensagem | tipoEnvio |
+      | 9999 | Crirar mensagens ativas Padrão Simples     | Padrão       | Simples   |
+      | 9999 | Crirar mensagens ativas Padrão Forçada     | Padrão       | Forçada   |
+      | 9999 | Crirar mensagens ativas Segmentada Simples | Segmentada   | Simples   |
+      | 9999 | Crirar mensagens ativas Segmentada Forçada | Segmentada   | Forçada   |
+
+  @Release-15 @editarMensagens
+  Esquema do Cenario: <VSTS> notification - <cenario>
+    Dado eu clique no menu mensagem
+    E clicar no icone de editar
+    Entao deve ser alterado a data final da postagem
+
+    Exemplos: 
+      | VSTS | cenario         |
+      | 9999 | editar mensagem |
+
+  @Release-15 @exclusaoDeMensagens
+  Esquema do Cenario: <VSTS> notification - <cenario>
+    Dado eu clique na aba de mensagem
+    E selecionar o status e filtrar e clicar no icone de excluir, "<status>"
+    Entao deve ser apresentado a mensagem de confirmacao de exclusao
+
+    Exemplos: 
+      | VSTS | cenario           | status  |
+      | 9999 | excluir mensagens | Vigente |
+      | 9999 | excluir mensagens | Inativa |
