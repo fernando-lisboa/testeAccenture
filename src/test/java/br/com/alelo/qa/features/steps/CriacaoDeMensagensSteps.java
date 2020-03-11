@@ -1,7 +1,7 @@
 ///**
 //  * Autor: Matheus Lisboa
 // * Empresa: Taking
-// * Data: 09/03/2020
+// * Data: 10/03/2020
 // * Caminho: Portal Estabelecimento Comercial  --> WebAdmin
 // */
 
@@ -24,33 +24,32 @@ public class CriacaoDeMensagensSteps extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	LoginActions login;
-	CriacaoDeMensagensActions criacaoDeMensagens;
+	CriacaoDeMensagensActions page;
 	OfertaAtivaActions oferta;
 	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
-
 	@Dado("^eu clique no botao de mensagem$")
 	public void eu_clique_no_botao_de_mensagem() throws Throwable {
-		criacaoDeMensagens = new CriacaoDeMensagensActions(webdriver);
-		criacaoDeMensagens.criarMensagem();
+		page = new CriacaoDeMensagensActions(webdriver);
+		page.criarMensagem();
 	}
 
 	@Dado("^e clicar no botao adicionar$")
 	public void e_clicar_no_botao_adicionar() throws Throwable {
-		criacaoDeMensagens.adicionarMensagem();
+		page.adicionarMensagem();
 	}
 
 	@Dado("^quando eu preencher o formulario de mensagens e clicar em adicionar, \"([^\"]*)\",\"([^\"]*)\"$")
 	public void quando_eu_preencher_o_formulario_de_mensagens_e_clicar_em_adicionar(String tipoMensagem,
 			String tipoEnvio) throws Throwable {
-		criacaoDeMensagens.preencherMensagem(tipoMensagem, tipoEnvio);
+		page.preencherMensagem(tipoMensagem, tipoEnvio);
 
 	}
 
 	@Entao("^deve ser criada uma nova mensagem com os dados informados$")
 	public void deve_ser_criada_uma_nova_mensagem_com_os_dados_informados() throws Throwable {
-		criacaoDeMensagens.validarExibicaoMensagemNoPortal();
+		page.validarExibicaoMensagemNoPortal();
 	}
 
 	@Dado("^e clicar no botao editar mensagem$")
@@ -67,4 +66,50 @@ public class CriacaoDeMensagensSteps extends ParentSteps {
 	public void então_a_vigencia_da_mensagem_deve_ficar_de_acordo_com_a_alteracao_feita() throws Throwable {
 	}
 
+	////////////////////////////////////
+	// Editar Mensagem
+	////////////////////////////////////
+
+	@Dado("^eu clique no menu mensagem$")
+	public void eu_clique_no_menu_mensagem() throws Throwable {
+		page = new CriacaoDeMensagensActions(webdriver);
+		System.out.println("Abrindo Menu Mensagem");
+	}
+
+	@Dado("^clicar no icone de editar$")
+	public void clicar_no_icone_de_editar() throws Throwable {
+		page.editarMensagem();
+	}
+
+	@Entao("^deve ser alterado a data final da postagem$")
+	public void deve_ser_alterado_a_data_final_da_postagem() throws Throwable {
+		page.validarEdicao();
+	}
+
+	///////////////////////////
+	// Exclusao de Mensagem
+	//////////////////////////
+
+	@Dado("^eu clique na aba de mensagem$")
+	public void eu_clique_na_aba_de_mensagem() throws Throwable {
+		page = new CriacaoDeMensagensActions(webdriver);
+		System.out.println("Abrindo Menu Mensagem");
+		page.criarMensagem();
+	}
+
+	@Dado("^selecionar o status e filtrar e clicar no icone de excluir, \"([^\"]*)\"$")
+	public void selecionar_o_status_e_filtrar_e_clicar_no_icone_de_excluir(String status) throws Throwable {
+		/*
+		 * Ter que clicar no botao status_notification selecionar o status e clicar em
+		 * filtar
+		 */
+		page = new CriacaoDeMensagensActions(webdriver);
+		page.alterarStatusMensagem(status);
+		page.excluirMensagem();
+	}
+
+	@Dado("^deve ser apresentado a mensagem de confirmacao de exclusao$")
+	public void deve_ser_apresentado_a_mensagem_de_confirmacao_de_exclusao() throws Throwable {
+		page.validarMensagemDeExclusao();
+	}
 }

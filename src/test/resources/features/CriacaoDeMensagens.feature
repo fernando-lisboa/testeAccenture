@@ -30,14 +30,23 @@ Funcionalidade: CriaçãoDeMensagem
       | 9999 | Crirar mensagens ativas Segmentada Simples | Segmentada   | Simples   |
       | 9999 | Crirar mensagens ativas Segmentada Forçada | Segmentada   | Forçada   |
 
-  @Release-15 @exclusaoDeMensagens
+  @Release-15 @editarMensagens
   Esquema do Cenario: <VSTS> notification - <cenario>
-    Dado eu clique no botao de mensagem
-    E e clicar no botao adicionar
-    E quando eu preencher o formulario de mensagens e clicar em adicionar, "<tipoMensagem>","<tipoEnvio>"
-    Entao deve ser criada uma nova mensagem com os dados informados
+    Dado eu clique no menu mensagem
+    E clicar no icone de editar
+    Entao deve ser alterado a data final da postagem
 
     Exemplos: 
-      | VSTS | cenario                    |
-      | 9999 | excluir mensagens ativas   |
-      | 9999 | excluir mensagens pendente |
+      | VSTS | cenario         |
+      | 9999 | editar mensagem |
+
+  @Release-15 @exclusaoDeMensagens
+  Esquema do Cenario: <VSTS> notification - <cenario>
+    Dado eu clique na aba de mensagem
+    E selecionar o status e filtrar e clicar no icone de excluir, "<status>"
+    Entao deve ser apresentado a mensagem de confirmacao de exclusao
+
+    Exemplos: 
+      | VSTS | cenario           | status  |
+      | 9999 | excluir mensagens | Vigente |
+      | 9999 | excluir mensagens | Inativa |

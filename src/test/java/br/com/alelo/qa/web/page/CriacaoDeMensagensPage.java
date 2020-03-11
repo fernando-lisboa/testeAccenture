@@ -13,7 +13,7 @@ import br.com.alelo.qa.utils.RandomUtils;
 import br.com.alelo.qa.web.support.PageObject;
 
 /**
- * @author Fernando Lisboa
+ * @author Matheus Lisboa
  *
  */
 public class CriacaoDeMensagensPage extends PageObject {
@@ -36,13 +36,11 @@ public class CriacaoDeMensagensPage extends PageObject {
 
 	@FindBy(id = "btnAdicionarOferta")
 	protected WebElement btn_adicionar_mensagem;
-
-//	@FindBy(id = "btnBeginDate")
-//	protected WebElement data_inicial;
-//
-//	@FindBy(id = "btnEndDate")
-//	protected WebElement credenciadora_dois;
-
+	
+	@FindBy(id = "statusNotification")
+	protected WebElement status_notification;
+	public String statusNotification = "Vigente";
+	
 	@FindBy(id = "vanCheckLabel2")
 	protected WebElement data_final;
 
@@ -72,10 +70,21 @@ public class CriacaoDeMensagensPage extends PageObject {
 	@FindBy(id = "notificationMessage")
 	protected WebElement descricao_da_mensagem;
 	public String notificationMessage = "Testando inclusão via robô - Front";
-
+	
+	//Botao filtrar
 	@FindBy(id = "btnCalendarFilter")
 	protected WebElement btn_filtrar;
 
+	//Ícone para editar 
+	
+	@FindBy(xpath = "/html/body/div[3]/div[2]/table/tbody/tr[2]/td[7]/a")
+	protected WebElement img_btn_edicao;
+	
+	protected WebElement editar;
+	
+	@FindBy (id = "table")
+	protected WebElement tableEditar;
+	
 	@FindBy(id = "endDate")
 	protected WebElement status_message;
 
@@ -92,9 +101,28 @@ public class CriacaoDeMensagensPage extends PageObject {
 	@FindBy(id = "btnInsert")
 	protected WebElement btn_salvar_mensagem;
 
+	@FindBy(xpath = "//h1[contains(.,'mensagem editada')]")
+	protected WebElement editarSucesso;
+	public String msgEsperada = "MENSAGEM EDITADA";
+	
+	
+	//exclusao
+	@FindBy(xpath = "//h1[contains(.,'Tem certeza que deseja']")
+	protected WebElement exclusaoSucesso;
+	
 	@FindBy(id = "btnGrayLight")
 	protected WebElement btn_cancelar;
 
 	@FindBy(xpath = "//button[contains(@class,'btn btn-default btnRedir')]")
 	protected WebElement btnConfirmaMensagem;
+	
+	@FindBy(xpath = "/html/body/div[3]/div[2]/table/tbody/tr[3]/td[8]/a/img")
+	protected WebElement btnExcluirMensagem;
+	
+	@FindBy(xpath = "/html/body/div[4]/div[3]/div/div/div[2]/div")
+	protected WebElement msgConfirmacao;
+	public String msgEsperadaExclusao = "EXCLUSÃO REALIZADA COM SUCESSO!";
+
+	@FindBy(id = "deleteNotification")
+	protected WebElement botaoConfirmaExcluir;
 }
