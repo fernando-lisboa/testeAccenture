@@ -64,15 +64,8 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 		btn_salvar_mensagem.click();
 		waitForElementPageToBeClickable(btnConfirmaMensagem);
 		aceitarAlerta();
-		System.out.println("");
 	}
 
-	public void validarExibicaoMensagemNoPortal() {
-		// acessar portalEC
-		// clicar em notificações
-		// percorrer a lista e localizar mensagem criada
-
-	}
 
 	public void preencherData(WebElement elemento, WebElement dataInicioDaMensagemTable,
 			WebElement dataFinalDaMensagemTable, int dias) {
@@ -117,10 +110,6 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 		btn_salvar_mensagem.click();
 	}
 
-	public void validarMensagem() {
-		// TODO Auto-generated method stub
-
-	}
 
 	public void validarEdicao() {
 
