@@ -19,6 +19,7 @@ import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.PendingException;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
+import cucumber.api.java.pt.Então;
 
 public class CriacaoDeMensagensSteps extends ParentSteps {
 
@@ -77,6 +78,7 @@ public class CriacaoDeMensagensSteps extends ParentSteps {
 		System.out.println("Abrindo Menu Mensagem");
 	}
 
+	
 	@Dado("^clicar no icone de editar$")
 	public void clicar_no_icone_de_editar() throws Throwable {
 		page.editarMensagem();
@@ -113,4 +115,23 @@ public class CriacaoDeMensagensSteps extends ParentSteps {
 	public void deve_ser_apresentado_a_mensagem_de_confirmacao_de_exclusao() throws Throwable {
 		page.validarMensagemDeExclusao();
 	}
+	
+	//indicador notificacao
+	
+	@Dado("^que eu tenha um usuário com notificações$")
+	public void que_eu_tenha_um_usuário_com_notificações() throws Throwable {
+		 System.out.println("Logado com o usuario que contem a mensagem ");
+	}
+	
+	@Então("^devo validar que o icone de notificação está visivel com a quantidade de notificacoes disponiveis$")
+	public void devo_validar_que_oicone_de_notificação_está_visivel_com_a_quantidade_de_notificacoes_disponiveis() throws Throwable {
+		page = new CriacaoDeMensagensActions(webdriver);
+		page.iconNotificationId();
+		
+	}
+	
+	
+	
+	
+	
 }

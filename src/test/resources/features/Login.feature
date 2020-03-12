@@ -19,7 +19,7 @@ Funcionalidade: Login
 
     Exemplos: 
       | VSTS | cenario           | user           | password   |
-      | 0000 | Login com sucesso | 387.055.390.13 | Alelo2020@ |
+      | 00001 | Login com sucesso | 387.055.390.13 | Alelo2020@ |
 
   @ligin @Regressivo
   Esquema do Cenario: <VSTS> - Login com sucesso <cenario>
@@ -29,5 +29,5 @@ Funcionalidade: Login
 
     Exemplos: 
       | VSTS | cenario                    | user           | password   |
-      | 0000 | Login com user inexistente | 111.111.111-11 | Alelo2018@ |
-      | 0000 | Login com senha incorreta  | 546.219.170-72 | Alelo2020! |
+      | 00002 | Login com user inexistente | 111.111.111-11 | Alelo2018@ |
+      | 00003 | Login com senha incorreta  | 546.219.170-72 | Alelo2020! |

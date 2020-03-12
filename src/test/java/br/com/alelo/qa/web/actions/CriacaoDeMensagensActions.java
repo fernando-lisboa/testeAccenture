@@ -145,7 +145,11 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 			System.out.println("Botáo não está presente na tela "+e);
 			e.printStackTrace();
 		}
-		
-
 	}
+	
+	public void iconNotificationId() {
+		waitForElementPageToBeClickable(badgeNotification);
+		Assert.assertTrue("icone de notificacao nao disponivel", badgeNotification.isDisplayed());
+	}
+
 }
