@@ -5,7 +5,7 @@
 #* Data: 06/0232020
 #* Caminho: Portal Estabelecimento Web Admin
 #*/
-@Antecipacao1 @front @Regressao
+@Antecipacao1 @front @Regressivo
 Funcionalidade: CriaçãoDeMensagem
     Criar e enviar um comunicado para cliente estabelecimento comercial
   
@@ -16,7 +16,7 @@ Funcionalidade: CriaçãoDeMensagem
   Contexto: 
     Dado que estou na logado no portal webadmim EC "22222222222", "12345678!"
 
-  @Release-15 @criacaoDemensagens
+  @Release-15 @criacaoDemensagens @Regressivo
   Esquema do Cenario: <VSTS> notification - <cenario>
     Dado eu clique no botao de mensagem
     E e clicar no botao adicionar
@@ -30,7 +30,7 @@ Funcionalidade: CriaçãoDeMensagem
       | 9999 | Crirar mensagens ativas Segmentada Simples | Segmentada   | Simples   |
       | 9999 | Crirar mensagens ativas Segmentada Forçada | Segmentada   | Forçada   |
 
-  @Release-15 @editarMensagens
+  @Release-15 @editarMensagens @Regressivo
   Esquema do Cenario: <VSTS> notification - <cenario>
     Dado eu clique no menu mensagem
     E clicar no icone de editar
@@ -40,7 +40,7 @@ Funcionalidade: CriaçãoDeMensagem
       | VSTS | cenario         |
       | 9999 | editar mensagem |
 
-  @Release-15 @exclusaoDeMensagens
+  @Release-15 @exclusaoDeMensagens @Regressivo
   Esquema do Cenario: <VSTS> notification - <cenario>
     Dado eu clique na aba de mensagem
     E selecionar o status e filtrar e clicar no icone de excluir, "<status>"
