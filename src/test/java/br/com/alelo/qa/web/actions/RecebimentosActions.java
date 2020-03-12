@@ -13,10 +13,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import br.com.alelo.qa.web.page.RecebimentosPage;
+import br.com.alelo.utils.SimpleCacheManager;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 
 public class RecebimentosActions extends RecebimentosPage {
-
+	
+	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 	CommonsActions comm = new CommonsActions();
 	private String valorEsperado;
 	int i;
