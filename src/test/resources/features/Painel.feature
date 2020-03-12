@@ -49,8 +49,8 @@ Funcionalidade: Painel
     Entao devo validar a apresentação de infomaçoes de valores a receber
 
     Exemplos: 
-      | VSTS | cenario                                                      |
-      | 9999 | Validar informação de agenda na tela de Painel "Vou receber" |
+      | VSTS   | cenario                                                      |
+      | 9999-1 | Validar informação de agenda na tela de Painel "Vou receber" |
 
   @Painel @Regressivo
   Esquema do Cenario: <VSTS> - Painel - <cenario>
@@ -58,8 +58,8 @@ Funcionalidade: Painel
     Entao devo validar a apresentação de infomaçoes de valores já recebidos
 
     Exemplos: 
-      | VSTS | cenario                                                      |
-      | 9999 | Validar informação de agenda na tela de Painel "Vou receber" |
+      | VSTS   | cenario                                                      |
+      | 9999-2 | Validar informação de agenda na tela de Painel "Vou receber" |
 
   @Painel @Regressivo
   Esquema do Cenario: <VSTS> - Painel - <cenario>
@@ -67,10 +67,8 @@ Funcionalidade: Painel
     Entao devo validar a apresentação de infomaçoes painel com resumo de faturamento e graficos do painel meu negocio "<graficoEsperado>"
 
     Exemplos: 
-      | VSTS | cenario                                            | graficoEsperado |
-      | 9999 | Validar informação de painel resumo de faturamento | faturamento     |
-      | 9999 | Validar informação de painel free mensal           | mensal          |
-      | 9999 | Validar informação de painel free semanal          | semanal         |
-
-  # | 9999 | Validar informação de painel free diário           | diario      |
- 
+      | VSTS   | cenario                                            | graficoEsperado |
+      | 9999-3 | Validar informação de painel resumo de faturamento | faturamento     |
+      | 9999-4 | Validar informação de painel free mensal           | mensal          |
+      | 9999-5 | Validar informação de painel free semanal          | semanal         |
+      | 9999-6 | Validar informação de painel free diário           | diario          |

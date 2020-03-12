@@ -76,7 +76,10 @@ public class CucumberRunnerTest {
 				"Data e hora de inicio: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(dataHoraInicio));
 	}
 
-	 @AfterClass
+	 /**
+	 * @throws Exception
+	 */
+	@AfterClass
 	    public static void teardown() throws Exception {
 	        Date dataHoraFim = new Date();
 	        PropertiesFile props = new PropertiesFile();
