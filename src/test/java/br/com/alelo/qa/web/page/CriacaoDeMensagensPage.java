@@ -123,4 +123,11 @@ public class CriacaoDeMensagensPage extends PageObject {
 
 	@FindBy(id = "deleteNotification")
 	protected WebElement botaoConfirmaExcluir;
+
+	@FindBy(id = "iconNotificationId")
+	protected WebElement iconNotificationId;
+	
+	@FindBy(className = "badgeNotification")
+	protected WebElement badgeNotification; 
+	
 }
