@@ -217,8 +217,11 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void contrataPainel(String cnpjContratado) throws IOException, InterruptedException {
+		waitForElementToBeInvisible(loader);
+		waitForElementPageToBeClickable(graficoMensal);
 		graficoMensal.click();
 		waitForElementToBeInvisible(loader);
+		Thread.sleep(2000);
 		btnExperimenteGratis.click();
 		waitForElementToBeInvisible(loader);
 		btnContratarAgora.click();

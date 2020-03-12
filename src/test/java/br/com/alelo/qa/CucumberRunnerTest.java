@@ -26,7 +26,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = { "src/test/resources/features" }, plugin = {
 		"json:target/cluecumber-report/cucumber.json","junit:target/junit.xml" }, glue = {
-				"classpath:br.com.alelo.qa.features.steps" }, tags = { "@exclusaoDeMensagens" })
+				"classpath:br.com.alelo.qa.features.steps" }, tags = { "@Regressivo" })
 
 public class CucumberRunnerTest {
 
@@ -76,7 +76,10 @@ public class CucumberRunnerTest {
 				"Data e hora de inicio: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(dataHoraInicio));
 	}
 
-	 @AfterClass
+	 /**
+	 * @throws Exception
+	 */
+	@AfterClass
 	    public static void teardown() throws Exception {
 	        Date dataHoraFim = new Date();
 	        PropertiesFile props = new PropertiesFile();
