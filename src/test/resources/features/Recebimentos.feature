@@ -17,9 +17,9 @@ Funcionalidade: Recebimentos
 
     Exemplos: 
       | VSTS | cenario                                                | periodo      | cnpj           |
-      | 9999 | Realizar consulta de valores a receber e recebidos     | mês atual    | 28339982000160 |
-      | 9999 | Realizar consulta de valores a receber no proximo mes  | mês seguinte | 28339982000160 |
-      | 9999 | Realizar consulta de valores recebidos no mes anterior | mês anterior | 28339982000160 |
+      | 9999-1 | Realizar consulta de valores a receber e recebidos     | mês atual    | 28339982000160 |
+      | 9999-2 | Realizar consulta de valores a receber no proximo mes  | mês seguinte | 28339982000160 |
+      | 9999-3 | Realizar consulta de valores recebidos no mes anterior | mês anterior | 28339982000160 |
 
   @Recebimentos1 @RecebimentoPorProduto
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
@@ -29,9 +29,9 @@ Funcionalidade: Recebimentos
 
     Exemplos: 
       | VSTS | cenario                                                  | produto           | cnpj           |
-      | 9999 | Consultar Recebimentos por tipo de produto - REFEIÇÃO    | ALELO REFEICAO    | 28339982000160 |
-      | 9999 | Consultar Recebimentos por tipo de produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
-      | 9999 | Consultar Recebimentos por tipo de produto - TODOS       | TODOS             | 28339982000160 |
+      | 9999-4 | Consultar Recebimentos por tipo de produto - REFEIÇÃO    | ALELO REFEICAO    | 28339982000160 |
+      | 9999-5 | Consultar Recebimentos por tipo de produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
+      | 9999-6 | Consultar Recebimentos por tipo de produto - TODOS       | TODOS             | 28339982000160 |
 
   @Recebimentos @FERNANDO
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
@@ -42,6 +42,6 @@ Funcionalidade: Recebimentos
 
     Exemplos: 
       | VSTS | cenario                                                                | produto           | cnpj           |
-      | 9999 | Consultar detalhe das transações de acordo com o produto - REFEIÇÃO    | ALELO REFEICAO    | 28339982000160 |
-      | 9999 | Consultar detalhe das transações de acordo com o produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
-      | 9999 | Consultar detalhe das transações de acordo com o produto- TODOS        | TODOS             | 28339982000160 |
+      | 9999-7 | Consultar detalhe das transações de acordo com o produto - REFEIÇÃO    | ALELO REFEICAO    | 28339982000160 |
+      | 9999-8 | Consultar detalhe das transações de acordo com o produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
+      | 9999-9 | Consultar detalhe das transações de acordo com o produto- TODOS        | TODOS             | 28339982000160 |

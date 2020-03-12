@@ -52,8 +52,8 @@ public class RecebimentosActions extends RecebimentosPage {
 
 	public void valitarTelaConteudoRecebiveis() {
 		Assert.assertTrue("valor recebido não está visivel", valorRecebido.isDisplayed());
-		Assert.assertTrue("valor recebido não está visivel", valorAReceber.isDisplayed());
-		Assert.assertTrue("valor recebido não está visivel", mesReferencia.isDisplayed());
+		Assert.assertTrue("valor a receber não está visível", valorAReceber.isDisplayed());
+		Assert.assertTrue("Mes de referencia não está visível", mesReferencia.isDisplayed());
 		validarTextoElemento(labelTelaRecebimentos, textLabelTelaRecebimentos);
 	}
 

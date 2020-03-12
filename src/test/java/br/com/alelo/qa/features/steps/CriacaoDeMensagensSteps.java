@@ -77,6 +77,7 @@ public class CriacaoDeMensagensSteps extends ParentSteps {
 		System.out.println("Abrindo Menu Mensagem");
 	}
 
+	
 	@Dado("^clicar no icone de editar$")
 	public void clicar_no_icone_de_editar() throws Throwable {
 		page.editarMensagem();
