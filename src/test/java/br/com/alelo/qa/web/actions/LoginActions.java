@@ -5,16 +5,13 @@ import static org.junit.Assert.fail;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.util.Properties;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import br.com.alelo.qa.web.page.LoginPage;
-import br.com.alelo.qa.features.steps.LoginSteps;
 import br.com.alelo.qa.web.page.OfertaAtivaPage;
-import net.bytebuddy.asm.Advice.Exit;
 
 public class LoginActions extends LoginPage {
 

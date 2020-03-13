@@ -1,16 +1,5 @@
 package br.com.alelo.qa;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.sql.Connection;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import br.com.alelo.integrations.db.ConnBuc;
 import br.com.alelo.integrations.db.ConnPpoint;
 import br.com.alelo.integrations.db.ConnUsadq;
@@ -22,6 +11,16 @@ import br.com.alelo.utils.ResultsFileStorage;
 import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = { "src/test/resources/features" }, plugin = {

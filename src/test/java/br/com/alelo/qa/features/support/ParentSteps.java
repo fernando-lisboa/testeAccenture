@@ -29,6 +29,7 @@ public class ParentSteps {
 	@Value("${baseurlAdm}")
 	protected String baseurlAdm;
 	
+	
 	@Value("${urlInicio}")
 	protected String urlInicio;
 	
