@@ -16,16 +16,16 @@ import org.junit.Assert;
 
 public class CriarUsuarioResetarSenhaStep extends ParentSteps {
 
-    @Quando("^criar um novo usuario PID \"([^\"]*)\" e trocar senha \"([^\"]*)\"$")
-    public void criar_um_novo_usuario_PID_e_trocar_senha(boolean PID, boolean trocaSenha) throws Throwable {
+    @Quando("^criar um novo usuario PID \"([^\"]*)\" e trocar senha \"([^\"]*)\" logando no Gmail \"([^\"]*)\" e associando CNPJS \"([^\"]*)\"$")
+    public void criar_um_novo_usuario_PID_e_trocar_senha(boolean PID, boolean trocaSenha, boolean LogarGmail, int CNPJS) throws Throwable {
         CriarUsuarioResetarSenhaActions criarUsuarioReset = new CriarUsuarioResetarSenhaActions(webdriver);
-        criarUsuarioReset.UsuarioCria_MudaSenha_(PID, trocaSenha);
+        criarUsuarioReset.UsuarioCria_MudaSenha_(PID, trocaSenha, LogarGmail, CNPJS);
     }
 
     @Entao("^devo validar a mensagem esperada \"([^\"]*)\" no cenario \"([^\"]*)\"$")
     public void devo_validar_a_mensagem_esperada_no_cenario(String mensagemEsperada, String cenario) throws Throwable {
         CriarUsuarioResetarSenhaActions criarUsuarioReset = new CriarUsuarioResetarSenhaActions(webdriver);
-        Assert.assertTrue(cenario + " falhou", !criarUsuarioReset.ValidaResultado(cenario, mensagemEsperada));
+        Assert.assertTrue(cenario + " falhou", criarUsuarioReset.ValidaResultado(cenario, mensagemEsperada));
     }
 }
 
