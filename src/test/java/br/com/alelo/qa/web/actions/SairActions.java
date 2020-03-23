@@ -44,6 +44,8 @@ public class SairActions extends SairPage {
 	}
 
 	public void sairGeral() throws Throwable {
+		
+		waitForElementToBeInvisible(loader);
 		botaoSair.click();
 	}
 

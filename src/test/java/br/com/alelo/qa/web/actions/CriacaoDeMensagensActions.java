@@ -58,7 +58,7 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 		select = new Select(comboTipoDeEnvio);
 		select.selectByVisibleText(tipoDeEnvio);
 		preencherData(dataInicialVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 0);
-		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 35);
+		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 1);
 
 		waitForElementPageToBeClickable(btn_salvar_mensagem);
 		btn_salvar_mensagem.click();

@@ -61,8 +61,8 @@ public class PainelStep extends ParentSteps {
 
 	@Entao("^o painel carrega as informacoes respectivas ao CNPJ selecionado$")
 	public void o_painel_carrega_as_informacoes_respectivas_ao_CNPJ_selecionado() throws Throwable {
-		painel.validarCNPJPainel();
-		sair.sairGeral();
+		
+		painel.sairGeral();
 	}
 
 	@Entao("^o sistema apresenta o sidekick de ARV$")

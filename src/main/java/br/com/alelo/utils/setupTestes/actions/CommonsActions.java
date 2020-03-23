@@ -94,7 +94,6 @@ import br.com.alelo.utils.setupTestes.rest.IPostActions;
 			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaDeleteLocalidade().toString());
 			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaDeleteOferta().toString());
 			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaDeletecontratos().toString());
-			consultaBanco(ConnUsadq.getConexao(), upload.retornaDeleteTabelaContratos().toString());
 			System.out.println("Banco de dados limpo para testes...");
 		}
 
