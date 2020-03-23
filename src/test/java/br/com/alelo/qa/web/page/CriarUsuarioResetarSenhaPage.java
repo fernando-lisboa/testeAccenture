@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class TokenGmailPage extends JavaScriptUtils {
+public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
 
-    public TokenGmailPage(WebDriver driver) {
+    public CriarUsuarioResetarSenhaPage(WebDriver driver) {
         super(driver);
         // TODO Auto-generated constructor stub
     }
@@ -154,6 +154,21 @@ public class TokenGmailPage extends JavaScriptUtils {
     //endregion
 
 
+
+    //region WebElement [Menu Portal - Meus CNPJS]
+    @FindBy(id = "menuMeusCnpjs")
+    public static WebElement meusCNPJSMenuPortal;
+    //endregion
+
+    //region WebElement [Menu Portal - Meus CNPJS]
+    @FindBy(id = "buttonTopAddCnpj")
+    public static WebElement btnAdicionarCNPJSPortal;
+    //endregion
+
+    //region WebElement [Menu Portal - Meus CNPJS]
+    @FindBy(id = "accountValidateBtnHandle")
+    public static WebElement btnConfirmarCNPJSPortal;
+    //endregion
 
     //endregion
 

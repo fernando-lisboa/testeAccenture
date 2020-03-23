@@ -1,7 +1,7 @@
 package br.com.alelo.qa.web.actions;
 
 import br.com.alelo.integrations.db.ConnBuc;
-import br.com.alelo.qa.web.page.TokenGmailPage;
+import br.com.alelo.qa.web.page.CriarUsuarioResetarSenhaPage;
 import br.com.alelo.utils.GeraCpfCnpj;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 import org.openqa.selenium.By;
@@ -17,7 +17,7 @@ import java.util.Random;
 import static java.lang.Thread.sleep;
 
 
-public class CriarUsuarioResetarSenhaActions extends TokenGmailPage {
+public class CriarUsuarioResetarSenhaActions extends CriarUsuarioResetarSenhaPage {
 
     public CriarUsuarioResetarSenhaActions(WebDriver driver) {
         super(driver);
@@ -27,19 +27,30 @@ public class CriarUsuarioResetarSenhaActions extends TokenGmailPage {
      * <h3> Função Utilizada para Criar usuários e Mudar Senha através do esqueci senha da tela inicial do portal.</>>
      * <h3>Parâmetros Booleanos PID e TrocaSenha<h3>
      */
-    public void UsuarioCria_MudaSenha_(boolean PID, boolean TrocaSenha) throws InterruptedException {
+
+    public void UsuarioCria_MudaSenha_(boolean PID, boolean TrocaSenha, boolean LogarGmail, int associarCNPJS) throws InterruptedException {
 
         try {
+//            CriaArquivoJSON json = new CriaArquivoJSON();
+//
+//            List<String>camposJSON = new ArrayList<String>();
+//            List<String>valoresJSON = new ArrayList<String>();
+//
+//            camposJSON.add("CPF");camposJSON.add("Email");camposJSON.add("Senha");
+//            valoresJSON.add("43457978883");valoresJSON.add("michael.pereira@taking.com.br");valoresJSON.add("teste123@");
+//            camposJSON.add("CPF");camposJSON.add("Email");camposJSON.add("Senha");
+//            valoresJSON.add("99999999999");valoresJSON.add("fernando@taking.com.br");valoresJSON.add("123teste@");
+//            json.CriaArquivoJSON_(3,camposJSON,valoresJSON);
 
             //region [Burlar o captcha - Excluir o Captcha e Retirar Disabled do botao]
-           // JavascriptExecutor js = (JavascriptExecutor) webdriver;
+            // JavascriptExecutor js = (JavascriptExecutor) webdriver;
 
             waitForElementPageToBeClickable(webdriver.findElements(By.className("btnFormLight")).get(0));
 
             //Botão Primeiro Acesso
             JavaScriptAction(Funcao.click, null,null,webdriver.findElements(By.className("btnFormLight")).get(0));
 
-           // TokenGmailPage GmailPage = new TokenGmailPage(webdriver);
+            // TokenGmailPage GmailPage = new TokenGmailPage(webdriver);
 
             //Gera Numero Randomico - Usado para concatenar com o E-mail.
             Random rand = new Random();
@@ -79,24 +90,24 @@ public class CriarUsuarioResetarSenhaActions extends TokenGmailPage {
             webdriver.switchTo().window(tabs.get(1));
 
             //Navega para a Url do Gmail
-            webdriver.navigate().to(TokenGmailPage.getUrlGmail());
+            webdriver.navigate().to(CriarUsuarioResetarSenhaPage.getUrlGmail());
             //endregion
 
             //region [Logar no Gmail]
             //Email
             sleep(4000);
+            if(LogarGmail) {
+                userGmail.sendKeys("roboalelousuario@gmail.com");
 
-            userGmail.sendKeys("roboalelousuario@gmail.com");
+                //Prosseguir Usuário
+                btnProsseguirUserGmail.click();
 
-            //Prosseguir Usuário
-            btnProsseguirUserGmail.click();
+                //Senha
+                senhaGmail.sendKeys("taking2020");
 
-            //Senha
-            senhaGmail.sendKeys("taking2020");
-
-            //Prosseguir
-            btnProsseguirSenhaGmail.click();
-
+                //Prosseguir
+                btnProsseguirSenhaGmail.click();
+            }
 
             //Verifica confirmação de email e telefone
            /* try {
@@ -183,7 +194,7 @@ public class CriarUsuarioResetarSenhaActions extends TokenGmailPage {
             if(PID == true) {
 
                 //region [Itens de Retorno do Banco de dados]
-                Integer n_query_randomic = 2;//Integer.toString(rand.nextInt(5));
+                String n_query_randomic = Integer.toString(rand.nextInt(5));
                 String queryItens = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('28339982000160','41707658000115','37491504000161','12259140000168'))select * from Itens where row_num = "+ n_query_randomic;
                 CommonsActions conn_ation = new CommonsActions();
                 ResultSet teste = conn_ation.consultaBanco(ConnBuc.getConexao(), queryItens);
@@ -329,6 +340,74 @@ public class CriarUsuarioResetarSenhaActions extends TokenGmailPage {
                 //Cadastrar
                 webdriver.findElement(By.id("submitButton")).click();
             }
+
+            for (int i = 0 ; i <= associarCNPJS ; i++)
+            {
+                Thread.sleep(4000);
+                //Clica em Meus CNPJS
+                meusCNPJSMenuPortal.click();
+
+                //Adicionar CNPJS
+                waitForElementPageToBeClickable(btnAdicionarCNPJSPortal);
+                btnAdicionarCNPJSPortal.click();
+                //region [Itens de Retorno do Banco de dados]
+                String n_query_randomic = Integer.toString(rand.nextInt(4));
+                String queryItens = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('28339982000160','41707658000115','37491504000161','12259140000168'))select * from Itens where row_num = "+ n_query_randomic;
+                CommonsActions conn_ation = new CommonsActions();
+                ResultSet teste = conn_ation.consultaBanco(ConnBuc.getConexao(), queryItens);
+                List <String> Itens = new ArrayList<>();
+                while (teste.next())
+                {
+                    String nrDoc = teste.getString("NR_DOCUMENTO");
+                    String cdBanco = teste.getString("CD_BANCO");
+                    String nuAgencia = teste.getString("NU_AGENCIA");
+                    String nuConta = teste.getString("NU_CONTA");
+                    Itens.add(nrDoc);
+                    Itens.add(cdBanco);
+                    Itens.add(nuAgencia);
+                    Itens.add(nuConta);
+                    break;
+                }
+                //endregion
+
+                waitForElementPageToBeClickable(primeiroAcessocnpj);
+
+                //CNPJ
+                primeiroAcessocnpj.clear();
+                primeiroAcessocnpj.sendKeys(Itens.get(0));
+                sleep(1000);
+                primeiroAcessocnpj.clear();
+                primeiroAcessocnpj.sendKeys(Itens.get(0));
+
+                //Banco
+                WebElement selectBanco = webdriver.findElement(By.id("formInlineBank"));
+                String banco_completo = "";
+                for ( WebElement banco : selectBanco.findElements(By.tagName("option")))
+                    if (banco.getText().contains(Itens.get(1))) {
+                        banco_completo = banco.getText();
+                        break;
+                    }
+
+                Select selectBanco_ = new Select(primeiroAcessoBanco);
+                selectBanco_.selectByVisibleText(banco_completo);
+                //primeiroAcessoBanco.
+
+                //Agencia
+                primeiroAcessoAgencia.sendKeys(Itens.get(2));
+
+                //Conta
+                primeiroAcessoConta.sendKeys(Itens.get(3));
+
+                waitForElementPageToBeClickable(btnConfirmarCNPJSPortal);
+
+                sleep(2000);
+
+                //Confirmar
+                btnConfirmarCNPJSPortal.click();
+
+            }
+
+
             //endregion
             if(tabs.size() > 1) {
                 webdriver.switchTo().window(tabs.get(1));
@@ -354,7 +433,7 @@ public class CriarUsuarioResetarSenhaActions extends TokenGmailPage {
                     if(!primeiroAcessocnpj.isDisplayed())return false;
                     break;
                 case "Criação de novo usuário com PID":
-
+                    if(!btn_iconProfileId.isDisplayed())return false;
                     break;
                 case "Alteração de senha de novo usuário":
 
