@@ -16,7 +16,7 @@ Funcionalidade: Painel
   Contexto: 
     Dado que estou na logado no portal webadmim EC "22222222222", "12345678!"
 
-  @PainelBloqueio22 @Regressivo @painelBloqueio
+  @PainelBloqueio22 @Regressivo @painelBloqueio @fer
   Esquema do Cenario: <VSTS> - Bloqueio <cenario>
     E enviar uma planilha de bloqueio de painel "<path>", "<nomeArquivo>"
     Entao devo verificar que o ec foi bloqueado "<statusEsperado>", "<user>", "<password>", "<cnpj>"
