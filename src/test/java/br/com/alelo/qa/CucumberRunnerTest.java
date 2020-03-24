@@ -27,6 +27,7 @@ import java.util.Date;
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml", "json:target/jsonReports/CucumberReport.json"}, glue = {
         "classpath:br.com.alelo.qa.features.steps"}, tags = {"@Regressivo, ~@criacaoDemensagens"})
 
+
 public class CucumberRunnerTest {
 
     private static RunController newRun = null;

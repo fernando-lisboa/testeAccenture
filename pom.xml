@@ -191,7 +191,7 @@
 					<execution>
 						<id>execution</id>
 						<!--<phase>verify</phase> -->
-						<phase>none</phase>
+						<phase>verify</phase>
 						<goals>
 							<goal>generate</goal>
 						</goals>
@@ -206,8 +206,7 @@
 								<param>**/*.json</param>
 							</jsonFiles>
 							<!-- optional, defaults to outputDirectory if not specified -->
-							<classificationDirectory>${project.build.directory}/classifications
-							</classificationDirectory>
+							<classificationDirectory>${project.build.directory}/classifications</classificationDirectory>
 							<classificationFiles>
 								<!-- supports wildcard or name pattern -->
 								<param>sample.properties</param>
