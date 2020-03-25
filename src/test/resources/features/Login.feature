@@ -11,7 +11,7 @@ Funcionalidade: Login
   Quero logar no sistema
   Para acessar informacaos respectivas da conta
 
-  @ligin @Regressivo
+  @ligin @Regressivo @teste
   Esquema do Cenario: <VSTS> - Login com sucesso <cenario>
     Dado que esteja na tela inicial do portal
     Quando preencher o formulario de login "<user>", "<password>"
