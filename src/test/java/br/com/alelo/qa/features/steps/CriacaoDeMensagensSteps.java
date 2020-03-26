@@ -44,6 +44,7 @@ public class CriacaoDeMensagensSteps extends ParentSteps {
 	@Dado("^quando eu preencher o formulario de mensagens e clicar em adicionar, \"([^\"]*)\",\"([^\"]*)\"$")
 	public void quando_eu_preencher_o_formulario_de_mensagens_e_clicar_em_adicionar(String tipoMensagem,
 			String tipoEnvio) throws Throwable {
+		Thread.sleep(2000);
 		page.preencherMensagem(tipoMensagem, tipoEnvio);
 
 	}

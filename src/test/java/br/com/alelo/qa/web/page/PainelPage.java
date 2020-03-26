@@ -127,7 +127,13 @@ public class PainelPage extends PageObject {
 	@FindBy(id = "painelDiario")
 	protected WebElement graficodiario;
 	public String munuDiario = "DIÁRIO";
-
+	
+	@FindBy(id = "iconProfileId")
+	protected WebElement iconoPerfil;
+	
+	@FindBy(id = "navbarDesktopSair")
+	protected WebElement btnSair;
+	
 	@FindBy(xpath = "//a[@class='nav-link'][contains(.,'Painel Meu Negócio')]")
 	protected WebElement linkPainelMeuNegocio;
 

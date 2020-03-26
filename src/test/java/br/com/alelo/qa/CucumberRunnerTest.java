@@ -23,15 +23,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RunWith(Cucumber.class)
-//<<<<<<< HEAD
 @CucumberOptions(strict = false, features = {"src/test/resources/features"}, plugin = {
+
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"}, glue = {
         "classpath:br.com.alelo.qa.features.steps"}, tags = {"@Regressivo"})
-//=======
-//@CucumberOptions(strict = false, features = {"src/test/resources/features"}, plugin = {
-//        "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml", "json:target/jsonReports/CucumberReport.json"}, glue = {
-//        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@teste"})
-//>>>>>>> b4dd2bca8174af2e844824be8e93c3cf25ccd672
+
 
 public class CucumberRunnerTest {
 
