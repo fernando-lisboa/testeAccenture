@@ -1,7 +1,6 @@
 package br.com.alelo.qa.web.actions;
 
 import br.com.alelo.integrations.db.ConnBuc;
-import br.com.alelo.qa.features.support.CriaArquivoJSON;
 import br.com.alelo.qa.web.page.CriarUsuarioResetarSenhaPage;
 import br.com.alelo.utils.GeraCpfCnpj;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
