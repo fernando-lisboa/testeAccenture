@@ -74,6 +74,7 @@ public class CriarUsuarioResetarSenhaActions extends CriarUsuarioResetarSenhaPag
             btnCadastrar.click();
 
             waitForElementPageToBeClickable(btnFecharModal);
+            Thread.sleep(2000);
 
             //Fechar modal - Siga as Instruções que enviamos no seu e-mail
             btnFecharModal.click();
@@ -105,6 +106,7 @@ public class CriarUsuarioResetarSenhaActions extends CriarUsuarioResetarSenhaPag
                 //Senha
                 senhaGmail.sendKeys("taking2020");
 
+                //Email de recuperação - michael.alba@outlook.com.br
                 //Prosseguir
                 btnProsseguirSenhaGmail.click();
             }
@@ -341,14 +343,13 @@ public class CriarUsuarioResetarSenhaActions extends CriarUsuarioResetarSenhaPag
                 webdriver.findElement(By.id("submitButton")).click();
             }
 
-            for (int i = 0 ; i <= associarCNPJS ; i++)
+            for (int i = 0 ; i < associarCNPJS ; i++)
             {
-                Thread.sleep(4000);
+                Thread.sleep(6000);
                 //Clica em Meus CNPJS
                 meusCNPJSMenuPortal.click();
-
+                Thread.sleep(4000);
                 //Adicionar CNPJS
-                waitForElementPageToBeClickable(btnAdicionarCNPJSPortal);
                 btnAdicionarCNPJSPortal.click();
                 //region [Itens de Retorno do Banco de dados]
                 String n_query_randomic = Integer.toString(rand.nextInt(4));
@@ -404,6 +405,8 @@ public class CriarUsuarioResetarSenhaActions extends CriarUsuarioResetarSenhaPag
 
                 //Confirmar
                 btnConfirmarCNPJSPortal.click();
+
+                webdriver.findElement(By.id("buttonBottomPrint")).click();
 
             }
 
