@@ -8,6 +8,11 @@
       <src_folder value="file://$MODULE_DIR$/src/test/resources" expected_position="2" />
     </src_description>
   </component>
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -26,6 +31,7 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.8" level="project" />
     <orderEntry type="library" name="Maven: org.rauschig:jarchivelib:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.18" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.11.3" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.15" level="project" />
     <orderEntry type="library" name="Maven: com.oracle:ojdbc6:11.2.0.3" level="project" />
@@ -61,7 +67,6 @@
     <orderEntry type="library" name="Maven: org.mozilla:rhino:1.7.7.1" level="project" />
     <orderEntry type="library" name="Maven: javax.mail:mailapi:1.4.3" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
-    <orderEntry type="library" name="Maven: joda-time:joda-time:2.10.1" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.libphonenumber:libphonenumber:8.0.0" level="project" />
     <orderEntry type="library" name="Maven: net.sf.jopt-simple:jopt-simple:5.0.3" level="project" />
     <orderEntry type="library" name="Maven: io.rest-assured:spring-mock-mvc:3.3.0" level="project" />
@@ -88,6 +93,15 @@
     <orderEntry type="library" name="Maven: info.cukes:cucumber-junit:1.2.5" level="project" />
     <orderEntry type="library" name="Maven: info.cukes:cucumber-core:1.2.5" level="project" />
     <orderEntry type="library" name="Maven: info.cukes:cucumber-html:0.2.3" level="project" />
+    <orderEntry type="library" name="Maven: net.masterthought:cucumber-reporting:4.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
+    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
+    <orderEntry type="library" name="Maven: velocity-tools:velocity-tools:1.4" level="project" />
+    <orderEntry type="library" name="Maven: joda-time:joda-time:2.10.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20190325.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-configuration:commons-configuration:1.10" level="project" />
     <orderEntry type="library" name="Maven: info.cukes:gherkin:2.12.2" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-java:3.14.0" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-api:3.14.0" level="project" />
