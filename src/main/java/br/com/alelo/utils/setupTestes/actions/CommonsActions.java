@@ -123,6 +123,7 @@ import br.com.alelo.utils.setupTestes.rest.IPostActions;
 			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertLocalidade().toString()); 
 			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacao1().toString()); //28339982000160
 			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacaoForaPeriodoTestes().toString()); //41707658000115
+			consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacaoCancelado().toString()); //11699141000160
 			consultaBancoHmlPoint(ConnPpoint.getConexao(), queryIndicadores.retornaInsertTransacoes().toString());
 			System.out.println("Banco populado para inicio dos testes...");
 		}

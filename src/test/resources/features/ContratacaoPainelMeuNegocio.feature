@@ -14,7 +14,7 @@ Funcionalidade: Painel Meu Negocio
   Para clientes inadimplentes
 
   Contexto: 
-    Dado que estou na logado no portal EC "594.114.000-27", "Alelo2020@"
+    Dado que estou na logado no portal EC "273.824.010-06", "Alelo2020@"
 
   @ContratacaoWeb @Regressivo
   Esquema do Cenario: <VSTS> - Painel <cenario>
@@ -23,7 +23,7 @@ Funcionalidade: Painel Meu Negocio
 
     Exemplos: 
       | VSTS   | cenario                                         | statusEsperado | cnpj           |
-     | 9999-1 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | 82143278000182 |
+      | 9999-1 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | 82143278000182 |
       | 9999-2 | Efetivar contratação fora do periodo gratuito   | Contratado     | 12259140000168 |
 
   @ContratacaoWeb @Regressivo

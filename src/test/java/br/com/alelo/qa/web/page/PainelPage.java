@@ -188,6 +188,10 @@ public class PainelPage extends PageObject {
 
 	@FindBy(xpath = "//h5[@class='canceled'][contains(.,'Cancelado')]")
 	protected WebElement statusCancelado;
+	
+	@FindBy(id = "statusText")
+	protected WebElement statusText;
+	public String textConfirmacao = "30 dias restantes do Alelo Painel Meu Negócio";
 
 	@FindBy(xpath = "//h5[contains(.,'Data da Contratação:')]")
 	protected WebElement dtContratacao;

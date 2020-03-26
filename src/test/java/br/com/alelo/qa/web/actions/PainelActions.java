@@ -64,6 +64,10 @@ public class PainelActions extends PainelPage {
 		} else if (cnpj.equals("28339982000160")) {
 			alterarCNPJ(opcao_ec3);
 			waitForElementToBeInvisible(loader);
+		}
+			else if (cnpj.equals("12259140000168")) {
+				alterarCNPJ(opcao_ec4);
+				waitForElementToBeInvisible(loader);
 		} else
 			alterarCNPJ(desbloq_2);
 		waitForElementToBeInvisible(loader);
@@ -282,18 +286,8 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void validarCancelamentoPainel(String status) throws IOException, InterruptedException {
-		if (status.equals("TESTE GRÁTIS")) {
-			// TODO
 
-			// Assert.assertTrue("Status diferente do esperado para contratação
-			// no período de testes",
-			// contratadoGratis.getText().contains(" do Alelo Painel Meu
-			// Negócio"));
-		} else if (status.equals("Cancelado")) {
-
-			validarTextoElemento(statusCancelado, status);
-		}
-		validarTextoElemento(ultimaMensalidade, textUltimaMensalidade);
+		validarTextoElemento(statusText, textConfirmacao);
 	}
 
 	public PainelActions(WebDriver driver) {
