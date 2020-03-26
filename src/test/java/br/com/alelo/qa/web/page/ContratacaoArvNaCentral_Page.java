@@ -1,9 +1,3 @@
-/**
- *   Caminho: Portal Estabelecimento Comercial  --> ARV Na Central
- *      Date: 12/12/2019 | Fernando Lisboa - Taking 
- * Last Date: 30/12/2019 | Jessé Dantas - Taking
- */
-
 package br.com.alelo.qa.web.page;
 
 import org.openqa.selenium.WebDriver;
@@ -12,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 
 import br.com.alelo.qa.web.support.PageObject;
 
-public class ContratacaoArvNaCentralPage extends PageObject {
+public class ContratacaoArvNaCentral_Page extends PageObject {
 
-	public ContratacaoArvNaCentralPage(WebDriver driver) {
+	public ContratacaoArvNaCentral_Page(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +27,7 @@ public class ContratacaoArvNaCentralPage extends PageObject {
 	@FindBy(id = "inputPassord")
 	protected WebElement inputPassword;
 
-	@FindBy(id = "btnLogin")
+	@FindBy(xpath = "//button[@type='submit'][contains(.,'ENTRAR')]")
 	protected WebElement btnLogin;
 
 	@FindBy(id = "inputLogin")
@@ -74,11 +68,14 @@ public class ContratacaoArvNaCentralPage extends PageObject {
 
 	@FindBy(id = "flagContratacaoIndividual")
 	protected WebElement flagContratacaoIndividual;
+	
+	@FindBy(className = "arvCheckbox form-check")
+	public WebDriver flagSelecionaUmEc;
 
 	@FindBy(xpath = "//input[contains(@id,'formBasicCheckbox')]")
 	protected WebElement flagContratacaoTodos;
 
-	@FindBy(id = "labelCnpjQuadroPrincipal")
+	@FindBy(id = "cnpjContratacao")
 	protected WebElement cnpjContratacao;
 
 	@FindBy(id = "btnAlterarRecorrencia")
@@ -92,16 +89,21 @@ public class ContratacaoArvNaCentralPage extends PageObject {
 
 	@FindBy(xpath = "//p[@class='aleloLogoutLink'][contains(.,'SAIR')]")
 	protected WebElement btnSair;
-
-	@FindBy(id = "cardRecurr-DAILY")
-	protected WebElement flagRecebimentoDiario;
+	
+	@FindBy(xpath = "//p[contains(@id,'cardRecurr-DAILY')]")
+	public WebElement flagRecebimentoDiario;
+//	@FindBy(id = "cardRecurr-DAILY")
+//	protected WebElement flagRecebimentoDiario;
 
 	@FindBy(xpath = "//div[@class='content w25 custom textDarkGreen'][contains(.,'DIÁRIAALTERAR')]")
 	protected WebElement labelConfirmarRecorrencia;
 
-	@FindBy(id = "cardRecurr-WEEKLY")
-	protected WebElement flagRecebimentoSemanal_diaSemana;
+//	@FindBy(id = "cardRecurr-WEEKLY")
+//	protected WebElement flagRecebimentoSemanal_diaSemana;
 
+	@FindBy(id = "radioWeekly-SEG")
+	public WebElement flagRecebSemenanal_Seg;
+	
 	@FindBy(xpath = "//div[@class='content w25 custom textDarkGreen'][contains(.,'SEMANAL - SEGALTERAR')]")
 	protected WebElement labelConfirmaRecebimentoSemanal;
 
@@ -114,6 +116,9 @@ public class ContratacaoArvNaCentralPage extends PageObject {
 	@FindBy(id = "imageLoader")
 	protected WebElement loader;
 
+	@FindBy(id = "btnViewLiquidValueAntecipationPartial")
+	public WebElement btnCalcValorLiq;
+	
 	@FindBy(id = "labelAlterarRecorrencia")
 	protected WebElement labelAlterarRecorrencia;
 
@@ -174,13 +179,13 @@ public class ContratacaoArvNaCentralPage extends PageObject {
 	@FindBy(id = "valorLiqTable")
 	protected WebElement idValorLiqTable;
 
-	@FindBy(id = "text_conta1_confirmacao")
+	@FindBy(id = "domicilioBancarioContratacaoConta")
 	protected WebElement domiciliobancarioConfirmacaoConta1;
 
-	@FindBy(id = "text_agencia1_confirmacao")
+	@FindBy(id = "domicilioBancarioContratacaoAgencia")
 	protected WebElement domiciliobancarioConfirmacaoAgencia1;
 
-	@FindBy(id = "text_banco1_confirmacao")
+	@FindBy(id = "domicilioBancarioContratacaoBanco")
 	protected WebElement domiciliobancarioConfirmacaoBanco1;
 
 	@FindBy(xpath = "//div[@class='noContent fontBolder textRed'][contains(.,'NÃO HÁ SALDO DISPONÍVEL PARA ANTECIPAÇÃO')]")
@@ -218,6 +223,9 @@ public class ContratacaoArvNaCentralPage extends PageObject {
 
 	@FindBy(xpath = "//h2[@class='textDarkGreen fontBold alignCenter'][contains(.,'ANTECIPE SUAS VENDAS')]")
 	protected WebElement labelAntecipeSuasVendas;
+	
+	@FindBy(xpath = "//div[@class='content w15'][contains(.,'1015000654')]")
+	protected WebElement consultaEC;
 
 	@FindBy(id = "btnAntecipationRecurrVisualize")
 	protected WebElement btnAntecipationRecurrVisualize;
@@ -237,4 +245,16 @@ public class ContratacaoArvNaCentralPage extends PageObject {
 	@FindBy(id = "cardRecurr-DISABLED")
 	protected WebElement flagRecebimentoDesativado;
 
+	@FindBy(className = "row")
+	protected WebElement msgSemAntecipacao;
+	
+	
+	@FindBy (className = "modal-subtitle-1 alignCenter row")
+	protected WebDriver telaConfirmacao;
+	public String telaConfirmacao1 = "SOLICITE A CONFIRMAÇÃO DOS DADOS LISTADOS ABAIXO";
+	
+	@FindBy (className = "arvConsolidation")
+	public WebDriver arvConsolidation;
 }
+
+
