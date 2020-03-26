@@ -26,8 +26,8 @@ public class ParentSteps {
 	@Autowired
 	protected String baseurl;
 	
-	@Value("${baseurlAdm}")
-	protected String baseurlAdm;
+//	@Value("${baseurlAdm}")
+//	protected String baseurlAdm;
 	
 	
 	@Value("${urlInicio}")

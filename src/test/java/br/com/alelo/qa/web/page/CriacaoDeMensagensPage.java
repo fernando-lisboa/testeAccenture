@@ -101,7 +101,7 @@ public class CriacaoDeMensagensPage extends PageObject {
 
 	@FindBy(xpath = "//h1[contains(.,'mensagem editada')]")
 	protected WebElement editarSucesso;
-	public String msgEsperada = "MENSAGEM EDITADA";
+	public String msgEsperada = "mensagem editada com sucesso!";
 	
 	
 	//exclusao

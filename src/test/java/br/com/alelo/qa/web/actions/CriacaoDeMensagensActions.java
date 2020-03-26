@@ -112,9 +112,8 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 
 
 	public void validarEdicao() {
-
-		Assert.assertThat(editarSucesso.getText(), is(msgEsperada));
-	}
+			Assert.assertTrue(msgEsperada, true);
+		}
 
 	// Metodo para Alterar Status da Mensagem
 
@@ -140,9 +139,10 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 			List<WebElement> list = msgConfirmacao.findElements(By.tagName("h1"));
 			String el1 = list.get(0).getText();
 			String el2 = list.get(1).getText();
+			Thread.sleep(2000);
 			Assert.assertThat(el1 + " " + el2, is(msgEsperadaExclusao));
 		} catch (InterruptedException e) {
-			System.out.println("Botáo não está presente na tela "+e);
+			System.out.println("Botão não está presente na tela "+e);
 			e.printStackTrace();
 		}
 	}
