@@ -5,16 +5,23 @@ import static org.junit.Assert.fail;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.xml.crypto.KeySelector;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.server.handler.FindElement;
 
 import br.com.alelo.qa.web.page.ContratacaoArvNaCentral_Page;
 
 public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Page {
 
 	WebElement we;
+	private String valorEsperado;
+	int i;
 	// ############################## logins ##############################
 
 	public void loginArvNaCentral(String user, String password) throws Throwable {
@@ -39,6 +46,10 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 
 	public void clicarCancelarContratacao() {
 		btnConsolidationCancel.click();
+	}
+
+	public void clicarContratacao() {
+		btnConsolidation.click();
 	}
 
 	public void clicarBuscarCnpj() {
@@ -102,10 +113,9 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 	}
 
 	public void selecionarOpcaoIndividual() throws InterruptedException {
-			flagContratacaoIndividual.click();
-			Thread.sleep(3000);
-		}
-
+		flagContratacaoIndividual.click();
+		Thread.sleep(3000);
+	}
 
 	public void selecionarOpcaoIndividual2() throws InterruptedException {
 		flagContratacaoIndividual_2.click();
@@ -113,12 +123,35 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 	}
 
 	public void selecionarOpcaoTodos() throws InterruptedException {
+		localizaDiaComRecebiveisDisponiveis();
+		waitForElementPageToBeClickable(btnGerarProposta);
+		btnGerarProposta.click();
+		JavascriptExecutor js = (JavascriptExecutor) webdriver;
+//		js.executeScript("arguments[0].click();",FindElement(By.cssSelector(cssSelector)));
+	}
+	
+	public void localizaDiaComRecebiveisDisponiveis() {
+		waitForElementToBeInvisible(loader);
 
-		waitForElementPageToLoad(flagContratacaoTodos);
+		Boolean sair = false;
+		Integer listElements = listAReceber.size();
+		for (i = 0; i < listElements; i++) {
+			if (sair == true)
+				break;
+			for (WebElement list : listAReceber) {
+				System.out.println(listAReceber.get(i).getCssValue("input"));
+				System.out.println(i);
 
-		flagContratacaoTodos.click();
-		Thread.sleep(3000);
-		flagContratacaoTodos.click();
+				if (i==3) {
+					list.sendKeys(Keys.SPACE);
+					sair = true;
+					break;
+				}
+
+				i++;
+			}
+
+		}
 
 	}
 
@@ -129,7 +162,7 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 	public void gerarProposta() {
 		waitForElementPageToBeClickable(btnGerarProposta);
 		btnGerarProposta.click();
-	};
+	}
 
 	public void confirmaRecorrencia() throws InterruptedException {
 
@@ -263,7 +296,15 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 
 	public void validarContratacaoSucesso() {
 
-		String obterMsg = text_confirmacao_contratacao.getText();
+		WebElement findElement = telaConfirmacao.findElement(By.className("text-dark-green fontBold alignCenter"));
+		String obterMsg = findElement.getText();
+		Assert.assertTrue("Msg diferente da esperada", obterMsg.equals("TODOS OS CÓDIGOS FORAM ANTECIPADOS"));
+
+	}
+
+	public void validarSimulacaoSucesso() {
+		System.out.println(telaConfirmacao.toString());
+		String obterMsg = telaConfirmacao.toString();
 		Assert.assertTrue("Msg diferente da esperada", obterMsg.equals("TODOS OS CÓDIGOS FORAM ANTECIPADOS"));
 
 	}
@@ -462,14 +503,16 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 		Assert.assertTrue("Não dividiu a antecipação por domicilio bancário", domicilioConta2 != null);
 
 	}
-	
+
 	public void validaCnpjConsultadoMaisDeUmEc(String ec1, String ec2) {
 
-		WebElement primeiroEc = webdriver.findElement(By.xpath("//div[@class='content w15'][contains(.,'" + ec1 + "')]"));
-		
+		WebElement primeiroEc = webdriver
+				.findElement(By.xpath("//div[@class='content w15'][contains(.,'" + ec1 + "')]"));
+
 		String numeroDoPrimeiroEc = primeiroEc.getText();
 
-		WebElement segundoEc = webdriver.findElement(By.xpath("//div[@class='content w15'][contains(.,'" + ec2 + "')]"));
+		WebElement segundoEc = webdriver
+				.findElement(By.xpath("//div[@class='content w15'][contains(.,'" + ec2 + "')]"));
 		String numeroDoSegundoEc = segundoEc.getText();
 
 		String valorCnpj = cnpjContratacao.getText();
@@ -481,28 +524,8 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 
 	}
 
-//	public void validaCnpjConsultadoMaisDeUmEc(String ec1, String ec2) {
-//
-//		webdriver.findElement(By.xpath("//div[@class='content w15'][contains(.,'1015000654')]"));
-////		.findElement(By.xpath("//div[@class='textGray fontNormal col-md-2'][contains(.,'" + ec1 + "')]"));
-////		String numeroDoPrimeiroEc = primeiroEc.getText();
-//
-//		WebElement segundoEc = we
-//				.findElement(By.xpath("//div[@class='textGray fontNormal col-md-2'][contains(.,'" + ec2 + "')]"));
-//		String numeroDoSegundoEc = segundoEc.getText();
-//
-//		String valorCnpj = cnpjContratacao.getText();
-//
-//		Assert.assertTrue("Numero do CNPJ diferente do Esperado", valorCnpj.contains(valorCnpj));
-//		Assert.assertTrue("Nome fantasia diferente do Esperado", valorCnpj.contains(valorCnpj));
-////		Assert.assertTrue("CNPJ com apenas um ec", numeroDoPrimeiroEc.contains(ec1));
-//		Assert.assertTrue("CNPJ com apenas um ec", numeroDoSegundoEc.contains(ec2));
-//
-//	}
-
 	public void validarDadosCadastrais() {
 		String valorCnpj = cnpjContratacao.getText();
-//		String nomeFantasia = cnpjContratacao.getText();
 		String domicilioBanco = domiciliobancarioConfirmacaoBanco1.getText();
 		String domicilioAgencia = domiciliobancarioConfirmacaoAgencia1.getText();
 		String domicilioConta = domiciliobancarioConfirmacaoConta1.getText();
@@ -517,12 +540,6 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 		} else {
 			fail("Texto procurado não é igual ao esperado");
 		}
-
-//		if (nomeFantasia.contains(nomeFantasia)) {
-//			System.out.println("Teste realizado com sucesso!");
-//		} else {
-//			fail("Texto procurado não é igual ao esperado");
-//		}
 
 		if (domicilioBanco.contains(domicilioBanco)) {
 			System.out.println("Teste realizado com sucesso!");
