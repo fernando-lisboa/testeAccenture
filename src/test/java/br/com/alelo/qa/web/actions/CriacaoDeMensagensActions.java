@@ -58,7 +58,7 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 		select = new Select(comboTipoDeEnvio);
 		select.selectByVisibleText(tipoDeEnvio);
 		preencherData(dataInicialVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 0);
-		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 1);
+		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 30);
 
 		waitForElementPageToBeClickable(btn_salvar_mensagem);
 		btn_salvar_mensagem.click();
@@ -82,6 +82,7 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 			dateWidget = dataInicioDaMensagemTable;
 		} else {
 			dateWidget = dataFinalDaMensagemTable;
+			
 		}
 		List<WebElement> columns = dateWidget.findElements(By.tagName("td"));
 
