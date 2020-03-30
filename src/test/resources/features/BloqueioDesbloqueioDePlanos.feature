@@ -5,7 +5,7 @@
 # * Data: 06/02/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@PainelBloqueio @Regressivo
+@Regressivo
 Funcionalidade: Painel
   Bloqueio e desbloqueio de planos via Web admim
   
@@ -16,7 +16,7 @@ Funcionalidade: Painel
   Contexto: 
     Dado que estou na logado no portal webadmim EC "22222222222", "12345678!"
 
-  @PainelBloqueio22 @Regressivo @painelBloqueio @fer
+  @PainelBloqueio @Regressivo
   Esquema do Cenario: <VSTS> - Bloqueio <cenario>
     E enviar uma planilha de bloqueio de painel "<path>", "<nomeArquivo>"
     Entao devo verificar que o ec foi bloqueado "<statusEsperado>", "<user>", "<password>", "<cnpj>"
@@ -27,7 +27,7 @@ Funcionalidade: Painel
       | 9999-1 | Bloquear CNPJ que esteja contratado no periodo de testes via upload de planilha   | 594.114.000-27 | Alelo2020@ | Bloqueado      | /src/test/resources/armazenador/bloqueioPainel/ | BloqueioDentroDoPeriodoDeTestes.xlsx    | select * from owadq.tacs_contr_indcd WHERE nu_cnpj = |    1 |
       | 9999-2 | Bloquear CNPJ que esteja contratado fora periodo de testes via upload de planilha | 594.114.000-276 | Alelo2020@ | Bloqueado      | /src/test/resources/armazenador/bloqueioPainel/ | BloqueioForaDoPeriodoDeTestes.xlsx | select * from owadq.tacs_contr_indcd WHERE nu_cnpj = |    2 |
 
-  @Regressivo @painelBloqueio
+  @Regressivo @PainelBloqueio1
   Esquema do Cenario: <VSTS> - Upload de planilha <cenario>
     E enviar uma planilha de bloqueio de painel "<path>", "<nomeArquivo>"
     Entao devo verificar que o ec foi Desbloqueado "<statusEsperado>", "<user>", "<password>", "<cnpj>"
