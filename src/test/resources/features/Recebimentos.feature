@@ -8,7 +8,7 @@ Funcionalidade: Recebimentos
   Permite a consulta dos valores a serem disponibilizados ao usuario ao longo do mes
 
   Contexto: 
-    Dado que estou na logado no portal EC "273.824.010-06", "Alelo2020@"
+    Dado que estou na logado no portal EC "594.114.000-27", "Alelo2020@"
 
   #Feito
   @Recebimentoss @Matheus

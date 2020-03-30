@@ -59,7 +59,7 @@ public class SendTestResultTeams {
 	}
 
 	public static void sendMessage(String str_message) {
-		String request = "https://outlook.office.com/webhook/c19c3811-45dd-4efb-be9c-1302572f3084@1778ae9f-6f4a-44ca-930b-327c29104576/IncomingWebhook/d0a4f551df5346a9a88168e653424adf/94067c10-b877-4b14-8e77-530dbfc6e712";
+		String request = "https://outlook.office.com/webhook/c19c3811-45dd-4efb-be9c-1302572f3084@1778ae9f-6f4a-44ca-930b-327c29104576/IncomingWebhook/bce453a0ef0b4f6181efe190bccdab97/94067c10-b877-4b14-8e77-530dbfc6e712";
 
 		Response response = given().contentType(ContentType.JSON).body(str_message).when().post(request).then()
 				.extract().response();

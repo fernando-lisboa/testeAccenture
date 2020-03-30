@@ -1,7 +1,6 @@
 package br.com.alelo.qa.features.steps;
 
 import br.com.alelo.qa.features.support.ParentSteps;
-import br.com.alelo.qa.web.actions.ContratacaoArvNaCentral_Actions;
 import br.com.alelo.qa.web.actions.LoginArvNaCentralActions;
 import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.java.pt.Dado;

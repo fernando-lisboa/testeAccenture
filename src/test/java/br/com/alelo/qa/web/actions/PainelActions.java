@@ -29,15 +29,27 @@ public class PainelActions extends PainelPage {
 		validarUrlAtual(urlInicio);
 	}
 
+	public void sairGeral() throws Throwable {
+
+		waitForElementToBeInvisible(loader);
+		iconoPerfil.click();
+		btnSair.click();
+	}
+
 	public void alterarEstabelecimento() throws IOException, InterruptedException {
 		alterarCNPJ(opcao_ec1);
-		alterarCNPJ(opcao_ec2);
-		alterarCNPJ(opcao_ec3);
+		waitForElementToBeInvisible(loader);
 		alterarCNPJ(opcao_ec4);
+		waitForElementToBeInvisible(loader);
+		alterarCNPJ(opcao_ec3);
+		waitForElementToBeInvisible(loader);
+		alterarCNPJ(opcao_ec4);
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void alterarEstabelecimentoPainel() throws IOException, InterruptedException {
 		alterarCNPJ(ofertaPainel);
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void alterarEstabelecimentoPainelContratacaoCancelamento(String cnpj)
@@ -45,32 +57,45 @@ public class PainelActions extends PainelPage {
 
 		if (cnpj.equals("82143278000182")) {
 			alterarCNPJ(testeGratis);
+			waitForElementToBeInvisible(loader);
 		} else if (cnpj.equals("12259140000168")) {
 			alterarCNPJ(opcao_ec4);
+			waitForElementToBeInvisible(loader);
 		} else if (cnpj.equals("28339982000160")) {
 			alterarCNPJ(opcao_ec3);
+			waitForElementToBeInvisible(loader);
+		}
+			else if (cnpj.equals("12259140000168")) {
+				alterarCNPJ(opcao_ec4);
+				waitForElementToBeInvisible(loader);
 		} else
 			alterarCNPJ(desbloq_2);
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void alterarEstabelecimentoPlano() throws IOException, InterruptedException {
 		alterarCNPJ(opcao_ec_plano);
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void alterarEstabelecimentoPlanoSaldo() throws IOException, InterruptedException {
 		alterarCNPJ(opcao_ec_plano_saldo);
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void alterarEstabelecimentoArv() throws IOException, InterruptedException {
 		alterarCNPJ(opcao_ec_arv);
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void alterarEstabelecimentoBloq(String cnpj) throws IOException, InterruptedException {
 
 		if (cnpj.equals("1")) {
 			alterarCNPJ(opcao_ec3);
+			waitForElementToBeInvisible(loader);
 		} else if (cnpj.equals("2")) {
 			alterarCNPJ(opcao_ec4);
+			waitForElementToBeInvisible(loader);
 		}
 	}
 
@@ -78,8 +103,10 @@ public class PainelActions extends PainelPage {
 
 		if (cnpj.equals("2")) {
 			alterarCNPJ(desbloq_2);
+			waitForElementToBeInvisible(loader);
 		} else if (cnpj.equals("1")) {
 			alterarCNPJ(desbloq_1);
+			waitForElementToBeInvisible(loader);
 		}
 	}
 
@@ -89,9 +116,9 @@ public class PainelActions extends PainelPage {
 
 	private void alterarCNPJ(WebElement elemento) throws IOException, InterruptedException {
 		opcao_select.click();
-		Thread.sleep(3000);
-		elemento.click();
 		Thread.sleep(2000);
+		elemento.click();
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void validarCNPJPainel() throws InterruptedException {
@@ -194,7 +221,8 @@ public class PainelActions extends PainelPage {
 		} else if (grafico.equalsIgnoreCase("Semanal")) {
 			validarTextoElemento(graficoSemana, munuSemanal);
 		} else {
-			validarTextoElemento(graficodiario, munuDiario);
+			//TODO validar quando liberar o painel diário 
+			//validarTextoElemento(graficodiario, munuDiario);
 		}
 	}
 
@@ -224,6 +252,7 @@ public class PainelActions extends PainelPage {
 		Thread.sleep(2000);
 		btnExperimenteGratis.click();
 		waitForElementToBeInvisible(loader);
+		waitForElementPageToBeClickable(btnContratarAgora);
 		btnContratarAgora.click();
 		waitForElementToBeInvisible(loader);
 		flagTermoDeAceite.click();
@@ -257,18 +286,8 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void validarCancelamentoPainel(String status) throws IOException, InterruptedException {
-		if (status.equals("TESTE GRÁTIS")) {
-			//TODO
-			
-			// Assert.assertTrue("Status diferente do esperado para contratação
-			// no período de testes",
-			// contratadoGratis.getText().contains(" do Alelo Painel Meu
-			// Negócio"));
-		} else if (status.equals("Cancelado")) {
 
-			validarTextoElemento(statusCancelado, status);
-		}
-		validarTextoElemento(ultimaMensalidade, textUltimaMensalidade);
+		validarTextoElemento(statusText, textConfirmacao);
 	}
 
 	public PainelActions(WebDriver driver) {

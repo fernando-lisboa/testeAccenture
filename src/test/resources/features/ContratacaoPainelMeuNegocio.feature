@@ -5,7 +5,7 @@
 # * Data: 06/02/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @ContratacaoWeb
+@Regressivo
 Funcionalidade: Painel Meu Negocio
   Contratação de painel meu negócio
   
@@ -14,7 +14,7 @@ Funcionalidade: Painel Meu Negocio
   Para clientes inadimplentes
 
   Contexto: 
-    Dado que estou na logado no portal EC "594.114.000-27", "Alelo2020@"
+    Dado que estou na logado no portal EC "273.824.010-06", "Alelo2020@"
 
   @ContratacaoWeb @Regressivo
   Esquema do Cenario: <VSTS> - Painel <cenario>
@@ -23,8 +23,8 @@ Funcionalidade: Painel Meu Negocio
 
     Exemplos: 
       | VSTS   | cenario                                         | statusEsperado | cnpj           |
-      #| 9999-1 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | 82143278000182 |
-      #| 9999-2 | Efetivar contratação fora do periodo gratuito   | Contratado     | 12259140000168 |
+      | 9999-1 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | 82143278000182 |
+      | 9999-2 | Efetivar contratação fora do periodo gratuito   | Contratado     | 12259140000168 |
 
   @ContratacaoWeb @Regressivo
   Esquema do Cenario: <VSTS> - Painel <cenario>
@@ -34,4 +34,4 @@ Funcionalidade: Painel Meu Negocio
     Exemplos: 
       | VSTS   | cenario                                          | statusEsperado | cnpj           |
       | 9999-3 | Efetivar Cancelamento dentro do periodo gratuito | TESTE GRÁTIS   | 28339982000160 |
-      #| 9999-4 | Efetivar Cancelamento fora do periodo gratuito   | Cancelado      | 41707658000115 |
+      | 9999-4 | Efetivar Cancelamento fora do periodo gratuito   | Cancelado      | 41707658000115 |

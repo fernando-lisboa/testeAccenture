@@ -16,7 +16,7 @@ Funcionalidade: Painel
   Contexto: 
     Dado que estou na logado no portal EC "376.805.440-34", "Alelo2020@"
 
-  @Paine @Regressivo
+  @Painelll @Regressivo
   Esquema do Cenario: <VSTS> - Alterar SUCESSIVAMENTE CNPJ no combo selecao com Sucesso <cenario>
     E seleciono um CNPJ diferente no combo Estabelecimento
     Entao o painel carrega as informacoes respectivas ao CNPJ selecionado
