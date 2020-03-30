@@ -23,13 +23,11 @@ public class RecebimentosStep extends ParentSteps {
 	@Entao("^devo validar que é exibido o valor recebido e o valor a receber do meu ec \"([^\"]*)\"$")
 	public void devo_validar_que_é_exibido_o_valor_recebido_e_o_valor_a_receber_do_meu_ec(String periodo)
 			throws Throwable {
-
 		actions.validarPeriodos(periodo);
 	}
 
 	@Quando("^selecionar a data atual e a opcao de \"([^\"]*)\"$")
 	public void selecionar_a_data_atual_e_a_opcao_de(String produto) throws Throwable {
-
 		actions.localizaDiaComRecebiveisDisponiveis();
 		actions.selecionarProduto(produto);
 

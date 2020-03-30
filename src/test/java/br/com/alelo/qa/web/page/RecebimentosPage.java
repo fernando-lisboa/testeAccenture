@@ -35,10 +35,10 @@ public class RecebimentosPage extends PageObject {
 	@FindBy(xpath = "//*[@id='ScheDay_totalValue']/div[2]/span[2]/text()")
 	protected List<WebElement> listAReceber2;
 
-	@FindBy(id = "scheduleTopBarPreviousImage")
+	@FindBy(id = "scheduleTopBarPreviousImage") 
 	protected WebElement retrocederMes;
 
-	@FindBy(id = "datetimmecustomDiv")
+	@FindBy(id = "scheduleTopBarTotalReceivedValue")
 	protected WebElement mesReferencia;
 
 	@FindBy(xpath = "//*[@id='datetimmecustomDiv']/div/input")
