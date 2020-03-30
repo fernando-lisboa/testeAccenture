@@ -5,15 +5,12 @@ import static org.junit.Assert.fail;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.xml.crypto.KeySelector;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.server.handler.FindElement;
+import static java.lang.Thread.sleep;
 
 import br.com.alelo.qa.web.page.ContratacaoArvNaCentral_Page;
 
@@ -123,36 +120,31 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 	}
 
 	public void selecionarOpcaoTodos() throws InterruptedException {
-		localizaDiaComRecebiveisDisponiveis();
-		waitForElementPageToBeClickable(btnGerarProposta);
-		btnGerarProposta.click();
 		JavascriptExecutor js = (JavascriptExecutor) webdriver;
-//		js.executeScript("arguments[0].click();",FindElement(By.cssSelector(cssSelector)));
-	}
-	
-	public void localizaDiaComRecebiveisDisponiveis() {
-		waitForElementToBeInvisible(loader);
-
-		Boolean sair = false;
-		Integer listElements = listAReceber.size();
-		for (i = 0; i < listElements; i++) {
-			if (sair == true)
-				break;
-			for (WebElement list : listAReceber) {
-				System.out.println(listAReceber.get(i).getCssValue("input"));
-				System.out.println(i);
-
-				if (i==3) {
-					list.sendKeys(Keys.SPACE);
-					sair = true;
-					break;
-				}
-
-				i++;
-			}
-
+		if (btnGerarProposta.isEnabled()) {
+			js.executeScript("arguments[0].click();", webdriver.findElement(By.id("formBasicCheckbox")));
+			Thread.sleep(2000);
 		}
-
+		List<WebElement> listaAntecipacao = webdriver
+				.findElements(By.xpath("//input[@id='flagContratacaoIndividual']"));
+		Integer linhaResult = 2;
+		if (!btnGerarProposta.isEnabled()) {
+			for (WebElement list : listaAntecipacao) {
+				if (!webdriver
+						.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[2]/div/div[3]/div["
+								+ String.valueOf((linhaResult) + "]/div[3]")))
+						.getText().contains("NÃO HÁ SALDO DISPONÍVEL PARA ANTECIPAÇÃO")) {
+					js.executeScript("arguments[0].click();", list);
+					sleep(2000);
+					int indexatual = listaAntecipacao.indexOf(list);
+				}
+				linhaResult++;
+			}
+		}
+		btnGerarProposta.click();
+		waitForElementPageToBeClickable(btnConsolidation);
+		js.executeScript("arguments[0].click();", webdriver.findElements(By.id("formBasicCheckbox")).get(1));
+		btnConsolidation.click();
 	}
 
 	public void calcularValor() {
@@ -303,9 +295,9 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 	}
 
 	public void validarSimulacaoSucesso() {
-		System.out.println(telaConfirmacao.toString());
-		String obterMsg = telaConfirmacao.toString();
-		Assert.assertTrue("Msg diferente da esperada", obterMsg.equals("TODOS OS CÓDIGOS FORAM ANTECIPADOS"));
+		System.out.println(AssertConfirmacao1.toString());
+		String obterMsg = AssertConfirmacao1.toString();
+		Assert.assertTrue("Msg diferente da esperada", obterMsg.equals("Todos os códigos foram antecipados"));
 
 	}
 

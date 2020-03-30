@@ -259,6 +259,10 @@ public class ContratacaoArvNaCentral_Page extends PageObject {
 	@FindBy(xpath = "//div[@class='modal-subtitle-1 alignCenter row'][contains(.,'SOLICITE A CONFIRMAÇÃO DOS DADOS LISTADOS ABAIXO')]")
 	protected WebDriver telaConfirmacao;
 	public String telaConfirmacao1 = "SOLICITE A CONFIRMAÇÃO DOS DADOS LISTADOS ABAIXO";
+
+	@FindBy(xpath = "/html/body/div[5]/div")
+	protected WebDriver AssertConfirmacao1;
+	public String AssertConfirmacao = "Todos os códigos foram antecipados";
 	
 	@FindBy (className = "arvConsolidation")
 	public WebDriver arvConsolidation;

@@ -10,7 +10,7 @@ Funcionalidade: Contratacao ARV pela Central
     Consultar e contratar ARV pela central - pontual, recorrente e automática
   
   Eu como operador da central
-  Desejo Consultar e contratar ARV através
+  Desejo Consultar e contratar ARV através 
 
   Contexto: 
     Dado que estou logado no Portal ARV na Central "55356357079", "12345678aA@"
@@ -44,8 +44,8 @@ Funcionalidade: Contratacao ARV pela Central
       | VSTS  | cenario                                     | cnpj           | ec1        | ec2        |
       | 78515 | consultar CNPJ com mais de um EC cadastrado | 28339982000160 | 1015000654 | 2000496258 |
 
-  #Feito
-  @Release-15 @front001 @Regressivo @SimularArvTotal @robo
+  #Finalizado
+  @Release-15 @front001  @SimularArvTotal 
   Esquema do Cenario: <VSTS> - SimularArvTotal <cenario>
     Quando inserir um CNPJ com mais de um EC com ARV disponível para contratacao "<cnpj>"
     E selecionar a opcao todos para antecipacao
