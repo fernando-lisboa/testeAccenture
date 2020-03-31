@@ -39,10 +39,38 @@ public class RecebimentosStep extends ParentSteps {
 		actions.validarCampoCabecalho(produto);
 		System.out.println("TESTE FINALIZADO COM SUCESSO");
 	}
-	
-	
+
 	@Entao("^devo validar que foi apresentado uma tabela com os detalhes das transacoes de acordo com o filtro \"([^\"]*)\"$")
-	public void devo_validar_que_foi_apresentado_uma_tabela_com_os_detalhes_das_transacoes_de_acordo_com_o_filtro(String produto) throws Throwable {
+	public void devo_validar_que_foi_apresentado_uma_tabela_com_os_detalhes_das_transacoes_de_acordo_com_o_filtro(
+			String produto) throws Throwable {
 		actions.validarDetalheTransacoes(produto);
 	}
+
+	@Quando("^clicar no menu recebimentos \"([^\"]*)\"$")
+	public void clicar_no_menu_recebimentos(String cnpj) throws Throwable {
+		actions = new RecebimentosActions(webdriver);
+		actions.alterarEstabelecimento(cnpj);
+		actions.valitarTelaRecebiveis();
+	}
+
+	@Quando("^Selecionar a data atual e a opcao de produtos e clicar em comprovante\"([^\"]*)\"$")
+	public void selecionar_a_data_atual_e_a_opcao_de_produtos_e_clicar_em_comprovante(String produto) throws Throwable {
+		actions.localizaDiaComRecebiveisDisponiveis();
+		actions.selecionarProduto(produto);
+	}
+
+	@Quando("^devo visualizar a lista de valores a receber de acordo com o produto selecionado e fazer o download do comprovante\"([^\"]*)\"$")
+	public void devo_visualizar_a_lista_de_valores_a_receber_de_acordo_com_o_produto_selecionado_e_fazer_o_download_do_comprovante(
+			String produto) throws Throwable {
+		actions.btnComprovante();
+		actions.downloadBtn();
+
+	}
+
+	@Entao("^devo validar que foi realizado o download ou impressao do comprovante \"([^\"]*)\"$")
+	public void devo_validar_que_foi_realizado_o_download_ou_impressao_do_comprovante(String produto) throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
 }
