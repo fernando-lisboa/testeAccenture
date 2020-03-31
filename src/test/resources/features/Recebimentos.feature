@@ -35,7 +35,7 @@ Funcionalidade: Recebimentos
       | 9999-5 | Consultar Recebimentos por tipo de produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
       | 9999-6 | Consultar Recebimentos por tipo de produto - TODOS       | TODOS             | 28339982000160 |
 
-#Feito
+  #Feito
   @Recebimentos @FERNANDO @Matheus
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
@@ -48,3 +48,16 @@ Funcionalidade: Recebimentos
       | 9999-7 | Consultar detalhe das transações de acordo com o produto - REFEIÇÃO    | ALELO REFEICAO    | 28339982000160 |
       | 9999-8 | Consultar detalhe das transações de acordo com o produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
       | 9999-9 | Consultar detalhe das transações de acordo com o produto- TODOS        | TODOS             | 28339982000160 |
+
+  @Recebimentoss1 @FERNANDO @Matheus
+  Esquema do Cenario: <VSTS> - Comprovante detalhado <cenario>
+    Quando clicar no menu recebimentos "<cnpj>"
+    E Selecionar a data atual e a opcao de produtos e clicar em comprovante"<produto>"
+    E devo visualizar a lista de valores a receber de acordo com o produto selecionado e fazer o download do comprovante"<produto>"
+    Entao devo validar que foi realizado o download ou impressao do comprovante "<produto>"
+
+    Exemplos: 
+      | VSTS    | cenario                                                                                                     | produto           | cnpj           |
+      | 9999-10 | Consultar detalhe das transações de acordo com o produto e realizar o download do comprovante - REFEIÇÃO    | ALELO REFEICAO    | 28339982000160 |
+     # | 9999-11 | Consultar detalhe das transações de acordo com o produto e realizar o download do comprovante - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
+     #| 9999-12 | Consultar detalhe das transações de acordo com o produto e realizar o download do comprovante - TODOS       | TODOS             | 28339982000160 |

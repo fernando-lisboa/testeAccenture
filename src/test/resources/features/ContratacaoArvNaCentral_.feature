@@ -5,7 +5,7 @@
 # * Data: 18/03/2020
 # * Caminho: Portal Estabelecimento Web Admin
 # */
-@Regressivo @ArvCentral
+@Regressivo @ArvCentral @Regressivo @SaudacaoArvCentral
 Funcionalidade: Contratacao ARV pela Central
     Consultar e contratar ARV pela central - pontual, recorrente e automática
   
@@ -24,7 +24,7 @@ Funcionalidade: Contratacao ARV pela Central
       | 78508 | Boa Tarde |
       | 78508 | Boa Noite |
 
-@ArvCentral
+@ArvCentral @Regressivo @ConsultaCnpj
   Esquema do Cenario: <VSTS> - Consulta de CNPJ <cenario>
     Quando inserir um CNPJ no campo de pesquisa e clicar em Buscar "<cnpj>"
     Entao deve apresentar o cenario de validacao "<validacao>"
@@ -35,7 +35,7 @@ Funcionalidade: Contratacao ARV pela Central
       | 78513 | sem Arv Disponível | 12259140000168 | exibir uma mensagem que não há saldo disponível para antecipacao      |
 
 #Feito
-@ArvCentral
+@ArvCentral @Regressivo @ConsultaCnpjMaisUmEc
   Esquema do Cenario: <VSTS> - Consulta de CNPJ Com Mais de Um EC <cenario>
     Quando inserir um CNPJ com mais de um EC cadastrado e clicar no botao Buscar "<cnpj>"
     Entao deve aparecer a tela com o campo dos dados cadastrais apresentando os ECs relacionados com os dados para contratacao "<ec1>", "<ec2>"
@@ -45,7 +45,7 @@ Funcionalidade: Contratacao ARV pela Central
       | 78515 | consultar CNPJ com mais de um EC cadastrado | 28339982000160 | 1015000654 | 2000496258 |
 
   #Finalizado
-  @Release-15 @front001  @SimularArvTotal @ArvCentral
+  @Release-15 @front001  @SimularArvTotal @ArvCentral @Regressivo
   Esquema do Cenario: <VSTS> - SimularArvTotal <cenario>
     Quando inserir um CNPJ com mais de um EC com ARV disponível para contratacao "<cnpj>"
     E selecionar a opcao todos para antecipacao
@@ -55,7 +55,7 @@ Funcionalidade: Contratacao ARV pela Central
       | VSTS  | cenario                                            | cnpj           |
       | 78517 | Simular contratacao de ARV total para todos os Ecs | 28339982000160 |
 
-@ArvCentral
+@ArvCentral @Regressivo @SimularArvUmEc
   Esquema do Cenario: <VSTS> Simular Arv Um EC <cenario>
     Quando colocar um CNPJ com mais de um EC com ARV disponível para contratacao e clicar em gerar proposta "<cnpj>"
     Entao deve apresentar a tela de confirmaçao com o valor total da contratacao
@@ -66,7 +66,7 @@ Funcionalidade: Contratacao ARV pela Central
 
   ############################################# - ALTERACAO DE VALOR DE CONTRATACAO DE ARV PARCIAL - #############################################
   #Feito
-  @ArvCentral
+  @ArvCentral @Regressivo @ContratacaoArvParcial
   Esquema do Cenario: <VSTS> Simular Alteracao Parcial de ARV <cenario>
     Quando Inserir um CNPJ com mais de um EC com ARV disponível para contratacao "<cnpj>"
     E selecionar um valor para antecipacao parcial e clicar em vizualizar valores disponiveis "<valor>"
@@ -77,7 +77,7 @@ Funcionalidade: Contratacao ARV pela Central
       | 78524 | Simular contratacao de ARV total para apenas 1 EC | 28339982000160 |  1000 |
 
   ############################################# - ALTERACAO DE VALOR DE CONTRATACAO DE ARV RECORRENTE - #############################################
- @ArvCentral
+ @ArvCentral @Regressivo @ContratacaoArvRecorrente
   Esquema do Cenario: <VSTS> Simular Alteracao Contratacao de ARV Recorrente <cenario>
     Quando inserir um cnpj com mais de um EC com ARV disponível para contratacao "<cnpj>"
     E selecionar uma recorrencia "<recorrencia>"

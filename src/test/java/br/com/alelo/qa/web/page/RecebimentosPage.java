@@ -110,6 +110,12 @@ public class RecebimentosPage extends PageObject {
 	@FindBy(xpath = "//*[@id='tableSummaryOperationListDesktop']/tbody")
 	protected WebElement tableDetalhe;
 
+	@FindBy(id = "summary-export-pdf-button-2")
+	protected WebDriver btnDownloadPdfDown;
+
+	@FindBy(id = "summary-export-pdf-button-1")
+	protected WebDriver btnDownloadPdfTop;
+	
 	public RecebimentosPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
