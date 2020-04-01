@@ -29,14 +29,13 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
     public void alterarEstabelecimentoArv(String cnpjAgenda) throws IOException, InterruptedException {
 
-//		waitForElementPageToLoad(loader);
-        Thread.sleep(3000);
+		waitForElementPageToLoad(loader);
         alterarCNPJ(cnpjAgenda);
-        Thread.sleep(2000);
+        waitForElementPageToLoad(loader);
     }
 
     public void antecipacaoARV() throws InterruptedException {
-//		waitForElementPageToLoad(loader);
+		waitForElementPageToLoad(loader);
         Thread.sleep(5000);
         clicaArv.click();
         String sidekick;
@@ -58,7 +57,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
     public void clicarAntecipar() throws InterruptedException {
         Thread.sleep(3000);
         btnAntecipar.click();
-//		waitForElementPageToLoad(loader);
+		waitForElementPageToLoad(loader);
         Thread.sleep(3000);
     }
 
@@ -131,8 +130,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
     public void clicarVizualizarValores() throws InterruptedException {
         btnVisualizarValores.click();
-//		waitForElementPageToLoad(loader);
-        Thread.sleep(3000);
+		waitForElementPageToLoad(loader);
     }
 
     public void selecionarOpcao() throws InterruptedException {
@@ -144,20 +142,19 @@ public class AntecipacaoActions extends AntecipacaoPage {
     }
 
     public void clicarAlterar() throws InterruptedException {
-//		waitForElementPageToLoad(loader);
-        Thread.sleep(3000);
+		waitForElementPageToLoad(loader);
         waitForElementPageToBeClickable(btnAlteraValor);
         btnAlterarRecorrencia.click();
     }
 
     public void selecionarSemanal() throws InterruptedException {
         checkSemanal.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
     }
 
     public void selecionaDiaSemana() throws InterruptedException {
         checkDiaSemanal.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
     }
 
     public void selecionaOpcaoDesativada() throws InterruptedException {
@@ -180,10 +177,9 @@ public class AntecipacaoActions extends AntecipacaoPage {
     }
 
     public void alterarCNPJ(String cnpjAgenda) throws IOException, InterruptedException {
-//		waitForElementPageToLoad(loader);
-        Thread.sleep(3000);
+		waitForElementPageToLoad(loader);
         comboCnpj.click();
-        Thread.sleep(5000);
+        waitForElementPageToLoad(loader);
         // clicar("xpath", elemento3); TODO aplicar o cnpj a ser selecionado
         // após clicar no combo
     }

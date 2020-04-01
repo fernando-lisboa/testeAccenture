@@ -94,7 +94,7 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(id = "cardRecurr-WEEKLY")
 	protected WebElement checkSemanal;
 
-	@FindBy(id = "imageLoader")
+	@FindBy(id = "loaderId")
 	protected WebElement loader;
 
 	@FindBy(id = "textNormalSidekick")
