@@ -7,53 +7,25 @@
 
 package br.com.alelo.qa.features.steps;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.AntecipacaoActions;
-import br.com.alelo.qa.web.actions.HomeActions;
-import br.com.alelo.qa.web.actions.SairActions;
-import br.com.alelo.utils.SimpleCacheManager;
-import cucumber.api.PendingException;
-import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
-import cucumber.api.java.pt.Quando;
 
 public class AntecipacaoStep extends ParentSteps {
 
-	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
-	AntecipacaoActions antecipacao;
-	HomeActions home;
-	SairActions sair;
-	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
-	@Quando("^clico no SideKick no menu expansivel lateral de antecipacao de recebiveis$")
-	public void clico_no_SideKick_no_menu_expansivel_lateral_de_antecipacao_de_recebiveis() throws Throwable {
+    @E("estou usando \"([^\"]*)\", se cenario \"([^\"]*)\", devo alterar o valor \"([^\"]*)\" e antecipar \"([^\"]*)\"$")
+    public void se_cenario_devo_alterar_o_valor_e_antecipar(boolean Modal, String Cenario, boolean Valor, boolean Antecipacao) throws Throwable {
+        AntecipacaoActions AA = new AntecipacaoActions(webdriver);
+        AA.FluxoAntecipacaoDeRecebiveisARV(Modal, Cenario, Valor, Antecipacao);
+    }
 
-	
-	}
-
-	@Quando("^seleciono a opcao de alterar valor e escolher o valor desejado e clicar no botao de vizualizacao de valores$")
-	public void seleciono_a_opcao_de_alterar_valor_e_escolher_o_valor_desejado_e_clicar_no_botao_de_vizualizacao_de_valores() throws Throwable {
-
-
-		
-	}
-
-	@Quando("^clicar na opcao de vizualizar valores liquidos For encaminhado para a tela de contratacao$")
-	public void clicar_na_opcao_de_vizualizar_valores_liquidos_For_encaminhado_para_a_tela_de_contratacao() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new Exception();
-	}
-
-	@Entao("^devo vizualizar os valores disponiveis para antecipacao do valor aproximado solicitado com o botao contratar agora desabilitado$")
-	public void devo_vizualizar_os_valores_disponiveis_para_antecipacao_do_valor_aproximado_solicitado_com_o_botao_contratar_agora_desabilitado() throws Throwable {
-
-
-		
-	}
+    @Entao("a validacao do cenario deve conter como resultado \"([^\"]*)\"$")
+    public void a_validacao_do_cenario_deve_conter_como_resultado(String Resultado) throws Throwable {
+        AntecipacaoActions.ResultadoEvidencia(Resultado);
+    }
 }
+
 //
 //	@Dado("^que estou logado em qualquer tela no Portal EC$")
 //	public void que_estou_logado_em_qualquer_tela_no_Portal_EC() throws Throwable {
