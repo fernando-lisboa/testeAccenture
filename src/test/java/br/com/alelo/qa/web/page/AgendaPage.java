@@ -47,11 +47,9 @@ public class AgendaPage extends PageObject {
 		return url_agenda;
 	}
 
-
 	public void setUrl_agenda(String url_agenda) {
 		this.url_agenda = url_agenda;
 	}
-
 
 	@FindBy(id = "navbarDesktopAgenda")
 	protected WebElement menuAgenda;
@@ -64,7 +62,6 @@ public class AgendaPage extends PageObject {
 	
 	@FindBy(id = "imageLoader")
 	protected WebElement loader;
-	
 
 	@FindBy(id = "ScheDay_today")
 	protected WebElement elementoHoje;

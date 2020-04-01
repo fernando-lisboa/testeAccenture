@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import br.com.alelo.qa.web.support.PageObject;
 
 public class AntecipacaoPage extends PageObject {
-	
+
 	public AntecipacaoPage(WebDriver driver) {
 		super(driver);
 	}
@@ -35,7 +35,7 @@ public class AntecipacaoPage extends PageObject {
 	protected WebElement comboCnpj;
 
 	@FindBy(id = "simulate-terms-check")
-	protected WebElement checkAceiteTermosRecebiveis;
+	public WebElement checkAceiteTermosRecebiveis;
 
 	@FindBy(id = "anticipationButton")
 	protected WebElement btnAntecipar;
@@ -44,25 +44,25 @@ public class AntecipacaoPage extends PageObject {
 	protected WebElement mensagemAntecipacao;
 
 	@FindBy(id = "btnAnticipationChangeValue")
-	protected WebElement btnAlteraValor;
+	public WebElement btnAlteraValor;
 
 	@FindBy(id = "textAnticipationAntecipationValueMax")
 	protected WebElement valorMaximo;
 
 	@FindBy(id = "formControlsText")
-	protected WebElement campoAlterarValor;
+	public WebElement campoAlterarValor;
 
 	@FindBy(id = "btnViewValueAntecipation")
-	protected WebElement btnVisualizarValores;
+	public WebElement btnVisualizarValores;
 
 	@FindBy(id = "antecipation-opt-3-check")
 	protected WebElement opcao_1;
 
 	@FindBy(id = "btnViewLiquidValueAntecipation")
-	protected WebElement celularValorLiquido;
+	public WebElement calcularValorLiquido;
 
 	@FindBy(id = "btnAnticipationChange")
-	protected WebElement btnAlterarRecorrencia;
+	public WebElement btnAlterarRecorrencia;
 
 	@FindBy(id = "btnAnticipationModalAntecipationCancel")
 	protected WebElement botaoCancelarParcial;
@@ -83,7 +83,7 @@ public class AntecipacaoPage extends PageObject {
 	protected WebElement tituloModalAntecipacao;
 
 	@FindBy(id = "btnAntecipationRecurrVisualize")
-	protected WebElement botaoDefinirRecebimento;
+	public WebElement botaoDefinirRecebimento;
 
 	@FindBy(id = "cardRecurr-DISABLED")
 	protected WebElement checkDesativar;

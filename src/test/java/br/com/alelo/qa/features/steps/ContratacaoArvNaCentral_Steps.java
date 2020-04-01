@@ -39,6 +39,7 @@ public class ContratacaoArvNaCentral_Steps extends ParentSteps {
 	@Entao("^deve apresentar o cenario de validacao \"([^\"]*)\"$")
 	public void deve_apresentar_o_cenario_de_valicao(String validacao) throws Throwable {
 	    actions.validarMensagemArvNaoDisponivel();
+//	    Corrigir o Assert 
 	}
 
 //CONSULTA COM MAIS DE UM EC DISPONIVEL
@@ -54,7 +55,6 @@ public class ContratacaoArvNaCentral_Steps extends ParentSteps {
 	public void deve_aparecer_a_tela_com_o_campo_dos_dados_cadastrais_apresentando_os_ECs_relacionados_com_os_dados_para_contratacao(String ec1, String ec2) throws Throwable {
 		actions.validaCnpjConsultadoMaisDeUmEc(ec1, ec2);
 		actions.validarDadosCadastrais();
-//TODO correçao do ultimo step. Nao esta encontrando o cpf informado. 
 	}
 
 //	SIMULACAO DE CONTRATACAO TOTAL COM ARV
@@ -68,13 +68,13 @@ public class ContratacaoArvNaCentral_Steps extends ParentSteps {
 
 	@Quando("^selecionar a opcao todos para antecipacao$")
 	public void selecionar_a_opcao_todos_para_antecipacao() throws Throwable {
-//		actions.selecionarOpcaoTodos();
-	    actions.gerarProposta();
+	    actions.selecionarOpcaoTodos();
+
 	}
 
 	@Entao("^deve ser apresentado a tela de confirmaçao com o valor total da contratacao$")
 	public void deve_ser_apresentado_a_tela_de_confirmaçao_com_o_valor_total_da_contratacao() throws Throwable {
-//	 TODO finalizar teste
+//		actions.validarSimulacaoSucesso();
 	}
 	
 //	SIMULACAO DE CONTRATACAO DE 1 EC COM ARV DISPONIVEL
@@ -88,7 +88,8 @@ public class ContratacaoArvNaCentral_Steps extends ParentSteps {
 
 	@Entao("^deve apresentar a tela de confirmaçao com o valor total da contratacao$")
 	public void deve_apresentar_a_tela_de_confirmaçao_com_o_valor_total_da_contratacao() throws Throwable {
-	    actions.gerarProposta();
+		actions.gerarProposta();
+//	    TODO Finalizar com Assert da tela de confirmacao //
 	}
 
 
