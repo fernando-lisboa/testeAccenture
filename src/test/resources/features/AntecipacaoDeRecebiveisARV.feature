@@ -24,8 +24,8 @@ Funcionalidade: Antecipacao
     Entao devo vizualizar os valores disponiveis para antecipacao do valor aproximado solicitado com o botao contratar agora desabilitado
 
     Exemplos: 
-      | VSTS   | cenario | cnpj           |
-      | 9999-1 | Parcial |  28339982000160 |
-      | 9999-2 | Total   |  28339982000160 |
-      | 9999-2 | Recorrente Diário  |  28339982000160 |
-      | 9999-2 | Total Semanal   |  28339982000160 |
+      | VSTS   | cenario           | cnpj           |
+      | 9999-1 | Parcial           | 28339982000160 |
+      | 9999-2 | Total             | 28339982000160 |
+      | 9999-4 | Recorrente Diário | 28339982000160 |
+      | 9999-5 | Total Semanal     | 28339982000160 |
