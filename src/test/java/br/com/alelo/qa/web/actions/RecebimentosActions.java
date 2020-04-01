@@ -9,6 +9,8 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.By.ByCssSelector;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -111,7 +113,7 @@ public class RecebimentosActions extends RecebimentosPage {
 
 	public void validarPeriodos(String periodo) {
 		if (periodo.equals("mês atual")) {
-			valitarTelaConteudoRecebiveis();
+			valitarTelaConteudoRecebiveis(); 
 		} else if (periodo.equals("mês seguinte")) {
 			avacarMes();
 		} else {
@@ -200,4 +202,20 @@ public class RecebimentosActions extends RecebimentosPage {
 
 	}
 
+	public void btnComprovante() throws Throwable {
+		waitForElementPageToBeClickable(btnComprovantes);
+		btnComprovantes.click();
+		
+	}
+	
+	public void downloadBtn() throws Throwable {
+		waitForElementPageToBeClickable((WebElement) btnDownloadPdfDown);
+
+		JavascriptExecutor js = (JavascriptExecutor) webdriver;
+			js.executeScript("arguments[0].click();", webdriver.findElement(By.id("summary-export-pdf-button-2")));
+			Thread.sleep(2000);
+		
+//		((WebElement) btnDownloadPdf).click();
+	}
+	
 }

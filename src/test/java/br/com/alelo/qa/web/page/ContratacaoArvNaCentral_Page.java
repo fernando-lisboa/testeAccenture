@@ -1,5 +1,7 @@
 package br.com.alelo.qa.web.page;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -72,8 +74,11 @@ public class ContratacaoArvNaCentral_Page extends PageObject {
 	@FindBy(className = "arvCheckbox form-check")
 	public WebDriver flagSelecionaUmEc;
 
-	@FindBy(xpath = "//input[contains(@id,'formBasicCheckbox')]")
+	@FindBy(id = "formBasicCheckbox") 
 	protected WebElement flagContratacaoTodos;
+	
+	@FindBy(css = ".form-group")
+	protected List<WebElement> listAReceber;
 
 	@FindBy(id = "cnpjContratacao")
 	protected WebElement cnpjContratacao;
@@ -215,7 +220,7 @@ public class ContratacaoArvNaCentral_Page extends PageObject {
 	@FindBy(id = "text_banco2_confirmacao")
 	protected WebElement domiciliobancarioConfirmacaoBanco2;
 
-	@FindBy(id = "text_confirmacao_contratacao")
+	@FindBy(className = "modal-subtitle-1 alignCenter row")
 	protected WebElement text_confirmacao_contratacao;
 
 	@FindBy(id = "comboCnpj")
@@ -233,6 +238,9 @@ public class ContratacaoArvNaCentral_Page extends PageObject {
 	@FindBy(id = "flagContratacaoIndividual_1")
 	protected WebElement flagContratacaoIndividual_1;
 
+	@FindBy(id = "btnConsolidation")
+	protected WebElement btnConsolidation;
+	
 	@FindBy(id = "btnConsolidationCancel")
 	protected WebElement btnConsolidationCancel;
 
@@ -248,10 +256,13 @@ public class ContratacaoArvNaCentral_Page extends PageObject {
 	@FindBy(className = "row")
 	protected WebElement msgSemAntecipacao;
 	
-	
-	@FindBy (className = "modal-subtitle-1 alignCenter row")
+	@FindBy(xpath = "//div[@class='modal-subtitle-1 alignCenter row'][contains(.,'SOLICITE A CONFIRMAÇÃO DOS DADOS LISTADOS ABAIXO')]")
 	protected WebDriver telaConfirmacao;
 	public String telaConfirmacao1 = "SOLICITE A CONFIRMAÇÃO DOS DADOS LISTADOS ABAIXO";
+
+	@FindBy(xpath = "/html/body/div[5]/div")
+	protected WebDriver AssertConfirmacao1;
+	public String AssertConfirmacao = "Todos os códigos foram antecipados";
 	
 	@FindBy (className = "arvConsolidation")
 	public WebDriver arvConsolidation;

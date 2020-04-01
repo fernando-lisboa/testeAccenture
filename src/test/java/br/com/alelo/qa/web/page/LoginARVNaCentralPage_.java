@@ -28,7 +28,6 @@ public class LoginARVNaCentralPage_ extends PageObject {
 		// TODO Auto-generated constructor stub
 	}
 	
-	//@FindBy (id = "swal2-content")
 	@FindBy(xpath = "(//div[contains(.,'Usuário ou Senha inválido!')])[4]")
 	public WebElement tentativaInvalidaLogin;
 	public String txtUserInvalido = "Usuário ou Senha inválido!";

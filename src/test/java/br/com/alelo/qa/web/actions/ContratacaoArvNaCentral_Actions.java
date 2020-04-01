@@ -7,14 +7,18 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import static java.lang.Thread.sleep;
 
 import br.com.alelo.qa.web.page.ContratacaoArvNaCentral_Page;
 
 public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Page {
 
 	WebElement we;
+	private String valorEsperado;
+	int i;
 	// ############################## logins ##############################
 
 	public void loginArvNaCentral(String user, String password) throws Throwable {
@@ -39,6 +43,10 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 
 	public void clicarCancelarContratacao() {
 		btnConsolidationCancel.click();
+	}
+
+	public void clicarContratacao() {
+		btnConsolidation.click();
 	}
 
 	public void clicarBuscarCnpj() {
@@ -102,10 +110,9 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 	}
 
 	public void selecionarOpcaoIndividual() throws InterruptedException {
-			flagContratacaoIndividual.click();
-			Thread.sleep(3000);
-		}
-
+		flagContratacaoIndividual.click();
+		Thread.sleep(3000);
+	}
 
 	public void selecionarOpcaoIndividual2() throws InterruptedException {
 		flagContratacaoIndividual_2.click();
@@ -113,13 +120,31 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 	}
 
 	public void selecionarOpcaoTodos() throws InterruptedException {
-
-		waitForElementPageToLoad(flagContratacaoTodos);
-
-		flagContratacaoTodos.click();
-		Thread.sleep(3000);
-		flagContratacaoTodos.click();
-
+		JavascriptExecutor js = (JavascriptExecutor) webdriver;
+		if (btnGerarProposta.isEnabled()) {
+			js.executeScript("arguments[0].click();", webdriver.findElement(By.id("formBasicCheckbox")));
+			Thread.sleep(2000);
+		}
+		List<WebElement> listaAntecipacao = webdriver
+				.findElements(By.xpath("//input[@id='flagContratacaoIndividual']"));
+		Integer linhaResult = 2;
+		if (!btnGerarProposta.isEnabled()) {
+			for (WebElement list : listaAntecipacao) {
+				if (!webdriver
+						.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[2]/div/div[3]/div["
+								+ String.valueOf((linhaResult) + "]/div[3]")))
+						.getText().contains("NÃO HÁ SALDO DISPONÍVEL PARA ANTECIPAÇÃO")) {
+					js.executeScript("arguments[0].click();", list);
+					sleep(2000);
+					int indexatual = listaAntecipacao.indexOf(list);
+				}
+				linhaResult++;
+			}
+		}
+		btnGerarProposta.click();
+		waitForElementPageToBeClickable(btnConsolidation);
+		js.executeScript("arguments[0].click();", webdriver.findElements(By.id("formBasicCheckbox")).get(1));
+		btnConsolidation.click();
 	}
 
 	public void calcularValor() {
@@ -129,7 +154,7 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 	public void gerarProposta() {
 		waitForElementPageToBeClickable(btnGerarProposta);
 		btnGerarProposta.click();
-	};
+	}
 
 	public void confirmaRecorrencia() throws InterruptedException {
 
@@ -263,8 +288,16 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 
 	public void validarContratacaoSucesso() {
 
-		String obterMsg = text_confirmacao_contratacao.getText();
+		WebElement findElement = telaConfirmacao.findElement(By.className("text-dark-green fontBold alignCenter"));
+		String obterMsg = findElement.getText();
 		Assert.assertTrue("Msg diferente da esperada", obterMsg.equals("TODOS OS CÓDIGOS FORAM ANTECIPADOS"));
+
+	}
+
+	public void validarSimulacaoSucesso() {
+		System.out.println(AssertConfirmacao1.toString());
+		String obterMsg = AssertConfirmacao1.toString();
+		Assert.assertTrue("Msg diferente da esperada", obterMsg.equals("Todos os códigos foram antecipados"));
 
 	}
 
@@ -462,14 +495,16 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 		Assert.assertTrue("Não dividiu a antecipação por domicilio bancário", domicilioConta2 != null);
 
 	}
-	
+
 	public void validaCnpjConsultadoMaisDeUmEc(String ec1, String ec2) {
 
-		WebElement primeiroEc = webdriver.findElement(By.xpath("//div[@class='content w15'][contains(.,'" + ec1 + "')]"));
-		
+		WebElement primeiroEc = webdriver
+				.findElement(By.xpath("//div[@class='content w15'][contains(.,'" + ec1 + "')]"));
+
 		String numeroDoPrimeiroEc = primeiroEc.getText();
 
-		WebElement segundoEc = webdriver.findElement(By.xpath("//div[@class='content w15'][contains(.,'" + ec2 + "')]"));
+		WebElement segundoEc = webdriver
+				.findElement(By.xpath("//div[@class='content w15'][contains(.,'" + ec2 + "')]"));
 		String numeroDoSegundoEc = segundoEc.getText();
 
 		String valorCnpj = cnpjContratacao.getText();
@@ -481,28 +516,8 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 
 	}
 
-//	public void validaCnpjConsultadoMaisDeUmEc(String ec1, String ec2) {
-//
-//		webdriver.findElement(By.xpath("//div[@class='content w15'][contains(.,'1015000654')]"));
-////		.findElement(By.xpath("//div[@class='textGray fontNormal col-md-2'][contains(.,'" + ec1 + "')]"));
-////		String numeroDoPrimeiroEc = primeiroEc.getText();
-//
-//		WebElement segundoEc = we
-//				.findElement(By.xpath("//div[@class='textGray fontNormal col-md-2'][contains(.,'" + ec2 + "')]"));
-//		String numeroDoSegundoEc = segundoEc.getText();
-//
-//		String valorCnpj = cnpjContratacao.getText();
-//
-//		Assert.assertTrue("Numero do CNPJ diferente do Esperado", valorCnpj.contains(valorCnpj));
-//		Assert.assertTrue("Nome fantasia diferente do Esperado", valorCnpj.contains(valorCnpj));
-////		Assert.assertTrue("CNPJ com apenas um ec", numeroDoPrimeiroEc.contains(ec1));
-//		Assert.assertTrue("CNPJ com apenas um ec", numeroDoSegundoEc.contains(ec2));
-//
-//	}
-
 	public void validarDadosCadastrais() {
 		String valorCnpj = cnpjContratacao.getText();
-//		String nomeFantasia = cnpjContratacao.getText();
 		String domicilioBanco = domiciliobancarioConfirmacaoBanco1.getText();
 		String domicilioAgencia = domiciliobancarioConfirmacaoAgencia1.getText();
 		String domicilioConta = domiciliobancarioConfirmacaoConta1.getText();
@@ -517,12 +532,6 @@ public class ContratacaoArvNaCentral_Actions extends ContratacaoArvNaCentral_Pag
 		} else {
 			fail("Texto procurado não é igual ao esperado");
 		}
-
-//		if (nomeFantasia.contains(nomeFantasia)) {
-//			System.out.println("Teste realizado com sucesso!");
-//		} else {
-//			fail("Texto procurado não é igual ao esperado");
-//		}
 
 		if (domicilioBanco.contains(domicilioBanco)) {
 			System.out.println("Teste realizado com sucesso!");
