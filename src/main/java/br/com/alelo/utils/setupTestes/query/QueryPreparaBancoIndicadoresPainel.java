@@ -33,10 +33,16 @@ public class QueryPreparaBancoIndicadoresPainel {
 
 		return sql;
 	}
+	public StringBuilder retornaInsertContratacaoCancelado() {
+		StringBuilder sql = new StringBuilder(
+				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT) VALUES (SIBX_CONTR.nextval,'11699141000160', SYSDATE - 60 ,SYSDATE - 31, 'N', null) ");
+		
+		return sql;
+	}
 	
 	public StringBuilder retornaInsertContratacaoForaPeriodoTestes() {
 		StringBuilder sql = new StringBuilder(
-				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT) VALUES (SIBX_CONTR.nextval,'41707658000115',SYSDATE - 60 ,SYSDATE - 1, 'N', null) ");
+				" INSERT INTO TACS_CONTR_INDCD(ID_CONTR, NU_CNPJ, DT_INI_OFERT, DT_FIM_OFERT, DS_BLOQ, DT_CANCT) VALUES (SIBX_CONTR.nextval,'41707658000115',SYSDATE - 60 ,null, 'N', null) ");
 
 		return sql;
 	}
