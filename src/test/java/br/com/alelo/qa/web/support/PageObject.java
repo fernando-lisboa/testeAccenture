@@ -147,13 +147,16 @@ public class PageObject {
 
                     if (htmltag.toUpperCase().trim().equals("SPAN"))
                         htmltag = "BUTTON";
+                    
+                    if (htmltag.toUpperCase().trim().equals("B"))
+                        htmltag = "BUTTON";
 
                     switch (htmltag.toUpperCase().trim()) {
                         case "INPUT":
                             if (Type != null) {
                                 for (int x = 0; x <= 100; x++) {
                                     try {
-										webdriver.findElement(Type).clear();
+                                        webdriver.findElement(Type).clear();
                                         if (!webdriver.findElement(Type).getAttribute("value").equals("")) {
                                             webdriver.findElement(Type).sendKeys(Keys.ARROW_RIGHT);
                                             webdriver.findElement(Type).sendKeys(Keys.SPACE);
@@ -171,7 +174,7 @@ public class PageObject {
                             } else if (element_view != null) {
                                 for (int x = 0; x <= 100; x++) {
                                     try {
-										webdriver.findElement(Type).clear();
+                                        webdriver.findElement(Type).clear();
                                         if (!element_view.getAttribute("value").equals("")) {
                                             element_view.findElement(Type).sendKeys(Keys.ARROW_RIGHT);
                                             element_view.findElement(Type).sendKeys(Keys.SPACE);
@@ -214,9 +217,9 @@ public class PageObject {
                                     if (!element_view.getAttribute("value").equals("")) {
                                         element_view.findElement(Type).sendKeys(Keys.ARROW_RIGHT);
                                         element_view.findElement(Type).sendKeys(Keys.SPACE);
-                                    } else {
+                                    } else
                                         break;
-                                    }
+
                                 }
 
                                 if (valor != null)

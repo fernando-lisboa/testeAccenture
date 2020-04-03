@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Antecipacao @front @Regressao
+@Antecipacao @front @Regressao @MichaelAlba
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
 
@@ -13,17 +13,17 @@ Funcionalidade: Antecipacao
   Quero antecipar os valores do meu estabelecimento
   Para ter a flexibilidade de receber quando necessito
 
-  @realizar_antecipacao
+  @realizar_antecipacao @MichaelAlba
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
-    Dado que estou na logado no portal EC "594.114.000-27", "Alelo2020@"
-    Quando seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento
+    Dado que estou na logado no portal EC "<user>", "<senha>"
+    Quando seleciono um CNPJ diferente que tenha "<ARV>" no combo Estabelecimento
     E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>" e antecipar "<Antecipacao>"
     Entao a validacao do cenario deve conter como resultado "<Resultado>"
 
     Exemplos:
-      | VSTS   | Cenario                 | Modal | Valor | Antecipacao | Resultado                                                              |
-      | 9999-1 | Parcial                 | false | true  | false       | valor bruto deve ser menor que o valor liquido apresentado na abertura |
-      | 9999-2 | Total                   | true  | false | false       | valor bruto deve ser total                                             |
-      | 9999-3 | Recorrente Diário       | false | false | true        | antecipacao recorrente deve estar ativa                                |
-      | 9999-4 | RecorrenteTotal Semanal | false | false | true        | antecipacao recorrente deve estar ativa                                |
-      | 9999-5 | Recorrente Desativado   | false | false | true        | antecipacao recorrente deve estar inativa                              |
+      | VSTS   | user           | senha      | ARV  | Cenario                 | Modal | Valor | Antecipacao | Resultado                                                              |
+      | 9999-1 | 594.114.000-27 | Alelo2020@ | true | Parcial                 | false | true  | false       | valor bruto deve ser menor que o valor liquido apresentado na abertura |
+      | 9999-2 | 594.114.000-27 | Alelo2020@ | true | Total                   | true  | false | false       | valor bruto deve ser total                                             |
+      | 9999-3 | 594.114.000-27 | Alelo2020@ | true | Recorrente Diário       | false | false | true        | antecipacao recorrente deve estar ativa                                |
+      | 9999-4 | 594.114.000-27 | Alelo2020@ | true | RecorrenteTotal Semanal | false | false | true        | antecipacao recorrente deve estar ativa                                |
+      | 9999-5 | 594.114.000-27 | Alelo2020@ | true | Recorrente Desativado   | false | false | true        | antecipacao recorrente deve estar inativa                              |

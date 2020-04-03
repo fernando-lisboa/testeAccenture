@@ -27,15 +27,9 @@ public class AntecipacaoActions extends AntecipacaoPage {
         Thread.sleep(2000);
     }
 
-    public void alterarEstabelecimentoArv(String cnpjAgenda) throws IOException, InterruptedException {
-
-		waitForElementPageToLoad(loader);
-        alterarCNPJ(cnpjAgenda);
-        waitForElementPageToLoad(loader);
-    }
 
     public void antecipacaoARV() throws InterruptedException {
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
         Thread.sleep(5000);
         clicaArv.click();
         String sidekick;
@@ -57,7 +51,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
     public void clicarAntecipar() throws InterruptedException {
         Thread.sleep(3000);
         btnAntecipar.click();
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
         Thread.sleep(3000);
     }
 
@@ -130,7 +124,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
     public void clicarVizualizarValores() throws InterruptedException {
         btnVisualizarValores.click();
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+        Thread.sleep(3000);
     }
 
     public void selecionarOpcao() throws InterruptedException {
@@ -142,19 +137,20 @@ public class AntecipacaoActions extends AntecipacaoPage {
     }
 
     public void clicarAlterar() throws InterruptedException {
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+        Thread.sleep(3000);
         waitForElementPageToBeClickable(btnAlteraValor);
         btnAlterarRecorrencia.click();
     }
 
     public void selecionarSemanal() throws InterruptedException {
         checkSemanal.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     public void selecionaDiaSemana() throws InterruptedException {
         checkDiaSemanal.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     public void selecionaOpcaoDesativada() throws InterruptedException {
@@ -177,9 +173,10 @@ public class AntecipacaoActions extends AntecipacaoPage {
     }
 
     public void alterarCNPJ(String cnpjAgenda) throws IOException, InterruptedException {
-		waitForElementPageToLoad(loader);
+//		waitForElementPageToLoad(loader);
+        Thread.sleep(3000);
         comboCnpj.click();
-        waitForElementPageToLoad(loader);
+        Thread.sleep(5000);
         // clicar("xpath", elemento3); TODO aplicar o cnpj a ser selecionado
         // após clicar no combo
     }
@@ -197,10 +194,9 @@ public class AntecipacaoActions extends AntecipacaoPage {
             JavaScriptUtils javaS = new JavaScriptUtils(webdriver);
             PlanosPage planosPage = new PlanosPage(webdriver);
 
-            if(!Modal) {
+            if (!Modal) {
                 webdriver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
-            }
-            else{
+            } else {
                 //Abre Modal
                 javaS.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, planosPage.botao_side_kick);
             }
@@ -212,43 +208,43 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
             if (Cenario.equals("Parcial")) {
                 //Clicar em Alterar Valor
-				PreencheValorCampoSetSelectButton(null, btnAlteraValor,null,40);
+                PreencheValorCampoSetSelectButton(null, btnAlteraValor, null, 40);
 
                 if (Valor) {
                     //Preenche - INSIRA ABAIXO O VALOR QUE DESEJA ANTECIPAR
-					PreencheValorCampoSetSelectButton(null, campoAlterarValor,"100000",40);
+                    PreencheValorCampoSetSelectButton(null, campoAlterarValor, "100000", 40);
 
                     Thread.sleep(2000);
 
                     //VISUALIZAR VALORES DISPONÍVEIS
-					PreencheValorCampoSetSelectButton(null, btnVisualizarValores,null,40);
+                    PreencheValorCampoSetSelectButton(null, btnVisualizarValores, null, 40);
 
                     //Apresenta os valores disponíveis para antecipação
                     waitForElementPageToBeClickable(calcularValorLiquido);
                     List<WebElement> listaChecksValoresDisponiveis = webdriver.findElements(By.name("groupSummary"));
-					PreencheValorCampoSetSelectButton(null, listaChecksValoresDisponiveis.get(0),null,40);
+                    PreencheValorCampoSetSelectButton(null, listaChecksValoresDisponiveis.get(0), null, 40);
 
                     //CALCULAR VALOR LÍQUIDO
                     if (calcularValorLiquido.isEnabled())
-						PreencheValorCampoSetSelectButton(null, calcularValorLiquido,null,40);
+                        PreencheValorCampoSetSelectButton(null, calcularValorLiquido, null, 40);
                 }
 //                String valorSelecionado = webdriver.findElement(By.xpath("//*[@id='anticipationModalAnticipationBoxValorLiquido']/h1")).getText().replace("R$ ", "").replace(".", "");
 //                valorSelecionado_ = Integer.parseInt(valorSelecionado);
             }
 
             if (Antecipacao) {
-                PreencheValorCampoSetSelectButton(null, btnAlterarRecorrencia,null,40);
+                PreencheValorCampoSetSelectButton(null, btnAlterarRecorrencia, null, 40);
                 switch (Cenario) {
                     case "Recorrente Diário":
-                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-DAILY")),null,40);
+                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-DAILY")), null, 40);
                         break;
                     case "RecorrenteTotal Semanal":
-                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-WEEKLY")),null,40);
+                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-WEEKLY")), null, 40);
                         Thread.sleep(1000);
-                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("radioWeekly-QUA")),null,40);
+                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("radioWeekly-QUA")), null, 40);
                         break;
                     case "Recorrente Desativado":
-                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-DISABLED")),null,40);
+                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-DISABLED")), null, 40);
                         break;
                     default:
                         break;
@@ -259,8 +255,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
             }
 
             //CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS
-            PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis,null,40);
-Thread.sleep(200);
+            PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis, null, 40);
+            Thread.sleep(200);
         } catch (Exception e) {
             e.getMessage();
         }
@@ -281,5 +277,26 @@ Thread.sleep(200);
         }
     }
 
+    public void alterarEstabelecimentoArv(boolean cnpj) throws IOException, InterruptedException {
+        WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
+        cnpj_.click();
+        Thread.sleep(1000);
 
+        if (cnpj)
+            for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div")).findElements(By.tagName("b"))) {
+                if (cnPJ.getText().equals(opcaoARV)) {
+                    cnPJ.click();
+                    break;
+                }
+            }
+        else
+            for (WebElement cnPJ :  webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div")).findElements(By.tagName("b"))) {
+                if (cnPJ.getText().equals(opcaoARV)) {
+                    cnPJ.click();
+                    break;
+                }
+            }
+
+        waitForElementToBeInvisible(loader);
+    }
 }
