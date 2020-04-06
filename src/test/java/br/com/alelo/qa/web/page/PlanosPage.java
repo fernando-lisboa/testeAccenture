@@ -70,7 +70,7 @@ public class PlanosPage extends PageObject {
 	protected WebElement click_side_kick;
 
 	@FindBy(id = "btnSimulateNormalSidekick")
-	protected WebElement botao_side_kick;
+	public WebElement botao_side_kick;
 
 	@FindBy(id = "")
 	protected WebElement mensagem_contratacao;
