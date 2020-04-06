@@ -48,8 +48,6 @@ public class LoginPage extends PageObject {
 	
 	@FindBy(id = "navbarDesktopSair")
 	protected WebElement btnSair;
-	
-	
 
 	@FindBy(id = "panelPageCnpjContainerIndicator")
 	protected WebElement painelInicial;
@@ -124,5 +122,4 @@ public class LoginPage extends PageObject {
 	@FindBy(id = "formInlineEmail")
 	protected WebElement campo_email;
 	public String Email = "teste_address@mailinator.com";
-	
 }

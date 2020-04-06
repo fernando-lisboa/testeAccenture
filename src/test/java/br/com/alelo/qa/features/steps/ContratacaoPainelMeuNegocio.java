@@ -18,12 +18,10 @@ public class ContratacaoPainelMeuNegocio extends ParentSteps {
 		comm.prepararBancoParaInicioDosTestesContratacao();
 		painel.alterarEstabelecimentoPainelContratacaoCancelamento(cnpjContratado);
 		painel.contrataPainel(cnpj);
-
 	}
 
 	@Entao("^devo validar o status da contratacao e suas respectivas datas \"([^\"]*)\"$")
 	public void devo_validar_o_status_da_contratacao_e_suas_respectivas_datas(String statusEsperado) throws Throwable {
-
 		painel.validarContratacao(statusEsperado, cnpj);
 	}
 
@@ -38,9 +36,6 @@ public class ContratacaoPainelMeuNegocio extends ParentSteps {
 
 	@Entao("^devo validar o status do cancelamento e suas respectivas datas \"([^\"]*)\"$")
 	public void devo_validar_o_status_do_cancelamento_e_suas_respectivas_datas(String status) throws Throwable {
-
 		painel.validarCancelamentoPainel(status);
-
 	}
-
 }

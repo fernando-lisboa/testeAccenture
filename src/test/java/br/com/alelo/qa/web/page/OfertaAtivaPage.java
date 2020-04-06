@@ -13,7 +13,6 @@ public class OfertaAtivaPage extends PageObject{
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 	@FindBy(id="antecipation-more-button")
 	protected WebElement sidekickDesenvolve;
 	
@@ -25,7 +24,6 @@ public class OfertaAtivaPage extends PageObject{
 	
 	@FindBy(id="accountValidateBtnCancelar")
 	protected WebElement btnAlterarValor;
-	
 	
 	@FindBy(id="btnContratarAgora")
 	protected WebElement btnContratarAgora;
@@ -92,5 +90,4 @@ public class OfertaAtivaPage extends PageObject{
 	
 	@FindBy(id="navbarDesktopSair")
 	protected WebElement btnSair;
-	
 }

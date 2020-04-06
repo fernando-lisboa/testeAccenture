@@ -3,6 +3,7 @@ package br.com.alelo.qa.web.actions;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.alelo.qa.features.support.JavaScriptUtils;
@@ -18,6 +19,12 @@ public class AntecipacaoActions extends AntecipacaoPage {
     public AntecipacaoActions(WebDriver driver) {
         super(driver);
         // TODO Auto-generated constructor stub
+    }
+
+    public Integer horaArv() {
+        Calendar c = Calendar.getInstance();
+        Integer txt = c.get(Calendar.HOUR_OF_DAY);
+        return txt;
     }
 
     public void alterarEstabelecimento(String cnpjAgenda) throws IOException, InterruptedException {
