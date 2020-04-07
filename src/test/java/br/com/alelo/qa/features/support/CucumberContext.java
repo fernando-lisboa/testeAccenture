@@ -70,6 +70,8 @@ public class CucumberContext {
                 options.addArguments("--start-maximized");
                 options.addArguments("--disable-web-security");
                 options.addArguments("--allow-running-insecure-content");
+                options.addArguments("--ignore-certificate-errors");
+                options.addArguments("--ignore-urlfetcher-cert-requests");
                 //options.AddArgument("incognito");
                 webdriver = new ChromeDriver(options);
                 webdriver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);

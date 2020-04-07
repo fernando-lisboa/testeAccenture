@@ -103,9 +103,16 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(id = "btnSimulateNormalSidekick")
 	protected WebElement btnSideKick;
 
+	@FindBy(id = "btnGenerateToken")
+	protected WebElement btnIniciarSimulacao;
+
 	@FindBy(xpath = "//b[contains(.,'• 28.339.982/0001-60 - 2000496258')]")
 	protected WebElement opcao_ec_arv;
 	public String opcaoARV = "• 28.339.982/0001-60 - 2000496258";
+	
+	@FindBy(xpath = "//h5[contains(@class,'textLabelSidekick')]")
+	protected WebElement sideKickAtencao;
+	public String labelSidekick = "VOCÊ ESTÁ NO MODO SIMULAÇÃO";
 
 	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
 	protected WebElement opcao_ec;
