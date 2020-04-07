@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo
+
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -16,7 +16,7 @@ Funcionalidade: Antecipacao
    Contexto:
   Dado que o banco de arv esteja preparado para os testes
 
-  @realizar_antecipacao @frontModal
+  @realizar_antecipacao @frontModal @Regressivo
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     Quando seleciono um CNPJ diferente que tenha "<ARV>" no combo Estabelecimento
@@ -31,7 +31,7 @@ Funcionalidade: Antecipacao
       | 9999-4 | 594.114.000-27 | Alelo2020@ | true | RecorrenteTotal Semanal | true | false | true        | antecipacao recorrente deve estar ativa                                |
       | 9999-5 | 594.114.000-27 | Alelo2020@ | true | Recorrente Desativado   | true | false | true        | antecipacao recorrente deve estar inativa                              |
 
-       @realizar_antecipacao @frontModal
+   @realizar_antecipacao @frontModal
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     Quando seleciono um CNPJ diferente que tenha "<ARV>" no combo Estabelecimento
