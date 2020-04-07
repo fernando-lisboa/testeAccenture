@@ -33,6 +33,8 @@ public class LoginPage extends PageObject {
 	public String getUrlInicioWebAdminValidate() {
 		return UrlInicioWebAdminValidate;
 	}
+	@FindBy(id = "btnGenerateToken")
+	public WebElement btnIniciarSimulacao;
 
 	@FindBy(id = "cpf")
 	protected WebElement userLogin;
