@@ -52,13 +52,14 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		try {
 			for (WebElement aba : webdriver.findElements(By.className("navbar-nav")).get(0)
 					.findElements(By.tagName("a"))) {
+				System.out.println(aba.getText());
 				aba.click();
 				waitForElementToBeInvisible(loader);
 				if(!sideKickAtencao.isEnabled()&& !sideKickAtencao.isDisplayed()){
 					
+					
 					fail("Sidekick de simulação não está disponível para o operador na aba "+ aba.getText() );
 					
-					break;
 					
 				}
 			}
