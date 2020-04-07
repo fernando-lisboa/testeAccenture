@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import br.com.alelo.qa.web.support.PageObject;
 
 public class LoginARVNaCentralPage_ extends PageObject {
-
 	@FindBy(id = "inputLogin")
 	protected WebElement inputLogin;
 

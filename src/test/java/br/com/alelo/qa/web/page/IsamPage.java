@@ -45,5 +45,4 @@ public class IsamPage extends PageObject {
 
 	@FindBy(xpath = "(//td/a[text() = \"Remover\"])[1]")
 	protected WebElement remover_sessao;
-
 }

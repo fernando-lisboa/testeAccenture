@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import br.com.alelo.qa.web.support.PageObject;
 
 public class MenuSection extends PageObject{
-
 	//Menu Financeiro
 	@FindBy(xpath="//a[contains(text(),'Financeiro')]")
 	protected WebElement menuFinanceiro;
@@ -30,5 +29,4 @@ public class MenuSection extends PageObject{
 	public MenuSection(WebDriver driver) {
 		super(driver);
 	}
-
 }

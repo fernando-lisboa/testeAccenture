@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import br.com.alelo.qa.web.support.PageObject;
 
 public class HomePage extends PageObject {
-
 	private String path = "content/pesim/home.html";
 
 	// Elementos da tela
@@ -21,5 +20,4 @@ public class HomePage extends PageObject {
 		super(driver);
 		waitForElementPageToLoad(bemvindo);
 	}
-
 }

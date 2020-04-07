@@ -7,13 +7,13 @@
 #*/
 @criacaoDemensagens
 Funcionalidade: CriaçãoDeMensagem
-    Criar e enviar um comunicado para cliente estabelecimento comercial
-  
+  Criar e enviar um comunicado para cliente estabelecimento comercial
+
   Eu como usuário
   Desejo criar uma mensagem
   Para enviar um comunicado para cliente estabelecimento comercial
 
-  Contexto: 
+  Contexto:
     Dado que estou na logado no portal webadmim EC "22222222222", "12345678!"
 
   @criacaoDemensagens
@@ -23,8 +23,8 @@ Funcionalidade: CriaçãoDeMensagem
     E quando eu preencher o formulario de mensagens e clicar em adicionar, "<tipoMensagem>","<tipoEnvio>"
     Entao deve ser criada uma nova mensagem com os dados informados
 
-    Exemplos: 
-      | VSTS | cenario                                    | tipoMensagem | tipoEnvio |
+    Exemplos:
+      | VSTS   | cenario                                    | tipoMensagem | tipoEnvio |
       | 9999-1 | Crirar mensagens ativas Padrão Simples     | Padrão       | Simples   |
       | 9999-2 | Crirar mensagens ativas Padrão Forçada     | Padrão       | Forçada   |
       | 9999-3 | Crirar mensagens ativas Segmentada Simples | Segmentada   | Simples   |
@@ -36,8 +36,8 @@ Funcionalidade: CriaçãoDeMensagem
     E clicar no icone de editar
     Entao deve ser alterado a data final da postagem
 
-    Exemplos: 
-      | VSTS | cenario         |
+    Exemplos:
+      | VSTS   | cenario         |
       | 9999-5 | editar mensagem |
 
   @criacaoDemensagens
@@ -46,7 +46,7 @@ Funcionalidade: CriaçãoDeMensagem
     E selecionar o status e filtrar e clicar no icone de excluir, "<status>"
     Entao deve ser apresentado a mensagem de confirmacao de exclusao
 
-    Exemplos: 
-      | VSTS | cenario           | status  |
+    Exemplos:
+      | VSTS   | cenario           | status  |
       | 9999-6 | excluir mensagens | Vigente |
       | 9999-7 | excluir mensagens | Inativa |

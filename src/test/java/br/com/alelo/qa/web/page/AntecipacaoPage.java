@@ -103,6 +103,11 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(id = "btnSimulateNormalSidekick")
 	protected WebElement btnSideKick;
 
+	@FindBy(xpath = "//b[contains(.,'• 28.339.982/0001-60 - 2000496258')]")
+	protected WebElement opcao_ec_arv;
+	public String opcaoARV = "• 28.339.982/0001-60 - 2000496258";
 
-
+	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
+	protected WebElement opcao_ec;
+	public String opcaoEC = "• 12.259.140/0001-68 - 1015000255";
 }

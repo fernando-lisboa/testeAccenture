@@ -16,11 +16,19 @@ import cucumber.api.java.pt.Entao;
 
 public class AntecipacaoStep extends ParentSteps {
 
+
 	@Dado("^que o banco de arv esteja preparado para os testes$")
 	public void que_o_banco_de_arv_esteja_preparado_para_os_testes() throws Throwable {
 		CommonsActions comm = new CommonsActions();
 		comm.updateParaContratacaoArv();
 	}
+	
+    @E("^seleciono um CNPJ diferente que tenha \"([^\"]*)\" no combo Estabelecimento$")
+    public void seleciono_um_CNPJ_diferente_com_Arv_no_combo_Estabelecimento(boolean cnpj) throws Throwable {
+        AntecipacaoActions AA = new AntecipacaoActions(webdriver);
+        AA.alterarEstabelecimentoArv(cnpj);
+    }
+
 
 	@E("estou usando \"([^\"]*)\", se cenario \"([^\"]*)\", devo alterar o valor \"([^\"]*)\" e antecipar \"([^\"]*)\"$")
 	public void se_cenario_devo_alterar_o_valor_e_antecipar(boolean Modal, String Cenario, boolean Valor,
