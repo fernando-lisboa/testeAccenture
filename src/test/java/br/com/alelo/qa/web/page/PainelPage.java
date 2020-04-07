@@ -48,7 +48,7 @@ public class PainelPage extends PageObject {
 
 	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
 	protected WebElement opcao_ec4;
-
+	
 	@FindBy(xpath = "//b[contains(.,'• 37.491.504/0001-61 - 1010745147')]")
 	protected WebElement desbloq_1;
 
