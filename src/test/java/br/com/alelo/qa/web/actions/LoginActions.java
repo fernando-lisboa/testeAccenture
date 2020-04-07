@@ -6,6 +6,8 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
+
+import br.com.alelo.qa.features.support.JavaScriptUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -56,6 +58,8 @@ public class LoginActions extends LoginPage {
 	}
 	
 	
+
+
 
 	public void telaLoginWebAdmin() {
 		getUrlInicioWebAdmin();

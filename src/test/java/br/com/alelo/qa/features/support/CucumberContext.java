@@ -61,11 +61,12 @@ public class CucumberContext {
                 webdriver = new SafariDriver();
                 break;
             case "chromedriver":
-            	capability = DesiredCapabilities.chrome();
+                capability = DesiredCapabilities.chrome();
                 capability.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
                 capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
+
                 options.addArguments("test-type");
                 options.addArguments("--start-maximized");
                 options.addArguments("--disable-web-security");
@@ -73,6 +74,7 @@ public class CucumberContext {
                 options.addArguments("--ignore-certificate-errors");
                 options.addArguments("--ignore-urlfetcher-cert-requests");
                 //options.AddArgument("incognito");
+
                 webdriver = new ChromeDriver(options);
                 webdriver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
                 break;
@@ -98,6 +100,5 @@ public class CucumberContext {
     public WebDriverWait getWebDriverWait() throws MalformedURLException {
         return new WebDriverWait(getWebDriver(), 5);
     }
-
 }
 
