@@ -21,12 +21,6 @@ public class AntecipacaoActions extends AntecipacaoPage {
         // TODO Auto-generated constructor stub
     }
 
-    public Integer horaArv() {
-        Calendar c = Calendar.getInstance();
-        Integer txt = c.get(Calendar.HOUR_OF_DAY);
-        return txt;
-    }
-
     public void alterarEstabelecimento(String cnpjAgenda) throws IOException, InterruptedException {
 //		waitForElementPageToLoad(loader);
         Thread.sleep(3000);
