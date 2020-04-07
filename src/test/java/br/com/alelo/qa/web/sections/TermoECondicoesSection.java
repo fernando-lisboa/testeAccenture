@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class TermoECondicoesSection extends PageObject {
-
-
     @FindBy(xpath="//span[@id='spanCheckAceiteContrato_200']")
     protected WebElement slcLiEConcordo;
 

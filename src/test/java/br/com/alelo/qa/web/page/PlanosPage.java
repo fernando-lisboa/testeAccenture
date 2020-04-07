@@ -75,5 +75,4 @@ public class PlanosPage extends PageObject {
 	@FindBy(id = "")
 	protected WebElement mensagem_contratacao;
 	public String msgContratacao = "Contratação realizada";
-
 }
