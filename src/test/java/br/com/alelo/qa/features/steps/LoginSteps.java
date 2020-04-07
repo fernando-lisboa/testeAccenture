@@ -33,6 +33,14 @@ public class LoginSteps extends ParentSteps {
 		login.loginGeral(user, senha);
 		System.out.println("logando..");
 	}
+	
+	@Dado("^que estou na logado no portal EC Operador \"([^\"]*)\", \"([^\"]*)\"$")
+	public void que_estou_na_logado_no_portal_EC_Operador(String user, String senha) throws Throwable {
+		webdriver.get("https://portalec-isam-mock-dev-portalec-dev.35.196.143.68.nip.io/"); // Abre url
+		login = new LoginActions(webdriver);
+		login.loginGeral(user, senha);
+		System.out.println("logando..");
+	}
 
 	@Dado("^que esteja na tela inicial do portal$")
 	public void que_esteja_na_tela_inicial_do_portal() throws Throwable {
