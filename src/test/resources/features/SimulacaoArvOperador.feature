@@ -12,8 +12,7 @@ Funcionalidade: Antecipacao
   Eu como usuario
   Quero antecipar os valores do meu estabelecimento
   Para ter a flexibilidade de receber quando necessito
-  
-   Contexto:
+  Contexto:
   Dado que o banco de arv esteja preparado para os testes
 
   @realizar_antecipacao @frontModal
