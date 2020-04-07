@@ -11,7 +11,7 @@ Funcionalidade: Login
   Quero logar no sistema
   Para acessar informacaos respectivas da conta
 
-  @ligin @Regressivo @teste
+  @ligin @Regressivo
   Esquema do Cenario: <VSTS> - Login com sucesso <cenario>
     Dado que esteja na tela inicial do portal
     Quando preencher o formulario de login "<user>", "<password>"
@@ -21,7 +21,7 @@ Funcionalidade: Login
       | VSTS  | cenario           | user           | password   |
       | 00001 | Login com sucesso | 387.055.390.13 | Alelo2020@ |
 
-  @ligin @Regressivo
+  @ligin @Regressivo @teste
   Esquema do Cenario: <VSTS> - Login com sucesso <cenario>
     Dado que esteja na tela inicial do portal
     Quando preencher o formulario de login "<user>", "<password>"
