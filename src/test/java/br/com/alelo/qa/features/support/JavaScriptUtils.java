@@ -10,7 +10,7 @@ public class JavaScriptUtils extends PageObject {
             super(driver);
         }
 
-    public enum Funcao{click, deletarElement, setValue,  habilitarElemento, abrirNovaGuia,fecharGuia}
+    public enum Funcao{click, deletarElement, setValue,  habilitarElemento, abrirNovaGuia,fecharGuia,atualizarPagina}
     public enum BuscatipoJava{getElementsByClassName, getElementById, getElementsByName, getElementsByTagName, getElementsByTagNameNS}
 
     public boolean JavaScriptAction(Funcao funcao, BuscatipoJava buscaTipoJava, String descricaoElemento, WebElement webElement){
@@ -34,6 +34,11 @@ public class JavaScriptUtils extends PageObject {
                 case fecharGuia:
                     js.executeScript("window.close()");
                     break;
+                    
+                case atualizarPagina:
+                	js.executeScript("location.reload()");
+                	break;
+                    
             }
             return true;
         }catch (Exception e){

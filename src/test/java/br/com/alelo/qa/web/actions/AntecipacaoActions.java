@@ -3,6 +3,7 @@ package br.com.alelo.qa.web.actions;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,15 +23,14 @@ public class AntecipacaoActions extends AntecipacaoPage {
     }
 
     public void alterarEstabelecimento(String cnpjAgenda) throws IOException, InterruptedException {
-//		waitForElementPageToLoad(loader);
+        // waitForElementPageToLoad(loader);
         Thread.sleep(3000);
         alterarCNPJ(cnpjAgenda);
         Thread.sleep(2000);
     }
 
-
     public void antecipacaoARV() throws InterruptedException {
-//		waitForElementPageToLoad(loader);
+        // waitForElementPageToLoad(loader);
         Thread.sleep(5000);
         clicaArv.click();
         String sidekick;
@@ -49,10 +49,29 @@ public class AntecipacaoActions extends AntecipacaoPage {
         checkAceiteTermosRecebiveis.click();
     }
 
+    public void validarSideKickAlert() {
+        try {
+            waitForElementToBeInvisible(loader);
+            List<WebElement> listAba = webdriver.findElements(By.className("navbar-nav")).get(0)
+                    .findElements(By.tagName("a"));
+
+            for (Integer y = 1; y <= listAba.size(); y++) {
+                WebElement elAba = webdriver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div/nav/div/div[2]/ul[1]/li[" + y + "]/a"));
+                elAba.click();
+                waitForElementToBeInvisible(loader);
+                WebElement alertside = webdriver.findElement(By.xpath("//*[@id=\"alertSidekick\"]/div/span"));
+                if (!alertside.isEnabled() && !alertside.isDisplayed())
+                    fail("Modal sidekick nao apresentado ou desabilitado na aba: " + elAba.getText());
+            }
+        } catch (Exception e) {
+            System.out.println("não localizado elemento na tela " + labelSidekick + " " + e);
+        }
+    }
+
     public void clicarAntecipar() throws InterruptedException {
         Thread.sleep(3000);
         btnAntecipar.click();
-//		waitForElementPageToLoad(loader);
+        // waitForElementPageToLoad(loader);
         Thread.sleep(3000);
     }
 
@@ -125,7 +144,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
     public void clicarVizualizarValores() throws InterruptedException {
         btnVisualizarValores.click();
-//		waitForElementPageToLoad(loader);
+        // waitForElementPageToLoad(loader);
         Thread.sleep(3000);
     }
 
@@ -138,7 +157,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
     }
 
     public void clicarAlterar() throws InterruptedException {
-//		waitForElementPageToLoad(loader);
+        // waitForElementPageToLoad(loader);
         Thread.sleep(3000);
         waitForElementPageToBeClickable(btnAlteraValor);
         btnAlterarRecorrencia.click();
@@ -174,7 +193,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
     }
 
     public void alterarCNPJ(String cnpjAgenda) throws IOException, InterruptedException {
-//		waitForElementPageToLoad(loader);
+        // waitForElementPageToLoad(loader);
         Thread.sleep(3000);
         comboCnpj.click();
         Thread.sleep(5000);
@@ -198,80 +217,85 @@ public class AntecipacaoActions extends AntecipacaoPage {
             if (!Modal) {
                 webdriver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
             } else {
-                //Abre Modal
+                // Abre Modal
                 javaS.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, planosPage.botao_side_kick);
             }
 
-            //Armazena o valor total de Recebiveis sem alterações
-//            javaS.waitForElementPageToBeClickable(webdriver.findElement(By.xpath("//*[@id='anticipationModalAnticipationBoxValorLiquido']/h1")));
-//            String valorTotalRecebiveis = webdriver.findElement(By.xpath("//*[@id='anticipationModalAnticipationBoxValorLiquido']/h1")).getText().replace("R$ ", "").replace(".", "");
-//            valorTotalRecebiveis_ = Integer.parseInt(valorTotalRecebiveis);
+            // Armazena o valor total de Recebiveis sem alterações
+            // javaS.waitForElementPageToBeClickable(webdriver.findElement(By.xpath("//*[@id='anticipationModalAnticipationBoxValorLiquido']/h1")));
+            // String valorTotalRecebiveis =
+            // webdriver.findElement(By.xpath("//*[@id='anticipationModalAnticipationBoxValorLiquido']/h1")).getText().replace("R$
+            // ", "").replace(".", "");
+            // valorTotalRecebiveis_ = Integer.parseInt(valorTotalRecebiveis);
 
             if (Cenario.equals("Parcial")) {
-                //Clicar em Alterar Valor
-                PreencheValorCampoSetSelectButton(null, btnAlteraValor, null, 40);
+                // Clicar em Alterar Valor
+                if(!PreencheValorCampoSetSelectButton(null, btnAlteraValor, null, 40))fail("Botao Altera valor sem ação");
 
                 if (Valor) {
-                    //Preenche - INSIRA ABAIXO O VALOR QUE DESEJA ANTECIPAR
-                    PreencheValorCampoSetSelectButton(null, campoAlterarValor, "100000", 40);
+                    // Preenche - INSIRA ABAIXO O VALOR QUE DESEJA ANTECIPAR
+                    if(!PreencheValorCampoSetSelectButton(null, campoAlterarValor, "100000", 40))fail("Campo Altera Valor nao pode ser preenchido");
 
                     Thread.sleep(2000);
 
-                    //VISUALIZAR VALORES DISPONÍVEIS
-                    PreencheValorCampoSetSelectButton(null, btnVisualizarValores, null, 40);
+                    // VISUALIZAR VALORES DISPONÍVEIS
+                    if(!PreencheValorCampoSetSelectButton(null, btnVisualizarValores, null, 40))fail("Botao visualizar valores sem ação");
 
-                    //Apresenta os valores disponíveis para antecipação
+                    // Apresenta os valores disponíveis para antecipação
                     waitForElementPageToBeClickable(calcularValorLiquido);
                     List<WebElement> listaChecksValoresDisponiveis = webdriver.findElements(By.name("groupSummary"));
-                    PreencheValorCampoSetSelectButton(null, listaChecksValoresDisponiveis.get(0), null, 40);
+                    if(!PreencheValorCampoSetSelectButton(null, listaChecksValoresDisponiveis.get(0), null, 40))fail("checkbox de selecao de valor sem ação");
 
-                    //CALCULAR VALOR LÍQUIDO
+                    // CALCULAR VALOR LÍQUIDO
                     if (calcularValorLiquido.isEnabled())
-                        PreencheValorCampoSetSelectButton(null, calcularValorLiquido, null, 40);
+                        if(!PreencheValorCampoSetSelectButton(null, calcularValorLiquido, null, 40))fail("Botao Calcular valor líquido sem ação");
                 }
-//                String valorSelecionado = webdriver.findElement(By.xpath("//*[@id='anticipationModalAnticipationBoxValorLiquido']/h1")).getText().replace("R$ ", "").replace(".", "");
-//                valorSelecionado_ = Integer.parseInt(valorSelecionado);
+                // String valorSelecionado =
+                // webdriver.findElement(By.xpath("//*[@id='anticipationModalAnticipationBoxValorLiquido']/h1")).getText().replace("R$
+                // ", "").replace(".", "");
+                // valorSelecionado_ = Integer.parseInt(valorSelecionado);
             }
 
             if (Antecipacao) {
-                PreencheValorCampoSetSelectButton(null, btnAlterarRecorrencia, null, 40);
+                waitForElementPageToBeClickable(btnAlterarRecorrencia);
+                if(!PreencheValorCampoSetSelectButton(null, btnAlterarRecorrencia, null, 40))fail("Botao Altera Recorrencia sem ação");
+                waitForElementPageToBeClickable(webdriver.findElement(By.id("cardRecurr-DAILY")));
                 switch (Cenario) {
                     case "Recorrente Diário":
-                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-DAILY")), null, 40);
+                        webdriver.findElement(By.id("cardRecurr-DAILY")).click();
                         break;
                     case "RecorrenteTotal Semanal":
-                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-WEEKLY")), null, 40);
+                        webdriver.findElement(By.id("cardRecurr-WEEKLY")).click();
                         Thread.sleep(1000);
-                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("radioWeekly-QUA")), null, 40);
+                        webdriver.findElement(By.id("radioWeekly-QUA")).click();
                         break;
                     case "Recorrente Desativado":
-                        PreencheValorCampoSetSelectButton(null, webdriver.findElement(By.id("cardRecurr-DISABLED")), null, 40);
+                        webdriver.findElement(By.id("cardRecurr-DISABLED")).click();
                         break;
                     default:
                         break;
                 }
-                //DEFINIR RECEBIMENTO
+                // DEFINIR RECEBIMENTO
                 if (botaoDefinirRecebimento.isEnabled())
                     javaS.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, botaoDefinirRecebimento);
             }
 
-            //CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS
-            PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis, null, 40);
+            // CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS
+            if(!PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis, null, 40))fail("CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS sem ação");
             Thread.sleep(200);
         } catch (Exception e) {
-            e.getMessage();
+            fail(e.getMessage());
         }
     }
 
     public static void ResultadoEvidencia(String Resultado) {
         switch (Resultado) {
             case "valor bruto deve ser menor que o valor liquido apresentado na abertura":
-                //if(valorTotalRecebiveis_ < valorSelecionado_)
+                // if(valorTotalRecebiveis_ < valorSelecionado_)
                 break;
             case "valor bruto deve ser total":
                 break;
             case "antecipacao recorrente deve estar ativa":
-
                 break;
             case "antecipacao recorrente deve estar inativa":
                 break;
@@ -283,21 +307,30 @@ public class AntecipacaoActions extends AntecipacaoPage {
         cnpj_.click();
         Thread.sleep(1000);
 
+        List<WebElement> cnpjs = new ArrayList<>();
+        for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
+                .findElements(By.tagName("b"))) {
+            cnpjs.add(cnPJ);
+        }
+        for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
+                .findElements(By.tagName("span"))) {
+            cnpjs.add(cnPJ);
+        }
+
         if (cnpj)
-            for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div")).findElements(By.tagName("b"))) {
+            for (WebElement cnPJ : cnpjs) {
                 if (cnPJ.getText().equals(opcaoARV)) {
                     cnPJ.click();
                     break;
                 }
             }
         else
-            for (WebElement cnPJ :  webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div")).findElements(By.tagName("b"))) {
+            for (WebElement cnPJ : cnpjs) {
                 if (cnPJ.getText().equals(opcaoARV)) {
                     cnPJ.click();
                     break;
                 }
             }
-
         waitForElementToBeInvisible(loader);
     }
 }

@@ -6,13 +6,16 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
+
+import br.com.alelo.qa.features.support.JavaScriptUtils;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import br.com.alelo.qa.web.page.LoginPage;
 import br.com.alelo.qa.web.page.OfertaAtivaPage;
-
+import br.com.alelo.qa.features.support.JavaScriptUtils;
 public class LoginActions extends LoginPage {
 
 	OfertaAtivaPage page = new OfertaAtivaPage(webdriver);
@@ -36,8 +39,8 @@ public class LoginActions extends LoginPage {
 		userLogin.sendKeys(user);
 		password.sendKeys(senha);
 		btnEntrar.click();
-		
 		waitForElementToBeInvisible(loader);
+		
 
 		if (webdriver.getCurrentUrl().equals("https://meuestabelecimento-hml.siteteste.inf.br/pkmslogout")) {
 
@@ -45,6 +48,18 @@ public class LoginActions extends LoginPage {
 
 		}
 	}
+	
+	public void confirmarToken() throws InterruptedException{
+		JavaScriptUtils js = new JavaScriptUtils(webdriver);
+		js.JavaScriptAction(JavaScriptUtils.Funcao.click, null,null,webdriver.findElement(By.id("btnGenerateToken")));
+		Thread.sleep(5000);
+		js.JavaScriptAction(JavaScriptUtils.Funcao.atualizarPagina,null,null,null);
+
+	}
+	
+	
+
+
 
 	public void telaLoginWebAdmin() {
 		getUrlInicioWebAdmin();

@@ -45,3 +45,12 @@ Funcionalidade: Antecipacao
       | 9999-3 | 594.114.000-27 | Alelo2020@ | true | Recorrente Diário       | false | false | true        | antecipacao recorrente deve estar ativa                                |
       | 9999-4 | 594.114.000-27 | Alelo2020@ | true | RecorrenteTotal Semanal | false | false | true        | antecipacao recorrente deve estar ativa                                |
       | 9999-5 | 594.114.000-27 | Alelo2020@ | true | Recorrente Desativado   | false | false | true        | antecipacao recorrente deve estar inativa                              |
+
+      @sidekickSimulação
+  Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
+    Dado que estou na logado no portal EC Operador "<user>", "<senha>"
+    Entao valido que o sidkick de simulação está presente e todos os menus
+
+    Exemplos: 
+      | VSTS   | user           | senha      | ARV  | Cenario                 | Modal | Valor | Antecipacao | Resultado                                                              |
+      | 9999-1 | 012.345.678-90 | Alelo2020@ | true | Parcial                 | true  | true  | false       | valor bruto deve ser menor que o valor liquido apresentado na abertura |

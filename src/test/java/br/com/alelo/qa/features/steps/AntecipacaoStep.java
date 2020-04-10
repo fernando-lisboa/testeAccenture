@@ -41,6 +41,13 @@ public class AntecipacaoStep extends ParentSteps {
 	public void a_validacao_do_cenario_deve_conter_como_resultado(String Resultado) throws Throwable {
 		AntecipacaoActions.ResultadoEvidencia(Resultado);
 	}
+	
+	@Entao("^valido que o sidkick de simulação está presente e todos os menus$")
+	public void valido_que_o_sidkick_de_simulação_está_presente_e_todos_os_menus() throws Throwable {
+		AntecipacaoActions AA = new AntecipacaoActions(webdriver);
+		AA.validarSideKickAlert();
+		
+	}
 }
 
 //

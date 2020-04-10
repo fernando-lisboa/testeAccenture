@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.alelo.automacao</groupId>
@@ -87,6 +88,7 @@
 			<artifactId>spring-mock-mvc</artifactId>
 			<version>${restassured-version}</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -183,6 +185,7 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<plugins>
 			<plugin>
@@ -216,13 +219,14 @@
 								<param>**/*.json</param>
 							</jsonFiles>
 							<!-- optional, defaults to outputDirectory if not specified -->
-							<classificationDirectory>${project.build.directory}/classifications</classificationDirectory>
+							<classificationDirectory>${project.build.directory}/classifications
+							</classificationDirectory>
 							<classificationFiles>
 								<!-- supports wildcard or name pattern -->
 								<param>sample.properties</param>
 								<param>other.properties</param>
 							</classificationFiles>
-							<!--                                <parallelTesting>false</parallelTesting>-->
+							<!-- <parallelTesting>false</parallelTesting> -->
 							<!-- optional, set true to fail build on test failures -->
 							<checkBuildResult>false</checkBuildResult>
 						</configuration>

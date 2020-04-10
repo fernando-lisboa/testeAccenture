@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.LoginActions;
+import br.com.alelo.qa.web.page.LoginPage;
 import br.com.alelo.utils.SimpleCacheManager;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 import cucumber.api.java.it.Quando;
@@ -23,6 +24,7 @@ public class LoginSteps extends ParentSteps {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	LoginActions login;
+	LoginPage page;
 	CommonsActions comm = new CommonsActions();
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
@@ -39,6 +41,7 @@ public class LoginSteps extends ParentSteps {
 		webdriver.get("https://portalec-isam-mock-dev-portalec-dev.35.196.143.68.nip.io/"); // Abre url
 		login = new LoginActions(webdriver);
 		login.loginGeral(user, senha);
+		login.confirmarToken();
 		System.out.println("logando..");
 	}
 

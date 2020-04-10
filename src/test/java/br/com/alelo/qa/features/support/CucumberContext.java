@@ -2,7 +2,6 @@ package br.com.alelo.qa.features.support;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -77,7 +76,7 @@ public class CucumberContext {
                 webdriver = new SafariDriver();
                 break;
             case "chromedriver":
-            	capability = DesiredCapabilities.chrome();
+                capability = DesiredCapabilities.chrome();
                 capability.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
                 capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 WebDriverManager.chromedriver().setup();
@@ -89,7 +88,10 @@ public class CucumberContext {
                 options.addArguments("--start-maximized");
                 options.addArguments("--disable-web-security");
                 options.addArguments("--allow-running-insecure-content");
+                options.addArguments("--ignore-certificate-errors");
+                options.addArguments("--ignore-urlfetcher-cert-requests");
                 //options.AddArgument("incognito");
+
                 webdriver = new ChromeDriver(options);
                 webdriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
                 break;
@@ -115,6 +117,5 @@ public class CucumberContext {
     public WebDriverWait getWebDriverWait() throws IOException {
         return new WebDriverWait(getWebDriver(), 5);
     }
-
 }
 
