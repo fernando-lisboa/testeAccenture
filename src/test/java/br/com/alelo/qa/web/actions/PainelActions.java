@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.springframework.core.io.FileSystemResource;
@@ -288,6 +289,23 @@ public class PainelActions extends PainelPage {
 	public void validarCancelamentoPainel(String status) throws IOException, InterruptedException {
 
 		validarTextoElemento(statusText, textConfirmacao);
+	}
+	
+	public void realizaBuscaEstabelecimento(String estabelecimento) {
+
+		waitForElementPageToBeClickable(opcao_select);
+		opcao_select.clear();
+		opcao_select.sendKeys(estabelecimento);
+		opcao_select.sendKeys(Keys.DOWN);
+		opcao_select.sendKeys(Keys.ENTER);
+
+	}
+	
+	public void clicaMenuExtrato() {
+
+		waitForElementPageToBeClickable(menuExtrato);
+		menuExtrato.click();
+
 	}
 
 	public PainelActions(WebDriver driver) {

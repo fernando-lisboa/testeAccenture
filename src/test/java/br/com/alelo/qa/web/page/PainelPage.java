@@ -82,7 +82,6 @@ public class PainelPage extends PageObject {
     @FindBy(xpath = "//button[@type='button'][contains(.,'DIRF')]")
     protected WebElement btnDirf;
 
-
     @FindBy(className = "fontBold textDarkGreen3")
     protected WebElement linkDetalhes;
 
@@ -221,5 +220,9 @@ public class PainelPage extends PageObject {
     @FindBy(id = "valorContratado")
     protected WebElement valorContratado;
     public String textvalorContratado = "R$ 19,90";
+    
+    @FindBy(id = "menuExtrato")
+    protected WebElement menuExtrato;
+    
 
 }
