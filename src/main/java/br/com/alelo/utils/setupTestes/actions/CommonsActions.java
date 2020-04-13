@@ -21,6 +21,7 @@ import br.com.alelo.integrations.db.ConnPpoint;
 import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoArv;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoIndicadoresPainel;
+import br.com.alelo.utils.setupTestes.query.QueryPreparaTesteExtrato;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaTestesUpload;
 import br.com.alelo.utils.setupTestes.query.QueryUploadNovosPlanos;
 import br.com.alelo.utils.setupTestes.rest.IPostActions;
@@ -34,7 +35,10 @@ public class CommonsActions {
 	QueryUploadNovosPlanos qPlanos = new QueryUploadNovosPlanos();
 	QueryPreparaBancoArv arv = new QueryPreparaBancoArv();
 	WebDriver webdriver;
+	QueryPreparaTesteExtrato extrato = new QueryPreparaTesteExtrato();
 
+	
+		
 	public void preparaBanco(Connection conexao, String query, String idPersonUnit, String status) throws Exception {
 
 		if (status.equals("EL")) {
@@ -150,6 +154,24 @@ public class CommonsActions {
 		consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertDesbloqueioContratoTestGratis().toString());
 		System.out.println("Inserido dados para teste de Bloqueio...");
 	}
+	
+	public void insertMassaExtratoHML() throws Exception {
+		System.out.println("Inserindo massa de testes no Banco de dados...");
+		deletaMassaExtratoHML();
+		consultaBanco(ConnPpoint.getConexao(), extrato.retornaInsertTabelaTADQ_TRANS().toString());
+		consultaBanco(ConnUsadq.getConexao(), extrato.retornaInsertTabelaTIND_EC_MES().toString());
+		consultaBanco(ConnUsadq.getConexao(), extrato.retornaInsertTabelaTIND_EC_TPO_DIA().toString());
+		
+		System.out.println("Banco populado para testes EXTRATO...");
+	}
+	
+	public void deletaMassaExtratoHML() throws Exception {
+		System.out.println("Preparando massa de testes no Banco de dados...");
+		consultaBanco(ConnPpoint.getConexao(), extrato.retornaDeleteTabelaTADQ_TRANS().toString());
+		consultaBanco(ConnUsadq.getConexao(), extrato.retornaDeleteTabelaTIND_EC_MES().toString());
+		consultaBanco(ConnUsadq.getConexao(), extrato.retornaDeleteTabelaTIND_EC_TPO_DIA().toString());
+		
+	}
 
 	public void updateParaContratacaoArv() throws Exception {
 		System.out.println("Preparando banco de dados para simulação de ARV...");
@@ -240,5 +262,9 @@ public class CommonsActions {
 		tearDowntransactions();
 		insertMassaCancelamentoEContratacaoWeb();
 	}
-
+	public void prepararBancoParaInicioDosExtrato() throws Exception {
+		tearDown();
+		tearDowntransactions();
+		insertMassaCancelamentoEContratacaoWeb();
+	}
 }

@@ -220,5 +220,9 @@ public class PainelPage extends PageObject {
     @FindBy(id = "valorContratado")
     protected WebElement valorContratado;
     public String textvalorContratado = "R$ 19,90";
+    
+    @FindBy(id = "menuExtrato")
+    protected WebElement menuExtrato;
+    
 
 }

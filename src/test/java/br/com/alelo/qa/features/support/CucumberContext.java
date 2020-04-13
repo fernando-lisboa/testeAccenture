@@ -1,11 +1,14 @@
 package br.com.alelo.qa.features.support;
 
-import java.net.MalformedURLException;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
@@ -34,9 +37,21 @@ public class CucumberContext {
 
     @SuppressWarnings("deprecation")
     @Bean(name = "webdriver", destroyMethod = "close")
-    public WebDriver getWebDriver() throws MalformedURLException {
+    public WebDriver getWebDriver() throws IOException {
         WebDriver webdriver = null;
         DesiredCapabilities capability;
+        
+        String targetLocation = Paths.get("target").toAbsolutePath().toString();
+		String fileLocation = targetLocation + File.separator +"download" + File.separator;
+		
+		File directory = new File(fileLocation);
+		
+	    if (! directory.exists()){
+	        directory.mkdir();
+	    }else {
+	    	FileUtils.cleanDirectory(directory); 
+	    }
+        
         switch (webbrowser) {
             case "firefox":
                 capability = DesiredCapabilities.firefox();
@@ -61,11 +76,14 @@ public class CucumberContext {
                 webdriver = new SafariDriver();
                 break;
             case "chromedriver":
-            	capability = DesiredCapabilities.chrome();
+                capability = DesiredCapabilities.chrome();
                 capability.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
                 capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 WebDriverManager.chromedriver().setup();
+                Map<String, Object> prefs = new HashMap<String, Object>();
+                prefs.put("download.default_directory", fileLocation);
                 ChromeOptions options = new ChromeOptions();
+                options.setExperimentalOption("prefs", prefs);
                 options.addArguments("test-type");
                 options.addArguments("--start-maximized");
                 options.addArguments("--disable-web-security");
@@ -73,8 +91,9 @@ public class CucumberContext {
                 options.addArguments("--ignore-certificate-errors");
                 options.addArguments("--ignore-urlfetcher-cert-requests");
                 //options.AddArgument("incognito");
+
                 webdriver = new ChromeDriver(options);
-                webdriver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
+                webdriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
                 break;
             case "geckodriver":
                 WebDriverManager.firefoxdriver().setup();
@@ -95,9 +114,8 @@ public class CucumberContext {
     }
 
     @Bean("wait")
-    public WebDriverWait getWebDriverWait() throws MalformedURLException {
+    public WebDriverWait getWebDriverWait() throws IOException {
         return new WebDriverWait(getWebDriver(), 5);
     }
-
 }
 

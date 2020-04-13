@@ -24,7 +24,7 @@ public class DBConnection {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String connUrl = "jdbc:oracle:thin:@10.40.89.36:1521/HCORP";
-			Connection conn = DriverManager.getConnection(connUrl, "USADQ", "Al3lo_");
+			Connection conn = DriverManager.getConnection(connUrl, "USODSADQ", "Al3lo_");
 			return conn;
 		} catch (Exception e) {
 			System.out.println(e);
