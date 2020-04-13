@@ -3,6 +3,7 @@ package br.com.alelo.qa.web.actions;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -305,27 +306,35 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	}
 
 	public void alterarEstabelecimentoArv(boolean cnpj) throws IOException, InterruptedException {
-		WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
-		cnpj_.click();
-		Thread.sleep(1000);
-
-		if (cnpj)
-			for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
-					.findElements(By.tagName("b"))) {
-				if (cnPJ.getText().equals(opcaoARV)) {
-					cnPJ.click();
-					break;
-				}
-			}
-		else
-			for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
-					.findElements(By.tagName("b"))) {
-				if (cnPJ.getText().equals(opcaoARV)) {
-					cnPJ.click();
-					break;
-				}
-			}
-
-		waitForElementToBeInvisible(loader);
-	}
+		   WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
+		   cnpj_.click();
+		   Thread.sleep(1000);
+		   List<WebElement> cnpjs = new ArrayList<>();
+		   for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
+		         .findElements(By.tagName("b"))) {
+		      cnpjs.add(cnPJ);
+		      System.out.println(cnPJ.getText());
+		   }
+		   for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
+		         .findElements(By.tagName("span"))) {
+		      cnpjs.add(cnPJ);
+		      System.out.println(cnPJ.getText());
+		   }
+		   
+		   if (cnpj)
+		      for (WebElement cnPJ : cnpjs) {
+		         if (cnPJ.getText().equals(opcaoARV)) {
+		            cnPJ.click();
+		            break;
+		         }
+		      }
+		   else
+		      for (WebElement cnPJ :cnpjs) {
+		         if (cnPJ.getText().equals(opcaoEC)) {
+		            cnPJ.click();
+		            break;
+		         }
+		      }
+		   waitForElementToBeInvisible(loader);
+		}
 }

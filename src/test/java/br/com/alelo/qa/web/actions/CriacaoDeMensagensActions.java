@@ -59,14 +59,13 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 		select = new Select(comboTipoDeEnvio);
 		select.selectByVisibleText(tipoDeEnvio);
 		preencherData(dataInicialVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 0);
-		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 30);
+		preencherData(dataFinalVigencia, dataInicioDaMensagemTable, dataFinalDaMensagemTable, 10);
 
 		waitForElementPageToBeClickable(btn_salvar_mensagem);
 		btn_salvar_mensagem.click();
 		waitForElementPageToBeClickable(btnConfirmaMensagem);
 		aceitarAlerta();
 	}
-
 
 	public void preencherData(WebElement elemento, WebElement dataInicioDaMensagemTable,
 			WebElement dataFinalDaMensagemTable, int dias) {
@@ -83,7 +82,7 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 			dateWidget = dataInicioDaMensagemTable;
 		} else {
 			dateWidget = dataFinalDaMensagemTable;
-			
+
 		}
 		List<WebElement> columns = dateWidget.findElements(By.tagName("td"));
 
@@ -92,8 +91,11 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 			System.out.println(cell.getText());
 
 			if (cell.getText().equals(today)) {
-				cell.click();
-				break;
+				if (!cell.getAttribute("class").contains("day old")) {
+					cell.click();
+					break;
+				}
+
 			}
 		}
 	}
@@ -112,10 +114,9 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 		btn_salvar_mensagem.click();
 	}
 
-
 	public void validarEdicao() {
-			Assert.assertTrue(msgEsperada, true);
-		}
+		Assert.assertTrue(msgEsperada, true);
+	}
 
 	// Metodo para Alterar Status da Mensagem
 
@@ -144,11 +145,11 @@ public class CriacaoDeMensagensActions extends CriacaoDeMensagensPage {
 			Thread.sleep(2000);
 			Assert.assertThat(el1 + " " + el2, is(msgEsperadaExclusao));
 		} catch (InterruptedException e) {
-			System.out.println("Botão não está presente na tela "+e);
+			System.out.println("Botão não está presente na tela " + e);
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void iconNotificationId() {
 		waitForElementPageToBeClickable(badgeNotification);
 		Assert.assertTrue("icone de notificacao nao disponivel", badgeNotification.isDisplayed());

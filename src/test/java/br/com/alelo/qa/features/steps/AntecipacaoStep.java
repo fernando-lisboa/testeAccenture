@@ -29,7 +29,6 @@ public class AntecipacaoStep extends ParentSteps {
         AA.alterarEstabelecimentoArv(cnpj);
     }
 
-
 	@E("estou usando \"([^\"]*)\", se cenario \"([^\"]*)\", devo alterar o valor \"([^\"]*)\" e antecipar \"([^\"]*)\"$")
 	public void se_cenario_devo_alterar_o_valor_e_antecipar(boolean Modal, String Cenario, boolean Valor,
 			boolean Antecipacao) throws Throwable {
