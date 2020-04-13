@@ -106,6 +106,7 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(id = "btnGenerateToken")
 	protected WebElement btnIniciarSimulacao;
 
+	
 	@FindBy(xpath = "//b[contains(.,'• 28.339.982/0001-60 - 2000496258')]")
 	protected WebElement opcao_ec_arv;
 	public String opcaoARV = "• 28.339.982/0001-60 - 2000496258";

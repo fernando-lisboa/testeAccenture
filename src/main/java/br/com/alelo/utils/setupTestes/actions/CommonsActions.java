@@ -1,14 +1,21 @@
 package br.com.alelo.utils.setupTestes.actions;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import br.com.alelo.integrations.db.ConnPpoint;
 import br.com.alelo.integrations.db.ConnUsadq;
@@ -27,6 +34,7 @@ public class CommonsActions {
 	QueryPreparaTestesUpload upload = new QueryPreparaTestesUpload();
 	QueryUploadNovosPlanos qPlanos = new QueryUploadNovosPlanos();
 	QueryPreparaBancoArv arv = new QueryPreparaBancoArv();
+	WebDriver webdriver;
 	QueryPreparaTesteExtrato extrato = new QueryPreparaTesteExtrato();
 
 	
@@ -168,7 +176,7 @@ public class CommonsActions {
 	public void updateParaContratacaoArv() throws Exception {
 		System.out.println("Preparando banco de dados para simulação de ARV...");
 		String hora = horaArv();
-		
+
 		if (Integer.parseInt(hora) > 14) {
 			System.out.println(Integer.parseInt(hora));
 			consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateDataDeProcessmentoAM().toString());
@@ -254,7 +262,6 @@ public class CommonsActions {
 		tearDowntransactions();
 		insertMassaCancelamentoEContratacaoWeb();
 	}
-	
 	public void prepararBancoParaInicioDosExtrato() throws Exception {
 		tearDown();
 		tearDowntransactions();
