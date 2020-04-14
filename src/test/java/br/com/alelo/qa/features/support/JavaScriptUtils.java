@@ -34,11 +34,9 @@ public class JavaScriptUtils extends PageObject {
                 case fecharGuia:
                     js.executeScript("window.close()");
                     break;
-                    
                 case atualizarPagina:
                 	js.executeScript("location.reload()");
                 	break;
-                    
             }
             return true;
         }catch (Exception e){
