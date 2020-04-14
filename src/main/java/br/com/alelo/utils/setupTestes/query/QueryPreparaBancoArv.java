@@ -5,6 +5,7 @@ public class QueryPreparaBancoArv {
 	public StringBuilder roternaUpdateDataDeProcessmentoAM() {
 		StringBuilder sql = new StringBuilder(
 				"update OWADQ.TCFG_PROCM set DT_PROCM = sysdate");
+		System.out.println(sql);
 		return sql;
 	}
 	

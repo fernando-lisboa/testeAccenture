@@ -177,7 +177,7 @@ public class CommonsActions {
 		System.out.println("Preparando banco de dados para simulação de ARV...");
 		String hora = horaArv();
 
-		if (Integer.parseInt(hora) > 14) {
+		if (Integer.parseInt(hora) < 14) {
 			System.out.println(Integer.parseInt(hora));
 			consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateDataDeProcessmentoAM().toString());
 

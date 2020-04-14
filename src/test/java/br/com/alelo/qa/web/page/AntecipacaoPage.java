@@ -117,5 +117,5 @@ public class AntecipacaoPage extends PageObject {
 
 	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
 	protected WebElement opcao_ec;
-	public String opcaoEC = "• 12.259.140/0001-68 - 1015000255";
+	public String opcaoECSimulacao = "@ 12.819.758/0002-16 - 0000660817";
 }
