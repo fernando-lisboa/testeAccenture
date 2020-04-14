@@ -19,31 +19,31 @@ Funcionalidade: Antecipacao
   @realizar_antecipacao @frontModal @Regressivo
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
-    Quando seleciono um CNPJ diferente que tenha "<ARV>" no combo Estabelecimento
+    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento
     E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>" e antecipar "<Antecipacao>"
     Entao a validacao do cenario deve conter como resultado "<Resultado>"
 
     Exemplos:
-      | VSTS   | user           | senha      | ARV  | Cenario                 | Modal | Valor | Antecipacao | Resultado                                                              |
-      | 9999-1 | 594.114.000-27 | Alelo2020@ | true | Parcial                 | true  | true  | false       | valor bruto deve ser menor que o valor liquido apresentado na abertura |
-      | 9999-2 | 594.114.000-27 | Alelo2020@ | true | Total                   | true  | false | false       | valor bruto deve ser total                                             |
-      | 9999-3 | 594.114.000-27 | Alelo2020@ | true | Recorrente Diário       | true  | false | true        | antecipacao recorrente deve estar ativa                                |
-      | 9999-4 | 594.114.000-27 | Alelo2020@ | true | RecorrenteTotal Semanal | true  | false | true        | antecipacao recorrente deve estar ativa                                |
-      | 9999-5 | 594.114.000-27 | Alelo2020@ | true | Recorrente Desativado   | true  | false | true        | antecipacao recorrente deve estar inativa                              |
+      | VSTS   | user           | senha      | CNPJ                              | Cenario                 | Modal | Valor | Antecipacao | Resultado                                                              |
+      | 9999-1 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Parcial                 | true  | true  | false       | valor bruto deve ser menor que o valor liquido apresentado na abertura |
+      | 9999-2 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Total                   | true  | false | false       | valor bruto deve ser total                                             |
+      | 9999-3 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Diário       | true  | false | true        | antecipacao recorrente deve estar ativa                                |
+      | 9999-4 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | RecorrenteTotal Semanal | true  | false | true        | antecipacao recorrente deve estar ativa                                |
+      | 9999-5 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Desativado   | true  | false | true        | antecipacao recorrente deve estar inativa                              |
 
 
   @realizar_antecipacao @frontModal
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
-    Quando seleciono um CNPJ diferente que tenha "<ARV>" no combo Estabelecimento
+    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento
     E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>" e antecipar "<Antecipacao>"
     Entao a validacao do cenario deve conter como resultado "<Resultado>"
 
     Exemplos:
-      | VSTS   | user           | senha      | ARV  | Cenario                 | Modal | Valor | Antecipacao | Resultado                                                              |
-      | 9999-1 | 594.114.000-27 | Alelo2020@ | true | Parcial                 | false | true  | false       | valor bruto deve ser menor que o valor liquido apresentado na abertura |
-      | 9999-2 | 594.114.000-27 | Alelo2020@ | true | Total                   | false | false | false       | valor bruto deve ser total                                             |
-      | 9999-3 | 594.114.000-27 | Alelo2020@ | true | Recorrente Diário       | false | false | true        | antecipacao recorrente deve estar ativa                                |
-      | 9999-4 | 594.114.000-27 | Alelo2020@ | true | RecorrenteTotal Semanal | false | false | true        | antecipacao recorrente deve estar ativa                                |
-      | 9999-5 | 594.114.000-27 | Alelo2020@ | true | Recorrente Desativado   | false | false | true        | antecipacao recorrente deve estar inativa                              |
+      | VSTS   | user           | senha      | CNPJ                              | Cenario                 | Modal | Valor | Antecipacao | Resultado                                                              |
+      | 9999-1 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Parcial                 | false | true  | false       | valor bruto deve ser menor que o valor liquido apresentado na abertura |
+      | 9999-2 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Total                   | false | false | false       | valor bruto deve ser total                                             |
+      | 9999-3 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Diário       | false | false | true        | antecipacao recorrente deve estar ativa                                |
+      | 9999-4 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | RecorrenteTotal Semanal | false | false | true        | antecipacao recorrente deve estar ativa                                |
+      | 9999-5 | 594.114.000-27 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Desativado   | false | false | true        | antecipacao recorrente deve estar inativa                              |
       
