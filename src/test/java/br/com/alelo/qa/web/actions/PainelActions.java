@@ -65,10 +65,9 @@ public class PainelActions extends PainelPage {
 		} else if (cnpj.equals("28339982000160")) {
 			alterarCNPJ(opcao_ec3);
 			waitForElementToBeInvisible(loader);
-		}
-			else if (cnpj.equals("12259140000168")) {
-				alterarCNPJ(opcao_ec4);
-				waitForElementToBeInvisible(loader);
+		} else if (cnpj.equals("12259140000168")) {
+			alterarCNPJ(opcao_ec4);
+			waitForElementToBeInvisible(loader);
 		} else
 			alterarCNPJ(desbloq_2);
 		waitForElementToBeInvisible(loader);
@@ -214,16 +213,14 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void validarMenuDosGraficos(String grafico) {
-		if (grafico.equalsIgnoreCase("faturamento")) {
-			validarTextoElemento(graficoFaturamento, resumoUltmosTrintaDias);
-		} else if (grafico.equalsIgnoreCase("Mensal")) {
+		if (grafico.equalsIgnoreCase("Mensal")) {
 			validarTextoElemento(graficoMensal, munuMensal);
 
 		} else if (grafico.equalsIgnoreCase("Semanal")) {
 			validarTextoElemento(graficoSemana, munuSemanal);
 		} else {
-			//TODO validar quando liberar o painel diário 
-			//validarTextoElemento(graficodiario, munuDiario);
+			// TODO validar quando liberar o painel diário
+			// validarTextoElemento(graficodiario, munuDiario);
 		}
 	}
 
@@ -290,7 +287,7 @@ public class PainelActions extends PainelPage {
 
 		validarTextoElemento(statusText, textConfirmacao);
 	}
-	
+
 	public void realizaBuscaEstabelecimento(String estabelecimento) {
 
 		waitForElementPageToBeClickable(opcao_select);
@@ -300,7 +297,7 @@ public class PainelActions extends PainelPage {
 		opcao_select.sendKeys(Keys.ENTER);
 
 	}
-	
+
 	public void clicaMenuExtrato() {
 
 		waitForElementPageToBeClickable(menuExtrato);

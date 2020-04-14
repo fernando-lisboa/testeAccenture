@@ -61,7 +61,7 @@ Funcionalidade: Painel
       | VSTS   | cenario                                                      |
       | 9999-2 | Validar informação de agenda na tela de Painel "Vou receber" |
 
-  @Painel @Regressivo
+  @Painel123 @Regressivo
   Esquema do Cenario: <VSTS> - Painel - <cenario>
     E seleciono um CNPJ diferente que tenha ARV no combo Estabelecimento
     Entao devo validar a apresentação de infomaçoes painel com resumo de faturamento e graficos do painel meu negocio "<graficoEsperado>"

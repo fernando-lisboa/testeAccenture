@@ -5,7 +5,6 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
 
@@ -16,7 +15,7 @@ Funcionalidade: Antecipacao
   Contexto:
     Dado que o banco de arv esteja preparado para os testes
 
-  @realizar_antecipacao @SimularOperador
+  @realizar_antecipacao1 @SimularOperador
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento
@@ -51,6 +50,6 @@ Funcionalidade: Antecipacao
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     Entao valido que o sidkick de simulação está presente e todos os menus
 
-    Exemplos:
+    Exemplos: 
       | VSTS   | user           | senha      | ARV  | Cenario | Modal | Valor | Antecipacao | Resultado                                                              |
       | 9999-1 | 012.345.678-90 | Alelo2020@ | true | Parcial | true  | true  | false       | valor bruto deve ser menor que o valor liquido apresentado na abertura |

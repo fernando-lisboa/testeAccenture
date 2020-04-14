@@ -20,7 +20,7 @@ public class AntecipacaoStep extends ParentSteps {
 	@Dado("^que o banco de arv esteja preparado para os testes$")
 	public void que_o_banco_de_arv_esteja_preparado_para_os_testes() throws Throwable {
 		CommonsActions comm = new CommonsActions();
-		comm.updateParaContratacaoArv();
+		//comm.updateParaContratacaoArv();
 	}
 	
     @E("^seleciono um CNPJ de número \"([^\"]*)\" no combo Estabelecimento$")
@@ -40,6 +40,7 @@ public class AntecipacaoStep extends ParentSteps {
 	public void a_validacao_do_cenario_deve_conter_como_resultado(String Resultado) throws Throwable {
 		AntecipacaoActions.ResultadoEvidencia(Resultado);
 	}
+	
 	
 	@Entao("^valido que o sidkick de simulação está presente e todos os menus$")
 	public void valido_que_o_sidkick_de_simulação_está_presente_e_todos_os_menus() throws Throwable {
