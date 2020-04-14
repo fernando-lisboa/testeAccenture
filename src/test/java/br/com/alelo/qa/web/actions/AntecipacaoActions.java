@@ -302,7 +302,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
         }
     }
 
-    public void alterarEstabelecimentoArv(boolean cnpj) throws IOException, InterruptedException {
+    public void alterarEstabelecimentoArv(String numCNPJ) throws IOException, InterruptedException {
         WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
         cnpj_.click();
         Thread.sleep(1000);
@@ -312,25 +312,18 @@ public class AntecipacaoActions extends AntecipacaoPage {
                 .findElements(By.tagName("b"))) {
             cnpjs.add(cnPJ);
         }
+
         for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
                 .findElements(By.tagName("span"))) {
             cnpjs.add(cnPJ);
         }
 
-        if (cnpj)
-            for (WebElement cnPJ : cnpjs) {
-                if (cnPJ.getText().equals(opcaoARV)) {
-                    cnPJ.click();
-                    break;
-                }
+        for (WebElement cnPJ : cnpjs) {
+            if (cnPJ.getText().equals(numCNPJ)) {
+                cnPJ.click();
+                break;
             }
-        else
-            for (WebElement cnPJ : cnpjs) {
-                if (cnPJ.getText().equals(opcaoARV)) {
-                    cnPJ.click();
-                    break;
-                }
-            }
+        }
         waitForElementToBeInvisible(loader);
     }
 }

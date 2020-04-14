@@ -23,11 +23,11 @@ public class AntecipacaoStep extends ParentSteps {
 		comm.updateParaContratacaoArv();
 	}
 	
-    @E("^seleciono um CNPJ diferente que tenha \"([^\"]*)\" no combo Estabelecimento$")
-    public void seleciono_um_CNPJ_diferente_com_Arv_no_combo_Estabelecimento(boolean cnpj) throws Throwable {
+    @E("^seleciono um CNPJ de número \"([^\"]*)\" no combo Estabelecimento$")
+    public void seleciono_um_CNPJ_no_combo_Estabelecimento(String numCNPJ) throws Throwable {
         AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-        AA.alterarEstabelecimentoArv(cnpj);
-    }
+        AA.alterarEstabelecimentoArv(numCNPJ);
+}
 
 	@E("estou usando \"([^\"]*)\", se cenario \"([^\"]*)\", devo alterar o valor \"([^\"]*)\" e antecipar \"([^\"]*)\"$")
 	public void se_cenario_devo_alterar_o_valor_e_antecipar(boolean Modal, String Cenario, boolean Valor,
