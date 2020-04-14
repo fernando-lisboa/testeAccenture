@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.PlanosPage;
+import br.com.alelo.qa.web.support.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -288,16 +289,25 @@ public class AntecipacaoActions extends AntecipacaoPage {
         }
     }
 
-    public static void ResultadoEvidencia(String Resultado) {
+    public void ResultadoEvidencia(String Resultado) throws InterruptedException {
         switch (Resultado) {
             case "valor bruto deve ser menor que o valor liquido apresentado na abertura":
-                // if(valorTotalRecebiveis_ < valorSelecionado_)
+                if(!webdriver.findElement(By.id("anticipationModalAnticipationBoxValorLiquido")).isDisplayed())
+                fail("a validação de Valor nao foi possivel");
+                 Thread.sleep(2000);
                 break;
             case "valor bruto deve ser total":
+                if(!webdriver.findElement(By.id("anticipationModalAnticipationBoxValorBruto")).isDisplayed())
+                    fail("a validação de Valor nao foi possivel");
                 break;
             case "antecipacao recorrente deve estar ativa":
+                if(!webdriver.findElement(By.xpath("//div[@id='anticipationModalAnticipationBody']/div[1]/div[4]/div/h4")).getText().equals("ATIVA"))
+                    fail("antecipacao recorrente deveria estar ativa");
                 break;
             case "antecipacao recorrente deve estar inativa":
+
+                if(!webdriver.findElement(By.xpath("//div[@id='anticipationModalAnticipationBody']/div[1]/div[4]/div/h4")).getText().equals("INATIVA"))
+                    fail("antecipacao recorrente deveria estar inativa");
                 break;
         }
     }

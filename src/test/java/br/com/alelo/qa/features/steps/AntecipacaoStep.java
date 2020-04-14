@@ -38,7 +38,8 @@ public class AntecipacaoStep extends ParentSteps {
 
 	@Entao("a validacao do cenario deve conter como resultado \"([^\"]*)\"$")
 	public void a_validacao_do_cenario_deve_conter_como_resultado(String Resultado) throws Throwable {
-		AntecipacaoActions.ResultadoEvidencia(Resultado);
+		AntecipacaoActions AA = new AntecipacaoActions(webdriver);
+		AA.ResultadoEvidencia(Resultado);
 	}
 	
 	
