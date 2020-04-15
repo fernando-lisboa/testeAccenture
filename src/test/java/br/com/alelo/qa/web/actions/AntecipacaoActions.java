@@ -209,7 +209,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
     public Integer valorTotalRecebiveis_ = 0;
     public Integer valorSelecionado_ = 0;
 
-    public void FluxoAntecipacaoDeRecebiveisARV(boolean Modal, String Cenario, boolean Valor, boolean Antecipacao) {
+    public void FluxoAntecipacaoDeRecebiveisARV(boolean Modal, String Cenario, boolean Valor, boolean Antecipacao, boolean Contratacao) {
         try {
             Thread.sleep(4000);
             JavaScriptUtils javaS = new JavaScriptUtils(webdriver);
@@ -231,25 +231,30 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
             if (Cenario.equals("Parcial")) {
                 // Clicar em Alterar Valor
-                if(!PreencheValorCampoSetSelectButton(null, btnAlteraValor, null, 40))fail("Botao Altera valor sem ação");
+                if (!PreencheValorCampoSetSelectButton(null, btnAlteraValor, null, 40))
+                    fail("Botao Altera valor sem ação");
 
                 if (Valor) {
                     // Preenche - INSIRA ABAIXO O VALOR QUE DESEJA ANTECIPAR
-                    if(!PreencheValorCampoSetSelectButton(null, campoAlterarValor, "100000", 40))fail("Campo Altera Valor nao pode ser preenchido");
+                    if (!PreencheValorCampoSetSelectButton(null, campoAlterarValor, "100000", 40))
+                        fail("Campo Altera Valor nao pode ser preenchido");
 
                     Thread.sleep(2000);
 
                     // VISUALIZAR VALORES DISPONÍVEIS
-                    if(!PreencheValorCampoSetSelectButton(null, btnVisualizarValores, null, 40))fail("Botao visualizar valores sem ação");
+                    if (!PreencheValorCampoSetSelectButton(null, btnVisualizarValores, null, 40))
+                        fail("Botao visualizar valores sem ação");
 
                     // Apresenta os valores disponíveis para antecipação
                     waitForElementPageToBeClickable(calcularValorLiquido);
                     List<WebElement> listaChecksValoresDisponiveis = webdriver.findElements(By.name("groupSummary"));
-                    if(!PreencheValorCampoSetSelectButton(null, listaChecksValoresDisponiveis.get(0), null, 40))fail("checkbox de selecao de valor sem ação");
+                    if (!PreencheValorCampoSetSelectButton(null, listaChecksValoresDisponiveis.get(0), null, 40))
+                        fail("checkbox de selecao de valor sem ação");
 
                     // CALCULAR VALOR LÍQUIDO
                     if (calcularValorLiquido.isEnabled())
-                        if(!PreencheValorCampoSetSelectButton(null, calcularValorLiquido, null, 40))fail("Botao Calcular valor líquido sem ação");
+                        if (!PreencheValorCampoSetSelectButton(null, calcularValorLiquido, null, 40))
+                            fail("Botao Calcular valor líquido sem ação");
                 }
                 // String valorSelecionado =
                 // webdriver.findElement(By.xpath("//*[@id='anticipationModalAnticipationBoxValorLiquido']/h1")).getText().replace("R$
@@ -259,7 +264,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
             if (Antecipacao) {
                 waitForElementPageToBeClickable(btnAlterarRecorrencia);
-                if(!PreencheValorCampoSetSelectButton(null, btnAlterarRecorrencia, null, 40))fail("Botao Altera Recorrencia sem ação");
+                if (!PreencheValorCampoSetSelectButton(null, btnAlterarRecorrencia, null, 40))
+                    fail("Botao Altera Recorrencia sem ação");
                 waitForElementPageToBeClickable(webdriver.findElement(By.id("cardRecurr-DAILY")));
                 switch (Cenario) {
                     case "Recorrente Diário":
@@ -282,7 +288,13 @@ public class AntecipacaoActions extends AntecipacaoPage {
             }
 
             // CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS
-            if(!PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis, null, 40))fail("CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS sem ação");
+            if (!PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis, null, 40))
+                fail("CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS sem ação");
+
+            if (Contratacao) {
+
+            }
+
             Thread.sleep(200);
         } catch (Exception e) {
             fail(e.getMessage());
@@ -292,27 +304,28 @@ public class AntecipacaoActions extends AntecipacaoPage {
     public void ResultadoEvidencia(String Resultado) throws InterruptedException {
         switch (Resultado) {
             case "valor bruto deve ser menor que o valor liquido apresentado na abertura":
-                if(!webdriver.findElement(By.id("anticipationModalAnticipationBoxValorLiquido")).isDisplayed())
-                fail("a validação de Valor nao foi possivel");
-                 Thread.sleep(2000);
+                if (!webdriver.findElement(By.id("anticipationModalAnticipationBoxValorLiquido")).isDisplayed())
+                    fail("a validação de Valor nao foi possivel");
+                Thread.sleep(2000);
                 break;
             case "valor bruto deve ser total":
-                if(!webdriver.findElement(By.id("anticipationModalAnticipationBoxValorBruto")).isDisplayed())
+                if (!webdriver.findElement(By.id("anticipationModalAnticipationBoxValorBruto")).isDisplayed())
                     fail("a validação de Valor nao foi possivel");
                 break;
             case "antecipacao recorrente deve estar ativa":
-                if(!webdriver.findElement(By.xpath("//div[@id='anticipationModalAnticipationBody']/div[1]/div[4]/div/h4")).getText().equals("ATIVA"))
+                if (!webdriver.findElement(By.xpath("//div[@id='anticipationModalAnticipationBody']/div[1]/div[4]/div/h4")).getText().equals("ATIVA"))
                     fail("antecipacao recorrente deveria estar ativa");
                 break;
             case "antecipacao recorrente deve estar inativa":
 
-                if(!webdriver.findElement(By.xpath("//div[@id='anticipationModalAnticipationBody']/div[1]/div[4]/div/h4")).getText().equals("INATIVA"))
+                if (!webdriver.findElement(By.xpath("//div[@id='anticipationModalAnticipationBody']/div[1]/div[4]/div/h4")).getText().equals("INATIVA"))
                     fail("antecipacao recorrente deveria estar inativa");
                 break;
         }
     }
 
-    public void alterarEstabelecimentoArv(String numCNPJ) throws IOException, InterruptedException {
+    public void alterarEstabelecimentoArv(String numCNPJ) throws InterruptedException {
+        waitForElementToBeInvisible(webdriver.findElement(By.id("cnpj")));
         WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
         cnpj_.click();
         Thread.sleep(1000);

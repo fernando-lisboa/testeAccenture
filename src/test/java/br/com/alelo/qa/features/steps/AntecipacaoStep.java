@@ -29,11 +29,11 @@ public class AntecipacaoStep extends ParentSteps {
         AA.alterarEstabelecimentoArv(numCNPJ);
 }
 
-	@E("estou usando \"([^\"]*)\", se cenario \"([^\"]*)\", devo alterar o valor \"([^\"]*)\" e antecipar \"([^\"]*)\"$")
+	@E("estou usando \"([^\"]*)\", se cenario \"([^\"]*)\", devo alterar o valor \"([^\"]*)\", antecipar \"([^\"]*)\" e contratando \"([^\"]*)\"$")
 	public void se_cenario_devo_alterar_o_valor_e_antecipar(boolean Modal, String Cenario, boolean Valor,
-			boolean Antecipacao) throws Throwable {
+			boolean Antecipacao, boolean Contratacao) throws Throwable {
 		AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-		AA.FluxoAntecipacaoDeRecebiveisARV(Modal, Cenario, Valor, Antecipacao);
+		AA.FluxoAntecipacaoDeRecebiveisARV(Modal, Cenario, Valor, Antecipacao, Contratacao);
 	}
 
 	@Entao("a validacao do cenario deve conter como resultado \"([^\"]*)\"$")
