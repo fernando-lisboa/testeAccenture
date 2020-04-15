@@ -26,6 +26,7 @@ import java.util.Date;
 @CucumberOptions(strict = false, features = {"src/test/resources/features"}, plugin = {
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"}, glue = {
         "classpath:br.com.alelo.qa.features.steps"}, tags = {"@SimularOperador"})
+
 public class CucumberRunnerTest {
 
     private static RunController newRun = null;
@@ -102,7 +103,6 @@ public class CucumberRunnerTest {
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
-
         }
         ResultsFileStorage.deleteFile();
     }
