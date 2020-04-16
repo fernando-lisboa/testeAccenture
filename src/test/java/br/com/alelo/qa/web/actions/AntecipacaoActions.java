@@ -286,6 +286,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				fail("CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS sem ação");
 
 			if (Contratacao) {
+				Thread.sleep(2000);
 				webdriver.findElement(By.id("anticipationButton")).click();
 				if (Cenario.contains("operador")) {
 					text = webdriver.findElement(By.xpath("//div[@id='simulationAlert']/div[2]")).getText();
@@ -303,7 +304,9 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	}
 
 	public void ResultadoEvidencia(String Resultado) throws InterruptedException {
+		Thread.sleep(2000);
 		switch (Resultado) {
+		
 		case "valor bruto deve ser menor que o valor liquido apresentado na abertura":
 			if (!webdriver.findElement(By.id("anticipationModalAnticipationBoxValorLiquido")).isDisplayed())
 				fail("a validação de Valor nao foi possivel");
