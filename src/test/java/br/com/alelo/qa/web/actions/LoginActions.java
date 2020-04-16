@@ -164,7 +164,7 @@ public class LoginActions extends LoginPage {
 	}
 
 	public void paginaInicial() throws InterruptedException {
-		Thread.sleep(10000);
+		waitForElementToBeInvisible(loader);
 		validarUrlAtual(urlInicial);
 		iconePerfil.click();
 		waitForElementPageToBeClickable(btnSair);

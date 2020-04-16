@@ -4,17 +4,16 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-import br.com.alelo.qa.features.support.JavaScriptUtils;
-import br.com.alelo.qa.web.page.PlanosPage;
-import br.com.alelo.qa.web.support.PageObject;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import br.com.alelo.qa.web.page.AntecipacaoPage;
 import org.openqa.selenium.WebElement;
+
+import br.com.alelo.qa.features.support.JavaScriptUtils;
+import br.com.alelo.qa.web.page.AntecipacaoPage;
+import br.com.alelo.qa.web.page.PlanosPage;
 
 public class AntecipacaoActions extends AntecipacaoPage {
 
@@ -22,6 +21,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+
+	String text;
 
 	public void alterarEstabelecimento(String cnpjAgenda) throws IOException, InterruptedException {
 		// waitForElementPageToLoad(loader);
@@ -225,7 +226,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 			String cenario_ = Cenario.replace("operador", "").replace("estabelecimento", "");
 
-			if (cenario_.equals("Parcial")) {
+			if (cenario_.trim().equals("Parcial")) {
 				// Clicar em Alterar Valor
 				if (!PreencheValorCampoSetSelectButton(null, btnAlteraValor, null, 40))
 					fail("Botao Altera valor sem ação");
@@ -259,7 +260,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				if (!PreencheValorCampoSetSelectButton(null, btnAlterarRecorrencia, null, 40))
 					fail("Botao Altera Recorrencia sem ação");
 				waitForElementPageToBeClickable(webdriver.findElement(By.id("cardRecurr-DAILY")));
-				switch (cenario_) {
+				
+				switch (cenario_.trim()) {
 				case "Recorrente Diário":
 					webdriver.findElement(By.id("cardRecurr-DAILY")).click();
 					break;
@@ -284,11 +286,12 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				fail("CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS sem ação");
 
 			if (Contratacao) {
-
 				webdriver.findElement(By.id("anticipationButton")).click();
 				if (Cenario.contains("operador")) {
-					String text = webdriver.findElement(By.xpath("//div[@id='simulationAlert']/div[2]")).getText();
+					text = webdriver.findElement(By.xpath("//div[@id='simulationAlert']/div[2]")).getText();
 					System.out.println(text);
+					Assert.assertTrue("Simulação não foi efetivada... contratado arv pelo operado",
+							text.equals(textoConfirmacaoArv));
 				}
 				// TODO validar msg de contratação
 			}
@@ -320,6 +323,12 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			if (!webdriver.findElement(By.xpath("//div[@id='anticipationModalAnticipationBody']/div[1]/div[4]/div/h4"))
 					.getText().equals("INATIVA"))
 				fail("antecipacao recorrente deveria estar inativa");
+			break;
+		case "SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO":
+			text = webdriver.findElement(By.xpath("//div[@id='simulationAlert']/div[2]")).getText();
+			if (!text.equals("IMPORTANTE: A simulação não efetivará a contratação do produto."))
+				fail("antecipacao recorrente deveria estar inativa");
+
 			break;
 		}
 	}
