@@ -40,21 +40,21 @@ public class CucumberRunnerTest {
     @BeforeClass
     public static void setup() throws IOException {
 
-        new DBConnection();
-        Connection dbUsadq = DBConnection.getConnectionHml();
-        ConnUsadq.setConexao(dbUsadq);
+    	 new DBConnection();
+         Connection dbUsadq = DBConnection.getConnectionHml();
+         ConnUsadq.setConexao(dbUsadq);
 
-        new DBConnection();
-        Connection dbPpoint = DBConnection.getConnectionPpoint();
-        ConnPpoint.setConexao(dbPpoint);
+         new DBConnection();
+         Connection dbPpoint = DBConnection.getConnectionPpoint();
+         ConnPpoint.setConexao(dbPpoint);
 
-        new DBConnection();
-        Connection dbBuc = DBConnection.getConnectionBuc();
-        ConnBuc.setConexao(dbBuc);
-        
-        new DBConnection();
-        Connection dbEsmeralda = DBConnection.getConnectionHml_Esmeralda();
-        ConnUsodsadq.setConexao(dbEsmeralda);
+         new DBConnection();
+         Connection dbBuc = DBConnection.getConnectionBuc();
+         ConnBuc.setConexao(dbBuc);
+         
+         new DBConnection();
+         Connection dbEsmeralda = DBConnection.getConnectionHml_Esmeralda();
+         ConnUsodsadq.setConexao(dbEsmeralda);
 
         PropertiesFile props = new PropertiesFile();
         System.out.println("------------------------------");
@@ -68,7 +68,6 @@ public class CucumberRunnerTest {
             PropertiesFile.createTempFile();
             newRun = new RunController("[AUT] " + cache.get("titulo") + " - "
                     + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(dataHoraInicio));
-
             try {
                 newRun.startRunTests();
             } catch (IOException e) {
@@ -111,5 +110,4 @@ public class CucumberRunnerTest {
         }
         ResultsFileStorage.deleteFile();
     }
-
 }
