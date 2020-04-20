@@ -43,7 +43,15 @@ public class PropertiesContext {
 	
 	@Value("${baseurl}")
 	private String baseUrl;
-	
+
+	@Value("${Ambiente}")
+	public String Ambiente;
+
+	@Bean("Ambiente")
+	public String getAmbiente(){
+		return Ambiente;
+	}
+
 	@Bean("baseurl")
 	public String getBaseUrl(){
 		return baseUrl;

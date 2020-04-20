@@ -25,7 +25,7 @@ import java.util.Date;
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = {"src/test/resources/features"}, plugin = {
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"}, glue = {
-        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@Regressivo"})
+        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@adicionar_CNPJS"})
 
 public class CucumberRunnerTest {
 
@@ -40,16 +40,17 @@ public class CucumberRunnerTest {
     public static void setup() throws IOException {
 
         new DBConnection();
-        Connection dbUsadq = DBConnection.getConnectionHml();
+        Connection dbUsadq = DBConnection.getConexao(DBConnection.Ambiente.HML);
         ConnUsadq.setConexao(dbUsadq);
 
-        new DBConnection();
-        Connection dbPpoint = DBConnection.getConnectionPpoint();
+        Connection dbPpoint = DBConnection.getConexao(DBConnection.Ambiente.PPOINT);
         ConnPpoint.setConexao(dbPpoint);
 
-        new DBConnection();
-        Connection dbBuc = DBConnection.getConnectionBuc();
+        Connection dbBuc = DBConnection.getConexao(DBConnection.Ambiente.BUC);
         ConnBuc.setConexao(dbBuc);
+
+        Connection ConnUsodsadq = DBConnection.getConexao(DBConnection.Ambiente.USODSADQ);
+        ConnUsadq.setConexao(ConnUsodsadq);
 
         PropertiesFile props = new PropertiesFile();
         System.out.println("------------------------------");
@@ -63,7 +64,6 @@ public class CucumberRunnerTest {
             PropertiesFile.createTempFile();
             newRun = new RunController("[AUT] " + cache.get("titulo") + " - "
                     + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(dataHoraInicio));
-
             try {
                 newRun.startRunTests();
             } catch (IOException e) {
@@ -106,5 +106,4 @@ public class CucumberRunnerTest {
         }
         ResultsFileStorage.deleteFile();
     }
-
 }
