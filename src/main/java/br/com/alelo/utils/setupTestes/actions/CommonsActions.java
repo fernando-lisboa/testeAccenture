@@ -1,24 +1,20 @@
 package br.com.alelo.utils.setupTestes.actions;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import br.com.alelo.integrations.db.ConnPpoint;
 import br.com.alelo.integrations.db.ConnUsadq;
+import br.com.alelo.integrations.db.ConnUsodsadq;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoArv;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoIndicadoresPainel;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaTesteExtrato;
@@ -159,8 +155,8 @@ public class CommonsActions {
 		System.out.println("Inserindo massa de testes no Banco de dados...");
 		deletaMassaExtratoHML();
 		consultaBanco(ConnPpoint.getConexao(), extrato.retornaInsertTabelaTADQ_TRANS().toString());
-		consultaBanco(ConnUsadq.getConexao(), extrato.retornaInsertTabelaTIND_EC_MES().toString());
-		consultaBanco(ConnUsadq.getConexao(), extrato.retornaInsertTabelaTIND_EC_TPO_DIA().toString());
+		consultaBanco(ConnUsodsadq.getConexao(), extrato.retornaInsertTabelaTIND_EC_MES().toString());
+		consultaBanco(ConnUsodsadq.getConexao(), extrato.retornaInsertTabelaTIND_EC_TPO_DIA().toString());
 		
 		System.out.println("Banco populado para testes EXTRATO...");
 	}
@@ -168,8 +164,8 @@ public class CommonsActions {
 	public void deletaMassaExtratoHML() throws Exception {
 		System.out.println("Preparando massa de testes no Banco de dados...");
 		consultaBanco(ConnPpoint.getConexao(), extrato.retornaDeleteTabelaTADQ_TRANS().toString());
-		consultaBanco(ConnUsadq.getConexao(), extrato.retornaDeleteTabelaTIND_EC_MES().toString());
-		consultaBanco(ConnUsadq.getConexao(), extrato.retornaDeleteTabelaTIND_EC_TPO_DIA().toString());
+		consultaBanco(ConnUsodsadq.getConexao(), extrato.retornaDeleteTabelaTIND_EC_MES().toString());
+		consultaBanco(ConnUsodsadq.getConexao(), extrato.retornaDeleteTabelaTIND_EC_TPO_DIA().toString());
 		
 	}
 

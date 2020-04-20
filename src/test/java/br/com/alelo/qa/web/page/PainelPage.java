@@ -3,6 +3,7 @@
  */
 package br.com.alelo.qa.web.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -160,6 +161,9 @@ public class PainelPage extends PageObject {
     @FindBy(id = "btnContratarAgora")
     protected WebElement btnContratarAgora;
 
+    @FindBy(id = "pannelBannerConfirmationButton")
+    protected WebElement btnExperimentoGratisPainel;
+
     @FindBy(xpath = "//label[contains(@for,'flagTermoDeAceite')]")
     protected WebElement flagTermoDeAceite;
 
@@ -224,5 +228,8 @@ public class PainelPage extends PageObject {
     @FindBy(id = "menuExtrato")
     protected WebElement menuExtrato;
     
+    @FindBy(xpath = "//div[@id='simulationAlert']/div[2]")
+    protected WebElement msgSimulacao;
+    public String msgSimulacaoEsperada = "IMPORTANTE: A simulação não efetivará a contratação do produto.";
 
 }
