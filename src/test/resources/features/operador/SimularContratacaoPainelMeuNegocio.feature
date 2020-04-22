@@ -15,24 +15,22 @@ Funcionalidade: Painel Meu Negocio
 
   Contexto: 
 
-  @SimulacaoContratacaoWeb @Regressivo
+  @SimularContratacaoPainelOperador @Regressivo
   Esquema do Cenario: <VSTS> - Painel <cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
-    Quando seleciono um CNPJ diferente que tenha "<ARV>" no combo Estabelecimento
-    Entao devo validar o status da contratacao e suas respectivas datas "<statusEsperado>"
+    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento
+    Entao eu devo efetuar uma simulacao de contratacao via sidekick operador
 
     Exemplos: 
-      | VSTS   | cenario                                         | statusEsperado | cnpj           | user           | senha      |
-      | 9999-1 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | 82143278000182 | 012.345.678-90 | Alelo2020@ |
-      | 9999-2 | Efetivar contratação fora do periodo gratuito   | Contratado     | 12259140000168 | 012.345.678-90 | Alelo2020@ |
+      | VSTS   | user           | senha      | CNPJ                              | Cenario                                         | statusEsperado | Modal | Valor | Antecipacao | Contratacao | Resultado                                      |
+      | 9999-5 | 012.345.678-90 | Alelo2020@ | @ 51.244.767/0001-05 - 1015000387 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | true  | false | true        | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
 
-  @SimulacaoContratacaoWeb @Regressivo
+  @SimulacaoCancelamentoWeb @Regressivo
   Esquema do Cenario: <VSTS> - Painel <cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
-    Quando efetuar o cancelamento do produto painel meu negocio "<cnpj>"
-    Entao devo validar o status do cancelamento e suas respectivas datas "<statusEsperado>"
+    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento
+    Entao eu devo efetuar uma simulacao cancelamento de Painel meu negocio
 
     Exemplos: 
-      | VSTS   | cenario                                          | statusEsperado | cnpj           | user           | senha      |
-      | 9999-3 | Efetivar Cancelamento dentro do periodo gratuito | TESTE GRÁTIS   | 28339982000160 | 012.345.678-90 | Alelo2020@ |
-      | 9999-4 | Efetivar Cancelamento fora do periodo gratuito   | Cancelado      | 41707658000115 | 012.345.678-90 | Alelo2020@ |
+      | VSTS   | user           | senha      | CNPJ                              | Cenario                                         | statusEsperado | Modal | Valor | Antecipacao | Contratacao | Resultado                                      |
+      | 9999-5 | 012.345.678-90 | Alelo2020@ | • 04.013.223/0029-45 - 1012770645 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | true  | false | true        | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |

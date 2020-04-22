@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.alelo.automacao</groupId>
@@ -126,11 +125,6 @@
 			<version>${cucumber-version}</version>
 		</dependency>
 		<dependency>
-			<groupId>net.masterthought</groupId>
-			<artifactId>cucumber-reporting</artifactId>
-			<version>${report.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>gherkin</artifactId>
 			<version>2.12.2</version>
@@ -197,41 +191,39 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>net.masterthought</groupId>
-				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>${report.version}</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M4</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.trivago.rta</groupId>
+				<artifactId>cluecumber-report-plugin</artifactId>
+				<version>2.3.4</version>
 				<executions>
 					<execution>
-						<id>execution</id>
-						<!--<phase>verify</phase> -->
-						<phase>verify</phase>
+						<id>report</id>
+						<phase>post-integration-test</phase>
 						<goals>
-							<goal>generate</goal>
+							<goal>reporting</goal>
 						</goals>
-						<configuration>
-							<projectName>Cucumber-Java Skeleton</projectName>
-							<!-- output directory for the generated report -->
-							<outputDirectory>${project.build.directory}</outputDirectory>
-							<!-- optional, defaults to outputDirectory if not specified -->
-							<inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
-							<jsonFiles>
-								<!-- supports wildcard or name pattern -->
-								<param>**/*.json</param>
-							</jsonFiles>
-							<!-- optional, defaults to outputDirectory if not specified -->
-							<classificationDirectory>${project.build.directory}/classifications
-							</classificationDirectory>
-							<classificationFiles>
-								<!-- supports wildcard or name pattern -->
-								<param>sample.properties</param>
-								<param>other.properties</param>
-							</classificationFiles>
-							<!-- <parallelTesting>false</parallelTesting> -->
-							<!-- optional, set true to fail build on test failures -->
-							<checkBuildResult>false</checkBuildResult>
-						</configuration>
 					</execution>
 				</executions>
+				<configuration>
+					<sourceJsonReportDirectory>${project.build.directory}/cluecumber-report</sourceJsonReportDirectory>
+					<generatedHtmlReportDirectory>${project.build.directory}/cluecumber-report</generatedHtmlReportDirectory>
+					<customPageTitle>Relatorio de execucao</customPageTitle>
+					<expandBeforeAfterHooks>true</expandBeforeAfterHooks>
+					<expandStepHooks>true</expandStepHooks>
+					<expandDocStrings>true</expandDocStrings>
+					<customParameters>
+						<SQUAD_DeadPool>PORTAL EC WEB</SQUAD_DeadPool>
+					</customParameters>
+					<customCss>src/test/resources/custom/custom.css</customCss>
+				</configuration>
 			</plugin>
 		</plugins>
 

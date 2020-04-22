@@ -18,7 +18,7 @@ public Login massaLoginAtivo(String vsts){
         sql.append("FROM tbl_login ");
         sql.append("WHERE vsts=?");
       
-        Connection conn = DBConnection.getConexao(DBConnection.Ambiente.BUC);
+        Connection conn = DBConnection.getConnectionBuc();
         
         PreparedStatement comando;
 		try {

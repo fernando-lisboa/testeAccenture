@@ -3,6 +3,7 @@ package br.com.alelo.qa;
 import br.com.alelo.integrations.db.ConnBuc;
 import br.com.alelo.integrations.db.ConnPpoint;
 import br.com.alelo.integrations.db.ConnUsadq;
+import br.com.alelo.integrations.db.ConnUsodsadq;
 import br.com.alelo.integrations.db.DBConnection;
 import br.com.alelo.integrations.teams.SendTestResultTeams;
 import br.com.alelo.integrations.vsts.controllers.RunController;
@@ -23,9 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(strict = false, features = {"src/test/resources/features"}, plugin = {
+@CucumberOptions(strict = false, features = {"src/test/resources/features/desenvolve/","src/test/resources/features/ec/", "src/test/resources/features/operador/"}, plugin = {
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"}, glue = {
-        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@adicionar_CNPJS"})
+        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@Regressivo"})
 
 public class CucumberRunnerTest {
 
@@ -39,18 +40,21 @@ public class CucumberRunnerTest {
     @BeforeClass
     public static void setup() throws IOException {
 
-        new DBConnection();
-        Connection dbUsadq = DBConnection.getConexao(DBConnection.Ambiente.HML);
-        ConnUsadq.setConexao(dbUsadq);
+    	 new DBConnection();
+         Connection dbUsadq = DBConnection.getConnectionHml();
+         ConnUsadq.setConexao(dbUsadq);
 
-        Connection dbPpoint = DBConnection.getConexao(DBConnection.Ambiente.PPOINT);
-        ConnPpoint.setConexao(dbPpoint);
+         new DBConnection();
+         Connection dbPpoint = DBConnection.getConnectionPpoint();
+         ConnPpoint.setConexao(dbPpoint);
 
-        Connection dbBuc = DBConnection.getConexao(DBConnection.Ambiente.BUC);
-        ConnBuc.setConexao(dbBuc);
-
-        Connection ConnUsodsadq = DBConnection.getConexao(DBConnection.Ambiente.USODSADQ);
-        ConnUsadq.setConexao(ConnUsodsadq);
+         new DBConnection();
+         Connection dbBuc = DBConnection.getConnectionBuc();
+         ConnBuc.setConexao(dbBuc);
+         
+         new DBConnection();
+         Connection dbEsmeralda = DBConnection.getConnectionHml_Esmeralda();
+         ConnUsodsadq.setConexao(dbEsmeralda);
 
         PropertiesFile props = new PropertiesFile();
         System.out.println("------------------------------");

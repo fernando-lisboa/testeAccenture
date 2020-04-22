@@ -19,9 +19,19 @@ public class ContratacaoPainelMeuNegocio extends ParentSteps {
 		painel.alterarEstabelecimentoPainelContratacaoCancelamento(cnpjContratado);
 		painel.contrataPainel(cnpj);
 	}
+	
+	@Quando("^eu devo efetuar uma simulacao de contratacao via sidekick operador$")
+	public void eu_devo_efetuar_uma_simulacao_de_contratacao_via_sidekick_operador() throws Throwable {
+		painel = new PainelActions(webdriver);
+		//comm.prepararBancoParaInicioDosTestesContratacao();
+		painel.simularContrataPainelOperador();
+	}
+	
+	
 
 	@Entao("^devo validar o status da contratacao e suas respectivas datas \"([^\"]*)\"$")
 	public void devo_validar_o_status_da_contratacao_e_suas_respectivas_datas(String statusEsperado) throws Throwable {
+		painel = new PainelActions(webdriver);
 		painel.validarContratacao(statusEsperado, cnpj);
 	}
 
@@ -38,4 +48,10 @@ public class ContratacaoPainelMeuNegocio extends ParentSteps {
 	public void devo_validar_o_status_do_cancelamento_e_suas_respectivas_datas(String status) throws Throwable {
 		painel.validarCancelamentoPainel(status);
 	}
+	//Step de simulação via operador
+	@Entao("^eu devo efetuar uma simulacao cancelamento de Painel meu negocio$")
+	public void eu_devo_efetuar_uma_simulacao_cancelamento_de_Painel_meu_negocio() throws Throwable {
+		painel = new PainelActions(webdriver);
+		painel.simulacaoCancelamentoPainel();	
+		}
 }

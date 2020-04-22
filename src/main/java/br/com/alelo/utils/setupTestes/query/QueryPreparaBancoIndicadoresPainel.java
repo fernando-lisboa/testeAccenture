@@ -106,7 +106,8 @@ public class QueryPreparaBancoIndicadoresPainel {
 
 	public StringBuilder retornaDeleteLocalidade() {
 		StringBuilder sql = new StringBuilder(
-				" DELETE FROM TACS_EC_LOC WHERE NU_CNPJ IN (28339982000160, 37491504000161, 12259140000168, 41707658000115, 11699141000160) ");
+				
+				" DELETE FROM OWADQ.TACS_EC_LOC WHERE NU_CNPJ IN (28339982000160, 37491504000161, 12259140000168, 41707658000115, 11699141000160) ");
 		return sql;
 	}
 
