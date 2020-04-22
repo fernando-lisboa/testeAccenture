@@ -25,7 +25,7 @@ import java.util.Date;
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = {"src/test/resources/features"}, plugin = {
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"}, glue = {
-        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@adicionar_CNPJS"})
+        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@contratar_planos"})
 
 public class CucumberRunnerTest {
 
