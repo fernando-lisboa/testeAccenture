@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -242,6 +243,20 @@ public class PainelActions extends PainelPage {
 			validarTextoElemento(Contratado, statusEsperado);
 	}
 
+	public void simularContrataPainelOperador() throws IOException, InterruptedException {
+		//waitForElementToBeInvisible(loader);
+		btnExperimentoGratisPainel.click();
+		//waitForElementToBeInvisible(loader);
+		waitForElementPageToBeClickable(btnContratarAgora);
+		btnContratarAgora.click();
+		flagTermoDeAceite.click();
+		btnAtivarGratis.click();
+		String text = msgSimulacao.getText();
+		System.out.println(text);
+		Assert.assertThat("Mensagem de simulação de contratação de Painel diferente do esperado...", msgSimulacao.getText(), is (msgSimulacaoEsperada));
+		
+
+	}
 	public void contrataPainel(String cnpjContratado) throws IOException, InterruptedException {
 		waitForElementToBeInvisible(loader);
 		waitForElementPageToBeClickable(graficoMensal);
@@ -264,6 +279,8 @@ public class PainelActions extends PainelPage {
 
 	public void validarContratacao(String cnpjEsperado, String statusEsperado) throws InterruptedException {
 
+		System.out.println(panelTitleId.getText());
+		System.out.println(textPanelTitleId);
 		validarTextoElemento(panelTitleId, textPanelTitleId);
 		menuDocumentos.click();
 		waitForElementToBeInvisible(loader);
@@ -281,6 +298,14 @@ public class PainelActions extends PainelPage {
 		waitForElementPageToBeClickable(btnConfirmarCancelar);
 		btnConfirmarCancelar.click();
 
+	}
+	public void simulacaoCancelamentoPainel() throws IOException, InterruptedException {
+		menuDocumentos.click();
+		waitForElementToBeInvisible(loader);
+		btnCancelar.click();
+		waitForElementPageToBeClickable(btnConfirmarCancelar);
+		btnConfirmarCancelar.click();
+		
 	}
 
 	public void validarCancelamentoPainel(String status) throws IOException, InterruptedException {

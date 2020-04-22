@@ -121,4 +121,10 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(xpath = "//b[contains(.,'• 12.819.758/0002-16 - 0000660817')]")
 	protected WebElement weOpcaoEcSimulacao;
 	public String opcaoECSimulacao = "@ 12.819.758/0002-16 - 0000660817";
+
+	@FindBy(xpath = "//div[@id='simulationAlert']/div[2]")
+	protected WebElement modalConfirmacaoArv;
+	public String textoConfirmacaoArv = "IMPORTANTE: A simulação não efetivará a contratação do produto.";
+	
+	
 }
