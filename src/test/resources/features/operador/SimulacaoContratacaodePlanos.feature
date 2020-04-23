@@ -5,6 +5,8 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
+
+@Regressivo
 Funcionalidade: Antecipacao
   Permite contratar planos
 
