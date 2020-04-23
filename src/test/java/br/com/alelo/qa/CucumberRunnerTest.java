@@ -26,7 +26,11 @@ import java.util.Date;
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = {"src/test/resources/features/desenvolve/","src/test/resources/features/ec/", "src/test/resources/features/operador/"}, plugin = {
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"}, glue = {
+<<<<<<< HEAD
+        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@contratar_planos"})
+=======
         "classpath:br.com.alelo.qa.features.steps"}, tags = {"@Regressivo"})
+>>>>>>> 5ce75dd3fc467cf3fd87af0f9421cf902502a893
 
 public class CucumberRunnerTest {
 
