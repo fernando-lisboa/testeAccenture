@@ -12,7 +12,8 @@ Funcionalidade: Antecipacao
   Quero contratar planos para o meu estabelecimento
 
 
-  @contratar_planos @Michael
+
+  @realizar_contratacao @Michael @Simulacao
   Esquema do Cenario: <VSTS> - Realizar Simulação de contratação de planos => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento
