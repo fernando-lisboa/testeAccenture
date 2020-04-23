@@ -33,4 +33,4 @@ Funcionalidade: Painel Meu Negocio
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ                              | Cenario                                         | statusEsperado | Modal | Valor | Antecipacao | Contratacao | Resultado                                      |
-      | 9999-5 | 012.345.678-90 | Alelo2020@ | • 04.013.223/0029-45 - 1012770645 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | true  | false | true        | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-5 | 012.345.678-90 | Alelo2020@ | @ 67.117.779/0001-09 - 2004078183 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | true  | false | true        | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
