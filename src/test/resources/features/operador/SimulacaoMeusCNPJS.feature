@@ -5,6 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
+@Regressivo
 Funcionalidade: MeusCNPJS
   Permite adicionar CNPJS
 
@@ -12,7 +13,7 @@ Funcionalidade: MeusCNPJS
   Quero adicionar CNPJS para o meu estabelecimento
 
 
-  @adicionar_CNPJS @Michael
+  @adicionar_CNPJS @Michael @Simulacao
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador

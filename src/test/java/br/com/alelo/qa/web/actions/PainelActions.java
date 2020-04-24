@@ -303,8 +303,9 @@ public class PainelActions extends PainelPage {
 		menuDocumentos.click();
 		waitForElementToBeInvisible(loader);
 		btnCancelar.click();
-		waitForElementPageToBeClickable(btnConfirmarCancelar);
-		btnConfirmarCancelar.click();
+		String text = msgSimulacaoCancelamento.getText();
+		System.out.println(text);
+		Assert.assertThat("Mensagem de simulação de contratação de Painel diferente do esperado...", msgSimulacaoCancelamento.getText(), is (msgSimulacaoCancelamentoEsperada));
 		
 	}
 

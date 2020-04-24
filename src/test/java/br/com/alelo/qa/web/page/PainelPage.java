@@ -212,13 +212,13 @@ public class PainelPage extends PageObject {
     @FindBy(xpath = "//button[@type='button'][contains(.,'experimente 30 dias grátis')]")
     protected WebElement btnExperimenteGratis;
 
-    @FindBy(xpath = "//div[@class='actionText'][contains(.,'CANCELAR')]")
+    @FindBy(id = "btnCancelar")
     protected WebElement btnCancelar;
 
     @FindBy(xpath = "//h5[@class='singleText'][contains(.,'82.143.278/0001-82')]")
     protected WebElement cnpjContratado;
 
-    @FindBy(xpath = "//button[@type='button'][contains(.,'CANCELAR')]")
+    @FindBy(className = "btnFormRed btn btn-lg btn-default")
     protected WebElement btnConfirmarCancelar;
 
     @FindBy(id = "valorContratado")
@@ -231,5 +231,9 @@ public class PainelPage extends PageObject {
     @FindBy(xpath = "//div[@id='simulationAlert']/div[2]")
     protected WebElement msgSimulacao;
     public String msgSimulacaoEsperada = "IMPORTANTE: A simulação não efetivará a contratação do produto.";
+    
+    @FindBy(xpath = "//div[@id='simulationAlert']/div[2]")
+    protected WebElement msgSimulacaoCancelamento;
+    public String msgSimulacaoCancelamentoEsperada = "IMPORTANTE: A simulação não efetivará o cancelamento do produto.";
 
 }

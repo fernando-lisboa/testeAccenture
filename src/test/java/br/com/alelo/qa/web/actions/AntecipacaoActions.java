@@ -345,11 +345,13 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		List<WebElement> cnpjs = new ArrayList<>();
 		for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
 				.findElements(By.tagName("b"))) {
+			System.out.println(cnPJ.getText());
 			cnpjs.add(cnPJ);
 		}
 
 		for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
 				.findElements(By.tagName("span"))) {
+			System.out.println(cnPJ.getText());
 			cnpjs.add(cnPJ);
 		}
 
