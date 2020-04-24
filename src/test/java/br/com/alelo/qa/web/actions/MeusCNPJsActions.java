@@ -1,6 +1,7 @@
 package br.com.alelo.qa.web.actions;
 
 import br.com.alelo.integrations.db.ConnBuc;
+import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.CriarUsuarioResetarSenhaPage;
 import br.com.alelo.utils.GeraCpfCnpj;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
@@ -28,6 +29,60 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
      * <h3> Função Utilizada para Criar usuários e Mudar Senha através do esqueci senha da tela inicial do portal.</>>
      * <h3>Parâmetros Booleanos PID e TrocaSenha<h3>
      */
+    public void PedirAjudaMenu() throws InterruptedException {
+        try {
+            //Abre Menu
+            webdriver.findElement(By.id("iconProfileId")).click();
+            Thread.sleep(2000);
+            //Ajuda
+            webdriver.findElement(By.id("navbarHelp")).click();
+            Thread.sleep(2000);
+
+            //Modal - Solicitar Ajuda
+            webdriver.findElement(By.id("btnGenerateToken")).click();
+
+            //region [Abrir Nova Guia e Navegar para o Gmail]
+            //Abre Nova Guia
+            JavaScriptAction(Funcao.abrirNovaGuia, null,null,null);
+
+            //Lista todas as guias abertas
+            ArrayList<String> tabs = new ArrayList<>(webdriver.getWindowHandles());
+
+            //Move para a guia no Array[1] [0,1] devem estar abertas - Guia Sistema, Guia Gmail
+            webdriver.switchTo().window(tabs.get(1));
+
+            //Navega para a Url do Gmail
+            webdriver.navigate().to("https://portalec-isam-mock-dev-portalec-dev.35.196.143.68.nip.io/");
+
+            LoginActions login = new LoginActions(webdriver);
+            login.loginGeral("012.345.678-90", "Alelo2020@");
+
+            JavaScriptUtils js = new JavaScriptUtils(webdriver);
+            js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, webdriver.findElement(By.xpath("//button[@id='btnInitiateSession']")));
+            Thread.sleep(2000);
+
+            String token = webdriver.findElement(By.id("assistanceModalCode")).getText();
+            //fecha guia
+            JavaScriptAction(Funcao.fecharGuia, null,null,null);
+            //endregion
+
+            webdriver.switchTo().window(tabs.get(0));
+
+            //Modal - Input do token gerado
+            webdriver.findElement(By.id("inputtoken")).sendKeys(token.replace("-",""));
+
+            //Modal - Concordo com os termos
+            js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, webdriver.findElement(By.id("flagTermoDeAceite")));
+
+
+            //Modal - Permitir Acesso
+            webdriver.findElement(By.id("btnGenerateToken")).click();
+            Thread.sleep(1000);
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+    }
 
     public void AdicionaCNPJS(int associarCNPJS) throws InterruptedException {
 
