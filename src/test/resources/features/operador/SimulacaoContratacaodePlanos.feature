@@ -13,8 +13,6 @@ Funcionalidade: Antecipacao
   Eu como usuario
   Quero contratar planos para o meu estabelecimento
 
-
-
   @realizar_contratacao @Michael @Simulacao
   Esquema do Cenario: <VSTS> - Realizar Simulação de contratação de planos => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
