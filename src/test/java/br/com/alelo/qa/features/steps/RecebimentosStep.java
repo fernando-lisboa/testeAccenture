@@ -4,6 +4,7 @@ import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.RecebimentosActions;
 import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.PendingException;
+import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
@@ -26,13 +27,6 @@ public class RecebimentosStep extends ParentSteps {
 		actions.validarPeriodos(periodo);
 	}
 
-	@Quando("^selecionar a data atual e a opcao de \"([^\"]*)\"$")
-	public void selecionar_a_data_atual_e_a_opcao_de(String produto) throws Throwable {
-		actions.localizaDiaComRecebiveisDisponiveis();
-		actions.selecionarProduto(produto);
-
-	}
-
 	@Entao("^devo visualizar a lista de valores a receber de acordo com o produto selecionado \"([^\"]*)\"$")
 	public void devo_visualizar_a_lista_de_valores_a_receber_de_acordo_com_o_produto_selecionado(String produto)
 			throws Throwable {
@@ -53,10 +47,9 @@ public class RecebimentosStep extends ParentSteps {
 		actions.valitarTelaRecebiveis();
 	}
 
-	@Quando("^Selecionar a data atual e a opcao de produtos e clicar em comprovante\"([^\"]*)\"$")
-	public void selecionar_a_data_atual_e_a_opcao_de_produtos_e_clicar_em_comprovante(String produto) throws Throwable {
-		actions.localizaDiaComRecebiveisDisponiveis();
-		actions.selecionarProduto(produto);
+	@E("^Selecionar uma data com a opcao de produto \"([^\"]*)\" para o CNPJ \"([^\"]*)\" e clicar em comprovante\"([^\"]*)\"$")
+	public void selecionar_a_data_atual_e_a_opcao_de_produtos_e_clicar_em_comprovante(String produto, String CNPJ, boolean Comprovante) throws Throwable {
+		actions.localizaDiaComRecebiveisDisponiveis(produto, CNPJ, Comprovante);
 	}
 
 	@Quando("^devo visualizar a lista de valores a receber de acordo com o produto selecionado e fazer o download do comprovante\"([^\"]*)\"$")

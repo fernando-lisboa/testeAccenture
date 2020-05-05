@@ -43,7 +43,7 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 
             //region [Abrir Nova Guia e Navegar para o Gmail]
             //Abre Nova Guia
-            JavaScriptAction(Funcao.abrirNovaGuia, null,null,null);
+            JavaScriptAction(Funcao.abrirNovaGuia, null, null, null);
 
             //Lista todas as guias abertas
             ArrayList<String> tabs = new ArrayList<>(webdriver.getWindowHandles());
@@ -63,13 +63,13 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 
             String token = webdriver.findElement(By.id("assistanceModalCode")).getText();
             //fecha guia
-            JavaScriptAction(Funcao.fecharGuia, null,null,null);
+            JavaScriptAction(Funcao.fecharGuia, null, null, null);
             //endregion
 
             webdriver.switchTo().window(tabs.get(0));
 
             //Modal - Input do token gerado
-            webdriver.findElement(By.id("inputtoken")).sendKeys(token.replace("-",""));
+            webdriver.findElement(By.id("inputtoken")).sendKeys(token.replace("-", ""));
 
             //Modal - Concordo com os termos
             js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, webdriver.findElement(By.id("flagTermoDeAceite")));
@@ -84,7 +84,7 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
         }
     }
 
-    public void AdicionaCNPJS(int associarCNPJS) throws InterruptedException {
+    public void AdicionaCNPJS(int associarCNPJS, String CNPJ_Pesquisa) throws InterruptedException {
 
         try {
             Random rand = new Random();
@@ -94,6 +94,11 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
                 //Clica em Meus CNPJS
                 meusCNPJSMenuPortal.click();
                 Thread.sleep(4000);
+
+                //Buscar CNPJ
+                if (CNPJ_Pesquisa != null)
+                    webdriver.findElement(By.name("cnpj")).sendKeys(CNPJ_Pesquisa);
+
                 //Adicionar CNPJS
                 btnAdicionarCNPJSPortal.click();
                 //region [Itens de Retorno do Banco de dados]

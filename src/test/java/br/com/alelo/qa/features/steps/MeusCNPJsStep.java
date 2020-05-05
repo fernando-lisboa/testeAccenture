@@ -24,10 +24,10 @@ public class MeusCNPJsStep extends ParentSteps {
         adicionaCNPJ.PedirAjudaMenu();
     }
 
-    @Quando("devo associar CNPJS \"([^\"]*)\"$")
-    public void devo_associar_um_CNPJ(int CNPJS) throws Throwable {
+    @Quando("devo associar CNPJS \"([^\"]*)\" e pesquisar \"([^\"]*)\"$")
+    public void devo_associar_um_CNPJ(int CNPJS, String CNPJ_Pesquisa) throws Throwable {
         MeusCNPJsActions adicionaCNPJ = new MeusCNPJsActions(webdriver);
-        adicionaCNPJ.AdicionaCNPJS(CNPJS);
+        adicionaCNPJ.AdicionaCNPJS(CNPJS,CNPJ_Pesquisa);
     }
 
     @Entao("a validacao do cenario deve conter como resultado: \"([^\"]*)\"$")
