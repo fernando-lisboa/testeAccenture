@@ -11,7 +11,7 @@ Funcionalidade: Recebimentos
     Dado que estou na logado no portal EC "594.114.000-27", "Alelo2020@"
 
   #Feito
-  @Recebimentoss @Matheus
+  @Recebimentos @Regressivo
   Esquema do Cenario: <VSTS> - Recebimento mensal <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
     Entao devo validar que é exibido o valor recebido e o valor a receber do meu ec "<periodo>"
@@ -23,7 +23,7 @@ Funcionalidade: Recebimentos
       | 9999-3 | Realizar consulta de valores recebidos no mes anterior | mês anterior | 28339982000160 |
 
   #Feito
-  @Recebimentos1 @RecebimentoPorProduto @Matheus
+   @Recebimentos @Regressivo
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
     E selecionar a data atual e a opcao de "<produto>"
@@ -36,7 +36,7 @@ Funcionalidade: Recebimentos
       | 9999-6 | Consultar Recebimentos por tipo de produto - TODOS       | TODOS             | 28339982000160 |
 
   #Feito
-  @Recebimentos @FERNANDO @Matheus
+  @Recebimentos @Regressivo
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
     E selecionar a data atual e a opcao de "<produto>"
@@ -49,7 +49,7 @@ Funcionalidade: Recebimentos
       | 9999-8 | Consultar detalhe das transações de acordo com o produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
       | 9999-9 | Consultar detalhe das transações de acordo com o produto- TODOS        | TODOS             | 28339982000160 |
 
-  @Recebimentoss1 @FERNANDO @Matheus
+   @Recebimentos @Regressivo
   Esquema do Cenario: <VSTS> - Comprovante detalhado <cenario>
     Quando clicar no menu recebimentos "<cnpj>"
     E Selecionar a data atual e a opcao de produtos e clicar em comprovante"<produto>"
@@ -59,5 +59,5 @@ Funcionalidade: Recebimentos
     Exemplos: 
       | VSTS    | cenario                                                                                                     | produto           | cnpj           |
       | 9999-10 | Consultar detalhe das transações de acordo com o produto e realizar o download do comprovante - REFEIÇÃO    | ALELO REFEICAO    | 28339982000160 |
-     # | 9999-11 | Consultar detalhe das transações de acordo com o produto e realizar o download do comprovante - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
-     #| 9999-12 | Consultar detalhe das transações de acordo com o produto e realizar o download do comprovante - TODOS       | TODOS             | 28339982000160 |
+      | 9999-11 | Consultar detalhe das transações de acordo com o produto e realizar o download do comprovante - ALIMENTAÇÃO | ALELO ALIMENTACAO | 28339982000160 |
+     | 9999-12 | Consultar detalhe das transações de acordo com o produto e realizar o download do comprovante - TODOS       | TODOS             | 28339982000160 |

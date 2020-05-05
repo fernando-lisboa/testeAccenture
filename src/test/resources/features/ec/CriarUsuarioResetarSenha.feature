@@ -6,12 +6,12 @@
 # * Caminho: Portal Estabelecimento Comercial
 # */
 
-@Regressivo @CriarUsuarioResetarSenha @MichaelAlba
+@CriarUsuarioResetarSenha 
 Funcionalidade: Criacao de Usuario e Reset de Senha
   Eu como usuário do portal
   Desejo efetuar a criacao de novos usuarios e dado a necessidade, resetar a senha do mesmo
 
-  @CriarResetarSenhaUsuario @MichaelAlba
+  @CriarResetarSenhaUsuario 
   Esquema do Cenario: <VSTS> - Usuario <Cenario>
     Dado que esteja na tela inicial do portal
     Quando criar um novo usuario PID "<PID>" e trocar senha "<TrocaSenha>" logando no Gmail "<LogarGmail>" e associando CNPJS "<associarCNPJS>"

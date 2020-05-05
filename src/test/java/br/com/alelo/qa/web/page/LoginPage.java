@@ -124,4 +124,8 @@ public class LoginPage extends PageObject {
 	@FindBy(id = "formInlineEmail")
 	protected WebElement campo_email;
 	public String Email = "teste_address@mailinator.com";
+	
+	@FindBy(xpath = "/html/body/div[2]/div/div/div/div[2]/div[1]")
+	protected WebElement loginFail;
+	public String msgFail = "ALGUNS DADOS NÃO CONFEREM";
 }

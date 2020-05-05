@@ -1,11 +1,12 @@
 package br.com.alelo.qa.web.actions;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-
+import java.util.List;
 
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import org.junit.Assert;
@@ -16,6 +17,7 @@ import org.openqa.selenium.WebElement;
 import br.com.alelo.qa.web.page.LoginPage;
 import br.com.alelo.qa.web.page.OfertaAtivaPage;
 import br.com.alelo.qa.features.support.JavaScriptUtils;
+
 public class LoginActions extends LoginPage {
 
 	OfertaAtivaPage page = new OfertaAtivaPage(webdriver);
@@ -39,29 +41,31 @@ public class LoginActions extends LoginPage {
 		userLogin.sendKeys(user);
 		password.sendKeys(senha);
 		btnEntrar.click();
+
+		if (loginFail.isDisplayed()) {
+			fail("antecipacao recorrente deveria estar inativa");
+		}
+
 		waitForElementToBeInvisible(loader);
-		
 
 		if (webdriver.getCurrentUrl().equals("https://meuestabelecimento-hml.siteteste.inf.br/pkmslogout")) {
 
-			System.out.println("Excedeu quantidade de token...");
+			System.out.println("Excedeu quantidade de token e / ou isam fora...");
 
 		}
 	}
-	
-	public void confirmarToken() throws InterruptedException{
+
+	public void confirmarToken() throws InterruptedException {
 		JavaScriptUtils js = new JavaScriptUtils(webdriver);
-		js.JavaScriptAction(JavaScriptUtils.Funcao.click, null,null,webdriver.findElement(By.xpath("//button[@id='btnInitiateSession']")));
+		js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
+				webdriver.findElement(By.xpath("//button[@id='btnInitiateSession']")));
 		Thread.sleep(2000);
-		js.JavaScriptAction(JavaScriptUtils.Funcao.click, null,null,webdriver.findElement(By.xpath("//button[@id='btnGenerateCode']")));
+		js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
+				webdriver.findElement(By.xpath("//button[@id='btnGenerateCode']")));
 		Thread.sleep(5000);
-		//js.JavaScriptAction(JavaScriptUtils.Funcao.atualizarPagina,null,null,null);
+		// js.JavaScriptAction(JavaScriptUtils.Funcao.atualizarPagina,null,null,null);
 
 	}
-	
-	
-
-
 
 	public void telaLoginWebAdmin() {
 		getUrlInicioWebAdmin();
@@ -172,7 +176,7 @@ public class LoginActions extends LoginPage {
 
 	}
 
-	public void loginGeralWebAdmin(String user , String password) throws Throwable {
+	public void loginGeralWebAdmin(String user, String password) throws Throwable {
 
 		if (webdriver.getCurrentUrl().contains("login")) {
 			campo_cpf_webAdmin.sendKeys(user);

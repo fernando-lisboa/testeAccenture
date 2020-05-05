@@ -136,7 +136,7 @@ public class CommonsActions {
 		consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacao1().toString()); // 28339982000160
 		consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacaoForaPeriodoTestes().toString()); // 41707658000115
 		consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacaoCancelado().toString()); // 11699141000160
-		consultaBancoHmlPoint(ConnPpoint.getConexao(), queryIndicadores.retornaInsertTransacoes().toString());
+		//consultaBancoHmlPoint(ConnPpoint.getConexao(), queryIndicadores.retornaInsertTransacoes().toString());
 		System.out.println("Banco populado para inicio dos testes...");
 	}
 
@@ -175,14 +175,17 @@ public class CommonsActions {
 
 		if (Integer.parseInt(hora) < 14) {
 			System.out.println(Integer.parseInt(hora));
-			consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateDataDeProcessmentoAM().toString());
+			consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateDataDeProcessmentoPM().toString());
 
 		} else {
 			System.out.println(Integer.parseInt(hora));
-			consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateDataDeProcessmentoPM().toString());
+			consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateDataDeProcessmentoAM().toString());
 		}
 
 		consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateIdSolicitacao().toString());
+		consultaBanco(ConnUsadq.getConexao(), arv.roternaDeletePlanoRecorrente().toString());
+		Thread.sleep(2000);
+		
 		System.out.println("Banco preparado com sucesso...");
 	}
 
