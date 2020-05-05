@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.poi.hssf.record.PageBreakRecord.Break;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import static org.hamcrest.CoreMatchers.is;
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.AntecipacaoPage;
 import br.com.alelo.qa.web.page.PlanosPage;
@@ -211,16 +212,18 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	public Integer valorTotalRecebiveis_ = 0;
 	public Integer valorSelecionado_ = 0;
 
-	public void FluxoAntecipacaoDeRecebiveisARV(boolean Modal, String Cenario, boolean Valor, boolean Antecipacao,
-			boolean Contratacao) {
+	public void FluxoAntecipacaoDeRecebiveisARV(boolean Modal, String Cenario, boolean Valor, boolean Recorrencia,
+			boolean Contratacao, String cnpj) {
 		try {
 			Thread.sleep(4000);
 			JavaScriptUtils javaS = new JavaScriptUtils(webdriver);
 			PlanosPage planosPage = new PlanosPage(webdriver);
 
-			if (!Modal)
+			if (!Modal) {
 				webdriver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
-			else
+				waitForElementToBeInvisible(loader);
+				alterarEstabelecimentoArv(cnpj);
+			} else
 				// Abre Modal
 				javaS.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, planosPage.botao_side_kick);
 
@@ -253,14 +256,16 @@ public class AntecipacaoActions extends AntecipacaoPage {
 						if (!PreencheValorCampoSetSelectButton(null, calcularValorLiquido, null, 40))
 							fail("Botao Calcular valor líquido sem ação");
 				}
+				// TODo contratar
+
 			}
 
-			if (Antecipacao) {
-				waitForElementPageToBeClickable(btnAlterarRecorrencia);
+			if (Recorrencia) {
+				Thread.sleep(2000);
 				if (!PreencheValorCampoSetSelectButton(null, btnAlterarRecorrencia, null, 40))
 					fail("Botao Altera Recorrencia sem ação");
 				waitForElementPageToBeClickable(webdriver.findElement(By.id("cardRecurr-DAILY")));
-				
+
 				switch (cenario_.trim()) {
 				case "Recorrente Diário":
 					webdriver.findElement(By.id("cardRecurr-DAILY")).click();
@@ -281,21 +286,32 @@ public class AntecipacaoActions extends AntecipacaoPage {
 					javaS.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, botaoDefinirRecebimento);
 			}
 
-			// CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS
-			if (!PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis, null, 40))
-				fail("CONCORDO COM OS TERMOS DE ANTECIPAÇÃO DE RECEBÍVEIS sem ação");
+			// CONTRATAR RECORRENCIA
+			if (Recorrencia) {
+				waitForElementPageToBeClickable(checkAceiteTermosRecebiveis);
+				if (!PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis, null, 40))
+					fail("Flag de concordo com termos não clicável");
+				waitForElementPageToBeClickable(btnAntecipar);
+				btnAntecipar.click();
+			}
 
 			if (Contratacao) {
 				Thread.sleep(2000);
+
+				if (!PreencheValorCampoSetSelectButton(null, checkAceiteTermosRecebiveis, null, 40))
+					fail("Flag de concordo com termos não clicável");
+
 				webdriver.findElement(By.id("anticipationButton")).click();
+				Thread.sleep(2000);
 				if (Cenario.contains("operador")) {
 					text = webdriver.findElement(By.xpath("//div[@id='simulationAlert']/div[2]")).getText();
 					System.out.println(text);
-					Assert.assertTrue("Simulação não foi efetivada... contratado arv pelo operado",
+					Assert.assertTrue("Simulação não foi efetivada... contratado arv pelo operador",
 							text.equals(textoConfirmacaoArv));
 				}
-				// TODO validar msg de contratação
+
 			}
+			validarMensagemContratacao(Recorrencia, Cenario, Modal);
 
 			Thread.sleep(200);
 		} catch (Exception e) {
@@ -306,7 +322,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	public void ResultadoEvidencia(String Resultado) throws InterruptedException {
 		Thread.sleep(2000);
 		switch (Resultado) {
-		
+
 		case "valor bruto deve ser menor que o valor liquido apresentado na abertura":
 			if (!webdriver.findElement(By.id("anticipationModalAnticipationBoxValorLiquido")).isDisplayed())
 				fail("a validação de Valor nao foi possivel");
@@ -333,6 +349,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				fail("antecipacao recorrente deveria estar inativa");
 
 			break;
+
 		}
 	}
 
@@ -362,5 +379,121 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			}
 		}
 		waitForElementToBeInvisible(loader);
+	}
+
+	public void validarMensagemContratacao(Boolean Recorrencia, String Cenario, Boolean Modal)
+			throws InterruptedException {
+
+		// Validação para contratações qtraves da tela antecipe
+		if (!Modal) {
+
+			Thread.sleep(2000);
+			if (Recorrencia) {
+
+				if (Modal) {
+					try {
+
+						Thread.sleep(2000);
+						List<WebElement> list = msgRecorrencia.findElements(By.tagName("h2"));
+						String el1 = list.get(0).getText();
+						String el2 = list.get(1).getText();
+						Thread.sleep(3000);
+						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
+								is(textoMsgRecorrencia.toUpperCase()));
+					} catch (InterruptedException e) {
+						System.out.println("Recorrencia não efetivada " + e);
+						e.printStackTrace();
+					}
+				} else {
+					try {
+						Thread.sleep(2000);
+						List<WebElement> list = msgRecorrencia.findElements(By.tagName("h2"));
+						String el1 = list.get(0).getText();
+						String el2 = list.get(1).getText();
+						Thread.sleep(3000);
+						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
+								is(textoMsgRecorrencia.toUpperCase()));
+					} catch (InterruptedException e) {
+						System.out.println("Recorrencia não efetivada " + e);
+						e.printStackTrace();
+					}
+				}
+
+			}
+			if (!Recorrencia) {
+				try {
+					Thread.sleep(2000);
+					List<WebElement> list = modalConfirmacaoContratacaoArvTela.findElements(By.tagName("h2"));
+					String el1 = list.get(0).getText();
+					String el2 = list.get(1).getText();
+					Thread.sleep(3000);
+					Assert.assertThat("Contratação não foi efetivada...", el1 + " " + el2,
+							is(textoConfirmacaoContratacaoArvTela));
+				} catch (InterruptedException e) {
+					System.out.println("Contratação não efetivada " + e);
+					e.printStackTrace();
+
+				}
+			}
+		}
+
+		if (Modal) {
+			// VALIDA RESULTADO DE CONTRATAÇÃO DE ARV RECORRENTE
+			Thread.sleep(2000);
+			if (Recorrencia) {
+
+				if (Modal) {
+					try {
+
+						Thread.sleep(2000);
+						List<WebElement> list = msgRecorrencia.findElements(By.tagName("h2"));
+						String el1 = list.get(0).getText();
+						String el2 = list.get(1).getText();
+						Thread.sleep(3000);
+						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
+								is(textoMsgRecorrencia.toUpperCase()));
+					} catch (InterruptedException e) {
+						System.out.println("Recorrencia não efetivada " + e);
+						e.printStackTrace();
+					}
+				} else {
+					try {
+						Thread.sleep(2000);
+						List<WebElement> list = msgRecorrencia.findElements(By.tagName("h2"));
+						String el1 = list.get(0).getText();
+						String el2 = list.get(1).getText();
+						Thread.sleep(3000);
+						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
+								is(textoMsgRecorrencia.toUpperCase()));
+					} catch (InterruptedException e) {
+						System.out.println("Recorrencia não efetivada " + e);
+						e.printStackTrace();
+					}
+				}
+
+			}
+
+			if (!Recorrencia) {
+				try {
+					Thread.sleep(2000);
+					List<WebElement> list = modalConfirmacaoContratacaoArv.findElements(By.tagName("h2"));
+					String el1 = list.get(0).getText();
+					String el2 = list.get(1).getText();
+					Thread.sleep(3000);
+					Assert.assertThat("Contratação não foi efetivada...", el1 + " " + el2,
+							is(textoConfirmacaoContratacaoArv));
+				} catch (InterruptedException e) {
+					System.out.println("Contratação não efetivada " + e);
+					e.printStackTrace();
+				}
+			}
+		}
+		// VALIDA RESULTADO DE SIMULAÇÃO DE CONTRATAÇÃO DE ARV
+		if (Cenario.contains("operador")) {
+			text = webdriver.findElement(By.xpath("//div[@id='simulationAlert']/div[2]")).getText();
+			System.out.println(text);
+			Assert.assertTrue("Simulação não foi efetivada... contratado arv pelo operador",
+					text.equals(textoConfirmacaoArv));
+		}
 	}
 }

@@ -126,5 +126,25 @@ public class AntecipacaoPage extends PageObject {
 	protected WebElement modalConfirmacaoArv;
 	public String textoConfirmacaoArv = "IMPORTANTE: A simulação não efetivará a contratação do produto.";
 	
+	// ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO VIA MODAL
+	@FindBy(xpath = "/html/body/div[7]/div[2]/div/div/div[2]/div[1]")
+	
+	protected WebElement modalConfirmacaoContratacaoArv;
+	public String textoConfirmacaoContratacaoArv = "ANTECIPAÇÃO REALIZADA COM SUCESSO";
+	
+	// ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO VIA TELA
+	@FindBy(xpath = "/html/body/div[4]/div[2]/div/div/div[2]/div[1]")
+	protected WebElement modalConfirmacaoContratacaoArvTela;
+	public String textoConfirmacaoContratacaoArvTela = "ANTECIPAÇÃO REALIZADA COM SUCESSO";
+
+	@FindBy(className = "modalTitleSuccess")
+	protected WebElement modalConfirmacaoContratacaoArv1;
+	public String textoConfirmacaoContratacaoArv1 = "ANTECIPAÇÃO REALIZADA COM SUCESSO";
+	
+	//ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO DE RECORRENCIA VIA MODAL
+	@FindBy(xpath = "/html/body/div[7]/div[2]/div/div/div[2]/div[1]")
+	protected WebElement msgRecorrencia;
+	public String textoMsgRecorrencia = "antecipação realizada com sucesso";
+	
 	
 }

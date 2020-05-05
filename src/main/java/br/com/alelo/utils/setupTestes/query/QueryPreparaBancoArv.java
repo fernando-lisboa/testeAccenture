@@ -22,5 +22,11 @@ public class QueryPreparaBancoArv {
 		return sql;
 		
 	}
+	public StringBuilder roternaDeletePlanoRecorrente() {
+		StringBuilder sql = new StringBuilder(
+				"DELETE OWADQ.tsgm_contr where nu_cnpj = 28339982000160");
+		return sql;
+		
+	}
 
 }

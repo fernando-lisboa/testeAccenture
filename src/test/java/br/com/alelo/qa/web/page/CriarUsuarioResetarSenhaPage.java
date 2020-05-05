@@ -201,18 +201,12 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
     //region WebElement [Botão Proximo Gmail -> senha]
     @FindBy(xpath = "//*[@id='passwordNext']/span/span")
     public static WebElement btnProsseguirSenhaGmail;
-    //endregion
-
-    //endregion
-
-/*
-
-
-
-    @FindBy(id = "navbarDesktopSair")
-    protected WebElement botaoSair;
-
-    @FindBy(id = "nav-dropdown")
-    protected WebElement botaoPerfil;*/
+    
+    @FindBy(xpath = "//div[@id='simulationAlert']/div[2]")
+	protected WebElement modalConfirmacaoArv;
+	public String textoConfirmacaoArv = "IMPORTANTE: A SIMULAÇÃO NÃO EFETIVARÁ A INCLUSÃO DO EC.";
+	
+	@FindBy(id = "buttonBottomPrint")
+	protected WebElement btnComecar;
 
 }

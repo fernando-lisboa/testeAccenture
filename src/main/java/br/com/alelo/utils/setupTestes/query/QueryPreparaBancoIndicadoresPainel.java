@@ -49,19 +49,19 @@ public class QueryPreparaBancoIndicadoresPainel {
 
 	public StringBuilder retornaInsertOferta() {
 
-//
-//		StringBuilder sql = new StringBuilder("INSERT ALL ")
-//				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('28339982000160', current_timestamp) ")
-//				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('37491504000161', current_timestamp) ")
-//				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('12259140000168', current_timestamp) ")
-//				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('41707658000115', current_timestamp) ")
-//				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('11699141000160', current_timestamp) ")
-//				.append(" SELECT 1 FROM DUAL ");
 
-		String[] Cnpjs = {"28339982000160","37491504000161","12259140000168","41707658000115","11699141000160"};
-		StringBuilder sql = new StringBuilder("INSERT ALL ");
-		for(String cnpj : Cnpjs)
-			sql.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('"+ cnpj +"', current_timestamp) ");
+		StringBuilder sql = new StringBuilder("INSERT ALL ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('28339982000160', current_timestamp) ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('37491504000161', current_timestamp) ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('12259140000168', current_timestamp) ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('41707658000115', current_timestamp) ")
+				.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('11699141000160', current_timestamp) ")
+				.append(" SELECT 1 FROM DUAL ");
+
+//		String[] Cnpjs = {"28339982000160","37491504000161","12259140000168","41707658000115","11699141000160"};
+//		StringBuilder sql = new StringBuilder("INSERT ALL ");
+//		for(String cnpj : Cnpjs)
+//			sql.append(" INTO OWADQ.TACS_OFERT(NU_CNPJ, DT_PROCM) VALUES ('"+ cnpj +"', current_timestamp) ");
 
 		return sql;
 	}
