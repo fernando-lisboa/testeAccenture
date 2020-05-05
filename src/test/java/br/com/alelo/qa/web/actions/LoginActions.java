@@ -54,17 +54,16 @@ public class LoginActions extends LoginPage {
 
 		}
 	}
-
-	public void confirmarToken() throws InterruptedException {
-		JavaScriptUtils js = new JavaScriptUtils(webdriver);
-		js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
-				webdriver.findElement(By.xpath("//button[@id='btnInitiateSession']")));
-		Thread.sleep(2000);
-		js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
-				webdriver.findElement(By.xpath("//button[@id='btnGenerateCode']")));
-		Thread.sleep(5000);
-		// js.JavaScriptAction(JavaScriptUtils.Funcao.atualizarPagina,null,null,null);
-
+	
+	public void confirmarToken() throws InterruptedException{
+		try {
+			JavaScriptUtils js = new JavaScriptUtils(webdriver);
+			js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, webdriver.findElement(By.xpath("//button[@id='btnInitiateSession']")));
+			Thread.sleep(2000);
+			js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, webdriver.findElement(By.xpath("//button[@id='btnGenerateCode']")));
+			Thread.sleep(5000);
+			//js.JavaScriptAction(JavaScriptUtils.Funcao.atualizarPagina,null,null,null);
+		}catch (Exception e){}
 	}
 
 	public void telaLoginWebAdmin() {

@@ -10,6 +10,7 @@ package br.com.alelo.qa.features.steps;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.AntecipacaoActions;
 import br.com.alelo.qa.web.actions.MeusCNPJsActions;
+import cucumber.api.java.it.E;
 import cucumber.api.java.it.Quando;
 import cucumber.api.java.pt.Entao;
 import org.junit.Assert;
@@ -17,10 +18,16 @@ import org.junit.Assert;
 
 public class MeusCNPJsStep extends ParentSteps {
 
-    @Quando("devo associar CNPJS \"([^\"]*)\"$")
-    public void devo_associar_um_CNPJ(int CNPJS) throws Throwable {
+    @E("vou pedir ajuda no atendimento e acesso a outra aba do navegador")
+    public void vou_pedir_ajuda_no_atendimento_e_acesso_a_outra_aba_do_navegador()throws Throwable {
         MeusCNPJsActions adicionaCNPJ = new MeusCNPJsActions(webdriver);
-        adicionaCNPJ.AdicionaCNPJS(CNPJS);
+        adicionaCNPJ.PedirAjudaMenu();
+    }
+
+    @Quando("devo associar CNPJS \"([^\"]*)\" e pesquisar \"([^\"]*)\"$")
+    public void devo_associar_um_CNPJ(int CNPJS, String CNPJ_Pesquisa) throws Throwable {
+        MeusCNPJsActions adicionaCNPJ = new MeusCNPJsActions(webdriver);
+        adicionaCNPJ.AdicionaCNPJS(CNPJS,CNPJ_Pesquisa);
     }
 
     @Entao("a validacao do cenario deve conter como resultado: \"([^\"]*)\"$")
