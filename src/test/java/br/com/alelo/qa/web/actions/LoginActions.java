@@ -42,9 +42,9 @@ public class LoginActions extends LoginPage {
 		password.sendKeys(senha);
 		btnEntrar.click();
 
-		if (loginFail.isDisplayed()) {
-			fail("antecipacao recorrente deveria estar inativa");
-		}
+//		if (loginFail.isDisplayed()) {
+//			fail("antecipacao recorrente deveria estar inativa");
+//		}
 
 		waitForElementToBeInvisible(loader);
 
