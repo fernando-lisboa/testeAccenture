@@ -1,5 +1,6 @@
 package br.com.alelo.qa.web.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -59,6 +60,11 @@ public class LoginPage extends PageObject {
 
 	@FindBy(xpath = "//button[@type='button'][contains(.,'Veja mais Detalhes')]")
 	protected WebElement resumo;
+	
+	@FindBy(xpath = "//*[text()='SESSÃO ENCERRADA']")
+	protected WebElement sessionTimeout;
+	
+	
 
 	@FindBy(id = "login-cpf-input")
 	protected WebElement campo_cpf;

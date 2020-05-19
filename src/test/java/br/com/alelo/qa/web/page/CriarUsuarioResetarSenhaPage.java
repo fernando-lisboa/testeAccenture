@@ -156,7 +156,8 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
 
 
     //region WebElement [Menu Portal - Meus CNPJS]
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div/nav/div/div[2]/ul[1]/li[6]/a")
+    @FindBy(xpath = "/html/body/div[1]/main/body/div/nav/div/div[2]/ul[1]/li[6]/a")
+    
     public static WebElement meusCNPJSMenuPortal;
     //endregion
 

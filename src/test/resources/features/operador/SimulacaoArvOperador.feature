@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @Simulacao @01
+@Regressivo @Simulacao @03
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
