@@ -1,5 +1,6 @@
 package br.com.alelo.qa.web.actions;
 
+import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.AntecipacaoPage;
 import br.com.alelo.qa.web.page.PlanosPage;
@@ -57,4 +58,6 @@ public class ContratacaodePlanosActions extends AntecipacaoPage {
             fail(e.getMessage());
         }
     }
+    
+    
 }

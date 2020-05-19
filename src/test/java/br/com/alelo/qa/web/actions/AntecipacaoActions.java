@@ -15,6 +15,7 @@ import static org.hamcrest.CoreMatchers.is;
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.AntecipacaoPage;
 import br.com.alelo.qa.web.page.PlanosPage;
+import br.com.alelo.utils.DriverAnonimo;
 
 public class AntecipacaoActions extends AntecipacaoPage {
 
@@ -220,9 +221,16 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			PlanosPage planosPage = new PlanosPage(webdriver);
 
 			if (!Modal) {
-				webdriver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
+				if (Cenario.contains("operador")) {
+					DriverAnonimo.getDriver().navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
+					waitForElementToBeInvisible(loader);
+					alterarEstabelecimentoArv(cnpj);
+				} else if (!Cenario.contains("operador")){
+					webdriver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
 				waitForElementToBeInvisible(loader);
 				alterarEstabelecimentoArv(cnpj);
+				waitForElementToBeInvisible(loader);
+				}
 			} else
 				// Abre Modal
 				javaS.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, planosPage.botao_side_kick);
@@ -269,14 +277,17 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				switch (cenario_.trim()) {
 				case "Recorrente Diário":
 					webdriver.findElement(By.id("cardRecurr-DAILY")).click();
+					waitForElementToBeInvisible(loader);
 					break;
 				case "RecorrenteTotal Semanal":
 					webdriver.findElement(By.id("cardRecurr-WEEKLY")).click();
 					Thread.sleep(1000);
 					webdriver.findElement(By.id("radioWeekly-QUA")).click();
+					waitForElementToBeInvisible(loader);
 					break;
 				case "Recorrente Desativado":
 					webdriver.findElement(By.id("cardRecurr-DISABLED")).click();
+					waitForElementToBeInvisible(loader);
 					break;
 				default:
 					break;
@@ -366,12 +377,6 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			cnpjs.add(cnPJ);
 		}
 
-		for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
-				.findElements(By.tagName("span"))) {
-			System.out.println(cnPJ.getText());
-			cnpjs.add(cnPJ);
-		}
-
 		for (WebElement cnPJ : cnpjs) {
 			if (cnPJ.getText().equals(numCNPJ)) {
 				cnPJ.click();
@@ -384,7 +389,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	public void validarMensagemContratacao(Boolean Recorrencia, String Cenario, Boolean Modal)
 			throws InterruptedException {
 
-		// Validação para contratações qtraves da tela antecipe
+		// Validação para contratações atraves da tela antecipe
 		if (!Modal) {
 
 			Thread.sleep(2000);
@@ -394,25 +399,25 @@ public class AntecipacaoActions extends AntecipacaoPage {
 					try {
 
 						Thread.sleep(2000);
-						List<WebElement> list = msgRecorrencia.findElements(By.tagName("h2"));
+						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
 						Thread.sleep(3000);
 						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
-								is(textoMsgRecorrencia.toUpperCase()));
+								is(textoconfirmacaoSimulacao.toUpperCase()));
 					} catch (InterruptedException e) {
 						System.out.println("Recorrencia não efetivada " + e);
 						e.printStackTrace();
 					}
-				} else {
+				} else if(!Modal && !Cenario.contains("operador")) {
 					try {
 						Thread.sleep(2000);
-						List<WebElement> list = msgRecorrencia.findElements(By.tagName("h2"));
+						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
 						Thread.sleep(3000);
 						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
-								is(textoMsgRecorrencia.toUpperCase()));
+								is(textoconfirmacaoSimulacao.toUpperCase()));
 					} catch (InterruptedException e) {
 						System.out.println("Recorrencia não efetivada " + e);
 						e.printStackTrace();
@@ -420,7 +425,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				}
 
 			}
-			if (!Recorrencia) {
+			if (!Recorrencia && !Cenario.contains("operador")) {
 				try {
 					Thread.sleep(2000);
 					List<WebElement> list = modalConfirmacaoContratacaoArvTela.findElements(By.tagName("h2"));
@@ -438,7 +443,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		}
 
 		if (Modal) {
-			// VALIDA RESULTADO DE CONTRATAÇÃO DE ARV RECORRENTE
+			// VALIDA RESULTADO DE CONTRATAÇÃO DE ARV
 			Thread.sleep(2000);
 			if (Recorrencia) {
 
@@ -446,12 +451,12 @@ public class AntecipacaoActions extends AntecipacaoPage {
 					try {
 
 						Thread.sleep(2000);
-						List<WebElement> list = msgRecorrencia.findElements(By.tagName("h2"));
+						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
 						Thread.sleep(3000);
 						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
-								is(textoMsgRecorrencia.toUpperCase()));
+								is(textoconfirmacaoSimulacao.toUpperCase()));
 					} catch (InterruptedException e) {
 						System.out.println("Recorrencia não efetivada " + e);
 						e.printStackTrace();
@@ -459,12 +464,12 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				} else {
 					try {
 						Thread.sleep(2000);
-						List<WebElement> list = msgRecorrencia.findElements(By.tagName("h2"));
+						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
 						Thread.sleep(3000);
 						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
-								is(textoMsgRecorrencia.toUpperCase()));
+								is(textoconfirmacaoSimulacao.toUpperCase()));
 					} catch (InterruptedException e) {
 						System.out.println("Recorrencia não efetivada " + e);
 						e.printStackTrace();
@@ -472,8 +477,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				}
 
 			}
-
-			if (!Recorrencia) {
+			// Valida mensagen de sucesso para contratação via Modal
+			if (!Recorrencia && !Cenario.contains("operador")) {
 				try {
 					Thread.sleep(2000);
 					List<WebElement> list = modalConfirmacaoContratacaoArv.findElements(By.tagName("h2"));

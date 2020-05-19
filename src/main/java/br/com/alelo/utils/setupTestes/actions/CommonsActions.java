@@ -266,4 +266,15 @@ public class CommonsActions {
 		tearDowntransactions();
 		insertMassaCancelamentoEContratacaoWeb();
 	}
+	
+	public void preparaBancoPlanos() throws Exception{
+    	
+		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteContratoSimulaca().toString());
+		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteOfertaPlanosSimulacao().toString());
+		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaInsertOFertaPlanosSimulacao().toString());
+		
+
+
+}
+	
 }

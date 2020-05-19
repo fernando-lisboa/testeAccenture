@@ -106,18 +106,17 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(id = "btnGenerateToken")
 	protected WebElement btnIniciarSimulacao;
 
-	
 	@FindBy(xpath = "//b[contains(.,'• 28.339.982/0001-60 - 2000496258')]")
 	protected WebElement opcao_ec_arv;
 	public String opcaoARV = "• 28.339.982/0001-60 - 2000496258";
-	
+
 	@FindBy(xpath = "//h5[contains(@class,'textLabelSidekick')]")
 	protected WebElement sideKickAtencao;
 	public String labelSidekick = "VOCÊ ESTÁ NO MODO SIMULAÇÃO";
 
 	@FindBy(xpath = "//b[contains(.,'• 12.259.140/0001-68 - 1015000255')]")
 	protected WebElement opcao_ec;
-	
+
 	@FindBy(xpath = "//b[contains(.,'• 12.819.758/0002-16 - 0000660817')]")
 	protected WebElement weOpcaoEcSimulacao;
 	public String opcaoECSimulacao = "@ 12.819.758/0002-16 - 0000660817";
@@ -125,26 +124,25 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(xpath = "//div[@id='simulationAlert']/div[2]")
 	protected WebElement modalConfirmacaoArv;
 	public String textoConfirmacaoArv = "IMPORTANTE: A simulação não efetivará a contratação do produto.";
-	
+
 	// ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO VIA MODAL
-	@FindBy(xpath = "/html/body/div[7]/div[2]/div/div/div[2]/div[1]")
-	
+	@FindBy(xpath = "/html/body/div[3]/div[2]/div/div/div[2]/div[1]")
 	protected WebElement modalConfirmacaoContratacaoArv;
 	public String textoConfirmacaoContratacaoArv = "ANTECIPAÇÃO REALIZADA COM SUCESSO";
 	
+	// ELEMENTO DE SIMULADOR DE CONTRATAÇÃO VIA MODAL
+	@FindBy(xpath = "/html/body/div[3]/div[2]/div/div/div[2]/div[1]/div[1]")
+	protected WebElement modalSimulacaoContratacaoArv;
+	public String textomodalSimulacaoContratacaoArv = "SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO";
+
+	// ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO DE RECORRENCIA VIA MODAL
+	@FindBy(xpath = "/html/body/div[3]/div[2]/div/div/div[2]/div[1]")
+	protected WebElement confirmacaoSimulacao;
+	public String textoconfirmacaoSimulacao = "antecipação realizada com sucesso";
+
 	// ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO VIA TELA
 	@FindBy(xpath = "/html/body/div[4]/div[2]/div/div/div[2]/div[1]")
 	protected WebElement modalConfirmacaoContratacaoArvTela;
 	public String textoConfirmacaoContratacaoArvTela = "ANTECIPAÇÃO REALIZADA COM SUCESSO";
 
-	@FindBy(className = "modalTitleSuccess")
-	protected WebElement modalConfirmacaoContratacaoArv1;
-	public String textoConfirmacaoContratacaoArv1 = "ANTECIPAÇÃO REALIZADA COM SUCESSO";
-	
-	//ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO DE RECORRENCIA VIA MODAL
-	@FindBy(xpath = "/html/body/div[7]/div[2]/div/div/div[2]/div[1]")
-	protected WebElement msgRecorrencia;
-	public String textoMsgRecorrencia = "antecipação realizada com sucesso";
-	
-	
 }

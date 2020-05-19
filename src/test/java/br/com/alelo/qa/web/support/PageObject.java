@@ -6,8 +6,15 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,7 +27,7 @@ public class PageObject {
     protected WebDriver webdriver;
 
     @Autowired
-    private int maxTimeWaitLoadPage = 300;
+    private int maxTimeWaitLoadPage = 20;
 
     private WebDriverWait wait;
 
@@ -265,6 +272,25 @@ public class PageObject {
             }
         return false;
     }
+    
+    public WebDriver montaDriverAnonimo(){
+    	 DesiredCapabilities capability;
+    	    capability = DesiredCapabilities.chrome();
+    	    capability.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+    	    capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+    	    WebDriverManager.chromedriver().setup();
+    	    ChromeOptions options = new ChromeOptions();
+    	    //options.addArguments("test-type");
+    	    options.addArguments("--start-maximized");
+    	    options.addArguments("--disable-web-security");
+    	    options.addArguments("--allow-running-insecure-content");
+    	    options.addArguments("--ignore-certificate-errors");
+    	   // options.addArguments("--ignore-urlfetcher-cert-requests");
+    	    options.addArguments("incognito");
+    	    ChromeDriver driver_Anonimo = new ChromeDriver(options);
+    	return driver_Anonimo;
+    }
+   
 
 
     @FindBy(id = "loaderId")
