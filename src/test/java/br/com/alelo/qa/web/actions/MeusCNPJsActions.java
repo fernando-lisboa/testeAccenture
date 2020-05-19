@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -116,6 +117,7 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 					Itens.add(cdBanco);
 					Itens.add(nuAgencia);
 					Itens.add(nuConta);
+					Thread.sleep(2000);
 					break;
 				}
 				// endregion
@@ -128,6 +130,7 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 				sleep(1000);
 				primeiroAcessocnpj.clear();
 				primeiroAcessocnpj.sendKeys(Itens.get(0));
+				Thread.sleep(2000);
 
 				// Banco
 				WebElement selectBanco = webdriver.findElement(By.id("formInlineBank"));
@@ -147,17 +150,21 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 
 				// Conta
 				primeiroAcessoConta.sendKeys(Itens.get(3));
-
+				Thread.sleep(2000);
 				waitForElementPageToBeClickable(btnConfirmarCNPJSPortal);
 
-				sleep(2000);
+				Thread.sleep(2000);
 
 				// Confirmar
-				/*
-				 * btnConfirmarCNPJSPortal.click();
-				 * 
-				 * webdriver.findElement(By.id("buttonBottomPrint")).click();
-				 */
+
+				btnConfirmarCNPJSPortal.click();
+
+				// VALIDA RESULTADO DE SIMULAÇÃO DE CONTRATAÇÃO DE ARV
+
+				String text = webdriver.findElement(By.xpath("//div[@id='simulationAlert']/div[2]")).getText();
+				System.out.println(text);
+				Assert.assertTrue("Simulação não foi efetivada... contratado arv pelo operador",
+						text.equals(textoConfirmacaoArv));
 
 			}
 		} catch (Exception e) {

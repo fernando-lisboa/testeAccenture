@@ -8,13 +8,11 @@
 package br.com.alelo.qa.features.steps;
 
 import br.com.alelo.qa.features.support.ParentSteps;
-import br.com.alelo.qa.web.actions.AntecipacaoActions;
 import br.com.alelo.qa.web.actions.MeusCNPJsActions;
 import br.com.alelo.utils.DriverAnonimo;
-import cucumber.api.java.it.E;
-import cucumber.api.java.it.Quando;
+import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
-import org.junit.Assert;
+import cucumber.api.java.pt.Quando;
 
 public class MeusCNPJsStep extends ParentSteps {
 
@@ -24,7 +22,7 @@ public class MeusCNPJsStep extends ParentSteps {
 		adicionaCNPJ.PedirAjudaMenu();
 	}
 
-	@Quando("devo associar CNPJS \"([^\"]*)\" e pesquisar \"([^\"]*)\" \"([^\"]*)\"$")
+	@Entao("^eu simulo a associacao do cnpj \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
 	public void devo_associar_um_CNPJ(int CNPJS, String CNPJ_Pesquisa, Boolean operador) throws Throwable {
 
 		if (operador) {
@@ -36,7 +34,7 @@ public class MeusCNPJsStep extends ParentSteps {
 		}
 	}
 
-	@Entao("a validacao do cenario deve conter como resultado: \"([^\"]*)\" \"([^\"]*)\"$")
+	@Entao("a validacao do cenario deve conter como resultado \"([^\"]*)\" \"([^\"]*)\"$")
 	public void a_validacao_do_cenario_deve_conter_como_resultado_(String Resultado, Boolean operador) throws Throwable {
 
 		if (operador) {
