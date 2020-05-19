@@ -7,14 +7,17 @@ import br.com.alelo.integrations.db.ConnUsodsadq;
 import br.com.alelo.integrations.db.DBConnection;
 import br.com.alelo.integrations.teams.SendTestResultTeams;
 import br.com.alelo.integrations.vsts.controllers.RunController;
+import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.PropertiesFile;
 import br.com.alelo.utils.ResultsFileStorage;
 import br.com.alelo.utils.SimpleCacheManager;
+import br.com.alelo.utils.WebdriverAnonimous;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -26,6 +29,7 @@ import java.util.Date;
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = {"src/test/resources/features/ec/", "src/test/resources/features/operador/"}, plugin = {
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"}, glue = {
+
         "classpath:br.com.alelo.qa.features.steps"}, tags = {"@Regressivo"})
 
 
@@ -56,6 +60,10 @@ public class CucumberRunnerTest {
          new DBConnection();
          Connection dbEsmeralda = DBConnection.getConnectionHml_Esmeralda();
          ConnUsodsadq.setConexao(dbEsmeralda);
+         
+         new WebdriverAnonimous();
+         WebDriver driverAnonimo = WebdriverAnonimous.getDriverAnonimo();
+         DriverAnonimo.setDriver(driverAnonimo);
 
         PropertiesFile props = new PropertiesFile();
         System.out.println("------------------------------");

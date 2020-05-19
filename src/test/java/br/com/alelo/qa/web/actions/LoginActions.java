@@ -6,9 +6,12 @@ import static org.junit.Assert.fail;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.alelo.qa.features.support.JavaScriptUtils;
+import br.com.alelo.qa.features.support.JavaScriptUtils.Funcao;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -38,13 +41,12 @@ public class LoginActions extends LoginPage {
 	public void loginGeral(String user, String senha) throws Throwable {
 
 		waitForElementPageToBeClickable(userLogin);
+		Thread.sleep(1000);
 		userLogin.sendKeys(user);
+		Thread.sleep(2000);
 		password.sendKeys(senha);
+		Thread.sleep(1000);
 		btnEntrar.click();
-
-		if (loginFail.isDisplayed()) {
-			fail("antecipacao recorrente deveria estar inativa");
-		}
 
 		waitForElementToBeInvisible(loader);
 
@@ -54,16 +56,49 @@ public class LoginActions extends LoginPage {
 
 		}
 	}
-	
-	public void confirmarToken() throws InterruptedException{
+
+	public void fecharAbasNavegador() {
+		ArrayList<String> tabs = new ArrayList<>(webdriver.getWindowHandles());
+		if (tabs.size() > 1) {
+			JavaScriptUtils js = new JavaScriptUtils(webdriver);
+			while (tabs.size()>1) {
+				webdriver.switchTo().window(tabs.get(1));
+				js.JavaScriptAction(Funcao.fecharGuia, null, null, null);
+				tabs = new ArrayList<>(webdriver.getWindowHandles());
+			}
+			webdriver.switchTo().window(tabs.get(0));
+			js.JavaScriptAction(Funcao.atualizarPagina, null, null, null);
+		}
+	}
+
+	public void confirmarToken() throws InterruptedException {
 		try {
 			JavaScriptUtils js = new JavaScriptUtils(webdriver);
-			js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, webdriver.findElement(By.xpath("//button[@id='btnInitiateSession']")));
+			js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
+					webdriver.findElement(By.xpath("//button[@id='btnInitiateSession']")));
 			Thread.sleep(2000);
-			js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, webdriver.findElement(By.xpath("//button[@id='btnGenerateCode']")));
+			js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
+					webdriver.findElement(By.xpath("//button[@id='btnGenerateCode']")));
 			Thread.sleep(5000);
-			//js.JavaScriptAction(JavaScriptUtils.Funcao.atualizarPagina,null,null,null);
-		}catch (Exception e){}
+			// js.JavaScriptAction(JavaScriptUtils.Funcao.atualizarPagina,null,null,null);
+		} catch (Exception e) {
+		}
+	}
+
+	public void logout() {
+		try {
+			waitForElementToBeInvisible(loader);
+			waitForElementPageToBeClickable(webdriver.findElement(By.id("iconProfileId")));
+			JavaScriptUtils js = new JavaScriptUtils(webdriver);
+			js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
+					webdriver.findElement(By.id("iconProfileId")));
+			waitForElementPageToBeClickable(btnLogout);
+			btnLogout.click();
+			waitForElementPageToBeClickable(userLogin);
+		} catch (Exception e) {
+			String message = e.getMessage();
+		}
+
 	}
 
 	public void telaLoginWebAdmin() {

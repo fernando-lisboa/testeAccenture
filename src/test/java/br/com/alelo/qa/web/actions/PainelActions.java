@@ -197,7 +197,8 @@ public class PainelActions extends PainelPage {
 
 	public void bloqueiaEc(String path, String nomeArquivo) {
 
-		linkPainelMeuNegocio.click();
+		//linkPainelMeuNegocio.click();
+		menuFrontVendas.click();
 		String usingSystemProperty = System.getProperty("user.dir");
 		inputFileBlock.sendKeys(usingSystemProperty + path + nomeArquivo);
 		btnFazerUpload.click();
@@ -244,9 +245,9 @@ public class PainelActions extends PainelPage {
 	}
 
 	public void simularContrataPainelOperador() throws IOException, InterruptedException {
-		//waitForElementToBeInvisible(loader);
+		waitForElementToBeInvisible(loader);
 		btnExperimentoGratisPainel.click();
-		//waitForElementToBeInvisible(loader);
+		waitForElementToBeInvisible(loader);
 		waitForElementPageToBeClickable(btnContratarAgora);
 		btnContratarAgora.click();
 		flagTermoDeAceite.click();

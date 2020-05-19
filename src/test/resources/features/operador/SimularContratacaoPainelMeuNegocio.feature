@@ -5,7 +5,7 @@
 # * Data: 06/02/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo
+@Regressivo @01
 Funcionalidade: Painel Meu Negocio
   Contratação de painel meu negócio
   
@@ -17,8 +17,9 @@ Funcionalidade: Painel Meu Negocio
 
   @SimularContratacaoPainelOperador @Regressivo @Simulacao
   Esquema do Cenario: <VSTS> - Painel <cenario>
-    Dado que estou na logado no portal EC Operador "<user>", "<senha>"
-    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento
+   Dado que estou na logado no portal EC Operador "<user>", "<senha>"
+     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
+    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
     Entao eu devo efetuar uma simulacao de contratacao via sidekick operador
 
     Exemplos: 
@@ -28,7 +29,7 @@ Funcionalidade: Painel Meu Negocio
   @SimulacaoCancelamentoWeb @Regressivo @Simulacao
   Esquema do Cenario: <VSTS> - Painel <cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
-    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento
+     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
     Entao eu devo efetuar uma simulacao cancelamento de Painel meu negocio
 
     Exemplos: 

@@ -2,6 +2,7 @@ package br.com.alelo.qa.features.steps;
 
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.PainelActions;
+import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -22,7 +23,7 @@ public class ContratacaoPainelMeuNegocio extends ParentSteps {
 	
 	@Quando("^eu devo efetuar uma simulacao de contratacao via sidekick operador$")
 	public void eu_devo_efetuar_uma_simulacao_de_contratacao_via_sidekick_operador() throws Throwable {
-		painel = new PainelActions(webdriver);
+		painel = new PainelActions(DriverAnonimo.getDriver());
 		//comm.prepararBancoParaInicioDosTestesContratacao();
 		painel.simularContrataPainelOperador();
 	}

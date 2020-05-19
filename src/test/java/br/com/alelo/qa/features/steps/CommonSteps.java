@@ -13,6 +13,7 @@ import br.com.alelo.integrations.vsts.entities.Test;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.HomeActions;
 import br.com.alelo.qa.web.actions.LoginActions;
+import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.PropertiesFile;
 import br.com.alelo.utils.ResultsFileStorage;
 import br.com.alelo.utils.SimpleCacheManager;
@@ -61,9 +62,16 @@ public class CommonSteps extends ParentSteps {
 	@After
 	public void afterScenario(Scenario scenario) throws IOException {
 		test.setOutcome(scenario.getStatus());
+		//Limpa cookies do browser para testes em massa
 		webdriver.manage().deleteAllCookies();
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) webdriver;
 		jsExecutor.executeScript("localStorage.clear();");
+		
+		//Limpa cookies do browser anonimo para testes em massa
+		DriverAnonimo.getDriver().manage().deleteAllCookies();
+		JavascriptExecutor jsExecutorAnonimous = (JavascriptExecutor) DriverAnonimo.getDriver();
+		jsExecutorAnonimous.executeScript("localStorage.clear();");
+		
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("Cenario: " + scenario.getName());
 		System.out.println("Suite ID:" + test.getSuiteId());

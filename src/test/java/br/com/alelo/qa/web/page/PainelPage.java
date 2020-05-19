@@ -140,6 +140,9 @@ public class PainelPage extends PageObject {
 
     @FindBy(id = "inputFile")
     protected WebElement inputFileBlock;
+    
+    @FindBy(xpath = "/html/body/div[2]/nav[1]/div/div/ul/li[5]/a")
+    protected WebElement menuFrontVendas;
 
     @FindBy(id = "menuDocumentos")
     protected WebElement menuDocumentos;

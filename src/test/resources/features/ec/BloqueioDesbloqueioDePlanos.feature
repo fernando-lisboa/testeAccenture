@@ -5,7 +5,7 @@
 # * Data: 06/02/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo
+@Regressivo @01
 Funcionalidade: Painel
   Bloqueio e desbloqueio de planos via Web admim
   

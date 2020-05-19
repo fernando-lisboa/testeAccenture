@@ -128,4 +128,7 @@ public class LoginPage extends PageObject {
 	@FindBy(xpath = "/html/body/div[2]/div/div/div/div[2]/div[1]")
 	protected WebElement loginFail;
 	public String msgFail = "ALGUNS DADOS NÃO CONFEREM";
+	
+	@FindBy(id = "navbarDesktopSair")
+	protected WebElement btnLogout;
 }

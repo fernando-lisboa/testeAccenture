@@ -8,9 +8,15 @@
 
 package br.com.alelo.qa.features.steps;
 
+import java.util.ArrayList;
+
+import javax.print.attribute.standard.JobImpressions;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.com.alelo.qa.features.support.JavaScriptUtils.Funcao;
+import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.LoginActions;
 import br.com.alelo.qa.web.page.LoginPage;
@@ -33,17 +39,19 @@ public class LoginSteps extends ParentSteps {
 		webdriver.get(baseurl); // Abre url
 		login = new LoginActions(webdriver);
 		login.loginGeral(user, senha);
+		comm.updateParaContratacaoArv();
 		System.out.println("logando..");
 	}
-	
+
 	@Dado("^que estou na logado no portal EC Operador \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_EC_Operador(String user, String senha) throws Throwable {
-		webdriver.get("https://portalec-isam-mock-dev-portalec-dev.35.196.143.68.nip.io/"); // Abre url
 		login = new LoginActions(webdriver);
+		webdriver.get(baseurl); // Abre
 		login.loginGeral(user, senha);
-		login.confirmarToken();
 		System.out.println("logando..");
 	}
+
+	
 
 	@Dado("^que esteja na tela inicial do portal$")
 	public void que_esteja_na_tela_inicial_do_portal() throws Throwable {
@@ -68,17 +76,17 @@ public class LoginSteps extends ParentSteps {
 	public void devo_receber_msg_de_erro_no_acesso() throws Throwable {
 		login.erroLogin();
 	}
-	
+
 	@Dado("^que estou na logado no portal webadmim EC \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_webadmim_EC(String user, String password) throws Throwable {
 
-		webdriver.get("https://meuestabelecimento-webadmin-hml.siteteste.inf.br/portalec-webadmin/login"); // Abre url
-		//webdriver.get(baseurlAdm); // Abre url
+		webdriver.get("https://meuestabelecimento-webadmin-sit.siteteste.inf.br/portalec-webadmin/login"); // Abre
+																											// url
+		// webdriver.get(baseurlAdm); // Abre url
 
 		login = new LoginActions(webdriver);
 		login.loginGeralWebAdmin(user, password);
-		
-		
+
 	}
 
 }
