@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @Simulacao @002
+@Regressivo @Simulacao @01
 Funcionalidade: MeusCNPJS
   Permite adicionar CNPJS
   

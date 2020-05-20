@@ -30,12 +30,15 @@ public class LoginActions extends LoginPage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void preencherLogin(String user, String senha) {
+	public void preencherLogin(String user, String senha) throws InterruptedException {
+		Thread.sleep(2000);
 		userLogin.sendKeys(user);
+		Thread.sleep(2000);
 		password.sendKeys(senha);
+		Thread.sleep(2000);
 		btnEntrar.click();
 		System.out.println(webdriver.getCurrentUrl());
-
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void loginGeral(String user, String senha) throws Throwable {
@@ -45,7 +48,7 @@ public class LoginActions extends LoginPage {
 		userLogin.sendKeys(user);
 		Thread.sleep(2000);
 		password.sendKeys(senha);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		btnEntrar.click();
 
 		waitForElementToBeInvisible(loader);
@@ -61,7 +64,7 @@ public class LoginActions extends LoginPage {
 		ArrayList<String> tabs = new ArrayList<>(webdriver.getWindowHandles());
 		if (tabs.size() > 1) {
 			JavaScriptUtils js = new JavaScriptUtils(webdriver);
-			while (tabs.size()>1) {
+			while (tabs.size() > 1) {
 				webdriver.switchTo().window(tabs.get(1));
 				js.JavaScriptAction(Funcao.fecharGuia, null, null, null);
 				tabs = new ArrayList<>(webdriver.getWindowHandles());
