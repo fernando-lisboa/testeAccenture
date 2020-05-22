@@ -5,7 +5,7 @@
 # * Data: 06/12/2019
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Painel @Regressivo
+@Painel @Regressivo @ignore
 Funcionalidade: Painel
   Permite a realizacao de navegacao no Portal EC
   
