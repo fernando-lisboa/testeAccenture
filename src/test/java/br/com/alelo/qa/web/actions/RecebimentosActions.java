@@ -39,6 +39,9 @@ public class RecebimentosActions extends RecebimentosPage {
         } else if (cnpj.equals("12259140000168")) {
             alterarCNPJ(ecRecebiveis_2);
         }
+        else if (cnpj.equals("37491504000161")) {
+            alterarCNPJ(ecRecebiveis_3);
+        }
 
     }
 
@@ -139,18 +142,18 @@ public class RecebimentosActions extends RecebimentosPage {
         Boolean sair = false;
 
         //List<WebElement> lista_DiasRecebiveis = webdriver.findElement(By.xpath("//*[@id='menuContentContainer']/div/div[2]/div")).findElements(By.tagName("a"));
-        int itens = webdriver.findElements(By.className("gtm-link-event")).size() - 7; //6 itens que nao compartilham da tabela agenda
+        int itens = webdriver.findElements(By.className("gtm-link-event")).size() - 7; //7 itens que nao compartilham da tabela agenda
         try {
             for (i = 1; i < itens; i++) {
                 try {
-                    WebElement item_lista = webdriver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div/div/div[2]/div/a[" + i + "]"));
+                    WebElement item_lista = webdriver.findElement(By.xpath("//html/body/div[1]/main/body/div/div/div/div[2]/div/a[" + i + "]"));
                     String tipo_item = "";
                     List<WebElement> spans = item_lista.findElements(By.tagName("span"));
                     if (!spans.get(3).getText().equals(""))
                         tipo_item = spans.get(2).getText().toUpperCase().trim();
                     if (!tipo_item.equals(""))
                         if (tipo_item.equals("VOU RECEBER") || tipo_item.equals("JÁ RECEBI") || tipo_item.equals("VOU RECEBER HOJE"))
-                            if (!spans.get(3).getText().trim().replace("R$ ", "").equals("0,00")) {
+                            if (!spans.get(3).getText().trim().replace("R$ ", "").equals("0,00") && !spans.get(3).getText().trim().replace("R$ ", "").contains("-")) {
                                 item_lista.click();
                                 selecionarProduto(produto, CNPJ, Comprovante);
                                 Thread.sleep(1000);
@@ -168,41 +171,47 @@ public class RecebimentosActions extends RecebimentosPage {
     }
 
     public void selecionarProduto(String produto, String CNPJ, boolean Comprovante) throws InterruptedException, IOException {
-        waitForElementToBeInvisible(loader);
-        switch (produto) {
-            case "ALELO REFEICAO":
-                comboProduto.click();
-                produtoRefeicao.click();
+        try {
+            waitForElementToBeInvisible(loader);
+            switch (produto) {
+                case "ALELO REFEICAO":
+                    comboProduto.click();
+                    produtoRefeicao.click();
 
-                //Clica em comprovante
-                if(Comprovante){
-                    webdriver.findElement(By.id("buttonComprovantes0")).click();
-                    waitForElementToBeInvisible(loader);}
-                break;
-            case "ALELO ALIMENTACAO":
-                comboProduto.click();
-                produtoAlimentacao.click();
+                    //Clica em comprovante
+                    if (Comprovante) {
+                        webdriver.findElement(By.id("buttonComprovantes0")).click();
+                        waitForElementToBeInvisible(loader);
+                    }
+                    break;
+                case "ALELO ALIMENTACAO":
+                    comboProduto.click();
+                    produtoAlimentacao.click();
 
-                //Clica em comprovante
-                if(Comprovante){
-                    webdriver.findElement(By.id("buttonComprovantes0")).click();
-                    waitForElementToBeInvisible(loader);}
-                break;
-            case "TODOS":
-                comboProduto.click();
-                produtoTodos.click();
+                    //Clica em comprovante
+                    if (Comprovante) {
+                        webdriver.findElement(By.id("buttonComprovantes0")).click();
+                        waitForElementToBeInvisible(loader);
+                    }
+                    break;
+                case "TODOS":
+                    comboProduto.click();
+                    produtoTodos.click();
 
-                //Clica em comprovante
-                if(Comprovante){
-                    webdriver.findElement(By.id("buttonComprovantes0")).click();
-                    waitForElementToBeInvisible(loader);}
-                break;
-            default:
-                break;
-        }
+                    //Clica em comprovante
+                    if (Comprovante) {
+                        webdriver.findElement(By.id("buttonComprovantes0")).click();
+                        waitForElementToBeInvisible(loader);
+                    }
+                    break;
+                default:
+                    break;
+            }
 //        //Lista de produtos
 //        webdriver.findElement(By.id("breadcrumbItemOpatationList")).click();
-
+        }
+        catch (Exception e)
+        {}
     }
 
     public void validarDetalheTransacoes(String produtoEsperado) throws Throwable {
@@ -248,5 +257,4 @@ public class RecebimentosActions extends RecebimentosPage {
 
 //		((WebElement) btnDownloadPdf).click();
     }
-
 }
