@@ -4,7 +4,7 @@
 # * Change: 08/01/2019 | Author: Jessé Dantas - Taking
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo  @123
+@Regressivo  @ignore
 Funcionalidade: Recebimentos
   Permite a consulta dos valores a serem disponibilizados ao usuario ao longo do mes
 
@@ -12,7 +12,7 @@ Funcionalidade: Recebimentos
     Dado que estou na logado no portal EC "594.114.000-27", "Alelo2020@"
 
   #Feito
-  @Recebimentoss @Matheus
+  @Recebimentos
   Esquema do Cenario: <VSTS> - Recebimento mensal <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
     Entao devo validar que é exibido o valor recebido e o valor a receber do meu ec "<periodo>"
