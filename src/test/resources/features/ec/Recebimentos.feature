@@ -4,7 +4,7 @@
 # * Change: 08/01/2019 | Author: Jessé Dantas - Taking
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo 
+@Regressivo  @123
 Funcionalidade: Recebimentos
   Permite a consulta dos valores a serem disponibilizados ao usuario ao longo do mes
 
