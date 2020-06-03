@@ -25,6 +25,7 @@ public class JavaScriptUtils extends PageObject {
                     break;
                 case setValue:
                     js.executeScript("arguments[0].value='"+ descricaoElemento +"';", webElement);
+                    
                 case habilitarElemento:
                     js.executeScript("return document."+ buscaTipoJava +"('"+ descricaoElemento +"').removeAttribute(\"disabled\");");
                     break;
