@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 
 import br.com.alelo.utils.PropertiesFile;
+import cucumber.api.java.After;
 
 @ContextConfiguration(classes = { CucumberContext.class, PropertiesContext.class })
 public class ParentSteps {
@@ -25,14 +26,13 @@ public class ParentSteps {
 
 	@Autowired
 	protected String baseurl;
-	
-//	@Value("${baseurlAdm}")
-//	protected String baseurlAdm;
-	
-	
+
+	// @Value("${baseurlAdm}")
+	// protected String baseurlAdm;
+
 	@Value("${urlInicio}")
 	protected String urlInicio;
-	
+
 	@Value("${baseUrlPainel}")
 	protected String baseUrlPainel;
 
@@ -40,5 +40,10 @@ public class ParentSteps {
 	protected boolean vsts;
 
 	protected PropertiesFile props;
+
+	@After
+	private void killDriverProcess() {
+		webdriver.quit();
+	}
 
 }

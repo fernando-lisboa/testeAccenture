@@ -61,8 +61,9 @@ public class ExtratoStep extends ParentSteps {
 		ExtratoActions extratoActions = new ExtratoActions(webdriver);
 		DriverUtil driverUtil = new DriverUtil(webdriver);
 
-		extratoActions.selecionaDataCalendarioAnterior(map.get("diaInicial"), map.get("mesInicial"),
-				map.get("anoInicial"), map.get("diaFinal"), map.get("mesFinal"), map.get("anoFinal"));
+		extratoActions.TratamentoData(map.get("dataInicio"),map.get("dataFim"));
+//		extratoActions.selecionaDataCalendarioAnterior(map.get("diaInicial"), map.get("mesInicial"),
+//				map.get("anoInicial"), map.get("diaFinal"), map.get("mesFinal"), map.get("anoFinal"));
 
 		driverUtil.aguardaModalLoaderCarregar();
 	}
