@@ -115,7 +115,7 @@ public class RecebimentosActions extends RecebimentosPage {
         }
     }
 
-    public void validarPeriodos(String periodo) {
+	public void validarPeriodos(String periodo) {
         if (periodo.equals("mês atual")) {
             valitarTelaConteudoRecebiveis();
         } else if (periodo.equals("mês seguinte")) {

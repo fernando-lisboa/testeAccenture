@@ -64,6 +64,7 @@ public class CucumberContext {
                 capability.setBrowserName("chrome");
                 capability.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
                 capability.setPlatform(Platform.LINUX);
+                capability.setCapability("name", "Portal_EC");
                 webdriver = new RemoteWebDriver(new URL("https://zalenium-cicd-tools.sao.siteteste.inf.br/wd/hub/"), capability);
                 break;
             case "ie":

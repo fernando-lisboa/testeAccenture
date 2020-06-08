@@ -44,12 +44,8 @@ Funcionalidade: Validar Extrato
     Quando eu buscar por este IdEc "<IdEc>"
     E clicar no link extrato
     E filtrar pela data entre
-      | diaInicial |    20 |
-      | mesInicial | MARÇO |
-      | anoInicial |  2020 |
-      | diaFinal   |    22 |
-      | mesFinal   | MARÇO |
-      | anoFinal   |  2020 |
+      | dataInicio |"06/06/2019"|
+      | dataFim | "06/06/2021" |     
     Entao deve apresentar o extrato sumarizado com duas linhas
       | data       | valor  |
       | 20/03/2020 | 430,57 |
