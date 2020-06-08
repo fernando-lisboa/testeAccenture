@@ -12,7 +12,7 @@ Funcionalidade: Validar Extrato
   Contexto: 
     Dado que estou na logado no portal EC "478.666.290-99", "Alelo2018@"
 
-  @Extrato @Regressivo
+@Regressivo @ignore
   Esquema do Cenario: 00000 - Validar Extrato Detalhado.
     Dado que um  Ec tenha as seguintes transacoes aprovadas
       | data       | valorBruto | taxaDesconto |
@@ -44,7 +44,7 @@ Funcionalidade: Validar Extrato
     Quando eu buscar por este IdEc "<IdEc>"
     E clicar no link extrato
     E filtrar pela data entre
-      | dataInicio |"06/06/2019"|
+      | dataInicio |"03/06/2019"|
       | dataFim | "06/06/2021" |     
     Entao deve apresentar o extrato sumarizado com duas linhas
       | data       | valor  |
@@ -70,7 +70,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @Regressivo
+  @Extrato @ignore
   Esquema do Cenario: 00000 - Validar Extrato Detalhado Outras Trasacoes
     Dado que um  Ec tenha as seguintes transacoes aprovadas
       | data       | valorBruto | taxaDesconto |
@@ -123,7 +123,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @Regressivo
+  @Extrato @ignore
   Esquema do Cenario: 00000 - Validar Extrato Detalhado
      Selecao de meses.
 
@@ -174,7 +174,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @Regressivo
+  @Extrato @ignore
   Esquema do Cenario: 00001 - Validar Extrato exportado formato PDF
      periodo entre meses.
 
@@ -222,7 +222,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @Regressivo
+  @Extrato @ignore
   Esquema do Cenario: 00001 - Validar Extrato exportado formato CSV
      periodo entre meses.
 
@@ -270,7 +270,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @Regressivo
+  @Extrato @ignore
   Esquema do Cenario: 00001 - Validar impressao Extrato.
     Dado que um  Ec tenha as seguintes transacoes aprovadas
       | data       | valorBruto | taxaDesconto |

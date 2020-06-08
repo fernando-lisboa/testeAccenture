@@ -4,7 +4,7 @@
 # * Change: 08/01/2019 | Author: Jessé Dantas - Taking
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo  @ignore
+@Regressivo
 Funcionalidade: Recebimentos
   Permite a consulta dos valores a serem disponibilizados ao usuario ao longo do mes
 
@@ -12,7 +12,7 @@ Funcionalidade: Recebimentos
     Dado que estou na logado no portal EC "594.114.000-27", "Alelo2020@"
 
   #Feito
-  @Recebimentos
+ 
   Esquema do Cenario: <VSTS> - Recebimento mensal <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
     Entao devo validar que é exibido o valor recebido e o valor a receber do meu ec "<periodo>"
@@ -24,7 +24,7 @@ Funcionalidade: Recebimentos
       | 9999-3 | Realizar consulta de valores recebidos no mes anterior | mês anterior | 28339982000160 |
 
   #Feito
-  @Recebimentos1 @RecebimentoPorProduto @Matheus
+  
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
     E selecionar a data atual e a opcao de "<produto>"
@@ -37,7 +37,7 @@ Funcionalidade: Recebimentos
       | 9999-6 | Consultar Recebimentos por tipo de produto - TODOS       | TODOS             | 28339982000160 |
 
   #Feito
-  @Recebimentos @FERNANDO @Matheus
+  
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
     E selecionar a data atual e a opcao de "<produto>"
