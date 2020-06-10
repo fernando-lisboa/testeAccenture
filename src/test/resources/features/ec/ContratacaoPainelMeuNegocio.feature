@@ -16,7 +16,7 @@ Funcionalidade: Painel Meu Negocio
   Contexto: 
     Dado que estou na logado no portal EC "273.824.010-06", "Alelo2020@"
 
-  @ContratacaoWeb @Regressivo
+  @ContratacaoWeb @ignore
   Esquema do Cenario: <VSTS> - Painel <cenario>
     Quando efetuar uma contratacao via sidekick "<cnpj>"
     Entao devo validar o status da contratacao e suas respectivas datas "<statusEsperado>"
@@ -26,7 +26,7 @@ Funcionalidade: Painel Meu Negocio
       | 9999-1 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | 82143278000182 |
       | 9999-2 | Efetivar contratação fora do periodo gratuito   | Contratado     | 12259140000168 |
 
-  @ContratacaoWeb @Regressivo
+  @ContratacaoWeb @ignore
   Esquema do Cenario: <VSTS> - Painel <cenario>
     Quando efetuar o cancelamento do produto painel meu negocio "<cnpj>"
     Entao devo validar o status do cancelamento e suas respectivas datas "<statusEsperado>"
