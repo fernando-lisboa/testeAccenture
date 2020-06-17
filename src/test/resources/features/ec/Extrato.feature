@@ -5,6 +5,7 @@
 # * Data: 20/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
+@ignore
 Funcionalidade: Validar Extrato
   Eu como cliente Alelo quero validar que ao acessar pagina de extrato
   apresente minhas transacoes no periodo filtrado.
@@ -12,7 +13,7 @@ Funcionalidade: Validar Extrato
   Contexto: 
     Dado que estou na logado no portal EC "478.666.290-99", "Alelo2018@"
 
-@Regressivo @ignore
+@Extrato 
   Esquema do Cenario: 00000 - Validar Extrato Detalhado.
     Dado que um  Ec tenha as seguintes transacoes aprovadas
       | data       | valorBruto | taxaDesconto |
@@ -70,7 +71,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @ignore
+  @Extrato
   Esquema do Cenario: 00000 - Validar Extrato Detalhado Outras Trasacoes
     Dado que um  Ec tenha as seguintes transacoes aprovadas
       | data       | valorBruto | taxaDesconto |
@@ -123,7 +124,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @ignore
+  @Extrato
   Esquema do Cenario: 00000 - Validar Extrato Detalhado
      Selecao de meses.
 
@@ -174,7 +175,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @ignore
+  @Extrato 
   Esquema do Cenario: 00001 - Validar Extrato exportado formato PDF
      periodo entre meses.
 
@@ -222,7 +223,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @ignore
+  @Extrato 
   Esquema do Cenario: 00001 - Validar Extrato exportado formato CSV
      periodo entre meses.
 
@@ -270,7 +271,7 @@ Funcionalidade: Validar Extrato
       | VSTS  | IdEc       |
       | 00000 | 2000496258 |
 
-  @Extrato @ignore
+  @Extrato 
   Esquema do Cenario: 00001 - Validar impressao Extrato.
     Dado que um  Ec tenha as seguintes transacoes aprovadas
       | data       | valorBruto | taxaDesconto |

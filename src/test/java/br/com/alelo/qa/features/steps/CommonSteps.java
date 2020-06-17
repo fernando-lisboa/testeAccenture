@@ -67,10 +67,10 @@ public class CommonSteps extends ParentSteps {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) webdriver;
 		jsExecutor.executeScript("localStorage.clear();");
 		
-//		//Limpa cookies do browser anonimo para testes em massa
-//		DriverAnonimo.getDriver().manage().deleteAllCookies();
-//		JavascriptExecutor jsExecutorAnonimous = (JavascriptExecutor) DriverAnonimo.getDriver();
-//		jsExecutorAnonimous.executeScript("localStorage.clear();");
+		//Limpa cookies do browser anonimo para testes em massa
+		DriverAnonimo.getDriver().manage().deleteAllCookies();
+		JavascriptExecutor jsExecutorAnonimous = (JavascriptExecutor) DriverAnonimo.getDriver();
+		jsExecutorAnonimous.executeScript("localStorage.clear();");
 		
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("Cenario: " + scenario.getName());

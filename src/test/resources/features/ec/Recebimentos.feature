@@ -22,9 +22,8 @@ Funcionalidade: Recebimentos
       | 9999-1 | Realizar consulta de valores a receber e recebidos     | mês atual    | 28339982000160 |
       | 9999-2 | Realizar consulta de valores a receber no proximo mes  | mês seguinte | 28339982000160 |
       | 9999-3 | Realizar consulta de valores recebidos no mes anterior | mês anterior | 28339982000160 |
-
-  #Feito
-  
+ 
+ 
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
     Quando eu clicar no menu recebimentos "<cnpj>"
     E selecionar a data atual e a opcao de "<produto>"

@@ -1,23 +1,27 @@
 package br.com.alelo.qa.web.actions;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.poi.hssf.record.PageBreakRecord.Break;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import static org.hamcrest.CoreMatchers.is;
+
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.AntecipacaoPage;
 import br.com.alelo.qa.web.page.PlanosPage;
 import br.com.alelo.utils.DriverAnonimo;
 
 public class AntecipacaoActions extends AntecipacaoPage {
+
+	JavaScriptUtils javaS = new JavaScriptUtils(webdriver);
+	JavaScriptUtils javaSA = new JavaScriptUtils(DriverAnonimo.getDriver());
+	WebDriver driver = DriverAnonimo.getDriver();
 
 	public AntecipacaoActions(WebDriver driver) {
 		super(driver);
@@ -31,26 +35,6 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		Thread.sleep(3000);
 		alterarCNPJ(cnpjAgenda);
 		Thread.sleep(2000);
-	}
-
-	public void antecipacaoARV() throws InterruptedException {
-		// waitForElementPageToLoad(loader);
-		Thread.sleep(5000);
-		clicaArv.click();
-		String sidekick;
-		sidekick = btnSideKick.getText();
-
-		if (sidekick.equals("SOLICITE AGORA")) {
-			Thread.sleep(5000);
-			btnSideKick.click();
-		} else {
-			fail("Texto diferente do que foi procurado");
-		}
-	}
-
-	public void concordarTermos() throws InterruptedException {
-		Thread.sleep(3000);
-		checkAceiteTermosRecebiveis.click();
 	}
 
 	public void validarSideKickAlert() {
@@ -70,130 +54,6 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			}
 		} catch (Exception e) {
 			System.out.println("não localizado elemento na tela " + labelSidekick + " " + e);
-		}
-	}
-
-	public void clicarAntecipar() throws InterruptedException {
-		Thread.sleep(3000);
-		btnAntecipar.click();
-		// waitForElementPageToLoad(loader);
-		Thread.sleep(3000);
-	}
-
-	public void validaAntecipacao() throws InterruptedException {
-		String msgAntecipacao = mensagemAntecipacao.getText();
-
-		if (msgAntecipacao.equalsIgnoreCase("antecipação realizada")) {
-			Thread.sleep(1000);
-			System.out.println(mensagemAntecipacao);
-			botaoFechar.click();
-		} else {
-			fail("Mensagem procurada não é igual a esperada, falha na antecipação");
-		}
-	}
-
-	public void clicarCancelar() {
-		botaoCancelar.click();
-	}
-
-	public void clicarCancelarParcial() {
-		botaoCancelarParcial.click();
-	}
-
-	public void clicarCancelarRecorrencia() {
-		botaoCancelarRecorrencia.click();
-	}
-
-	public void validaCancelamentoAntecipacao() {
-		validarUrlAtual(getUrlInicio());
-		System.out.println("Antecipação cancelada");
-	}
-
-	public void clicarFechar() {
-		waitForElementPageToBeClickable(botaoFechar);
-		botaoFechar.click();
-	}
-
-	public void telaArv() throws InterruptedException {
-		System.out.println("acessando URL Arv página nova..." + getUrlInicioArv());
-		navegarUrl(getUrlInicioArv());
-		Thread.sleep(2000);
-	}
-
-	public void modalfechado() {
-		validarUrlAtual(getUrlInicio());
-		System.out.println("Modal fechado");
-	}
-
-	public void clicarAlterarValor() throws InterruptedException {
-		Thread.sleep(3000);
-		btnAlteraValor.click();
-	}
-
-	public void inserirValor() throws InterruptedException {
-		Thread.sleep(2000);
-		Double valorMaxAntecipar = Double
-				.parseDouble(valorMaximo.getText().substring(3, 11).replace(".", "").replace(",", "."));
-
-		double valorAntecipar = 0;
-
-		if (valorMaxAntecipar >= 0) {
-			valorAntecipar = valorMaxAntecipar / 10;
-			System.out.println(valorAntecipar);
-		} else {
-			fail("Divisão igual ou menor a zero para antecipação");
-		}
-
-		campoAlterarValor.sendKeys(String.valueOf(valorAntecipar));
-	}
-
-	public void clicarVizualizarValores() throws InterruptedException {
-		btnVisualizarValores.click();
-		// waitForElementPageToLoad(loader);
-		Thread.sleep(3000);
-	}
-
-	public void selecionarOpcao() throws InterruptedException {
-		Thread.sleep(3000);
-	}
-
-	public void calcularValor() {
-		calcularValorLiquido.click();
-	}
-
-	public void clicarAlterar() throws InterruptedException {
-		// waitForElementPageToLoad(loader);
-		Thread.sleep(3000);
-		waitForElementPageToBeClickable(btnAlteraValor);
-		btnAlterarRecorrencia.click();
-	}
-
-	public void selecionarSemanal() throws InterruptedException {
-		checkSemanal.click();
-		Thread.sleep(3000);
-	}
-
-	public void selecionaDiaSemana() throws InterruptedException {
-		checkDiaSemanal.click();
-		Thread.sleep(3000);
-	}
-
-	public void selecionaOpcaoDesativada() throws InterruptedException {
-		Thread.sleep(3000);
-		checkDesativar.click();
-	}
-
-	public void clicaDefinirRecebimento() {
-		botaoDefinirRecebimento.click();
-	}
-
-	public void validarModalAntecipacao() {
-		String textoValidacao = tituloModalAntecipacao.getText();
-
-		if (textoValidacao.equalsIgnoreCase(tituloModalAntecipacao.getText())) {
-			System.out.println("Teste realizado com sucesso!");
-		} else {
-			fail("Texto procurado não é igual ao esperado");
 		}
 	}
 
@@ -217,19 +77,19 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			boolean Contratacao, String cnpj) {
 		try {
 			Thread.sleep(4000);
-			JavaScriptUtils javaS = new JavaScriptUtils(webdriver);
+
 			PlanosPage planosPage = new PlanosPage(webdriver);
 
 			if (!Modal) {
 				if (Cenario.contains("operador")) {
-					DriverAnonimo.getDriver().navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
+					driver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
 					waitForElementToBeInvisible(loader);
 					alterarEstabelecimentoArv(cnpj);
-				} else if (!Cenario.contains("operador")){
+				} else if (!Cenario.contains("operador")) {
 					webdriver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
-				waitForElementToBeInvisible(loader);
-				alterarEstabelecimentoArv(cnpj);
-				waitForElementToBeInvisible(loader);
+					waitForElementToBeInvisible(loader);
+					alterarEstabelecimentoArv(cnpj);
+					waitForElementToBeInvisible(loader);
 				}
 			} else
 				// Abre Modal
@@ -409,7 +269,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 						System.out.println("Recorrencia não efetivada " + e);
 						e.printStackTrace();
 					}
-				} else if(!Modal && !Cenario.contains("operador")) {
+				} else if (!Modal && !Cenario.contains("operador")) {
 					try {
 						Thread.sleep(2000);
 						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
@@ -499,6 +359,52 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			System.out.println(text);
 			Assert.assertTrue("Simulação não foi efetivada... contratado arv pelo operador",
 					text.equals(textoConfirmacaoArv));
+		}
+	}
+
+	// define recorrecia automática após contratação pontual
+	public void definirRecorrenciaAposContratacao(String cenario, String modal) throws InterruptedException {
+		if (!PreencheValorCampoSetSelectButton(null, bntConfirmaContratacaoRecorrente, null, 40))
+			fail("Botão confirmar recorrencia não clicável");
+		waitForElementPageToBeClickable(webdriver.findElement(By.id("cardRecurr-DAILY")));
+		switch (cenario.trim()) {
+		case "Recorrente Diário":
+			webdriver.findElement(By.id("cardRecurr-DAILY")).click();
+			break;
+		case "RecorrenteTotal Semanal":
+			webdriver.findElement(By.id("cardRecurr-WEEKLY")).click();
+			Thread.sleep(1000);
+			webdriver.findElement(By.id("radioWeekly-QUA")).click();
+			break;
+
+		default:
+			break;
+		}
+
+		if (botaoDefinirRecebimento.isEnabled())
+			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, botaoDefinirRecebimento);
+		waitForElementPageToLoad(msgSucessoRecorrencia);
+
+		Assert.assertTrue("Não efetivou a simulação corretamente",
+				msgSucessoRecorrencia.getText().equals(txtMsgRecorrencia));
+		javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsg);
+		sairDaSimulação(modal);
+
+	}
+
+	// Valida se ao contrratar recorrencia, volta para o inicio o fecha a sessão
+	public void sairDaSimulação(String modal) {
+
+		if (driver.getCurrentUrl().contains(modal)) {
+			Assert.assertTrue("SideKick não está presente na tela após simulação", sideKickSimulation.isDisplayed());
+			System.out.println("Voltou para a tela inicial após o final do teste e manteve o scope OPERADOR");
+			driver.findElement(By.id("nav-dropdown")).click();
+			driver.findElement(By.id("navbarDesktopSair")).click();
+
+		} else {
+			fail("Não retornou para a tela inicial após simulação");
+			driver.findElement(By.id("nav-dropdown")).click();
+			driver.findElement(By.id("navbarDesktopSair")).click();
 		}
 	}
 }

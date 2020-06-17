@@ -53,20 +53,24 @@ public class ExtratoActions extends ExtratoPage {
 			String[] diaMesAno_ = null;
 
 			int x= 0;
-			List<WebElement> calendars = webdriver.findElements(By.id("datetimmecustom"));
+			List<WebElement> calendars = new ArrayList<WebElement>();
+			calendars.add(webdriver.findElement(By.id("calendar-input-start")));
+			calendars.add(webdriver.findElement(By.id("calendar-input-end")));
+			
 			for(WebElement calendar : calendars)
-			//for (int x = 0; x < 2; x++) // x = 0 [dataInicio] || x = 1 [dataFim]
 			{							
 				if (x == 0)
 				{
-					js.JavaScriptAction(Funcao.click, null, null,calendar);
+					js.JavaScriptAction(Funcao.click, null, null,webdriver.findElements(By.id("datetimmecustom")).get(x));
 				VerificaObjetoExistente(By.id("datetimmecustomDiv"), null, null, 40);
 					diaMesAno_ = dataInicioMassSplit;
 					x++;
 				}
 				else
+				{
+					js.JavaScriptAction(Funcao.click, null, null,webdriver.findElements(By.id("datetimmecustomDiv")).get(x));
 					diaMesAno_ = dataFimMassSplit;
-
+				}
 				// Mes e Ano do calendário
 				WebElement mesAnoCalendario_ = calendar.findElement(By.xpath("//div/div/div/table/thead/tr[1]/th[2]"));
 				

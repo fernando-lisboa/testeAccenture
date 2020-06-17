@@ -5,7 +5,7 @@
 # * Data: 06/02/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @ignore
+@Regressivo  @Simulacao
 Funcionalidade: Painel Meu Negocio
   Contratação de painel meu negócio
   

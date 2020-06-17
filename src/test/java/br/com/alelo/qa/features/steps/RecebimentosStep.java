@@ -8,6 +8,7 @@ import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
+
 public class RecebimentosStep extends ParentSteps {
 
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();

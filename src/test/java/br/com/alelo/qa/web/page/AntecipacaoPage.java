@@ -144,5 +144,23 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(xpath = "/html/body/div[4]/div[2]/div/div/div[2]/div[1]")
 	protected WebElement modalConfirmacaoContratacaoArvTela;
 	public String textoConfirmacaoContratacaoArvTela = "ANTECIPAÇÃO REALIZADA COM SUCESSO";
+	
+	//btnSIM para confirmacao de recorrencia apos contratação
+	@FindBy(xpath = "//*[@id='anticipationModalCallbackBody']/div[3]/div[2]/button")
+	protected WebElement bntConfirmaContratacaoRecorrente;
+	
+	@FindBy(xpath = "//*[@id='swal2-title']")
+	protected WebElement msgSucessoRecorrencia;
+	public String txtMsgRecorrencia = "Simulação Realizada com Sucesso";
+	
+	@FindBy(xpath = "//*[@id=\"alertSidekick\"]/div/span")
+	protected WebElement sideKickSimulation;
+
+	@FindBy(xpath = "/html/body/div[3]/div/div[3]/button[1]")
+	protected WebElement aceptMsg;
+	
+	@FindBy(xpath = "/html/body/div[8]/div/div[3]/button[1]")
+	public WebElement acceptHelp;
+	
 
 }
