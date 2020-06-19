@@ -153,11 +153,14 @@ public class AntecipacaoPage extends PageObject {
 	protected WebElement msgSucessoRecorrencia;
 	public String txtMsgRecorrencia = "Simulação Realizada com Sucesso";
 	
-	@FindBy(xpath = "//*[@id=\"alertSidekick\"]/div/span")
+	@FindBy(xpath = "//*[@id='alertSidekick']/div/span")
 	protected WebElement sideKickSimulation;
 
-	@FindBy(xpath = "/html/body/div[3]/div/div[3]/button[1]")
+	@FindBy(xpath = "/html/body/div[7]/div/div[3]/button[1]")
 	protected WebElement aceptMsg;
+	
+	@FindBy(xpath = "/html/body/div[3]/div/div[3]/button[1]")
+	protected WebElement aceptMsgAntecipe;
 	
 	@FindBy(xpath = "/html/body/div[8]/div/div[3]/button[1]")
 	public WebElement acceptHelp;

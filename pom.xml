@@ -266,7 +266,7 @@
 					<expandStepHooks>true</expandStepHooks>
 					<expandDocStrings>true</expandDocStrings>
 					<customParameters>
-						<Projeto>Ecommerce</Projeto>
+						<Projeto>Dead_Pool</Projeto>
 					</customParameters>
 					<customCss>src/test/resources/custom/custom.css</customCss>
 				</configuration>
@@ -394,5 +394,40 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.trivago.rta
+										</groupId>
+										<artifactId>
+											cucable-plugin
+										</artifactId>
+										<versionRange>
+											[1.7.2,)
+										</versionRange>
+										<goals>
+											<goal>parallel</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>

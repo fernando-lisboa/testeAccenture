@@ -387,19 +387,25 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 		Assert.assertTrue("Não efetivou a simulação corretamente",
 				msgSucessoRecorrencia.getText().equals(txtMsgRecorrencia));
-		javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsg);
+
+		if (modal.equals("antecipe")) {
+			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsgAntecipe);
+		} else {
+			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsg);
+		}
 		sairDaSimulação(modal);
 
 	}
 
 	// Valida se ao contrratar recorrencia, volta para o inicio o fecha a sessão
 	public void sairDaSimulação(String modal) {
-
+		System.out.println("Iniciando a validação da pagina inicial");
 		if (driver.getCurrentUrl().contains(modal)) {
 			Assert.assertTrue("SideKick não está presente na tela após simulação", sideKickSimulation.isDisplayed());
 			System.out.println("Voltou para a tela inicial após o final do teste e manteve o scope OPERADOR");
 			driver.findElement(By.id("nav-dropdown")).click();
 			driver.findElement(By.id("navbarDesktopSair")).click();
+			System.out.println("fim dos testes");
 
 		} else {
 			fail("Não retornou para a tela inicial após simulação");

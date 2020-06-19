@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -58,17 +59,19 @@ public class ExtratoActions extends ExtratoPage {
 			calendars.add(webdriver.findElement(By.id("calendar-input-end")));
 			
 			for(WebElement calendar : calendars)
-			{							
+			{					
+				String idname = calendar.getAttribute("Id");
 				if (x == 0)
 				{
-					js.JavaScriptAction(Funcao.click, null, null,webdriver.findElements(By.id("datetimmecustom")).get(x));
-				VerificaObjetoExistente(By.id("datetimmecustomDiv"), null, null, 40);
+					calendar.click();
+					//js.JavaScriptAction(Funcao.click, null, null,webdriver.findElements(By.id("datetimmecustom")).get(x));
+				VerificaObjetoExistente(null, calendar, null, 40);
 					diaMesAno_ = dataInicioMassSplit;
 					x++;
 				}
 				else
 				{
-					js.JavaScriptAction(Funcao.click, null, null,webdriver.findElements(By.id("datetimmecustomDiv")).get(x));
+					calendar.click();
 					diaMesAno_ = dataFimMassSplit;
 				}
 				// Mes e Ano do calendário

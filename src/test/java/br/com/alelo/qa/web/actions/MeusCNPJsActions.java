@@ -89,6 +89,7 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 			
 
 			// Modal - iniciar ajuda
+			Thread.sleep(2000);
 			DriverAnonimo.getDriver().findElement(By.id("btnGenerateCode")).click();
 
 		} catch (Throwable throwable) {
