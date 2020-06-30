@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.NumberFormat;
 
-import br.com.alelo.utils.PropertiesFile;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -16,7 +15,6 @@ public class SendTestResultTeams {
 
 	static File file;
 	static String fileName = "results.dat";
-	private static PropertiesFile props;
 	private static double passed;
 	private static double failed;
 	private static double skipped;
@@ -29,7 +27,6 @@ public class SendTestResultTeams {
 
 	public static String executionResult(String time, String projeto) throws Exception {
 		file = new File(fileName);
-		String icon, farolProjeto;
 		NumberFormat percent = NumberFormat.getPercentInstance();
 		percent.setMinimumIntegerDigits(1);
 
@@ -68,6 +65,7 @@ public class SendTestResultTeams {
 	}
 
 	public static int countWord(String word, File fis) throws IOException {
+		@SuppressWarnings("resource")
 		BufferedReader in = new BufferedReader(new FileReader(fis));
 		String readLine = "";
 		int count = 0;

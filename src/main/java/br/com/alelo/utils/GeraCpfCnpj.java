@@ -89,7 +89,6 @@ public class GeraCpfCnpj {
 	}
 
 	public static String rg(boolean comPontos) {
-		String  nDigResult;
 		String numerosContatenados;
 		String numeroGerado;
 		Random numeroAleatorio = new Random();

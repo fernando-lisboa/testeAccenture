@@ -12,7 +12,6 @@ import br.com.alelo.qa.web.actions.MeusCNPJsActions;
 import br.com.alelo.utils.DriverAnonimo;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
-import cucumber.api.java.pt.Quando;
 
 public class MeusCNPJsStep extends ParentSteps {
 

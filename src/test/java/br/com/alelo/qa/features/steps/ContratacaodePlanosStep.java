@@ -8,13 +8,11 @@
 package br.com.alelo.qa.features.steps;
 
 import br.com.alelo.qa.features.support.ParentSteps;
-import br.com.alelo.qa.web.actions.AntecipacaoActions;
 import br.com.alelo.qa.web.actions.ContratacaodePlanosActions;
 import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
-import cucumber.api.java.pt.Entao;
 
 public class ContratacaodePlanosStep extends ParentSteps {
 

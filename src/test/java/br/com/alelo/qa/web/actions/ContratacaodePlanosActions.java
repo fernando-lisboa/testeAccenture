@@ -1,18 +1,13 @@
 package br.com.alelo.qa.web.actions;
 
-import br.com.alelo.integrations.db.ConnUsadq;
+import static org.junit.Assert.fail;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.AntecipacaoPage;
 import br.com.alelo.qa.web.page.PlanosPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.fail;
 
 public class ContratacaodePlanosActions extends AntecipacaoPage {
 

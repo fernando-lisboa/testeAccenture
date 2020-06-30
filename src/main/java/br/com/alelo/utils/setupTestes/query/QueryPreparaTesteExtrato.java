@@ -1,7 +1,7 @@
 package br.com.alelo.utils.setupTestes.query;
 
 public class QueryPreparaTesteExtrato {
-	
+
 	public StringBuilder retornaInsertTabelaTADQ_TRANS() {
 		StringBuilder sql = new StringBuilder(" INSERT ALL ")
 				.append(" into OWPPOINT.TADQ_TRANS  values ('9000000000','28339982000160',null,'5292564652',sysdate - 18,sysdate -1,sysdate - 18,'22,7','1,25',null,'5067130401746015','0,06',null,'1','1660861638','45','1014986319',sysdate - 18,'7','ELO','202003','4','506713','0','1','22,7',null,'22,7','21,45',null,null,null,sysdate - 18,'1','VENDA','6015','100','CIELO','561275','APROVADO','APROVADO',null,'221592421','Refeição',sysdate - 18) ")
@@ -23,8 +23,7 @@ public class QueryPreparaTesteExtrato {
 
 		return sql;
 	}
-	
-	
+
 	public StringBuilder retornaInsertTabelaTIND_EC_MES() {
 		StringBuilder sql = new StringBuilder(" INSERT ALL ")
 				.append(" into OWODSADQ.TIND_EC_MES values ('28339982000160','202002','1','99999',sysdate - 17,sysdate - 17,'DD/MM/RR'),'221592421',sysdate - 17) ")
@@ -34,7 +33,7 @@ public class QueryPreparaTesteExtrato {
 
 		return sql;
 	}
-	
+
 	public StringBuilder retornaInsertTabelaTIND_EC_TPO_DIA() {
 		StringBuilder sql = new StringBuilder(" INSERT ALL ")
 				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1014986319',to_date('26/02/20','DD/MM/RR'),'1','VENDA',to_number('5.17','9999.99'),'5',to_date('26/02/20','DD/MM/RR'),to_date('26/02/20','DD/MM/RR')) ")
@@ -46,57 +45,23 @@ public class QueryPreparaTesteExtrato {
 
 		return sql;
 	}
-	
+
 	public StringBuilder retornaDeleteTabelaTADQ_TRANS() {
 		StringBuilder sql = new StringBuilder(
 				" DELETE FROM OWPPOINT.TADQ_TRANS where id_pk BETWEEN 9000000000 AND 9000000014 ");
 		return sql;
 	}
-	
-	
-	
+
 	public StringBuilder retornaDeleteTabelaTIND_EC_MES() {
 		StringBuilder sql = new StringBuilder(
 				"  DELETE FROM OWODSADQ.TIND_EC_MES Where NU_ANOMES BETWEEN  202002 AND 202004 ");
 		return sql;
 	}
-	
+
 	public StringBuilder retornaDeleteTabelaTIND_EC_TPO_DIA() {
 		StringBuilder sql = new StringBuilder(
 				" DELETE FROM OWODSADQ.TIND_EC_TPO_DIA where Id_Pess_unid = 221592421 AND DT_TRANSACAO BETWEEN  to_date('26/02/20','DD/MM/RR') AND to_date('03/04/20','DD/MM/RR') ");
 		return sql;
 	}
-	
-	
 
-	
-	
-
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	
 }

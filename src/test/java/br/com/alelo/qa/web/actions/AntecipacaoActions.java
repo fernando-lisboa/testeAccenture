@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -30,12 +29,6 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 	String text;
 
-	public void alterarEstabelecimento(String cnpjAgenda) throws IOException, InterruptedException {
-		// waitForElementPageToLoad(loader);
-		Thread.sleep(3000);
-		alterarCNPJ(cnpjAgenda);
-		Thread.sleep(2000);
-	}
 
 	public void validarSideKickAlert() {
 		try {
@@ -84,11 +77,11 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				if (Cenario.contains("operador")) {
 					driver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
 					waitForElementToBeInvisible(loader);
-					alterarEstabelecimentoArv(cnpj);
+					alterarEstabelecimento(cnpj);
 				} else if (!Cenario.contains("operador")) {
 					webdriver.navigate().to("https://meuestabelecimento-hml.siteteste.inf.br/antecipe");
 					waitForElementToBeInvisible(loader);
-					alterarEstabelecimentoArv(cnpj);
+					alterarEstabelecimento(cnpj);
 					waitForElementToBeInvisible(loader);
 				}
 			} else
@@ -224,26 +217,22 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		}
 	}
 
-	public void alterarEstabelecimentoArv(String numCNPJ) throws InterruptedException {
+	public void alterarEstabelecimento(String numCNPJ) throws InterruptedException {
 		waitForElementToBeInvisible(loader);
-		WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
-		cnpj_.click();
 		Thread.sleep(1000);
+		try {
+			WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
+			cnpj_.click();
+			Thread.sleep(2000);
 
-		List<WebElement> cnpjs = new ArrayList<>();
-		for (WebElement cnPJ : webdriver.findElement(By.xpath("//*[@id='cnpjSelector']/div"))
-				.findElements(By.tagName("b"))) {
-			System.out.println(cnPJ.getText());
-			cnpjs.add(cnPJ);
-		}
+			WebElement findElement =webdriver.findElement(By.xpath("//div[@class='cnpjComboBox'][contains(.,'"+numCNPJ+"')]"));
+			findElement.click();
+			
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
 
-		for (WebElement cnPJ : cnpjs) {
-			if (cnPJ.getText().equals(numCNPJ)) {
-				cnPJ.click();
-				break;
-			}
-		}
-		waitForElementToBeInvisible(loader);
+			waitForElementToBeInvisible(loader);
 	}
 
 	public void validarMensagemContratacao(Boolean Recorrencia, String Cenario, Boolean Modal)

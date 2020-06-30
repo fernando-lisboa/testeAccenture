@@ -3,18 +3,12 @@
 */
 package br.com.alelo.qa.web.actions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.features.support.JavaScriptUtils.Funcao;

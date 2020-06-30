@@ -6,12 +6,10 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import br.com.alelo.qa.web.actions.RecebimentosActions;
-import org.apache.commons.exec.ExecuteException;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.By.ByCssSelector;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -25,7 +23,6 @@ public class RecebimentosActions extends RecebimentosPage {
     CommonsActions comm = new CommonsActions();
     private String valorEsperado;
     int i;
-    private WebElement dateWidget;
 
     public RecebimentosActions(WebDriver driver) {
         super(driver);
@@ -141,7 +138,6 @@ public class RecebimentosActions extends RecebimentosPage {
 
         Boolean sair = false;
 
-        //List<WebElement> lista_DiasRecebiveis = webdriver.findElement(By.xpath("//*[@id='menuContentContainer']/div/div[2]/div")).findElements(By.tagName("a"));
         int itens = webdriver.findElements(By.className("gtm-link-event")).size() - 7; //7 itens que nao compartilham da tabela agenda
         try {
             for (i = 1; i < itens; i++) {
@@ -163,6 +159,7 @@ public class RecebimentosActions extends RecebimentosPage {
                 }
                 catch (Exception e){
                     String txt = e.getMessage() + "vez:" + i;
+                    System.out.println(txt);
                     Thread.sleep(100);
                 }
             }
@@ -207,8 +204,6 @@ public class RecebimentosActions extends RecebimentosPage {
                 default:
                     break;
             }
-//        //Lista de produtos
-//        webdriver.findElement(By.id("breadcrumbItemOpatationList")).click();
         }
         catch (Exception e)
         {}
@@ -255,6 +250,5 @@ public class RecebimentosActions extends RecebimentosPage {
         js.executeScript("arguments[0].click();", webdriver.findElement(By.id("summary-export-pdf-button-2")));
         Thread.sleep(2000);
 
-//		((WebElement) btnDownloadPdf).click();
     }
 }

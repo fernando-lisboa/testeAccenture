@@ -156,13 +156,13 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(xpath = "//*[@id='alertSidekick']/div/span")
 	protected WebElement sideKickSimulation;
 
-	@FindBy(xpath = "/html/body/div[7]/div/div[3]/button[1]")
+	@FindBy(xpath = "successfulSimulation")
 	protected WebElement aceptMsg;
 	
-	@FindBy(xpath = "/html/body/div[3]/div/div[3]/button[1]")
+	@FindBy(xpath = "successfulSimulation")
 	protected WebElement aceptMsgAntecipe;
 	
-	@FindBy(xpath = "/html/body/div[8]/div/div[3]/button[1]")
+	@FindBy(xpath = "authorizedOperator")
 	public WebElement acceptHelp;
 	
 

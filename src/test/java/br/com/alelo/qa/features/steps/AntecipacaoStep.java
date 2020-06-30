@@ -28,11 +28,11 @@ public class AntecipacaoStep extends ParentSteps {
 
 		if (operador) {
 			AntecipacaoActions AA = new AntecipacaoActions(DriverAnonimo.getDriver());
-			AA.alterarEstabelecimentoArv(numCNPJ);
+			AA.alterarEstabelecimento(numCNPJ);
 
 		} else {
 			AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-			AA.alterarEstabelecimentoArv(numCNPJ);
+			AA.alterarEstabelecimento(numCNPJ);
 		}
 	}
 
@@ -50,8 +50,6 @@ public class AntecipacaoStep extends ParentSteps {
 
 	@Entao("a validacao do cenario deve conter como resultado \"([^\"]*)\"$")
 	public void a_validacao_do_cenario_deve_conter_como_resultado(String Resultado) throws Throwable {
-		AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-		// AA.ResultadoEvidencia(Resultado);
 	}
 
 	@Entao("^valido que o sidkick de simulação está presente e todos os menus \"([^\"]*)\"$")

@@ -8,15 +8,6 @@
 
 package br.com.alelo.qa.features.steps;
 
-import java.util.ArrayList;
-
-import javax.print.attribute.standard.JobImpressions;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import br.com.alelo.qa.features.support.JavaScriptUtils.Funcao;
-import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.LoginActions;
 import br.com.alelo.qa.web.page.LoginPage;
@@ -28,7 +19,6 @@ import cucumber.api.java.pt.Entao;
 
 public class LoginSteps extends ParentSteps {
 
-	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	LoginActions login;
 	LoginPage page;
 	CommonsActions comm = new CommonsActions();
