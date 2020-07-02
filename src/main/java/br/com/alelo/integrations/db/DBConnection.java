@@ -2,9 +2,6 @@ package br.com.alelo.integrations.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import br.com.alelo.utils.PropertiesFile;
 
 public class DBConnection {
 

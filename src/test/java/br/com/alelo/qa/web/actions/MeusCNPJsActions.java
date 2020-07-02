@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import br.com.alelo.integrations.db.ConnBuc;
 import br.com.alelo.qa.features.support.JavaScriptUtils;
+import br.com.alelo.qa.web.page.AntecipacaoPage;
 import br.com.alelo.qa.web.page.CriarUsuarioResetarSenhaPage;
 import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
@@ -33,6 +34,10 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 	 * TrocaSenha
 	 * <h3>
 	 */
+	
+	JavaScriptUtils jsAnonimo = new JavaScriptUtils(DriverAnonimo.getDriver());
+	JavaScriptUtils jsWD = new JavaScriptUtils(webdriver);
+	AntecipacaoPage pageCnpj = new AntecipacaoPage(webdriver);
 	public void PedirAjudaMenu() throws InterruptedException {
 		try {
 			// Abre Menu
@@ -57,15 +62,16 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 			btnEntrar.click();
 			waitForElementToBeInvisible(loader);
 
-			JavaScriptUtils js = new JavaScriptUtils(DriverAnonimo.getDriver());
-			js.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
+			
+			jsAnonimo.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null,
 					DriverAnonimo.getDriver().findElement(By.xpath("//button[@id='btnInitiateSession']")));
 			Thread.sleep(2000);
 
 			String token = DriverAnonimo.getDriver().findElement(By.id("assistanceModalCode")).getText();
 
 			// Modal - Input do token gerado
-			webdriver.findElement(By.id("inputtoken")).sendKeys(token.replace("-", ""));
+			webdriver.findElement(By.id("inputtoken")).sendKeys(token);
+			
 
 			// Modal - Concordo com os termos
 			Thread.sleep(2000);
@@ -75,8 +81,15 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 
 			// Modal - Permitir Acesso
 			webdriver.findElement(By.id("btnGenerateToken")).click();
+			
+			//aceitar ajuda e efetuar logof
+			jsWD.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, pageCnpj.acceptHelp);
+			webdriver.findElement(By.id("nav-dropdown")).click();
+			webdriver.findElement(By.id("navbarDesktopSair")).click();
+			
 
 			// Modal - iniciar ajuda
+			Thread.sleep(2000);
 			DriverAnonimo.getDriver().findElement(By.id("btnGenerateCode")).click();
 
 		} catch (Throwable throwable) {

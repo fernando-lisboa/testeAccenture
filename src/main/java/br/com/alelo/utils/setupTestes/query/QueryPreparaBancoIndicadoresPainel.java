@@ -1,8 +1,5 @@
 package br.com.alelo.utils.setupTestes.query;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Fernando Lisbos
  *

@@ -35,7 +35,6 @@ public class CucumberContext {
     @Autowired
     private String webbrowser;
 
-    @SuppressWarnings("deprecation")
     @Bean(name = "webdriver", destroyMethod = "close")
     public WebDriver getWebDriver() throws IOException {
         WebDriver webdriver = null;

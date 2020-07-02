@@ -3,17 +3,12 @@
 */
 package br.com.alelo.qa.web.actions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.features.support.JavaScriptUtils.Funcao;
@@ -53,20 +48,26 @@ public class ExtratoActions extends ExtratoPage {
 			String[] diaMesAno_ = null;
 
 			int x= 0;
-			List<WebElement> calendars = webdriver.findElements(By.id("datetimmecustom"));
+			List<WebElement> calendars = new ArrayList<WebElement>();
+			calendars.add(webdriver.findElement(By.id("calendar-input-start")));
+			calendars.add(webdriver.findElement(By.id("calendar-input-end")));
+			
 			for(WebElement calendar : calendars)
-			//for (int x = 0; x < 2; x++) // x = 0 [dataInicio] || x = 1 [dataFim]
-			{							
+			{					
+				String idname = calendar.getAttribute("Id");
 				if (x == 0)
 				{
-					js.JavaScriptAction(Funcao.click, null, null,calendar);
-				VerificaObjetoExistente(By.id("datetimmecustomDiv"), null, null, 40);
+					calendar.click();
+					//js.JavaScriptAction(Funcao.click, null, null,webdriver.findElements(By.id("datetimmecustom")).get(x));
+				VerificaObjetoExistente(null, calendar, null, 40);
 					diaMesAno_ = dataInicioMassSplit;
 					x++;
 				}
 				else
+				{
+					calendar.click();
 					diaMesAno_ = dataFimMassSplit;
-
+				}
 				// Mes e Ano do calendário
 				WebElement mesAnoCalendario_ = calendar.findElement(By.xpath("//div/div/div/table/thead/tr[1]/th[2]"));
 				

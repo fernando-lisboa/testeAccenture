@@ -1,25 +1,21 @@
 package br.com.alelo.qa.web.actions;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.List;
-
-import br.com.alelo.qa.features.support.JavaScriptUtils;
-import br.com.alelo.qa.features.support.JavaScriptUtils.Funcao;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import br.com.alelo.qa.features.support.JavaScriptUtils;
+import br.com.alelo.qa.features.support.JavaScriptUtils.Funcao;
 import br.com.alelo.qa.web.page.LoginPage;
 import br.com.alelo.qa.web.page.OfertaAtivaPage;
-import br.com.alelo.qa.features.support.JavaScriptUtils;
 
 public class LoginActions extends LoginPage {
 

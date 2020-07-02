@@ -6,13 +6,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.util.AlternativeJdkIdGenerator;
 
 import br.com.alelo.qa.web.page.OfertaAtivaPage;
 

@@ -18,7 +18,6 @@ import br.com.alelo.qa.web.util.DriverUtil;
 import br.com.alelo.qa.web.util.PDFUtil;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -31,6 +30,7 @@ public class ExtratoStep extends ParentSteps {
 	public void que_um_Ec_tenha_as_seguintes_transacoes_aprovadas(List<TransacoesAprovadas> listTransacoes)
 			throws Throwable {
 		comm.insertMassaExtratoHML();
+		System.out.println("massa inserida de extrato");
 	}
 	
 	@Dado("^a taxa de tarifa de anuidade$")

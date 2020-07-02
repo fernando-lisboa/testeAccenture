@@ -28,11 +28,11 @@ public class AntecipacaoStep extends ParentSteps {
 
 		if (operador) {
 			AntecipacaoActions AA = new AntecipacaoActions(DriverAnonimo.getDriver());
-			AA.alterarEstabelecimentoArv(numCNPJ);
+			AA.alterarEstabelecimento(numCNPJ);
 
 		} else {
 			AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-			AA.alterarEstabelecimentoArv(numCNPJ);
+			AA.alterarEstabelecimento(numCNPJ);
 		}
 	}
 
@@ -50,8 +50,6 @@ public class AntecipacaoStep extends ParentSteps {
 
 	@Entao("a validacao do cenario deve conter como resultado \"([^\"]*)\"$")
 	public void a_validacao_do_cenario_deve_conter_como_resultado(String Resultado) throws Throwable {
-		AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-		 //AA.ResultadoEvidencia(Resultado);
 	}
 
 	@Entao("^valido que o sidkick de simulação está presente e todos os menus \"([^\"]*)\"$")
@@ -64,5 +62,19 @@ public class AntecipacaoStep extends ParentSteps {
 			AA.validarSideKickAlert();
 
 		}
+	}
+
+	@Entao("^eu contrato a recorrencia da operacao e valido a mensagen de sucesso \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
+	public void eu_contrato_a_recorrencia_da_operacao_e_valido_a_mensagen_de_sucesso(boolean operador, String cenario, String modal)
+			throws Throwable {
+		if (operador) {
+			AntecipacaoActions AA = new AntecipacaoActions(DriverAnonimo.getDriver());
+			AA.definirRecorrenciaAposContratacao(cenario, modal);
+		} else {
+			AntecipacaoActions AA = new AntecipacaoActions(webdriver);
+			AA.definirRecorrenciaAposContratacao(cenario, modal);
+
+		}
+
 	}
 }

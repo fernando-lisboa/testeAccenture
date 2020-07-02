@@ -11,8 +11,6 @@ import com.google.common.base.CharMatcher;
 import br.com.alelo.integrations.vsts.controllers.RunController;
 import br.com.alelo.integrations.vsts.entities.Test;
 import br.com.alelo.qa.features.support.ParentSteps;
-import br.com.alelo.qa.web.actions.HomeActions;
-import br.com.alelo.qa.web.actions.LoginActions;
 import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.PropertiesFile;
 import br.com.alelo.utils.ResultsFileStorage;
@@ -40,11 +38,7 @@ public class CommonSteps extends ParentSteps {
 		String[] arrScenario = scenario.getName().split("-");
 
 		CharMatcher ASCII_DIGITS = CharMatcher.inRange('0', '9').precomputed();
-		String suiteId = ASCII_DIGITS.retainFrom(tags);
 
-		// test.setTestId(arrScenario[0].trim());
-		// test.setTestName(arrScenario[1].trim());
-		// test.setSuiteId(suiteId);
 
 		try {
 			RunController run = new RunController();
@@ -67,10 +61,10 @@ public class CommonSteps extends ParentSteps {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) webdriver;
 		jsExecutor.executeScript("localStorage.clear();");
 		
-//		//Limpa cookies do browser anonimo para testes em massa
-//		DriverAnonimo.getDriver().manage().deleteAllCookies();
-//		JavascriptExecutor jsExecutorAnonimous = (JavascriptExecutor) DriverAnonimo.getDriver();
-//		jsExecutorAnonimous.executeScript("localStorage.clear();");
+		//Limpa cookies do browser anonimo para testes em massa
+		DriverAnonimo.getDriver().manage().deleteAllCookies();
+		JavascriptExecutor jsExecutorAnonimous = (JavascriptExecutor) DriverAnonimo.getDriver();
+		jsExecutorAnonimous.executeScript("localStorage.clear();");
 		
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("Cenario: " + scenario.getName());

@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo 
+@Regressivo
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -16,7 +16,7 @@ Funcionalidade: Antecipacao
   Contexto: 
     Dado que o banco de arv esteja preparado para os testes
 
- @Regressivo 
+  @Regressivo @Combo
   Esquema do Cenario: <VSTS> - Realizar Antecipacao de vendas via Modal => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
@@ -24,14 +24,14 @@ Funcionalidade: Antecipacao
     Entao a validacao do cenario deve conter como resultado "<Resultado>"
 
     Exemplos: 
-      | VSTS   | user           | senha      | CNPJ                              | Cenario                 | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                 |
-      | 9999-1 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Parcial                 | false    | true  | true  | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
-      | 9999-2 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Total                   | false    | true  | false | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
-      | 9999-3 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Diário       | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   |
-      | 9999-4 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | RecorrenteTotal Semanal | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   |
-      | 9999-5 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Desativado   | false    | true  | false | true        | false       | antecipacao recorrente deve estar inativa |
+      | VSTS   | user           | senha      | CNPJ               | Cenario                 | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                 |
+      | 9999-1 | 387.055.390-13 | Alelo2020@ | 2000496258 | Parcial                 | false    | true  | true  | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
+      | 9999-2 | 387.055.390-13 | Alelo2020@ | 2000496258 | Total                   | false    | true  | false | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
+      | 9999-3 | 387.055.390-13 | Alelo2020@ | 2000496258 | Recorrente Diário       | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   |
+      | 9999-4 | 387.055.390-13 | Alelo2020@ | 2000496258 | RecorrenteTotal Semanal | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   |
+      | 9999-5 | 387.055.390-13 | Alelo2020@ | 2000496258 | Recorrente Desativado   | false    | true  | false | true        | false       | antecipacao recorrente deve estar inativa |
 
-  @Regressivo 
+  @Regressivo
   Esquema do Cenario: <VSTS> - Realizar Contratação de antecipacao de vendas via tela => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
@@ -40,8 +40,8 @@ Funcionalidade: Antecipacao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ                              | Cenario                 | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                 |
-      | 9999-1 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Parcial                 | false | false | true  | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
-      | 9999-2 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Total                   | false | false | false | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
-      | 9999-3 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Diário       | false | false | false | true        | false       | antecipacao recorrente deve estar ativa   |
-      | 9999-4 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | RecorrenteTotal Semanal | false | false | false | true        | false       | antecipacao recorrente deve estar ativa   |
-      | 9999-5 | 387.055.390-13 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Desativado   | false | false | false | true        | false       | antecipacao recorrente deve estar inativa |
+      | 9999-1 | 387.055.390-13 | Alelo2020@ | 2000496258| Parcial                 | false    | false | true  | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
+      | 9999-2 | 387.055.390-13 | Alelo2020@ | 2000496258| Total                   | false    | false | false | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
+      | 9999-3 | 387.055.390-13 | Alelo2020@ | 2000496258 | Recorrente Diário       | false    | false | false | true        | false       | antecipacao recorrente deve estar ativa   |
+      | 9999-4 | 387.055.390-13 | Alelo2020@ | 2000496258| RecorrenteTotal Semanal | false    | false | false | true        | false       | antecipacao recorrente deve estar ativa   |
+      | 9999-5 | 387.055.390-13 | Alelo2020@ | 2000496258 | Recorrente Desativado   | false    | false | false | true        | false       | antecipacao recorrente deve estar inativa |

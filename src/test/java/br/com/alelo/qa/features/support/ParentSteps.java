@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 
+import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.PropertiesFile;
 import cucumber.api.java.After;
 
@@ -33,9 +34,6 @@ public class ParentSteps {
 	@Value("${urlInicio}")
 	protected String urlInicio;
 
-	@Value("${baseUrlPainel}")
-	protected String baseUrlPainel;
-
 	@Autowired
 	protected boolean vsts;
 
@@ -44,6 +42,7 @@ public class ParentSteps {
 	@After
 	private void killDriverProcess() {
 		webdriver.quit();
+		DriverAnonimo.getDriver().quit();
 	}
 
 }
