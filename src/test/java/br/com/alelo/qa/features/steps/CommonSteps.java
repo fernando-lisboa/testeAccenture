@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.method.ControllerAdviceBean;
 
 import com.google.common.base.CharMatcher;
 
@@ -39,7 +40,6 @@ public class CommonSteps extends ParentSteps {
 
 		CharMatcher ASCII_DIGITS = CharMatcher.inRange('0', '9').precomputed();
 
-
 		try {
 			RunController run = new RunController();
 			if (atualizaVsts.equals("sim")) {
@@ -56,16 +56,21 @@ public class CommonSteps extends ParentSteps {
 	@After
 	public void afterScenario(Scenario scenario) throws IOException {
 		test.setOutcome(scenario.getStatus());
-		//Limpa cookies do browser para testes em massa
+		// Limpa cookies do browser para testes em massa
+		System.out.println("Limpando cookies");
 		webdriver.manage().deleteAllCookies();
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) webdriver;
 		jsExecutor.executeScript("localStorage.clear();");
-		
-		//Limpa cookies do browser anonimo para testes em massa
-		DriverAnonimo.getDriver().manage().deleteAllCookies();
-		JavascriptExecutor jsExecutorAnonimous = (JavascriptExecutor) DriverAnonimo.getDriver();
-		jsExecutorAnonimous.executeScript("localStorage.clear();");
-		
+		jsExecutor.executeScript("window.sessionStorage.clear();");
+
+		// Limpa cookies do browser anonimo para testes em massa
+
+			test.setOutcome(scenario.getStatus());
+			DriverAnonimo.getDriver().manage().deleteAllCookies();
+			JavascriptExecutor jsExecutorAnonimous = (JavascriptExecutor) DriverAnonimo.getDriver();
+			jsExecutorAnonimous.executeScript("localStorage.clear();");
+			jsExecutorAnonimous.executeScript("window.sessionStorage.clear();");
+
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("Cenario: " + scenario.getName());
 		System.out.println("Suite ID:" + test.getSuiteId());

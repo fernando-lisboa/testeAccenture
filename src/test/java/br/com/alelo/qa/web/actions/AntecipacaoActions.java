@@ -38,7 +38,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 			for (Integer y = 1; y <= listAba.size(); y++) {
 				WebElement elAba = webdriver.findElement(
-						By.xpath("/html/body/div[1]/div[2]/div[1]/div/nav/div/div[2]/ul[1]/li[" + y + "]/a"));
+						By.xpath("/html/body/div[1]/main/body/div/nav/div/div[2]/ul[1]/li[" + y + "]/a"));
 				elAba.click();
 				waitForElementToBeInvisible(loader);
 				WebElement alertside = webdriver.findElement(By.xpath("//*[@id=\"alertSidekick\"]/div/span"));
@@ -299,11 +299,11 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				if (Modal) {
 					try {
 
-						Thread.sleep(2000);
+						Thread.sleep(1000);
 						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
-						Thread.sleep(3000);
+						Thread.sleep(1000);
 						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
 								is(textoconfirmacaoSimulacao.toUpperCase()));
 					} catch (InterruptedException e) {

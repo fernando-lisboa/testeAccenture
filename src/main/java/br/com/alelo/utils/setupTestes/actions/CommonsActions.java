@@ -13,8 +13,10 @@ import java.util.GregorianCalendar;
 import org.openqa.selenium.WebDriver;
 
 import br.com.alelo.integrations.db.ConnPpoint;
+import br.com.alelo.integrations.db.ConnSit;
 import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.integrations.db.ConnUsodsadq;
+import br.com.alelo.utils.setupTestes.query.LimparPID;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoArv;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoIndicadoresPainel;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaTesteExtrato;
@@ -32,9 +34,8 @@ public class CommonsActions {
 	QueryPreparaBancoArv arv = new QueryPreparaBancoArv();
 	WebDriver webdriver;
 	QueryPreparaTesteExtrato extrato = new QueryPreparaTesteExtrato();
+	LimparPID pid = new LimparPID();
 
-	
-		
 	public void preparaBanco(Connection conexao, String query, String idPersonUnit, String status) throws Exception {
 
 		if (status.equals("EL")) {
@@ -136,7 +137,8 @@ public class CommonsActions {
 		consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacao1().toString()); // 28339982000160
 		consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacaoForaPeriodoTestes().toString()); // 41707658000115
 		consultaBanco(ConnUsadq.getConexao(), queryIndicadores.retornaInsertContratacaoCancelado().toString()); // 11699141000160
-		//consultaBancoHmlPoint(ConnPpoint.getConexao(), queryIndicadores.retornaInsertTransacoes().toString());
+		// consultaBancoHmlPoint(ConnPpoint.getConexao(),
+		// queryIndicadores.retornaInsertTransacoes().toString());
 		System.out.println("Banco populado para inicio dos testes...");
 	}
 
@@ -150,23 +152,24 @@ public class CommonsActions {
 		consultaBanco(ConnUsadq.getConexao(), upload.retornaInsertDesbloqueioContratoTestGratis().toString());
 		System.out.println("Inserido dados para teste de Bloqueio...");
 	}
-	
+
 	public void insertMassaExtratoHML() throws Exception {
 		System.out.println("Inserindo massa de testes no Banco de dados...");
 		deletaMassaExtratoHML();
+		Thread.sleep(2000);
 		consultaBanco(ConnPpoint.getConexao(), extrato.retornaInsertTabelaTADQ_TRANS().toString());
 		consultaBanco(ConnUsodsadq.getConexao(), extrato.retornaInsertTabelaTIND_EC_MES().toString());
 		consultaBanco(ConnUsodsadq.getConexao(), extrato.retornaInsertTabelaTIND_EC_TPO_DIA().toString());
-		
+
 		System.out.println("Banco populado para testes EXTRATO...");
 	}
-	
+
 	public void deletaMassaExtratoHML() throws Exception {
 		System.out.println("Preparando massa de testes no Banco de dados...");
 		consultaBanco(ConnPpoint.getConexao(), extrato.retornaDeleteTabelaTADQ_TRANS().toString());
 		consultaBanco(ConnUsodsadq.getConexao(), extrato.retornaDeleteTabelaTIND_EC_MES().toString());
 		consultaBanco(ConnUsodsadq.getConexao(), extrato.retornaDeleteTabelaTIND_EC_TPO_DIA().toString());
-		
+
 	}
 
 	public void updateParaContratacaoArv() throws Exception {
@@ -185,7 +188,7 @@ public class CommonsActions {
 		consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateIdSolicitacao().toString());
 		consultaBanco(ConnUsadq.getConexao(), arv.roternaDeletePlanoRecorrente().toString());
 		Thread.sleep(2000);
-		
+
 		System.out.println("Banco preparado com sucesso...");
 	}
 
@@ -261,20 +264,29 @@ public class CommonsActions {
 		tearDowntransactions();
 		insertMassaCancelamentoEContratacaoWeb();
 	}
+
 	public void prepararBancoParaInicioDosExtrato() throws Exception {
 		tearDown();
 		tearDowntransactions();
 		insertMassaCancelamentoEContratacaoWeb();
 	}
-	
-	public void preparaBancoPlanos() throws Exception{
-    	
+
+	public void preparaBancoPlanos() throws Exception {
+
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteContratoSimulaca().toString());
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteOfertaPlanosSimulacao().toString());
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaInsertOFertaPlanosSimulacao().toString());
-		
 
+	}
 
-}
-	
+	public void limparPid(String ambiente) throws Exception {
+
+		if (ambiente.equals("hml")) {
+			consultaBanco(ConnUsadq.getConexao(), pid.deletaPID().toString());
+		} else {
+			consultaBanco(ConnSit.getConexao(), pid.deletaPID().toString());
+		}
+
+	}
+
 }

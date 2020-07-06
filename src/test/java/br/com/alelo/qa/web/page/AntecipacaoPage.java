@@ -126,7 +126,7 @@ public class AntecipacaoPage extends PageObject {
 	public String textoConfirmacaoArv = "IMPORTANTE: A simulação não efetivará a contratação do produto.";
 
 	// ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO VIA MODAL
-	@FindBy(xpath = "/html/body/div[3]/div[2]/div/div/div[2]/div[1]")
+	@FindBy(id = "successfulAnticipation")
 	protected WebElement modalConfirmacaoContratacaoArv;
 	public String textoConfirmacaoContratacaoArv = "ANTECIPAÇÃO REALIZADA COM SUCESSO";
 	
@@ -136,7 +136,7 @@ public class AntecipacaoPage extends PageObject {
 	public String textomodalSimulacaoContratacaoArv = "SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO";
 
 	// ELEMENTO DE CONFIRMAÇÃO DE CONTRATAÇÃO DE RECORRENCIA VIA MODAL
-	@FindBy(xpath = "/html/body/div[3]/div[2]/div/div/div[2]/div[1]")
+	@FindBy(id = "successfulAnticipation")
 	protected WebElement confirmacaoSimulacao;
 	public String textoconfirmacaoSimulacao = "antecipação realizada com sucesso";
 
@@ -162,7 +162,7 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(xpath = "successfulSimulation")
 	protected WebElement aceptMsgAntecipe;
 	
-	@FindBy(xpath = "authorizedOperator")
+	@FindBy(xpath = "//button[@type='button'][contains(.,'OK')]")
 	public WebElement acceptHelp;
 	
 

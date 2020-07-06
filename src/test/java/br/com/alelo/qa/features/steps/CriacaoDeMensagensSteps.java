@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.CriacaoDeMensagensActions;
-import br.com.alelo.qa.web.actions.HomeActions;
 import br.com.alelo.qa.web.actions.LoginActions;
-import br.com.alelo.qa.web.actions.OfertaAtivaActions;
 import br.com.alelo.utils.SimpleCacheManager;
 import cucumber.api.PendingException;
 import cucumber.api.java.pt.Dado;
@@ -26,8 +24,6 @@ public class CriacaoDeMensagensSteps extends ParentSteps {
 	private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 	LoginActions login;
 	CriacaoDeMensagensActions page;
-	OfertaAtivaActions oferta;
-	HomeActions home;
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
 
 	@Dado("^eu clique no botao de mensagem$")

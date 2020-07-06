@@ -26,21 +26,22 @@ public class QueryPreparaTesteExtrato {
 
 	public StringBuilder retornaInsertTabelaTIND_EC_MES() {
 		StringBuilder sql = new StringBuilder(" INSERT ALL ")
-				.append(" into OWODSADQ.TIND_EC_MES values ('28339982000160','202002','1','99999',sysdate - 17,sysdate - 17,'DD/MM/RR'),'221592421',sysdate - 17) ")
-				.append(" into OWODSADQ.TIND_EC_MES values ('28339982000160','202003','12','99999',sysdate - 18,sysdate - 18,'DD/MM/RR'),'221592421',sysdate - 18) ")
-				.append(" into OWODSADQ.TIND_EC_MES values ('28339982000160','202004','12','99999',sysdate - 10,sysdate - 10,'DD/MM/RR'),'221592421',sysdate - 10) ")
+				.append(" into OWODSADQ.TIND_EC_MES values ('28339982000160','202002','1','99999',sysdate - 17,sysdate - 17,'221592421',sysdate - 17) ")
+				.append(" into OWODSADQ.TIND_EC_MES values ('28339982000160','202003','12','99999',sysdate - 18,sysdate - 18,'221592421',sysdate - 18) ")
+				.append(" into OWODSADQ.TIND_EC_MES values ('28339982000160','202004','12','99999',sysdate - 10,sysdate - 10,'221592421',sysdate - 10) ")
 				.append("  SELECT 1 FROM DUAL ");
 
 		return sql;
 	}
 
+
 	public StringBuilder retornaInsertTabelaTIND_EC_TPO_DIA() {
 		StringBuilder sql = new StringBuilder(" INSERT ALL ")
-				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1014986319',to_date('26/02/20','DD/MM/RR'),'1','VENDA',to_number('5.17','9999.99'),'5',to_date('26/02/20','DD/MM/RR'),to_date('26/02/20','DD/MM/RR')) ")
-				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1014986319',sysdate - 18,'1','VENDA',to_number('108.99','9999.99'),'5',sysdate - 18,sysdate - 18) ")
-				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1012770645',sysdate - 18,'1','VENDA',to_number('374.7','9999.99'),'7',sysdate - 18,sysdate - 18) ")
-				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1012770645',sysdate - 10,'1','VENDA',to_number('160.45','9999.99'),'7',sysdate - 18,sysdate - 10) ")
-				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1012770645',sysdate - 10,'2','VENDA',to_number('-104','9999.99'),'7',sysdate - 18,sysdate - 10) ")
+				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1014986319',sysdate - 17,'1','VENDA',to_number('5.17','9999.99'),'5',sysdate -17,sysdate -17) ")
+				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1014986319',to_date('20/03/20','DD/MM/RR'),'1','VENDA',to_number('108.99','9999.99'),'5',to_date('20/03/20','DD/MM/RR'),to_date('20/03/20','DD/MM/RR')) ")
+				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1012770645',to_date('22/03/20','DD/MM/RR'),'1','VENDA',to_number('374.7','9999.99'),'7',to_date('22/03/20','DD/MM/RR'),to_date('22/03/20','DD/MM/RR')) ")
+				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1012770645',to_date('03/04/20','DD/MM/RR'),'1','VENDA',to_number('160.45','9999.99'),'7',to_date('03/04/20','DD/MM/RR'),to_date('03/04/20','DD/MM/RR')) ")
+				.append(" into OWODSADQ.TIND_EC_TPO_DIA  values ('221592421','1012770645',to_date('03/04/20','DD/MM/RR'),'2','VENDA',to_number('-104','9999.99'),'7',to_date('03/04/20','DD/MM/RR'),to_date('03/04/20','DD/MM/RR')) ")
 				.append("  SELECT 1 FROM DUAL ");
 
 		return sql;
@@ -60,7 +61,7 @@ public class QueryPreparaTesteExtrato {
 
 	public StringBuilder retornaDeleteTabelaTIND_EC_TPO_DIA() {
 		StringBuilder sql = new StringBuilder(
-				" DELETE FROM OWODSADQ.TIND_EC_TPO_DIA where Id_Pess_unid = 221592421 AND DT_TRANSACAO BETWEEN  to_date('26/02/20','DD/MM/RR') AND to_date('03/04/20','DD/MM/RR') ");
+				" DELETE FROM OWODSADQ.TIND_EC_TPO_DIA where Id_Pess_unid = 221592421  AND DT_TRANSACAO BETWEEN  sysdate - 18 AND sysdate  ");
 		return sql;
 	}
 

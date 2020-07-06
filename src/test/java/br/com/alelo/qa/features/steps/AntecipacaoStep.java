@@ -17,6 +17,7 @@ import cucumber.api.java.pt.Entao;
 
 public class AntecipacaoStep extends ParentSteps {
 
+	
 	@Dado("^que o banco de arv esteja preparado para os testes$")
 	public void que_o_banco_de_arv_esteja_preparado_para_os_testes() throws Throwable {
 		CommonsActions comm = new CommonsActions();
@@ -65,8 +66,8 @@ public class AntecipacaoStep extends ParentSteps {
 	}
 
 	@Entao("^eu contrato a recorrencia da operacao e valido a mensagen de sucesso \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
-	public void eu_contrato_a_recorrencia_da_operacao_e_valido_a_mensagen_de_sucesso(boolean operador, String cenario, String modal)
-			throws Throwable {
+	public void eu_contrato_a_recorrencia_da_operacao_e_valido_a_mensagen_de_sucesso(boolean operador, String cenario,
+			String modal) throws Throwable {
 		if (operador) {
 			AntecipacaoActions AA = new AntecipacaoActions(DriverAnonimo.getDriver());
 			AA.definirRecorrenciaAposContratacao(cenario, modal);
@@ -76,5 +77,12 @@ public class AntecipacaoStep extends ParentSteps {
 
 		}
 
+	}
+
+	@Entao("^encerro o driver anonimo para help$")
+	public void encerro_o_driver_anonimo_para_help() throws Throwable {
+		
+		DriverAnonimo.getDriver().close();
+		
 	}
 }

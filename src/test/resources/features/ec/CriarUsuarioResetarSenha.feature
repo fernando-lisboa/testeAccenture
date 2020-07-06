@@ -6,7 +6,7 @@
 # * Caminho: Portal Estabelecimento Comercial
 # */
 
-@CriarUsuarioResetarSenha @ignore
+@CriarUsuarioResetarSenha 
 Funcionalidade: Criacao de Usuario e Reset de Senha
   Eu como usuário do portal
   Desejo efetuar a criacao de novos usuarios e dado a necessidade, resetar a senha do mesmo

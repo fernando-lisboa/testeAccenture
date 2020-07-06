@@ -16,7 +16,7 @@ Funcionalidade: Antecipacao
   Contexto: 
     Dado que o banco de arv esteja preparado para os testes
 
-  @Regressivo @Combo
+  @Regressivo  @arv
   Esquema do Cenario: <VSTS> - Realizar Antecipacao de vendas via Modal => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"

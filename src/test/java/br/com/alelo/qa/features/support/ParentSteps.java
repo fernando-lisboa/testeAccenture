@@ -36,6 +36,9 @@ public class ParentSteps {
 
 	@Autowired
 	protected boolean vsts;
+	
+	@Autowired
+	protected boolean help;
 
 	protected PropertiesFile props;
 

@@ -29,7 +29,6 @@ public class LoginSteps extends ParentSteps {
 		webdriver.get(baseurl); // Abre url
 		login = new LoginActions(webdriver);
 		login.loginGeral(user, senha);
-		comm.updateParaContratacaoArv();
 		System.out.println("logando..");
 	}
 

@@ -50,7 +50,6 @@ public class CriarUsuarioResetarSenhaActions extends CriarUsuarioResetarSenhaPag
             //Botão Primeiro Acesso
             JavaScriptAction(Funcao.click, null,null,webdriver.findElements(By.className("btnFormLight")).get(0));
 
-            // TokenGmailPage GmailPage = new TokenGmailPage(webdriver);
 
             //Gera Numero Randomico - Usado para concatenar com o E-mail.
             Random rand = new Random();

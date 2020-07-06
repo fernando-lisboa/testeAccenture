@@ -2,6 +2,7 @@ package br.com.alelo.qa;
 
 import br.com.alelo.integrations.db.ConnBuc;
 import br.com.alelo.integrations.db.ConnPpoint;
+import br.com.alelo.integrations.db.ConnSit;
 import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.integrations.db.ConnUsodsadq;
 import br.com.alelo.integrations.db.DBConnection;
@@ -29,7 +30,7 @@ import java.util.Date;
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = false, features = {"src/test/resources/features/ec/", "src/test/resources/features/operador/"}, plugin = {
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"}, glue = {
-        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@Regressivo", "~@ignore"})
+        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@delivery", "~@ignore"})
 
 public class CucumberRunnerTest {
 
@@ -46,6 +47,10 @@ public class CucumberRunnerTest {
     	 new DBConnection();
          Connection dbUsadq = DBConnection.getConnectionHml();
          ConnUsadq.setConexao(dbUsadq);
+         
+         new DBConnection();
+         Connection dbOwadqSit = DBConnection.getConnectionSit();
+         ConnSit.setConexao(dbOwadqSit);
 
          new DBConnection();
          Connection dbPpoint = DBConnection.getConnectionPpoint();
@@ -63,6 +68,9 @@ public class CucumberRunnerTest {
          new WebdriverAnonimous();
          WebDriver driverAnonimo = WebdriverAnonimous.getDriverAnonimo();
          DriverAnonimo.setDriver(driverAnonimo);
+         DriverAnonimo.getDriver().get("https://meuestabelecimento-hml.siteteste.inf.br/");
+         
+       
 
         PropertiesFile props = new PropertiesFile();
         System.out.println("------------------------------");

@@ -190,7 +190,7 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
     //endregion
 
     //region WebElement [Botão Proximo Gmail -> usuario]
-    @FindBy(xpath = "//*[@id='identifierNext']/span/span")
+    @FindBy(xpath = "//span[@class='RveJvd snByac'][contains(.,'Próxima')]")
     public static WebElement btnProsseguirUserGmail;
     //endregion
 
@@ -200,7 +200,7 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
     //endregion
 
     //region WebElement [Botão Proximo Gmail -> senha]
-    @FindBy(xpath = "//*[@id='passwordNext']/span/span")
+    @FindBy(xpath = "//span[@class='RveJvd snByac'][contains(.,'Próxima')]")
     public static WebElement btnProsseguirSenhaGmail;
     
     @FindBy(xpath = "//div[@id='simulationAlert']/div[2]")
@@ -209,5 +209,37 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
 	
 	@FindBy(id = "buttonBottomPrint")
 	protected WebElement btnComecar;
+
+	
+	//##########################################################################################################
+	
+	//flag habilitar rappy
+	@FindBy(id = "toggleSwitch1")
+	protected WebElement swiftIfood;
+	
+	//flag habilitar ifood
+	@FindBy(id = "toggleSwitch2")
+	protected WebElement swiftRappy;
+	
+	// btn confirmar habilitar delivery
+	@FindBy(id = "confirmBtn")
+	protected WebElement btnConfirmarHabilitar;
+	
+	// label da pergunta se quer habilitar delivery
+	@FindBy(xpath = "subTitle")
+	protected WebElement labelAskDelivery;
+	public String txtAskDelivery = "Deseja aceitar Alelo Refeições nas plataformas de delivery?";
+	
+	//msg de confirmação de solicitação de delivery
+	@FindBy(id = "feedbackCard")
+	protected WebElement cardFeedBack;
+	
+	// id principal para pegar a mensagem de confirmação de solicitação  
+	//cardFeedBack.findElements(By.id(txtCardFeedBack)).getText();
+	@FindBy(id = "feedbackText")
+	protected WebElement txtCardFeedBack;
+	
+	@FindBy(id = "exitLink")
+	protected WebElement retornarPortal;
 
 }

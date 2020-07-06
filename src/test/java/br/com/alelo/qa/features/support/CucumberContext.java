@@ -95,6 +95,12 @@ public class CucumberContext {
                 webdriver = new ChromeDriver(options);
                 webdriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
                 break;
+            case "ghost_zalenium":
+            	options = new ChromeOptions();
+            	options.addArguments("--headless");
+            	WebDriverManager.chromedriver().setup();
+            	webdriver = new ChromeDriver(options);
+            	break;
             case "geckodriver":
                 WebDriverManager.firefoxdriver().setup();
                 webdriver = new FirefoxDriver();
