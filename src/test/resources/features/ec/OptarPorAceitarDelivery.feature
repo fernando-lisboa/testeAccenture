@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo 
+@Regressivo @ignore
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -19,7 +19,7 @@ Funcionalidade: Antecipacao
   @Regressivo @delivery
   Esquema do Cenario: <VSTS> - Realizar solicitação de app  => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
-    E preencha os dados de PID
+    E preencha os dados de PID "sit"
     Quando verificar a label do botao concluir
     E optar por aceitar a opcao app "<Cenario>" e clicar em avancar
     E devo validar a msg de confirmacao

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.junit.Assert;
+import org.junit.internal.runners.statements.Fail;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,30 +28,47 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 	Random rand = new Random();
 
-	public void preencherPID() throws Exception {
+	public void preencherPID(String ambiente) throws Exception {
 
 		// region [Itens de Retorno do Banco de dados]
 		String queryItens = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('26998825000130'))select * from Itens where row_num = 1";
 		CommonsActions conn_ation = new CommonsActions();
-		ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryItens);
 		List<String> Itens = new ArrayList<>();
-		while (teste.next()) {
-			String nrDoc = teste.getString("NR_DOCUMENTO");
-			String cdBanco = teste.getString("CD_BANCO");
-			String nuAgencia = teste.getString("NU_AGENCIA");
-			String nuConta = teste.getString("NU_CONTA");
-			Itens.add(nrDoc);
-			Itens.add(cdBanco);
-			Itens.add(nuAgencia);
-			Itens.add(nuConta);
-			break;
+		if (ambiente.equals("sit")) {
+			ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryItens);
+			while (teste.next()) {
+				String nrDoc = teste.getString("NR_DOCUMENTO");
+				String cdBanco = teste.getString("CD_BANCO");
+				String nuAgencia = teste.getString("NU_AGENCIA");
+				String nuConta = teste.getString("NU_CONTA");
+				Itens.add(nrDoc);
+				Itens.add(cdBanco);
+				Itens.add(nuAgencia);
+				Itens.add(nuConta);
+				break;
+			}
+
+		} else {
+			ResultSet teste = conn_ation.consultaBanco(ConnBuc.getConexao(), queryItens);
+			
+			while (teste.next()) {
+				String nrDoc = teste.getString("NR_DOCUMENTO");
+				String cdBanco = teste.getString("CD_BANCO");
+				String nuAgencia = teste.getString("NU_AGENCIA");
+				String nuConta = teste.getString("NU_CONTA");
+				Itens.add(nrDoc);
+				Itens.add(cdBanco);
+				Itens.add(nuAgencia);
+				Itens.add(nuConta);
+				break;
+			}
 		}
 		// endregion
 
 		waitForElementPageToBeClickable(primeiroAcessocnpj);
 
 		// region [Formulario de Primeiro Acesso]Telefone
-		primeiroAcessoTelefone.sendKeys("11960745073");
+		primeiroAcessoTelefone.sendKeys("11960745079");
 
 		// CNPJ
 		primeiroAcessocnpj.clear();
@@ -98,20 +117,35 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 	public void selecionarApp(String cenario) {
 		if (cenario.equals("ifood")) {
+			waitForElementPageToBeClickable(swiftIfood);
+			swiftIfood.click();
+		}else if(cenario.equals("rappy")){
+			waitForElementPageToBeClickable(swiftRappy);
+			swiftRappy.click();
+		}else{
 			waitForElementPageToBeClickable(swiftRappy);
 			swiftIfood.click();
-		} else {
-			waitForElementPageToBeClickable(swiftRappy);
+			waitForElementPageToBeClickable(swiftIfood);
 			swiftRappy.click();
 		}
 
+	}
+
+
+	public void verificarDelivery() {
+
+		Assert.assertTrue("Mensagem de delivery não disponível", labelAskDelivery.getText().equals(txtAskDelivery));
+		Assert.assertTrue("Label do botão diferente de Concluir", btnConfirmarHabilitar.getText().equals("Concluir"));
+		
 	}
 
 	public void habilitarEconfirmarMsg() {
 		btnConfirmarHabilitar.click();
 		String text = txtCardFeedBack.getText();
 		System.out.println(text);
+		retornarPortal.click();
+		Assert.assertEquals("NãO RETORNOU PARA O PORTAL NA TELA DE INICIO", webdriver.getCurrentUrl().contains("inicio"));
 		
-	}
 
+	}
 }

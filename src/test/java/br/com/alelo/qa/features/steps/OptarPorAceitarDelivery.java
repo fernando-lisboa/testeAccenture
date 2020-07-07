@@ -19,15 +19,17 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 
 	}
 
-	@Dado("^preencha os dados de PID$")
-	public void preencha_os_dados_de_PID() throws Throwable {
+	@Dado("^preencha os dados de PID \"([^\"]*)\"$")
+	public void preencha_os_dados_de_PID(String ambiente) throws Throwable {
 		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
-		delivery.preencherPID();
+		delivery.preencherPID(ambiente);
 	}
 
 	@Quando("^verificar a label do botao concluir$")
 	public void verificar_a_label_do_botao_concluir() throws Throwable {
-
+		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
+		delivery.verificarDelivery();
+		
 	}
 
 	@Quando("^optar por aceitar a opcao app \"([^\"]*)\" e clicar em avancar$")
