@@ -4,13 +4,13 @@ public class QueryUploadNovosPlanos {
 	
 	public StringBuilder retornaDeleteNovosPlanos() {
 		StringBuilder sql = new StringBuilder(
-				" DELETE TSGM_OFERT_NVOS_PLANO WHERE nu_cnpj IN (27969660000999)");
+				" DELETE TSGM_OFERT_NVOS_PLANO WHERE nu_cnpj IN (28339982000160)");
 		return sql;
 	}
 	
 	public StringBuilder retornaDeleteContratoSimulaca() {
 		StringBuilder sql = new StringBuilder(
-				" delete owadq.tsgm_contr where nu_cnpj = '37491504000161'");
+				" delete owadq.tsgm_contr where nu_cnpj = '28339982000160'");
 		return sql;
 	}
 	
@@ -23,7 +23,7 @@ public class QueryUploadNovosPlanos {
 	
 	public StringBuilder retornaDeleteOfertaPlanosSimulacao() {
 		StringBuilder sql = new StringBuilder(
-				" DELETE owadq.tsgm_ofert_nvos_plano WHERE nu_cnpj IN (37491504000161)");
+				" DELETE owadq.tsgm_ofert_nvos_plano WHERE nu_cnpj IN (28339982000160)");
 		return sql;
 	}
 	

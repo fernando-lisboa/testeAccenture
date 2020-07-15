@@ -27,6 +27,7 @@ public class AntecipacaoStep extends ParentSteps {
 	@E("^seleciono um CNPJ de número \"([^\"]*)\" no combo Estabelecimento \"([^\"]*)\"$")
 	public void seleciono_um_CNPJ_no_combo_Estabelecimento(String numCNPJ, boolean operador) throws Throwable {
 
+		
 		if (operador) {
 			AntecipacaoActions AA = new AntecipacaoActions(DriverAnonimo.getDriver());
 			AA.alterarEstabelecimento(numCNPJ);
@@ -35,6 +36,7 @@ public class AntecipacaoStep extends ParentSteps {
 			AntecipacaoActions AA = new AntecipacaoActions(webdriver);
 			AA.alterarEstabelecimento(numCNPJ);
 		}
+		
 	}
 
 	@E("estou usando \"([^\"]*)\", se cenario \"([^\"]*)\", devo alterar o valor \"([^\"]*)\", antecipar \"([^\"]*)\" e contratando \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")

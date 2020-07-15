@@ -69,7 +69,7 @@ public class LoginSteps extends ParentSteps {
 	@Dado("^que estou na logado no portal webadmim EC \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_webadmim_EC(String user, String password) throws Throwable {
 
-		webdriver.get("https://meuestabelecimento-webadmin-sit.siteteste.inf.br/portalec-webadmin/login"); // Abre
+		webdriver.get("https://meuestabelecimento-webadmin-hml.siteteste.inf.br/portalec-webadmin/login"); // Abre
 																											// url
 		// webdriver.get(baseurlAdm); // Abre url
 

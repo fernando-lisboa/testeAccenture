@@ -16,7 +16,7 @@ public class ContratacaodePlanosActions extends AntecipacaoPage {
         // TODO Auto-generated constructor stub
     }
 
-    public void ContratarPlano(String Cenario, boolean Contratacao) {
+    public void ContratarPlano(String tpPlano, boolean Contratacao) {
         try {
             Thread.sleep(4000);
             JavaScriptUtils javaS = new JavaScriptUtils(webdriver);
@@ -25,9 +25,8 @@ public class ContratacaodePlanosActions extends AntecipacaoPage {
             // Abre Modal
             javaS.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, planosPage.botao_side_kick);
 
-            Cenario = Cenario.replace("Plano de ", "").replace(" dias","");
 
-            switch (Cenario)
+            switch (tpPlano)
             {
                 case "02":
                     javaS.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, webdriver.findElement(By.id("conditionCard-0")));

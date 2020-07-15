@@ -194,19 +194,7 @@ public class PainelActions extends PainelPage {
 		Assert.assertTrue(jaRecebi.isDisplayed());
 	}
 
-	public void bloqueiaEc(String path, String nomeArquivo) {
-
-		//linkPainelMeuNegocio.click();
-		menuFrontVendas.click();
-		String usingSystemProperty = System.getProperty("user.dir");
-		inputFileBlock.sendKeys(usingSystemProperty + path + nomeArquivo);
-		btnFazerUpload.click();
-		waitForElementPageToBeClickable(btnFechar);
-		Assert.assertThat(sucesso.getText(), is(sucessoText));
-		btnFechar.click();
-
-		System.out.println("Bloqueio Efetivado com sucesso");
-	}
+ 
 
 	public static Resource getUserFileResource(String path, String nomeArquivo) throws IOException {
 		File file = new File(path + nomeArquivo);

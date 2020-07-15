@@ -1,11 +1,11 @@
 #language: pt
 #/**
-# * Autor: Michael Alba
+# * Autor: Fernando Lisboa
 # * Empresa: Taking
-# * Data: 30/03/2020
+# * Data: 07/07/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @ignore
+@Regressivo
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -35,7 +35,7 @@ Funcionalidade: Antecipacao
   @Regressivo @Combo
   Esquema do Cenario: <VSTS> - Realizar solicitação de app com Alimentação apenas  => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
-    E preencha os dados de PID
+    E preencha os dados de PID "sit"
     Quando verificar a label do botao concluir
     Entao devo verificar que não é oferecido a opção de app
 

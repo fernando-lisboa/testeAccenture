@@ -31,7 +31,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 	public void preencherPID(String ambiente) throws Exception {
 
 		// region [Itens de Retorno do Banco de dados]
-		String queryItens = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('26998825000130'))select * from Itens where row_num = 1";
+		String queryItens = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('52608498000173'))select * from Itens where row_num = 1";
 		CommonsActions conn_ation = new CommonsActions();
 		List<String> Itens = new ArrayList<>();
 		if (ambiente.equals("sit")) {
@@ -148,4 +148,45 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		
 
 	}
+	
+	public void validarBancoDeDados_App(String ambiente) throws Exception {
+
+		// Consulta banco de dados para verificação de solicitação de App - Ifood e Rappy
+		//TODO trocar query para verificação de banco apos opção do APP
+		String queryItens = "SELECT D.ID_PRDT, D.NU_CNPJ, P.NM_PRDT, P.IN_STTUS_ATIVO FROM TDSV_DCMNTO AS D JOIN TDSV_PRDT AS P ON D.ID_PRDT = P.ID_PRDT;";
+		CommonsActions conn_ation = new CommonsActions();
+		List<String> Itens = new ArrayList<>();
+		if (ambiente.equals("sit")) {
+			ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryItens);
+			while (teste.next()) {
+				String cnpj = teste.getString("NU_CNPJ");
+				String nomeProduto = teste.getString("NM_PRDT");
+				String statusProduto = teste.getString("IN_STTUS_ATIVO");
+				String idProduto = teste.getString("ID_PRDT");
+				Itens.add(cnpj);
+				Itens.add(nomeProduto);
+				Itens.add(statusProduto);
+				Itens.add(idProduto);
+				break;
+			}
+		} else {
+
+			ResultSet teste = conn_ation.consultaBanco(ConnBuc.getConexao(), queryItens);
+			while (teste.next()) {
+				String cnpj = teste.getString("NU_CNPJ");
+				String nomeProduto = teste.getString("NM_PRDT");
+				String statusProduto = teste.getString("IN_STTUS_ATIVO");
+				String idProduto = teste.getString("ID_PRDT");
+				Itens.add(cnpj);
+				Itens.add(nomeProduto);
+				Itens.add(statusProduto);
+				Itens.add(idProduto);
+				break;
+			}
+		}
+		
+		//TODO fazer assert Para verificar as tabelas
+		
+	}
+
 }

@@ -15,11 +15,9 @@ import org.openqa.selenium.WebElement;
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.features.support.JavaScriptUtils.Funcao;
 import br.com.alelo.qa.web.page.LoginPage;
-import br.com.alelo.qa.web.page.OfertaAtivaPage;
 
 public class LoginActions extends LoginPage {
 
-	OfertaAtivaPage page = new OfertaAtivaPage(webdriver);
 
 	public LoginActions(WebDriver driver) {
 		super(driver);
