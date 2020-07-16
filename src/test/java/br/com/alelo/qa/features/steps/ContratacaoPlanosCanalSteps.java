@@ -23,7 +23,12 @@ public class ContratacaoPlanosCanalSteps extends ParentSteps {
 	@Quando("^Contratar o plano ofertado \"([^\"]*)\" \"([^\"]*)\"$")
 	public void contratar_o_plano_ofertado(String tpPlano, boolean contratacao) throws Throwable {
 		ContratacaoPlanosCanalActions CP = new ContratacaoPlanosCanalActions(webdriver);
-		CP.ContratarPlano(tpPlano, contratacao);
+		if(contratacao){
+			CP.ContratarPlano(tpPlano, contratacao);
+		}else{
+			CP.validarAusenciaDeSidekick();
+		}
+		
 	}
 
 	@Entao("^devo validar que foi gravado no banco de dados o canal de contratacao \"([^\"]*)\" \"([^\"]*)\"$")
@@ -35,6 +40,12 @@ public class ContratacaoPlanosCanalSteps extends ParentSteps {
 	@Dado("^que eu tenha planos disponíveis para cantratacao \"([^\"]*)\"$")
 	public void que_eu_tenha_planos_disponíveis_para_cantratacao(String ambiente) throws Throwable {
 		comm.preparaBancoPlanos();
+	}
+	
+	@Quando("^efetuar o upload de planilha de planos para um \"([^\"]*)\" acima da qtde de registros permitido \"([^\"]*)\", \"([^\"]*)\"$")
+	public void efetuar_o_upload_de_planilha_de_planos_para_um_acima_da_qtde_de_registros_permitido(String CNPJ, String caminho, String fileName) throws Throwable {
+		ContratacaoPlanosCanalActions CP = new ContratacaoPlanosCanalActions(webdriver);
+		CP.upLoadDePlanilhaDeAcimaQtdeLinhas(caminho, fileName);
 	}
 
 }

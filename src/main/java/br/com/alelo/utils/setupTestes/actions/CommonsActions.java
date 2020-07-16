@@ -16,8 +16,6 @@ import br.com.alelo.integrations.db.ConnPpoint;
 import br.com.alelo.integrations.db.ConnSit;
 import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.integrations.db.ConnUsodsadq;
-import br.com.alelo.qa.web.actions.AntecipacaoActions;
-import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.setupTestes.query.LimparPID;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoArv;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoIndicadoresPainel;
@@ -291,16 +289,6 @@ public class CommonsActions {
 
 	}
 	
-	public void selecionarCnpjCombo(String numCNPJ, boolean operador) throws Throwable {
-
-		if (operador) {
-			AntecipacaoActions AA = new AntecipacaoActions(DriverAnonimo.getDriver());
-			AA.alterarEstabelecimento(numCNPJ);
-
-		} else {
-			AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-			AA.alterarEstabelecimento(numCNPJ);
-		}
-	}
+	
 
 }

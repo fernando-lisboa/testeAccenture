@@ -3,14 +3,17 @@ package br.com.alelo.qa.parallel.runner;
 import br.com.alelo.integrations.db.*;
 import br.com.alelo.integrations.teams.SendTestResultTeams;
 import br.com.alelo.integrations.vsts.controllers.RunController;
+import br.com.alelo.utils.DriverAnonimo;
 import br.com.alelo.utils.PropertiesFile;
 import br.com.alelo.utils.ResultsFileStorage;
 import br.com.alelo.utils.SimpleCacheManager;
+import br.com.alelo.utils.WebdriverAnonimous;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -24,8 +27,9 @@ import java.util.Date;
         glue = "classpath:br.com.alelo.qa.features.steps",
         strict = true,
         features = {"target/parallel/features/[CUCABLE:FEATURE].feature"},
-        plugin = {"json:target/cluecumber-report/[CUCABLE:RUNNER].json", "junit:target/[CUCABLE:RUNNER].xml"},
-        tags = {"@Regressivo", "~@ignore"}
+        plugin = {"json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"},
+       // plugin = {"json:target/cluecumber-report/[CUCABLE:RUNNER].json", "junit:target/[CUCABLE:RUNNER].xml"},
+        tags = {"@PlanoPorCanal"}
 )
 public class CucableJavaTemplate {
     // [CUCABLE:CUSTOM:comment]
@@ -57,9 +61,10 @@ public class CucableJavaTemplate {
         ConnUsodsadq.setConexao(dbEsmeralda);
 
         // Segundo Browser para execução de testes de simulação com operador de central "HELP"
-//         new WebdriverAnonimous();
-//         WebDriver driverAnonimo = WebdriverAnonimous.getDriverAnonimo();
-//         DriverAnonimo.setDriver(driverAnonimo);
+         new WebdriverAnonimous();
+         WebDriver driverAnonimo = WebdriverAnonimous.getDriverAnonimo();
+         DriverAnonimo.setDriver(driverAnonimo);
+         DriverAnonimo.getDriver().get("https://meuestabelecimento-hml.siteteste.inf.br/");
 
         PropertiesFile props = new PropertiesFile();
         System.out.println("------------------------------");

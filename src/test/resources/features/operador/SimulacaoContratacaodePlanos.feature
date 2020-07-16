@@ -23,6 +23,6 @@ Funcionalidade: Contratação de Planos
     #Entao a validacao do cenario deve conter como resultado "<Resultado>"
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ                              | Cenario          | operador | Contratacao | Resultado                                      |
-      | 9999-1 | 570.335.010-72 | Alelo2020@ | • 37.491.504/0001-61 - 1010745147 | Plano de 02 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-1 | 570.335.010-72 | Alelo2020@ | • 37.491.504/0001-61 - 1010745147 | Plano de 07 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-1 | 570.335.010-72 | Alelo2020@ | • 37.491.504/0001-61 - 1010745147 | Plano de 15 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 | Plano de 02 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 | Plano de 07 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 | Plano de 15 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |

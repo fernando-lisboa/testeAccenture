@@ -28,6 +28,7 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 		// TODO Auto-generated constructor stub
 
 	}
+
 	String queryPlanos = "SELECT NU_CNPJ, NU_EC, NM_CANAL, ID_CANAL FROM owadq.tsgm_contr WHERE nu_cnpj = 28339982000160";
 	CommonsActions conn_ation = new CommonsActions();
 
@@ -42,8 +43,22 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 		inputUpload.sendKeys(usingSystemProperty + path + nomeArquivo);
 		btnFazerUpload.click();
 		waitForElementPageToBeClickable(btnFechar);
-		System.out.println(btnFechar.getText());
 		Assert.assertThat(sucesso.getText(), is(msgSucessoTxt));
+		waitForElementPageToBeClickable(btnFechar);
+		btnFechar.click();
+
+	}
+	
+	public void upLoadDePlanilhaDeAcimaQtdeLinhas(String path, String nomeArquivo) {
+
+		botaoMenu_side_kick.click();
+		menuAssociarLote.click();
+		String usingSystemProperty = System.getProperty("user.dir");
+
+		inputUpload.sendKeys(usingSystemProperty + path + nomeArquivo);
+		btnFazerUpload.click();
+		waitForElementPageToBeClickable(btnFechar);
+		Assert.assertThat(erroMaximoLinhas.getText(), is(msgErroTxt));
 		waitForElementPageToBeClickable(btnFechar);
 		btnFechar.click();
 
@@ -102,8 +117,8 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 	public void validarBancoDeDadosCanal(String canal, String ambiente, Map<String, String> map) throws Exception {
 
 		switch (canal) {
+		
 		case "PortalEc":
-			// Consulta banco de dados para verificação do canal contratado
 			if (ambiente.equals("sit")) {
 				ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryPlanos);
 				while (teste.next()) {
@@ -112,11 +127,11 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 					String nomeCanal = teste.getString("NM_CANAL");
 					String idCanal = teste.getString("ID_CANAL");
 					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado", cnpj.equals(map.get("cnpj")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("Numero do EC cadastrado na base diferente do ofertado",
 							numeroEc.equals(map.get("numeroEc")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("Canal cadastrado na base diferente do ofertado",
 							nomeCanal.equals(map.get("nomeCanal")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("id canal cadastrado na base diferente do ofertado",
 							idCanal.equals(map.get("idCanal")));
 					break;
 				}
@@ -129,17 +144,18 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 					String nomeCanal = teste.getString("NM_CANAL");
 					String idCanal = teste.getString("ID_CANAL");
 					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado", cnpj.equals(map.get("cnpj")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("Numero do EC cadastrado na base diferente do ofertado",
 							numeroEc.equals(map.get("numeroEc")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("Canal cadastrado na base diferente do ofertado",
 							nomeCanal.equals(map.get("nomeCanal")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("id canal cadastrado na base diferente do ofertado",
 							idCanal.equals(map.get("idCanal")));
 					break;
 				}
+				break;
 			}
 		case "FrontVendas":
-			
+
 			if (ambiente.equals("sit")) {
 				ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryPlanos);
 				while (teste.next()) {
@@ -147,10 +163,9 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 					String numeroEc = teste.getString("NU_EC");
 					String nomeCanal = teste.getString("NM_CANAL");
 					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado", cnpj.equals(map.get("cnpj")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("Numero do EC cadastrado na base diferente do ofertado",
 							numeroEc.equals(map.get("numeroEc")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
-							nomeCanal.equals(canal));
+					Assert.assertTrue("Canal cadastrado na base diferente do ofertado", nomeCanal.equals(canal));
 					break;
 				}
 			} else {
@@ -161,15 +176,15 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 					String numeroEc = teste.getString("NU_EC");
 					String nomeCanal = teste.getString("NM_CANAL");
 					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado", cnpj.equals(map.get("cnpj")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("Numero do EC cadastrado na base diferente do ofertado",
 							numeroEc.equals(map.get("numeroEc")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
-							nomeCanal.equals(canal));
+					Assert.assertTrue("Canal cadastrado na base diferente do ofertado", nomeCanal.equals(canal));
 					break;
 				}
+				break;
 			}
 		case "App":
-			
+
 			if (ambiente.equals("sit")) {
 				ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryPlanos);
 				while (teste.next()) {
@@ -177,10 +192,9 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 					String numeroEc = teste.getString("NU_EC");
 					String nomeCanal = teste.getString("NM_CANAL");
 					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado", cnpj.equals(map.get("cnpj")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("Numero do EC cadastrado na base diferente do ofertado",
 							numeroEc.equals(map.get("numeroEc")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
-							nomeCanal.equals(canal));
+					Assert.assertTrue("Canal cadastrado na base diferente do ofertado", nomeCanal.equals(canal));
 					break;
 				}
 			} else {
@@ -191,14 +205,22 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 					String numeroEc = teste.getString("NU_EC");
 					String nomeCanal = teste.getString("NM_CANAL");
 					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado", cnpj.equals(map.get("cnpj")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
+					Assert.assertTrue("Numero do EC cadastrado na base diferente do ofertado",
 							numeroEc.equals(map.get("numeroEc")));
-					Assert.assertTrue("CNPJ cadastrado na base diferente do ofertado",
-							nomeCanal.equals(canal));
+					Assert.assertTrue("Canal cadastrado na base diferente do ofertado", nomeCanal.equals(canal));
 					break;
 				}
 			}
 		}
+
+	}
+
+	public void validarAusenciaDeSidekick() {
+		PlanosPage planosPage = new PlanosPage(webdriver);
+//		if (planosPage.botao_side_kick.isDisplayed()) {
+//			fail("Modal sidekick nao apresentado ou desabilitadopara o EC ");
+//		}
+		System.out.println("Validando banco de dados");
 
 	}
 

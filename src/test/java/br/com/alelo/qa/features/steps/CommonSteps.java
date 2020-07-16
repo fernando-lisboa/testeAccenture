@@ -29,7 +29,7 @@ public class CommonSteps extends ParentSteps {
 
 	@Before
 	public void beforeScenario(Scenario scenario) throws IOException {
-		System.out.println("PAINEL EC WEB..");
+		System.out.println("Portal EC WEB..");
 
 		props = new PropertiesFile();
 		String tags = scenario.getSourceTagNames().toString();

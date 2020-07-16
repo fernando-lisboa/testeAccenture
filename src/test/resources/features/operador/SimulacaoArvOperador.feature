@@ -26,11 +26,11 @@ Funcionalidade: Antecipacao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ                              | Cenario                          | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                      |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Parcial operador                 | true     | true  | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Total operador                   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-4 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | RecorrenteTotal Semanal operador | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-3 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Diário operador       | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-5 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Desativado operador   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-1 | 273.824.010-06 | Alelo2020@ | 436623 | Parcial operador                 | true     | true  | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-2 | 273.824.010-06 | Alelo2020@ | 436623 | Total operador                   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-4 | 273.824.010-06 | Alelo2020@ | 436623 | RecorrenteTotal Semanal operador | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-3 | 273.824.010-06 | Alelo2020@ | 436623 | Recorrente Diário operador       | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-5 | 273.824.010-06 | Alelo2020@ | 436623 | Recorrente Desativado operador   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
 
   @SimularOperadorViaPagina @Simulacao @02
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas - VIA PÁGINA=> <Cenario>
@@ -41,11 +41,11 @@ Funcionalidade: Antecipacao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ                              | Cenario                          | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                      |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Parcial operador                 | true     | false | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Total operador                   | true     | false | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-3 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Diário operador       | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-4 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | RecorrenteTotal Semanal operador | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-5 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Recorrente Desativado operador   | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-1 | 273.824.010-06 | Alelo2020@ | 436623 | Parcial operador                 | true     | false | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-2 | 273.824.010-06 | Alelo2020@ | 436623 | Total operador                   | true     | false | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-3 | 273.824.010-06 | Alelo2020@ | 436623 | Recorrente Diário operador       | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-4 | 273.824.010-06 | Alelo2020@ | 436623 | RecorrenteTotal Semanal operador | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-5 | 273.824.010-06 | Alelo2020@ | 436623 | Recorrente Desativado operador   | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
 
   @SimularOperador @Simulacao @encerraAnonimo
   Esquema do Cenario: <VSTS> - Validação da presença do sidekick => <Cenario>
@@ -67,9 +67,9 @@ Funcionalidade: Antecipacao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ                              | Cenario          | operador | Modal | Valor | Recorrencia | Contratacao | cenario                 | modal    |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Parcial operador | true     | true  | true  | false       | true        | Recorrente Diário       | inicio   |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Total operador   | true     | true  | false | false       | true        | RecorrenteTotal Semanal | inicio   |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Parcial operador | true     | false | true  | false       | true        | Recorrente Diário       | antecipe |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | • 28.339.982/0001-60 - 2000496258 | Total operador   | true     | false | false | false       | true        | RecorrenteTotal Semanal | antecipe |
+      | 9999-1 | 273.824.010-06 | Alelo2020@ | 436623 | Parcial operador | true     | true  | true  | false       | true        | Recorrente Diário       | inicio   |
+      | 9999-2 | 273.824.010-06 | Alelo2020@ | 436623 | Total operador   | true     | true  | false | false       | true        | RecorrenteTotal Semanal | inicio   |
+      | 9999-1 | 273.824.010-06 | Alelo2020@ | 436623 | Parcial operador | true     | false | true  | false       | true        | Recorrente Diário       | antecipe |
+      | 9999-2 | 273.824.010-06 | Alelo2020@ | 436623 | Total operador   | true     | false | false | false       | true        | RecorrenteTotal Semanal | antecipe |
 
 
