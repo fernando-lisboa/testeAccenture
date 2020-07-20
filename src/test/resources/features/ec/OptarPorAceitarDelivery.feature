@@ -5,7 +5,7 @@
 # * Data: 07/07/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo
+@Regressivo @ignore
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -16,7 +16,7 @@ Funcionalidade: Antecipacao
   Contexto: 
     Dado que prepara o banco de pid para testes "sit"
 
-  @Regressivo @delivery
+  @Regressivo @delivery @ignore
   Esquema do Cenario: <VSTS> - Realizar solicitação de app  => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     E preencha os dados de PID "sit"
@@ -32,7 +32,7 @@ Funcionalidade: Antecipacao
       #| 9999-1 | 610.425.030-01 | Alelo2020@ | Nao solicitar |
       #| 9999-1 | 610.425.030-01 | Alelo2020@ | multiplo      |
 
-  @Regressivo @Combo
+  @Regressivo @Combo @ignore
   Esquema do Cenario: <VSTS> - Realizar solicitação de app com Alimentação apenas  => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     E preencha os dados de PID "sit"

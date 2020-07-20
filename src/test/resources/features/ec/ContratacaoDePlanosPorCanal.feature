@@ -43,4 +43,4 @@ Funcionalidade: Contrtatação de planos por canal
 
     Exemplos: 
       | VSTS  | cenario                                              | CNPJ       | user           | senha      | operador | contratacao | path                                  | fileName                                 | tpPlano | canal    |
-      | 99997 | Ofertar planos econtratar pelo canal Portal - 2 dias | 2000496258 | 387.055.390-13 | Alelo2020@ | false    | true        | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_OfertasQtdeAcimaLinhas.xlsx |      02 | PortalEc |
+      | 99997 | Ofertar planos acima de quinhentas linhas de upload | 2000496258 | 387.055.390-13 | Alelo2020@ | false    | true        | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_OfertasQtdeAcimaLinhas.xlsx |      02 | PortalEc |

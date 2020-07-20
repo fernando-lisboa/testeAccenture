@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @SimulacaoPlanos
+@Regressivo @SimulacaoPlanos 
 Funcionalidade: Contratação de Planos
   Permite contratar planos
   
@@ -13,7 +13,7 @@ Funcionalidade: Contratação de Planos
   Dado que eu tenha planos disponíveis para cantratação
   
 
-  @realizar_contratacao @Michael @Simulacao
+  @realizar_contratacao
   Esquema do Cenario: <VSTS> - Realizar Simulação de contratação de planos => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"

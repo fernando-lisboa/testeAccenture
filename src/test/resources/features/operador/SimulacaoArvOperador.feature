@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @SimulacaoARV
+@Regressivo 
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -15,8 +15,7 @@ Funcionalidade: Antecipacao
 
   Contexto: 
     Dado que o banco de arv esteja preparado para os testes
-
-  @SimularOperador @Simulacao
+@SimularOperador
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
@@ -25,14 +24,14 @@ Funcionalidade: Antecipacao
     Entao a validacao do cenario deve conter como resultado "<Resultado>"
 
     Exemplos: 
-      | VSTS   | user           | senha      | CNPJ                              | Cenario                          | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                      |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | 436623 | Parcial operador                 | true     | true  | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | 436623 | Total operador                   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-4 | 273.824.010-06 | Alelo2020@ | 436623 | RecorrenteTotal Semanal operador | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-3 | 273.824.010-06 | Alelo2020@ | 436623 | Recorrente Diário operador       | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-5 | 273.824.010-06 | Alelo2020@ | 436623 | Recorrente Desativado operador   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-
-  @SimularOperadorViaPagina @Simulacao @02
+      | VSTS   | user           | senha      | CNPJ       | Cenario                          | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                      |
+      | 9999-1 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador                 | true     | true  | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-2 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador                   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-4 | 273.824.010-06 | Alelo2020@ | 2004240711 | RecorrenteTotal Semanal operador | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-3 | 273.824.010-06 | Alelo2020@ | 2004240711 | Recorrente Diário operador       | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-5 | 273.824.010-06 | Alelo2020@ | 2004240711 | Recorrente Desativado operador   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+  
+ @ignore
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas - VIA PÁGINA=> <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
@@ -40,14 +39,30 @@ Funcionalidade: Antecipacao
     E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>", antecipar "<Recorrencia>" e contratando "<Contratacao>" "<CNPJ>" "<operador>"
 
     Exemplos: 
-      | VSTS   | user           | senha      | CNPJ                              | Cenario                          | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                      |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | 436623 | Parcial operador                 | true     | false | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | 436623 | Total operador                   | true     | false | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-3 | 273.824.010-06 | Alelo2020@ | 436623 | Recorrente Diário operador       | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-4 | 273.824.010-06 | Alelo2020@ | 436623 | RecorrenteTotal Semanal operador | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-5 | 273.824.010-06 | Alelo2020@ | 436623 | Recorrente Desativado operador   | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | VSTS   | user           | senha      | CNPJ       | Cenario                          | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                      |
+      | 9999-1 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador                 | true     | false | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-2 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador                   | true     | false | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-3 | 273.824.010-06 | Alelo2020@ | 2004240711 | Recorrente Diário operador       | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-4 | 273.824.010-06 | Alelo2020@ | 2004240711 | RecorrenteTotal Semanal operador | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-5 | 273.824.010-06 | Alelo2020@ | 2004240711 | Recorrente Desativado operador   | true     | false | false | true        | false       | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
 
-  @SimularOperador @Simulacao @encerraAnonimo
+  @SimulacaoComRecorrencia  @SimularOperador
+  Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas com recorrencia <Cenario>
+    Dado que estou na logado no portal EC Operador "<user>", "<senha>"
+    E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
+    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
+    E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>", antecipar "<Recorrencia>" e contratando "<Contratacao>" "<CNPJ>" "<operador>"
+    Entao eu contrato a recorrencia da operacao e valido a mensagen de sucesso "<operador>", "<cenario>", "<modal>"
+
+    Exemplos: 
+      | VSTS   | user           | senha      | CNPJ       | Cenario          | operador | Modal | Valor | Recorrencia | Contratacao | cenario                 | modal    |
+      | 9999-1 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador | true     | true  | true  | false       | true        | Recorrente Diário       | inicio   |
+      | 9999-2 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador   | true     | true  | false | false       | true        | RecorrenteTotal Semanal | inicio   |
+      | 9999-1 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador | true     | false | true  | false       | true        | Recorrente Diário       | antecipe |
+      | 9999-2 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador   | true     | false | false | false       | true        | RecorrenteTotal Semanal | antecipe |
+      
+      
+       @Simulacao @encerraAnonimo  @SimularOperador
   Esquema do Cenario: <VSTS> - Validação da presença do sidekick => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
@@ -57,19 +72,4 @@ Funcionalidade: Antecipacao
     Exemplos: 
       | VSTS   | user           | senha      | ARV  | Cenario  | operador | Modal | Valor | Antecipacao |
       | 9999-1 | 273.824.010-06 | Alelo2020@ | true | sidekick | true     | true  | true  | false       |
-  @SimularOperador @SimulacaoComRecorrencia 
-  Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas com recorrencia <Cenario> 
-    Dado que estou na logado no portal EC Operador "<user>", "<senha>"
-    E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
-    Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
-    E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>", antecipar "<Recorrencia>" e contratando "<Contratacao>" "<CNPJ>" "<operador>"
-    Entao eu contrato a recorrencia da operacao e valido a mensagen de sucesso "<operador>", "<cenario>", "<modal>"
-
-    Exemplos: 
-      | VSTS   | user           | senha      | CNPJ                              | Cenario          | operador | Modal | Valor | Recorrencia | Contratacao | cenario                 | modal    |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | 436623 | Parcial operador | true     | true  | true  | false       | true        | Recorrente Diário       | inicio   |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | 436623 | Total operador   | true     | true  | false | false       | true        | RecorrenteTotal Semanal | inicio   |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | 436623 | Parcial operador | true     | false | true  | false       | true        | Recorrente Diário       | antecipe |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | 436623 | Total operador   | true     | false | false | false       | true        | RecorrenteTotal Semanal | antecipe |
-
-
+  

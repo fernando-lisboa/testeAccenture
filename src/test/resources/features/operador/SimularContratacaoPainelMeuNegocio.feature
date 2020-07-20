@@ -5,7 +5,7 @@
 # * Data: 06/02/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo  @Simulacao
+@Regressivo
 Funcionalidade: Painel Meu Negocio
   Contratação de painel meu negócio
   
@@ -15,23 +15,23 @@ Funcionalidade: Painel Meu Negocio
 
   Contexto: 
 
-  @SimularContratacaoPainelOperador @Regressivo @Simulacao
+
   Esquema do Cenario: <VSTS> - Painel <cenario>
-   Dado que estou na logado no portal EC Operador "<user>", "<senha>"
-     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
+    Dado que estou na logado no portal EC Operador "<user>", "<senha>"
+    E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
     Entao eu devo efetuar uma simulacao de contratacao via sidekick operador
 
     Exemplos: 
-      | VSTS   | user           | senha      | CNPJ                              | Cenario                                         | statusEsperado | Modal | Valor | Antecipacao | Contratacao | Resultado                                      |
-      | 9999-5 | 012.345.678-90 | Alelo2020@ | @ 51.244.767/0001-05 - 1015000387 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | true  | false | true        | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | VSTS   | user           | senha      | CNPJ       | Cenario                                         | statusEsperado | Modal | Valor | Antecipacao | Contratacao | Resultado                                      |
+      | 9999-5 | 012.345.678-90 | Alelo2020@ | 1015000387 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | true  | false | true        | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
 
-  @SimulacaoCancelamentoWeb @Regressivo @Simulacao
+
   Esquema do Cenario: <VSTS> - Painel <cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
-     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
+    E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
     Entao eu devo efetuar uma simulacao cancelamento de Painel meu negocio
 
     Exemplos: 
-      | VSTS   | user           | senha      | CNPJ                              | Cenario                                         | statusEsperado | Modal | Valor | Antecipacao | Contratacao | Resultado                                      |
-      | 9999-5 | 012.345.678-90 | Alelo2020@ | @ 67.117.779/0001-09 - 2004078183 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | true  | false | true        | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | VSTS   | user           | senha      | CNPJ       | Cenario                                         | statusEsperado | Modal | Valor | Antecipacao | Contratacao | Resultado                                      |
+      | 9999-5 | 012.345.678-90 | Alelo2020@ | 2004078183 | Efetivar contratação dentro do periodo gratuito | TESTE GRÁTIS   | true  | false | true        | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |

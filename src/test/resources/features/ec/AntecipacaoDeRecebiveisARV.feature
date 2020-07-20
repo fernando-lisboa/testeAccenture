@@ -25,11 +25,11 @@ Funcionalidade: Antecipacao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ       | Cenario                 | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                 |
-      | 9999-1 | 387.055.390-13 | Alelo2020@ | 2000496258 | Parcial                 | false    | true  | true  | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
-      | 9999-2 | 387.055.390-13 | Alelo2020@ | 2000496258 | Total                   | false    | true  | false | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
-      | 9999-3 | 387.055.390-13 | Alelo2020@ | 2000496258 | Recorrente Diário       | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   |
-      | 9999-4 | 387.055.390-13 | Alelo2020@ | 2000496258 | RecorrenteTotal Semanal | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   |
-      | 9999-5 | 387.055.390-13 | Alelo2020@ | 2000496258 | Recorrente Desativado   | false    | true  | false | true        | false       | antecipacao recorrente deve estar inativa |
+      | 9999-1 | 387.055.390-13 | Alelo2020@ | 2004240711 | Parcial                 | false    | true  | true  | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
+      | 9999-2 | 387.055.390-13 | Alelo2020@ | 2004240711 | Total                   | false    | true  | false | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
+      | 9999-3 | 387.055.390-13 | Alelo2020@ | 2004240711 | Recorrente Diário       | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   |
+      | 9999-4 | 387.055.390-13 | Alelo2020@ | 2004240711 | RecorrenteTotal Semanal | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   |
+      | 9999-5 | 387.055.390-13 | Alelo2020@ | 2004240711 | Recorrente Desativado   | false    | true  | false | true        | false       | antecipacao recorrente deve estar inativa |
 
   @Regressivo @ignore
   Esquema do Cenario: <VSTS> - Realizar Contratação de antecipacao de vendas via tela => <Cenario>
@@ -40,8 +40,8 @@ Funcionalidade: Antecipacao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ       | Cenario                 | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                 |
-      | 9999-1 | 387.055.390-13 | Alelo2020@ | 2000496258 | Parcial                 | false    | false | true  | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
-      | 9999-2 | 387.055.390-13 | Alelo2020@ | 2000496258 | Total                   | false    | false | false | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
-      | 9999-3 | 387.055.390-13 | Alelo2020@ | 2000496258 | Recorrente Diário       | false    | false | false | true        | false       | antecipacao recorrente deve estar ativa   |
-      | 9999-4 | 387.055.390-13 | Alelo2020@ | 2000496258 | RecorrenteTotal Semanal | false    | false | false | true        | false       | antecipacao recorrente deve estar ativa   |
-      | 9999-5 | 387.055.390-13 | Alelo2020@ | 2000496258 | Recorrente Desativado   | false    | false | false | true        | false       | antecipacao recorrente deve estar inativa |
+      | 9999-1 | 387.055.390-13 | Alelo2020@ | 2004240711 | Parcial                 | false    | false | true  | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
+      | 9999-2 | 387.055.390-13 | Alelo2020@ | 2004240711 | Total                   | false    | false | false | false       | true        | ANTECIPAÇÃO REALIZADA COM SUCESSO         |
+      | 9999-3 | 387.055.390-13 | Alelo2020@ | 2004240711 | Recorrente Diário       | false    | false | false | true        | false       | antecipacao recorrente deve estar ativa   |
+      | 9999-4 | 387.055.390-13 | Alelo2020@ | 2004240711 | RecorrenteTotal Semanal | false    | false | false | true        | false       | antecipacao recorrente deve estar ativa   |
+      | 9999-5 | 387.055.390-13 | Alelo2020@ | 2004240711 | Recorrente Desativado   | false    | false | false | true        | false       | antecipacao recorrente deve estar inativa |

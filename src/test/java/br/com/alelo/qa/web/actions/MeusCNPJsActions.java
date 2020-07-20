@@ -70,7 +70,8 @@ public class MeusCNPJsActions extends CriarUsuarioResetarSenhaPage {
 			String token = DriverAnonimo.getDriver().findElement(By.id("assistanceModalCode")).getText();
 
 			// Modal - Input do token gerado
-			webdriver.findElement(By.id("inputtoken")).sendKeys(token);
+			webdriver.findElement(By.id("inputtoken")).sendKeys(token.replace("-", ""));
+			//webdriver.findElement(By.id("inputtoken")).sendKeys(token);
 			
 
 			// Modal - Concordo com os termos

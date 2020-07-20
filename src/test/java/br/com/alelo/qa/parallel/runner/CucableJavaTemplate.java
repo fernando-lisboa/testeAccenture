@@ -29,7 +29,7 @@ import java.util.Date;
         features = {"target/parallel/features/[CUCABLE:FEATURE].feature"},
         plugin = {"json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"},
        // plugin = {"json:target/cluecumber-report/[CUCABLE:RUNNER].json", "junit:target/[CUCABLE:RUNNER].xml"},
-        tags = {"@PlanoPorCanal"}
+        tags = {"@Regressivo"}
 )
 public class CucableJavaTemplate {
     // [CUCABLE:CUSTOM:comment]

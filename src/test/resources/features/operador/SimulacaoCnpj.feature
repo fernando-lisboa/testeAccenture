@@ -12,7 +12,7 @@ Funcionalidade: MeusCNPJS
   Eu como usuario
   Quero adicionar CNPJS para o meu estabelecimento
 
-  @adicionar_CNPJS @Michael @Simulacao
+  @adicionar_CNPJS
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"

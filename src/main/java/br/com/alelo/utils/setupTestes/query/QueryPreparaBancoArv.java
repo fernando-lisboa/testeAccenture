@@ -18,13 +18,13 @@ public class QueryPreparaBancoArv {
 	
 	public StringBuilder roternaUpdateIdSolicitacao() {
 		StringBuilder sql = new StringBuilder(
-				"UPDATE owadq.tarv_rsumo_oper_dispn SET id_soltc = null WHERE id_pssoa_und =221592421");
+				"UPDATE owadq.tarv_rsumo_oper_dispn SET id_soltc = null WHERE id_pssoa_und =2004240711");
 		return sql;
 		
 	}
 	public StringBuilder roternaDeletePlanoRecorrente() {
 		StringBuilder sql = new StringBuilder(
-				"DELETE OWADQ.tsgm_contr where nu_cnpj = 28339982000160");
+				"DELETE OWADQ.tsgm_contr where nu_cnpj = 54203102000133");
 		return sql;
 		
 	}
