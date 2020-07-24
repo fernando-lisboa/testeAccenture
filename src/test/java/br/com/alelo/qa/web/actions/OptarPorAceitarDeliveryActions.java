@@ -31,11 +31,14 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 	public void preencherPID(String ambiente) throws Exception {
 
 		// region [Itens de Retorno do Banco de dados]
-		String queryItens = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('52608498000173'))select * from Itens where row_num = 1";
+		//HML
+		String queryItensHml = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('52608498000173'))select * from Itens where row_num = 1";
+		//SIT
+		String queryItensSit = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('02750575000157'))select * from Itens where row_num = 1";
 		CommonsActions conn_ation = new CommonsActions();
 		List<String> Itens = new ArrayList<>();
 		if (ambiente.equals("sit")) {
-			ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryItens);
+			ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryItensSit);
 			while (teste.next()) {
 				String nrDoc = teste.getString("NR_DOCUMENTO");
 				String cdBanco = teste.getString("CD_BANCO");
@@ -49,7 +52,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 			}
 
 		} else {
-			ResultSet teste = conn_ation.consultaBanco(ConnBuc.getConexao(), queryItens);
+			ResultSet teste = conn_ation.consultaBanco(ConnBuc.getConexao(), queryItensHml);
 			
 			while (teste.next()) {
 				String nrDoc = teste.getString("NR_DOCUMENTO");

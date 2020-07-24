@@ -13,6 +13,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.RecebimentosPage;
 import br.com.alelo.utils.SimpleCacheManager;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
@@ -29,25 +30,7 @@ public class RecebimentosActions extends RecebimentosPage {
         // TODO Auto-generated constructor stub
     }
 
-    public void alterarEstabelecimento(String cnpj) throws IOException, InterruptedException {
-        waitForElementToBeInvisible(loader);
-        if (cnpj.equals("28339982000160")) {
-            alterarCNPJ(ecRecebiveis_1);
-        } else if (cnpj.equals("12259140000168")) {
-            alterarCNPJ(ecRecebiveis_2);
-        }
-        else if (cnpj.equals("37491504000161")) {
-            alterarCNPJ(ecRecebiveis_3);
-        }
 
-    }
-
-    private void alterarCNPJ(WebElement elemento) {
-        opcao_select.click();
-        waitForElementToBeInvisible(loader);
-        elemento.click();
-        waitForElementToBeInvisible(loader);
-    }
 
     public void valitarTelaRecebiveis() {
         menuRecebimentos.click();
@@ -125,7 +108,7 @@ public class RecebimentosActions extends RecebimentosPage {
     }
 
     public void validarCampoCabecalho(String produto) {
-        Assert.assertTrue(!valorEsperado.equals("0,00"));
+        //Assert.assertTrue(!valorEsperado.equals("0,00"));
         String attribute = mesExibido.getAttribute("value");
         String dataEsperada = comm.dataRecebiveis(i).toString();
         Assert.assertThat(attribute, is(dataEsperada));
@@ -147,13 +130,15 @@ public class RecebimentosActions extends RecebimentosPage {
                     List<WebElement> spans = item_lista.findElements(By.tagName("span"));
                     if (!spans.get(3).getText().equals(""))
                         tipo_item = spans.get(2).getText().toUpperCase().trim();
+                    System.out.println(tipo_item);
                     if (!tipo_item.equals(""))
                         if (tipo_item.equals("VOU RECEBER") || tipo_item.equals("JÁ RECEBI") || tipo_item.equals("VOU RECEBER HOJE"))
                             if (!spans.get(3).getText().trim().replace("R$ ", "").equals("0,00") && !spans.get(3).getText().trim().replace("R$ ", "").contains("-")) {
                                 item_lista.click();
                                 selecionarProduto(produto, CNPJ, Comprovante);
                                 Thread.sleep(1000);
-                                webdriver.findElement(By.id("breadcrumbItemSchedule")).click(); // Agenda
+                               // jsWD.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, pageCnpj.acceptHelp);
+                                menuAgenda.click(); // Agenda
                                 waitForElementToBeInvisible(loader);
                             }
                 }

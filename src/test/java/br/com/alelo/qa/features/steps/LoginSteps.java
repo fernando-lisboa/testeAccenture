@@ -29,7 +29,6 @@ public class LoginSteps extends ParentSteps {
 		webdriver.get(baseurl); // Abre url
 		login = new LoginActions(webdriver);
 		login.loginGeral(user, senha);
-		System.out.println("logando..");
 	}
 
 	@Dado("^que estou na logado no portal EC Operador \"([^\"]*)\", \"([^\"]*)\"$")
@@ -51,14 +50,12 @@ public class LoginSteps extends ParentSteps {
 	@Quando("^preencher o formulario de login \"([^\"]*)\", \"([^\"]*)\"$")
 	public void preencher_o_formulario_de_login(String user, String senha) throws Throwable {
 		login = new LoginActions(webdriver);
-		login.preencherLogin(user, senha);
-		System.out.println("Aguardando carregar tela inicial...");
+		login.preencherLoginInvalido(user, senha);
 	}
 
 	@Entao("^devo visualizar a tela do painel$")
 	public void devo_visualizar_a_tela_do_painel() throws Throwable {
 		login.paginaInicial();
-		System.out.println("LOGADO...");
 	}
 
 	@Entao("^devo receber msg de erro no acesso$")

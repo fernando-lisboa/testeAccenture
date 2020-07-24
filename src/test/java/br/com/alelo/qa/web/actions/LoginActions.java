@@ -34,6 +34,16 @@ public class LoginActions extends LoginPage {
 		System.out.println(webdriver.getCurrentUrl());
 		waitForElementToBeInvisible(loader);
 	}
+	
+	public void preencherLoginInvalido(String user, String senha) throws InterruptedException {
+		Thread.sleep(2000);
+		userLogin.sendKeys(user);
+		Thread.sleep(2000);
+		password.sendKeys(senha);
+		Thread.sleep(2000);
+		btnEntrar.click();
+		System.out.println(webdriver.getCurrentUrl());
+	}
 
 	public void loginGeral(String user, String senha) throws Throwable {
 

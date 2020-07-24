@@ -31,6 +31,9 @@ public class RecebimentosPage extends PageObject {
 
 	@FindBy(css = ".totalValue")
 	protected List<WebElement> listAReceber;
+	
+	@FindBy(id = "breadcrumbItemScheduleMobile")
+	protected WebElement menuAgenda;
 
 	@FindBy(xpath = "//*[@id='ScheDay_totalValue']/div[2]/span[2]/text()")
 	protected List<WebElement> listAReceber2;
