@@ -226,7 +226,7 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
 	protected WebElement btnConfirmarHabilitar;
 	
 	// label da pergunta se quer habilitar delivery
-	@FindBy(xpath = "subTitle")
+	@FindBy(id = "deliveryComponent")
 	protected WebElement labelAskDelivery;
 	public String txtAskDelivery = "Deseja aceitar Alelo Refeições nas plataformas de delivery?";
 	

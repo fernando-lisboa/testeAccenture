@@ -32,7 +32,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 		// region [Itens de Retorno do Banco de dados]
 		//HML
-		String queryItensHml = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('52608498000173'))select * from Itens where row_num = 1";
+		String queryItensHml = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('28339982000160'))select * from Itens where row_num = 1";
 		//SIT
 		String queryItensSit = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('02750575000157'))select * from Itens where row_num = 1";
 		CommonsActions conn_ation = new CommonsActions();
@@ -107,9 +107,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		btn_primeiroAcessoConfirmar.click();
 		sleep(2000);
 
-		// Confirmar
-		btn_primeiroAcessoConfirmar.click();
-
+		
 		waitForElementPageToBeClickable(btn_primeiroAcessoComecar);
 		// Começar
 		btn_primeiroAcessoComecar.click();
@@ -136,8 +134,9 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 
 	public void verificarDelivery() {
-
-		Assert.assertTrue("Mensagem de delivery não disponível", labelAskDelivery.getText().equals(txtAskDelivery));
+		List<WebElement> labelList = labelAskDelivery.findElements(By.tagName("h4"));
+		
+		Assert.assertTrue("Mensagem de delivery não disponível", labelList.get(0).getText().equals(txtAskDelivery));
 		Assert.assertTrue("Label do botão diferente de Concluir", btnConfirmarHabilitar.getText().equals("Concluir"));
 		
 	}

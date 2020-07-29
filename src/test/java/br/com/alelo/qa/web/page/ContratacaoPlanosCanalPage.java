@@ -41,9 +41,9 @@ public class ContratacaoPlanosCanalPage extends PageObject {
 	protected WebElement sucesso;
 	public String msgSucessoTxt = "Todas as 1 linhas da planilha foram processadas com sucesso.";
 	
-	@FindBy(xpath = "//p[contains(.,'Excedido o número máximo de 500 linhas')]")
+	@FindBy(xpath = "//p[contains(.,'Excedido o número máximo de 3,000 linhas')]")
 	protected WebElement erroMaximoLinhas;
-	public String msgErroTxt = "Excedido o número máximo de 500 linhas";
+	public String msgErroTxt = "Excedido o número máximo de 3,000 linhas";
 	
 	@FindBy(id = "anticipationModalCallbackBody")
 	protected WebElement msgSucessoContratacao;

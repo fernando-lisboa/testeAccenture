@@ -44,6 +44,7 @@ public class ContratacaoPlanosCanalSteps extends ParentSteps {
 	
 	@Quando("^efetuar o upload de planilha de planos para um \"([^\"]*)\" acima da qtde de registros permitido \"([^\"]*)\", \"([^\"]*)\"$")
 	public void efetuar_o_upload_de_planilha_de_planos_para_um_acima_da_qtde_de_registros_permitido(String CNPJ, String caminho, String fileName) throws Throwable {
+		comm.preparaBancoPlanos();
 		ContratacaoPlanosCanalActions CP = new ContratacaoPlanosCanalActions(webdriver);
 		CP.upLoadDePlanilhaDeAcimaQtdeLinhas(caminho, fileName);
 	}
