@@ -4,7 +4,7 @@
 # * Change: 08/01/2019 | Author: Jessé Dantas - Taking
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo 
+@ignore
 Funcionalidade: Recebimentos
   Permite a consulta dos valores a serem disponibilizados ao usuario ao longo do mes
 
@@ -20,7 +20,7 @@ Funcionalidade: Recebimentos
       | 9999-2 | Realizar consulta de valores a receber no proximo mes  | mês seguinte | 2004240711 | 594.114.000-27 | Alelo2020@ |
       | 9999-3 | Realizar consulta de valores recebidos no mes anterior | mês anterior | 2004240711 | 594.114.000-27 | Alelo2020@ |
 
-@Recebimentos
+@ignore
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     Quando eu clicar no menu recebimentos "<cnpj>"
@@ -32,7 +32,7 @@ Funcionalidade: Recebimentos
       | 9999-4 | Consultar Recebimentos por tipo de produto - REFEIÇÃO    | ALELO REFEICAO    | 2004240711 | 594.114.000-27 | Alelo2020@ |
      #| 9999-5 | Consultar Recebimentos por tipo de produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 2004240711 | 594.114.000-27 | Alelo2020@ |
      #| 9999-6 | Consultar Recebimentos por tipo de produto - TODOS       | TODOS             | 2004240711 | 594.114.000-27 | Alelo2020@ |
-
+@ignore
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     Quando eu clicar no menu recebimentos "<cnpj>"
@@ -45,7 +45,7 @@ Funcionalidade: Recebimentos
       | 9999-7 | Consultar detalhe das transações de acordo com o produto - REFEIÇÃO    | ALELO REFEICAO    | 2004240711 | 594.114.000-27 | Alelo2020@ |
       | 9999-8 | Consultar detalhe das transações de acordo com o produto - ALIMENTAÇÃO | ALELO ALIMENTACAO | 2004240711 | 594.114.000-27 | Alelo2020@ |
       | 9999-9 | Consultar detalhe das transações de acordo com o produto- TODOS        | TODOS             | 2004240711 | 594.114.000-27 | Alelo2020@ |
-
+@ignore
   Esquema do Cenario: <VSTS> - Comprovante detalhado <cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     Quando eu clicar no menu recebimentos "<cnpj>"

@@ -5,7 +5,7 @@
 #* Data: 06/03/2020
 #* Caminho: Portal Estabelecimento Web Admin
 #*/
-@criacaoDemensagens
+@criacaoDemensagens @ignore
 Funcionalidade: CriaçãoDeMensagem
   Criar e enviar um comunicado para cliente estabelecimento comercial
 

@@ -15,7 +15,7 @@ Funcionalidade: Antecipacao
 
   Contexto: 
     Dado que o banco de arv esteja preparado para os testes
-@SimularOperador
+@SimularOperador @upload
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
@@ -26,10 +26,10 @@ Funcionalidade: Antecipacao
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ       | Cenario                          | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                      |
       | 9999-1 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador                 | true     | true  | true  | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador                   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-4 | 273.824.010-06 | Alelo2020@ | 2004240711 | RecorrenteTotal Semanal operador | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-3 | 273.824.010-06 | Alelo2020@ | 2004240711 | Recorrente Diário operador       | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-5 | 273.824.010-06 | Alelo2020@ | 2004240711 | Recorrente Desativado operador   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      #| 9999-2 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador                   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      #| 9999-4 | 273.824.010-06 | Alelo2020@ | 2004240711 | RecorrenteTotal Semanal operador | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      #| 9999-3 | 273.824.010-06 | Alelo2020@ | 2004240711 | Recorrente Diário operador       | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      #| 9999-5 | 273.824.010-06 | Alelo2020@ | 2004240711 | Recorrente Desativado operador   | true     | true  | false | false       | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
   
  @ignore
   Esquema do Cenario: <VSTS> - Realizar Simulação de antecipacao de vendas - VIA PÁGINA=> <Cenario>

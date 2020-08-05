@@ -31,14 +31,15 @@ import java.util.Date;
 @CucumberOptions(strict = false, features = {"src/test/resources/features/ec/", "src/test/resources/features/operador/"}, plugin = {
         "json:target/cluecumber-report/cucumber.json", "junit:target/junit.xml"},
 		glue = {
-        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@PlanoPorCanal", "~@ignore"})
+        "classpath:br.com.alelo.qa.features.steps"}, tags = {"@Regressivo", "~@ignore"})
 
 public class CucumberRunnerTest {
 
     private static RunController newRun = null;
     private static SimpleCacheManager cache = SimpleCacheManager.getInstance();
     private static Date dataHoraInicio = new Date();
-
+    static WebDriver driverAnonimo;
+    
     @Autowired
     protected static String titulo;
 
@@ -66,7 +67,7 @@ public class CucumberRunnerTest {
 
         //  Segundo Browser para execução de testes de simulação com operador de central "HELP"
          new WebdriverAnonimous();
-         WebDriver driverAnonimo = WebdriverAnonimous.getDriverAnonimo();
+         driverAnonimo = WebdriverAnonimous.getDriverAnonimo();
          DriverAnonimo.setDriver(driverAnonimo);
          DriverAnonimo.getDriver().get("https://meuestabelecimento-hml.siteteste.inf.br/");
          
@@ -124,6 +125,7 @@ public class CucumberRunnerTest {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        driverAnonimo.quit();
         ResultsFileStorage.deleteFile();
     }
 }

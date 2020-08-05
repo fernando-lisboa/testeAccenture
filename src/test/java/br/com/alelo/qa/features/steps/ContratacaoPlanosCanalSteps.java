@@ -5,6 +5,7 @@ import java.util.Map;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.ContratacaoPlanosCanalActions;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
+import cucumber.api.DataTable;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -18,6 +19,7 @@ public class ContratacaoPlanosCanalSteps extends ParentSteps {
 			throws Throwable {
 		ContratacaoPlanosCanalActions CP = new ContratacaoPlanosCanalActions(webdriver);
 		CP.upLoadDePlanilhaDePlanos(caminho, fileName);
+		
 	}
 
 	@Quando("^Contratar o plano ofertado \"([^\"]*)\" \"([^\"]*)\"$")
@@ -47,6 +49,15 @@ public class ContratacaoPlanosCanalSteps extends ParentSteps {
 		comm.preparaBancoPlanos();
 		ContratacaoPlanosCanalActions CP = new ContratacaoPlanosCanalActions(webdriver);
 		CP.upLoadDePlanilhaDeAcimaQtdeLinhas(caminho, fileName);
+	}
+	
+	@Entao("^devo validar que foi gravado no banco de dados o canal de contratacao \"([^\"]*)\" \"([^\"]*)\" e excluo os planos ofertados \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
+	public void devo_validar_que_foi_gravado_no_banco_de_dados_o_canal_de_contratacao_e_excluo_os_planos_ofertados(String canal, String ambiente, String user, String password, String path, String fileNameRemove) throws Throwable {
+	    
+		ContratacaoPlanosCanalActions CP = new ContratacaoPlanosCanalActions(webdriver);
+		CP.validarBancoDeDadosCanalAcimaDe3k_linhas(canal,ambiente);
+		CP.excluirPlanosOfertados(user, password, path, fileNameRemove);
+		
 	}
 
 }

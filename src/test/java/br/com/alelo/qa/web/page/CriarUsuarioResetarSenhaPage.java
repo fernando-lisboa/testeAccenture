@@ -236,8 +236,9 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
 	
 	// id principal para pegar a mensagem de confirmação de solicitação  
 	//cardFeedBack.findElements(By.id(txtCardFeedBack)).getText();
-	@FindBy(id = "feedbackText")
+	@FindBy(id = "feedbackCard")
 	protected WebElement txtCardFeedBack;
+	public String txtConfirmacao =  "Recebemos sua solicitação!";
 	
 	@FindBy(id = "exitLink")
 	protected WebElement retornarPortal;

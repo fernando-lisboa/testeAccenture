@@ -30,6 +30,7 @@ public class LoginSteps extends ParentSteps {
 		login = new LoginActions(webdriver);
 		login.loginGeral(user, senha);
 	}
+	
 
 	@Dado("^que estou na logado no portal EC Operador \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_EC_Operador(String user, String senha) throws Throwable {

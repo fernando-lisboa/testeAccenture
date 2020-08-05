@@ -1,6 +1,7 @@
 package br.com.alelo.qa.web.actions;
 
 import static java.lang.Thread.sleep;
+import static org.hamcrest.CoreMatchers.is;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import br.com.alelo.integrations.db.ConnBuc;
 import br.com.alelo.integrations.db.ConnSit;
+import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.qa.web.page.CriarUsuarioResetarSenhaPage;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 
@@ -31,9 +33,9 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 	public void preencherPID(String ambiente) throws Exception {
 
 		// region [Itens de Retorno do Banco de dados]
-		//HML
+		// HML
 		String queryItensHml = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('28339982000160'))select * from Itens where row_num = 1";
-		//SIT
+		// SIT
 		String queryItensSit = "with Itens as(SELECT ROW_NUMBER() OVER(ORDER BY doc.nr_documento DESC) row_num, doc.nr_documento, pdc.cd_banco, pdc.nu_agencia, pdc.nu_conta FROM base_unica_cad.documento doc left join base_unica_cad.pessoa_unidade pu on (pu.niu_pessoa = doc.niu_pessoa) left join base_unica_cad.pessoa_domicilio_bancario pdc on (pdc.niu_pessoa = pu.niu_pessoa) WHERE doc.nr_documento in ('02750575000157'))select * from Itens where row_num = 1";
 		CommonsActions conn_ation = new CommonsActions();
 		List<String> Itens = new ArrayList<>();
@@ -53,7 +55,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 		} else {
 			ResultSet teste = conn_ation.consultaBanco(ConnBuc.getConexao(), queryItensHml);
-			
+
 			while (teste.next()) {
 				String nrDoc = teste.getString("NR_DOCUMENTO");
 				String cdBanco = teste.getString("CD_BANCO");
@@ -101,94 +103,97 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 		waitForElementPageToBeClickable(btn_primeiroAcessoConfirmar);
 
-		sleep(2000);
+		sleep(4000);
 
 		// Confirmar
 		btn_primeiroAcessoConfirmar.click();
 		sleep(2000);
 
-		
 		waitForElementPageToBeClickable(btn_primeiroAcessoComecar);
 		// Começar
+		sleep(2000);
+
 		btn_primeiroAcessoComecar.click();
 
 		waitForElementToBeInvisible(loader);
 
 	}
 
-	public void selecionarApp(String cenario) {
-		if (cenario.equals("ifood")) {
+	public void selecionarApp(String cenario) throws InterruptedException {
+		if (cenario.equals("Ifood")) {
 			waitForElementPageToBeClickable(swiftIfood);
 			swiftIfood.click();
-		}else if(cenario.equals("rappy")){
+			sleep(1000);
+		} else if (cenario.equals("Rappy")) {
 			waitForElementPageToBeClickable(swiftRappy);
+			sleep(1000);
 			swiftRappy.click();
-		}else{
+		} else {
 			waitForElementPageToBeClickable(swiftRappy);
 			swiftIfood.click();
+			sleep(1000);
 			waitForElementPageToBeClickable(swiftIfood);
 			swiftRappy.click();
+			sleep(1000);
 		}
 
 	}
-
 
 	public void verificarDelivery() {
 		List<WebElement> labelList = labelAskDelivery.findElements(By.tagName("h4"));
-		
+
 		Assert.assertTrue("Mensagem de delivery não disponível", labelList.get(0).getText().equals(txtAskDelivery));
-		Assert.assertTrue("Label do botão diferente de Concluir", btnConfirmarHabilitar.getText().equals("Concluir"));
-		
+		// Assert.assertTrue("Label do botão diferente de Concluir",
+		// btnConfirmarHabilitar.getText().equals("Concluir"));
+
 	}
 
 	public void habilitarEconfirmarMsg() {
+		waitForElementPageToBeClickable(btnConfirmarHabilitar);
 		btnConfirmarHabilitar.click();
-		String text = txtCardFeedBack.getText();
-		System.out.println(text);
+		WebElement text = txtCardFeedBack.findElement(By.tagName("h1"));
+		System.out.println(text.getText());
+		Assert.assertThat("Mensagem de confirmação não exibida", text.getText(), is(txtConfirmacao));
 		retornarPortal.click();
-		Assert.assertEquals("NãO RETORNOU PARA O PORTAL NA TELA DE INICIO", webdriver.getCurrentUrl().contains("inicio"));
-		
+		Assert.assertTrue("NãO RETORNOU PARA O PORTAL NA TELA DE INICIO", webdriver.getCurrentUrl().contains("inicio"));
 
 	}
-	
-	public void validarBancoDeDados_App(String ambiente) throws Exception {
 
-		// Consulta banco de dados para verificação de solicitação de App - Ifood e Rappy
-		//TODO trocar query para verificação de banco apos opção do APP
-		String queryItens = "SELECT D.ID_PRDT, D.NU_CNPJ, P.NM_PRDT, P.IN_STTUS_ATIVO FROM TDSV_DCMNTO AS D JOIN TDSV_PRDT AS P ON D.ID_PRDT = P.ID_PRDT;";
+	public void validarBancoDeDados_App(String ambiente, String idPlataforma) throws Exception {
+		int platform;
+		// Consulta banco de dados para verificação de solicitação de App -
+		
+		if (idPlataforma.equals("Ifood")) {
+			platform = 1;
+		} else {
+			platform = 2;
+		}
+
+		String queryItens = "select * from TDSV_ESTBL_COML WHERE ID_PLATF_DLIVRY =" + platform + "";
 		CommonsActions conn_ation = new CommonsActions();
+		ResultSet returnSelect;
 		List<String> Itens = new ArrayList<>();
 		if (ambiente.equals("sit")) {
-			ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryItens);
-			while (teste.next()) {
-				String cnpj = teste.getString("NU_CNPJ");
-				String nomeProduto = teste.getString("NM_PRDT");
-				String statusProduto = teste.getString("IN_STTUS_ATIVO");
-				String idProduto = teste.getString("ID_PRDT");
-				Itens.add(cnpj);
-				Itens.add(nomeProduto);
-				Itens.add(statusProduto);
-				Itens.add(idProduto);
-				break;
-			}
+			returnSelect = conn_ation.consultaBanco(ConnSit.getConexao(), queryItens);
 		} else {
-
-			ResultSet teste = conn_ation.consultaBanco(ConnBuc.getConexao(), queryItens);
-			while (teste.next()) {
-				String cnpj = teste.getString("NU_CNPJ");
-				String nomeProduto = teste.getString("NM_PRDT");
-				String statusProduto = teste.getString("IN_STTUS_ATIVO");
-				String idProduto = teste.getString("ID_PRDT");
-				Itens.add(cnpj);
-				Itens.add(nomeProduto);
-				Itens.add(statusProduto);
-				Itens.add(idProduto);
-				break;
-			}
+			returnSelect = conn_ation.consultaBanco(ConnUsadq.getConexao(), queryItens);
 		}
-		
-		//TODO fazer assert Para verificar as tabelas
-		
+		while (returnSelect.next()) {
+			String idEstabelecimento = returnSelect.getString("ID_ESTBL");
+			String nuCnpj = returnSelect.getString("NU_CNPJ");
+			String cdEstabelecimento = returnSelect.getString("CD_ESTBL_COML");
+			String idPlataformaDelivery = returnSelect.getString("ID_PLATF_DLIVRY");
+			Itens.add(idEstabelecimento);
+			Itens.add(nuCnpj);
+			Itens.add(cdEstabelecimento);
+			Itens.add(idPlataformaDelivery);
+			
+			break;
+		}
+
+		// TODO fazer assert Para verificar as tabelas
+		System.out.println();
+
 	}
 
 }

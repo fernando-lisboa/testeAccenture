@@ -45,7 +45,7 @@ public class PageObject {
     public PageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.webdriver = driver;
-        this.webdriver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+        this.webdriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         this.webdriver.manage().window().maximize();
 
     }

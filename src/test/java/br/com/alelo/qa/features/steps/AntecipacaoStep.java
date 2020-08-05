@@ -17,17 +17,16 @@ import cucumber.api.java.pt.Entao;
 
 public class AntecipacaoStep extends ParentSteps {
 
-	
 	@Dado("^que o banco de arv esteja preparado para os testes$")
 	public void que_o_banco_de_arv_esteja_preparado_para_os_testes() throws Throwable {
 		CommonsActions comm = new CommonsActions();
 		comm.updateParaContratacaoArv();
+
 	}
 
 	@E("^seleciono um CNPJ de número \"([^\"]*)\" no combo Estabelecimento \"([^\"]*)\"$")
 	public void seleciono_um_CNPJ_no_combo_Estabelecimento(String numCNPJ, boolean operador) throws Throwable {
 
-		
 		if (operador) {
 			AntecipacaoActions AA = new AntecipacaoActions(DriverAnonimo.getDriver());
 			AA.alterarEstabelecimento(numCNPJ);
@@ -36,7 +35,7 @@ public class AntecipacaoStep extends ParentSteps {
 			AntecipacaoActions AA = new AntecipacaoActions(webdriver);
 			AA.alterarEstabelecimento(numCNPJ);
 		}
-		
+
 	}
 
 	@E("estou usando \"([^\"]*)\", se cenario \"([^\"]*)\", devo alterar o valor \"([^\"]*)\", antecipar \"([^\"]*)\" e contratando \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
@@ -83,8 +82,8 @@ public class AntecipacaoStep extends ParentSteps {
 
 	@Entao("^encerro o driver anonimo para help$")
 	public void encerro_o_driver_anonimo_para_help() throws Throwable {
-		
+
 		DriverAnonimo.getDriver().close();
-		
+
 	}
 }

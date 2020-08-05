@@ -16,22 +16,22 @@ Funcionalidade: Antecipacao
   Contexto: 
     Dado que prepara o banco de pid para testes "hml"
 
-  @Regressivo @delivery
+@Regressivo
   Esquema do Cenario: <VSTS> - Realizar solicitação de app  => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     E preencha os dados de PID "<ambiente>"
     Quando verificar a label do botao concluir
-    E optar por aceitar a opcao app "<Cenario>" e clicar em avancar
+    E optar por aceitar a opcao app "<Delivery>" e clicar em avancar
     E devo validar a msg de confirmacao
-    Entao deve gravar no banco de dados a opcao escolhida "<Cenario>"
+    Entao deve gravar no banco de dados a opcao escolhida "<ambiente>", "<Delivery>"
 
     Exemplos: 
-      | VSTS   | Cenario                                          | user           | senha      | Cenario       | ambiente |
-      | 9999-1 | Realizar credenciamento com solicitação de ifood | 972.018.730-16 | Alelo2020@ | Ifood         | hml      |
-      | 9999-1 | Realizar credenciamento com solicitação de rappy | 610.425.030-01 | Alelo2020@ | rappy         | hml      |
-      | 9999-1 | Realizar credenciamento sem solicitação app      | 610.425.030-01 | Alelo2020@ | Nao solicitar | hml      |
+      | VSTS   | Cenario                                          | user           | senha      | Delivery | ambiente |
+      | 9999-1 | Realizar credenciamento com solicitação de ifood | 972.018.730-16 | Alelo2020@ | Ifood    | hml      |
+      | 9999-1 | Realizar credenciamento com solicitação de rappy | 972.018.730-16 | Alelo2020@ | Rappy    | hml      |
+      | 9999-1 | Realizar credenciamento solicitando ambas opções | 972.018.730-16 | Alelo2020@ | TUDO     | hml      |
 
-  @Regressivo @Combo @ignore
+  @ignore
   Esquema do Cenario: <VSTS> - Realizar solicitação de app com Alimentação apenas  => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>"
     E preencha os dados de PID "<ambiente>"

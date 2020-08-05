@@ -46,14 +46,17 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 		delivery.habilitarEconfirmarMsg();
 	}
 
-	@Entao("^deve gravar no banco de dados a opcao escolhida \"([^\"]*)\"$")
-	public void deve_gravar_no_banco_de_dados_a_opcao_escolhida(String arg1) throws Throwable {
-
+	@Entao("^deve gravar no banco de dados a opcao escolhida \"([^\"]*)\", \"([^\"]*)\"$")
+	public void deve_gravar_no_banco_de_dados_a_opcao_escolhida(String ambiente, String plataforma) throws Throwable {
+		
+		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
+		
+		delivery.validarBancoDeDados_App(ambiente, plataforma);
 	}
 
 	@Entao("^devo verificar que não é oferecido a opção de app$")
 	public void devo_verificar_que_não_é_oferecido_a_opção_de_app() throws Throwable {
-
+		System.out.println("EM DESENVOLVIMENTO.....");
 	}
 
 }

@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import br.com.alelo.integrations.db.ConnBuc;
 import br.com.alelo.integrations.db.ConnSit;
 import br.com.alelo.integrations.db.ConnUsadq;
+import br.com.alelo.qa.features.steps.LoginSteps;
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.ContratacaoPlanosCanalPage;
 import br.com.alelo.qa.web.page.PlanosPage;
@@ -42,13 +43,14 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 
 		inputUpload.sendKeys(usingSystemProperty + path + nomeArquivo);
 		btnFazerUpload.click();
+		waitForElementPageToBeClickable(btnFazerUpload);
 		waitForElementPageToBeClickable(btnFechar);
 		Assert.assertThat(sucesso.getText(), is(msgSucessoTxt));
 		waitForElementPageToBeClickable(btnFechar);
 		btnFechar.click();
 
 	}
-	
+
 	public void upLoadDePlanilhaDeAcimaQtdeLinhas(String path, String nomeArquivo) {
 
 		botaoMenu_side_kick.click();
@@ -117,7 +119,7 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 	public void validarBancoDeDadosCanal(String canal, String ambiente, Map<String, String> map) throws Exception {
 
 		switch (canal) {
-		
+
 		case "PortalEc":
 			if (ambiente.equals("sit")) {
 				ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryPlanos);
@@ -217,11 +219,49 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 
 	public void validarAusenciaDeSidekick() {
 		PlanosPage planosPage = new PlanosPage(webdriver);
-//		if (planosPage.botao_side_kick.isDisplayed()) {
-//			fail("Modal sidekick nao apresentado ou desabilitadopara o EC ");
-//		}
+		// if (planosPage.botao_side_kick.isDisplayed()) {
+		// fail("Modal sidekick nao apresentado ou desabilitadopara o EC ");
+		// }
 		System.out.println("Validando banco de dados");
 
+	}
+
+	public void excluirPlanosOfertados(String user, String password, String path, String fileNameRemove) throws Throwable {
+		LoginSteps login = new LoginSteps();
+		login.que_estou_na_logado_no_portal_webadmim_EC(user, password);
+		ContratacaoPlanosCanalActions CP = new ContratacaoPlanosCanalActions(webdriver);
+		CP.upLoadDePlanilhaDeAcimaQtdeLinhas(path, fileNameRemove);
+		
+
+	}
+
+	public void validarBancoDeDadosCanalAcimaDe3k_linhas(String canal, String ambiente) throws Exception {
+		
+		//TODO montar um foreath para ler a planilha e adicionar os itens numa lista
+		//TODO montar um foreach para ler o banco e validar cada item da planilha
+		
+		if (ambiente.equals("sit")) {
+			ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryPlanos);
+			while (teste.next()) {
+				String cnpj = teste.getString("NU_CNPJ");
+				String numeroEc = teste.getString("NU_EC");
+				String nomeCanal = teste.getString("NM_CANAL");
+				String idCanal = teste.getString("ID_CANAL");
+								break;
+			}
+		} else {
+
+			ResultSet teste = conn_ation.consultaBanco(ConnUsadq.getConexao(), queryPlanos);
+			while (teste.next()) {
+				String cnpj = teste.getString("NU_CNPJ");
+				String numeroEc = teste.getString("NU_EC");
+				String nomeCanal = teste.getString("NM_CANAL");
+				String idCanal = teste.getString("ID_CANAL");
+				
+				break;
+			}
+		}
+		
 	}
 
 }
