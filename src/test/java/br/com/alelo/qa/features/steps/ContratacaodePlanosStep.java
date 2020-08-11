@@ -32,9 +32,17 @@ public class ContratacaodePlanosStep extends ParentSteps {
 			CPA.ContratarPlano(Cenario, Contratacao);
 		}
 	}
-
-	@Dado("^que eu tenha planos disponíveis para cantratação$")
-	public void que_eu_tenha_planos_disponíveis_para_cantratação() throws Throwable {
-		comm.preparaBancoPlanos();
+	
+	@Dado("^que eu tenha planos disponíveis para cantratação \"([^\"]*)\"$")
+	public void que_eu_tenha_planos_disponíveis_para_cantratação(Boolean operador) throws Throwable {
+		
+		if(operador){
+			comm.preparaBancoPlanosSimulacao();
+		}else{
+			
+			comm.preparaBancoPlanos();
+		}
+		
 	}
+
 }

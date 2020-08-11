@@ -387,9 +387,11 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	}
 
 	// Valida se ao contrratar recorrencia, volta para o inicio o fecha a sessão
-	public void sairDaSimulação(String modal) {
-		System.out.println("Iniciando a validação da pagina inicial");
-		if (driver.getCurrentUrl().contains(modal)) {
+	public void sairDaSimulação(String modal) throws InterruptedException {
+		Thread.sleep(5000);
+		Assert.assertThat("não simulou recorrencia",acceptHelpSimulation.getText(),is(txtAccetpHelpSimulation));
+		javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, btnOkHelp);
+ 		if (driver.getCurrentUrl().contains(modal)) {
 			Assert.assertTrue("SideKick não está presente na tela após simulação", sideKickSimulation.isDisplayed());
 			System.out.println("Voltou para a tela inicial após o final do teste e manteve o scope OPERADOR");
 			driver.findElement(By.id("nav-dropdown")).click();

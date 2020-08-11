@@ -16,9 +16,9 @@ Funcionalidade: Antecipacao
   Contexto: 
     Dado que prepara o banco de pid para testes "hml"
 
-@Regressivo
+@Regressivo @delivery
   Esquema do Cenario: <VSTS> - Realizar solicitação de app  => <Cenario>
-    Dado que estou na logado no portal EC "<user>", "<senha>"
+    Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     E preencha os dados de PID "<ambiente>"
     Quando verificar a label do botao concluir
     E optar por aceitar a opcao app "<Delivery>" e clicar em avancar

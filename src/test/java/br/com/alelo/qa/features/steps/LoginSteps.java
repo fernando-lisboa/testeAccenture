@@ -11,6 +11,7 @@ package br.com.alelo.qa.features.steps;
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.LoginActions;
 import br.com.alelo.qa.web.page.LoginPage;
+import br.com.alelo.utils.PropertiesFile;
 import br.com.alelo.utils.SimpleCacheManager;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 import cucumber.api.java.it.Quando;
@@ -23,10 +24,18 @@ public class LoginSteps extends ParentSteps {
 	LoginPage page;
 	CommonsActions comm = new CommonsActions();
 	protected SimpleCacheManager cache = SimpleCacheManager.getInstance();
+	PropertiesFile props;
 
-	@Dado("^que estou na logado no portal EC \"([^\"]*)\", \"([^\"]*)\"$")
-	public void que_estou_na_logado_no_portal_EC(String user, String senha) throws Throwable {
-		webdriver.get(baseurl); // Abre url
+	@Dado("^que estou na logado no portal EC \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
+	public void que_estou_na_logado_no_portal_EC(String user, String senha, String ambiente) throws Throwable {
+		if(ambiente=="hml"){
+			webdriver.get(baseurl); // Abre url
+		}
+		else{
+			props = new PropertiesFile();
+			webdriver.get(props.getValor("baseurlSIT"));
+			
+		}
 		login = new LoginActions(webdriver);
 		login.loginGeral(user, senha);
 	}

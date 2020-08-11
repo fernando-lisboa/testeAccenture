@@ -16,7 +16,7 @@ public class QueryUploadNovosPlanos {
 	
 	public StringBuilder retornaInsertOFertaPlanosSimulacao() {
 		StringBuilder sql = new StringBuilder("INSERT ALL ")
-				.append(" INTO owadq.tsgm_ofert_nvos_plano(cd_ofert, cd_plano, cd_oper , nu_cnpj, dt_inic_vgcia, dt_fim_vgcia,cd_operacao)VALUES ((select max(cd_ofert)+1 from owadq.tsgm_ofert_nvos_plano), 2, 'I', '37491504000161', sysdate - 90, sysdate + 90, null)")
+				.append(" INTO owadq.tsgm_ofert_nvos_plano(cd_ofert, cd_plano, cd_oper , nu_cnpj, dt_inic_vgcia, dt_fim_vgcia,cd_operacao,cd_ec,id_canal)VALUES ((select max(cd_ofert)+1 from owadq.tsgm_ofert_nvos_plano), 2, 'I', '28339982000160', sysdate - 90, sysdate + 90,1,2000496258,2)")
 				.append(" SELECT 1 FROM DUAL ");
 						return sql;
 	}

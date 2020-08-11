@@ -50,9 +50,6 @@ public class AntecipacaoStep extends ParentSteps {
 		}
 	}
 
-	@Entao("a validacao do cenario deve conter como resultado \"([^\"]*)\"$")
-	public void a_validacao_do_cenario_deve_conter_como_resultado(String Resultado) throws Throwable {
-	}
 
 	@Entao("^valido que o sidkick de simulação está presente e todos os menus \"([^\"]*)\"$")
 	public void valido_que_o_sidkick_de_simulação_está_presente_e_todos_os_menus(boolean operador) throws Throwable {
@@ -80,10 +77,5 @@ public class AntecipacaoStep extends ParentSteps {
 
 	}
 
-	@Entao("^encerro o driver anonimo para help$")
-	public void encerro_o_driver_anonimo_para_help() throws Throwable {
 
-		DriverAnonimo.getDriver().close();
-
-	}
 }

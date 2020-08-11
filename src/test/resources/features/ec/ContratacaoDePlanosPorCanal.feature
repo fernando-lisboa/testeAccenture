@@ -19,7 +19,7 @@ Funcionalidade: Contrtatação de planos por canal
   Esquema do Cenario: <VSTS> - Inclusão de planos para um CNPJ e contratacao para o canal PORTAL_EC  => <Cenario>
     E que eu tenha planos disponíveis para cantratacao "hml"
     Quando efetuar o upload de planilha de planos para um "<CNPJ>" "<path>", "<fileName>"
-    Dado que estou na logado no portal EC "<user>", "<senha>"
+    Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     E seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
     Quando Contratar o plano ofertado "<tpPlano>" "<contratacao>"
     Entao devo validar que foi gravado no banco de dados o canal de contratacao "<canal>" "<ambiente>"

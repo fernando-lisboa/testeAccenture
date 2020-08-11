@@ -12,7 +12,7 @@ Funcionalidade: Validar Extrato
   apresente minhas transacoes no periodo filtrado.
 
   Contexto: 
-    Dado que estou na logado no portal EC "478.666.290-99", "Alelo2018@"
+    Dado que estou na logado no portal EC "478.666.290-99", "Alelo2018@", "hm>"
 
 @Extrato1
   Esquema do Cenario: 00000 - Validar Extrato Detalhado.

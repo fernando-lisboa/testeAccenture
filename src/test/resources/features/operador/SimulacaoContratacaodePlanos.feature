@@ -5,13 +5,12 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @SimulacaoPlanos 
+@Regressivo @SimulacaoPlanos
 Funcionalidade: Contratação de Planos
   Permite contratar planos
-  
-  Contexto:
-  Dado que eu tenha planos disponíveis para cantratação
-  
+
+  Contexto: 
+    Dado que eu tenha planos disponíveis para cantratação "true"
 
   @realizar_contratacao
   Esquema do Cenario: <VSTS> - Realizar Simulação de contratação de planos => <Cenario>
@@ -22,7 +21,7 @@ Funcionalidade: Contratação de Planos
 
     #Entao a validacao do cenario deve conter como resultado "<Resultado>"
     Exemplos: 
-      | VSTS   | user           | senha      | CNPJ                              | Cenario          | operador | Contratacao | Resultado                                      |
-      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 | Plano de 02 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 | Plano de 07 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
-      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 | Plano de 15 dias | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | VSTS   | user           | senha      | CNPJ       | Cenario | operador | Contratacao | Resultado                                      |
+      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 |      02 | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 |      07 | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |
+      | 9999-1 | 570.335.010-72 | Alelo2020@ | 2000496258 |      15 | true     | true        | SIMULAÇÃO DE ANTECIPAÇÃO REALIZADA COM SUCESSO |

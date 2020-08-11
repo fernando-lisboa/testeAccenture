@@ -10,7 +10,7 @@ Funcionalidade: Recebimentos
 
   
   Esquema do Cenario: <VSTS> - Recebimento mensal <cenario>
-    Dado que estou na logado no portal EC "<user>", "<senha>"
+    Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     Quando eu clicar no menu recebimentos "<cnpj>"
     Entao devo validar que é exibido o valor recebido e o valor a receber do meu ec "<periodo>"
 
@@ -22,7 +22,7 @@ Funcionalidade: Recebimentos
 
 @ignore
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
-    Dado que estou na logado no portal EC "<user>", "<senha>"
+    Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     Quando eu clicar no menu recebimentos "<cnpj>"
     E Selecionar uma data com a opcao de produto "<produto>" para o CNPJ "<cnpj>" e clicar em comprovante"<comprovante>"
     Entao devo visualizar a lista de valores a receber de acordo com o produto selecionado "<produto>"
@@ -34,7 +34,7 @@ Funcionalidade: Recebimentos
      #| 9999-6 | Consultar Recebimentos por tipo de produto - TODOS       | TODOS             | 2004240711 | 594.114.000-27 | Alelo2020@ |
 @ignore
   Esquema do Cenario: <VSTS> - Recebimento detalhado <cenario>
-    Dado que estou na logado no portal EC "<user>", "<senha>"
+    Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     Quando eu clicar no menu recebimentos "<cnpj>"
     E Selecionar uma data com a opcao de produto "<produto>" para o CNPJ "<cnpj>" e clicar em comprovante"<comprovante>"
     Entao devo visualizar a lista de valores a receber de acordo com o produto selecionado "<produto>"
@@ -47,7 +47,7 @@ Funcionalidade: Recebimentos
       | 9999-9 | Consultar detalhe das transações de acordo com o produto- TODOS        | TODOS             | 2004240711 | 594.114.000-27 | Alelo2020@ |
 @ignore
   Esquema do Cenario: <VSTS> - Comprovante detalhado <cenario>
-    Dado que estou na logado no portal EC "<user>", "<senha>"
+    Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     Quando eu clicar no menu recebimentos "<cnpj>"
     E Selecionar uma data com a opcao de produto "<produto>" para o CNPJ "<cnpj>" e clicar em comprovante"<comprovante>"
 

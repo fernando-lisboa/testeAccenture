@@ -14,7 +14,7 @@ Funcionalidade: CriaçãoDeMensagem
   Para enviar um comunicado para cliente estabelecimento comercial
 
   Contexto: 
-    Dado que estou na logado no portal EC "538.984.648-65", "Alelo2018@"
+    Dado que estou na logado no portal EC "538.984.648-65", "Alelo2018@", "hml"
 
  @ignore @Regressivo
   Esquema do Cenario: <VSTS> notification - <cenario>

@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Sleeper;
 
 import br.com.alelo.integrations.db.ConnPpoint;
 import br.com.alelo.integrations.db.ConnSit;
@@ -187,6 +188,12 @@ public class CommonsActions {
 
 		consultaBanco(ConnUsadq.getConexao(), arv.roternaUpdateIdSolicitacao().toString());
 		consultaBanco(ConnUsadq.getConexao(), arv.roternaDeletePlanoRecorrente().toString());
+		consultaBanco(ConnUsadq.getConexao(), arv.roternaDeleteTaxas().toString());
+		Thread.sleep(1000);
+		consultaBanco(ConnUsadq.getConexao(), arv.roternaDeleteTransArv().toString());
+		consultaBanco(ConnUsadq.getConexao(), arv.retornaInsertTransArv().toString());
+		consultaBanco(ConnUsadq.getConexao(), arv.retornaInsertTxsArv().toString());
+		
 		Thread.sleep(2000);
 
 		System.out.println("Banco preparado com sucesso...");
@@ -277,6 +284,13 @@ public class CommonsActions {
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteOfertaPlanosSimulacao().toString());
 		//consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaInsertOFertaPlanosSimulacao().toString());
 
+	}
+	public void preparaBancoPlanosSimulacao() throws Exception {
+		
+		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteContratoSimulaca().toString());
+		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteOfertaPlanosSimulacao().toString());
+		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaInsertOFertaPlanosSimulacao().toString());
+		
 	}
 
 	public void limparPid(String ambiente) throws Exception {

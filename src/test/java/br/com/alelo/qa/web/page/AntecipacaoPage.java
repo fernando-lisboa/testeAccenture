@@ -165,5 +165,13 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(xpath = "//button[@type='button'][contains(.,'OK')]")
 	public WebElement acceptHelp;
 	
+	@FindBy(xpath = "//p[@class='textRed'][contains(.,'Simulação realizada com sucesso!')]")
+	public WebElement acceptHelpSimulation;
+	public String txtAccetpHelpSimulation = "Simulação realizada com sucesso!";
+	
+	@FindBy(xpath = "//button[@type='button'][contains(.,'OK')]")
+	public WebElement btnOkHelp;
+	
+	
 
 }
