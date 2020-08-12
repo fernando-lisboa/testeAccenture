@@ -68,10 +68,10 @@ public class AntecipacaoStep extends ParentSteps {
 			String modal) throws Throwable {
 		if (operador) {
 			AntecipacaoActions AA = new AntecipacaoActions(DriverAnonimo.getDriver());
-			AA.definirRecorrenciaAposContratacao(cenario, modal);
+			AA.definirRecorrenciaAposContratacao(operador,cenario, modal);
 		} else {
 			AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-			AA.definirRecorrenciaAposContratacao(cenario, modal);
+			AA.definirRecorrenciaAposContratacao(operador,cenario, modal);
 
 		}
 

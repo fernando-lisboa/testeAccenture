@@ -82,7 +82,7 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(id = "anticipationModalAnticipationTitle")
 	protected WebElement tituloModalAntecipacao;
 
-	@FindBy(id = "btnAntecipationRecurrVisualize")
+	@FindBy(xpath = "//button[@type='button'][contains(.,'DEFINIR RECEBIMENTO')]")
 	public WebElement botaoDefinirRecebimento;
 
 	@FindBy(id = "cardRecurr-DISABLED")
@@ -152,6 +152,13 @@ public class AntecipacaoPage extends PageObject {
 	@FindBy(xpath = "//*[@id='swal2-title']")
 	protected WebElement msgSucessoRecorrencia;
 	public String txtMsgRecorrencia = "Simulação Realizada com Sucesso";
+	
+	@FindBy(xpath = "//button[@type='button'][contains(.,'OK')]")
+	protected WebElement btnOkrecorrencia;
+	
+	@FindBy(xpath = "//p[contains(.,'Recorrência atualizada com sucesso!')]")
+	protected WebElement msgSucessoContratacaoRecorrencia;
+	public String txtMsgContratacaoRecorrencia = "Recorrência atualizada com sucesso!";
 	
 	@FindBy(xpath = "//*[@id='alertSidekick']/div/span")
 	protected WebElement sideKickSimulation;

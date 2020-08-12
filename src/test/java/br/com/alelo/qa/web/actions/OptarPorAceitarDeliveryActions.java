@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.junit.Assert;
@@ -29,6 +30,20 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 	}
 
 	Random rand = new Random();
+
+	public void validarRelatórioWA(Map<String, String> map) {
+		 map.forEach((k, v) -> System.out.println(String.format("key: %s | value: %s", k, v)));
+		 
+		map.forEach((k, v) -> {
+			try {
+			//		Assert.assertThat("CNPJ diferente do esperado ",v.toString(), is(cnpj));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+
+	}
 
 	public void preencherPID(String ambiente) throws Exception {
 
@@ -107,11 +122,8 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 		// Confirmar
 		btn_primeiroAcessoConfirmar.click();
-		sleep(2000);
-
-		waitForElementPageToBeClickable(btn_primeiroAcessoComecar);
+		waitForElementPageToLoad(loader);
 		// Começar
-		sleep(2000);
 
 		btn_primeiroAcessoComecar.click();
 
@@ -119,12 +131,12 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 	}
 
-	public void selecionarApp(String cenario) throws InterruptedException {
-		if (cenario.equals("Ifood")) {
+	public void selecionarApp(String prod) throws InterruptedException {
+		if (prod.equals("Ifood")) {
 			waitForElementPageToBeClickable(swiftIfood);
 			swiftIfood.click();
 			sleep(1000);
-		} else if (cenario.equals("Rappy")) {
+		} else if (prod.equals("Rappy")) {
 			waitForElementPageToBeClickable(swiftRappy);
 			sleep(1000);
 			swiftRappy.click();
@@ -162,7 +174,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 	public void validarBancoDeDados_App(String ambiente, String idPlataforma) throws Exception {
 		int platform;
 		// Consulta banco de dados para verificação de solicitação de App -
-		
+
 		if (idPlataforma.equals("Ifood")) {
 			platform = 1;
 		} else {
@@ -187,13 +199,18 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 			Itens.add(nuCnpj);
 			Itens.add(cdEstabelecimento);
 			Itens.add(idPlataformaDelivery);
-			
+
 			break;
 		}
 
 		// TODO fazer assert Para verificar as tabelas
 		System.out.println();
 
+	}
+
+	public void logout() {
+		webdriver.findElement(By.id("nav-dropdown")).click();
+		webdriver.findElement(By.id("navbarDesktopSair")).click();
 	}
 
 }

@@ -1,8 +1,11 @@
 package br.com.alelo.qa.features.steps;
 
+import java.util.Map;
+
 import br.com.alelo.qa.features.support.ParentSteps;
 import br.com.alelo.qa.web.actions.OptarPorAceitarDeliveryActions;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
+import cucumber.api.DataTable;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -59,4 +62,20 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 		System.out.println("EM DESENVOLVIMENTO.....");
 	}
 
+		@Dado("^pesquise o relatorio de solicitacao de delivery$")
+		public void pesquise_o_relatorio_de_solicitacao_de_delivery() throws Throwable {
+		    // Write code here that turns the phrase above into concrete actions
+		}
+
+		@Entao("^os ecs que optaram por aceitar delivery devem constar nessa lista$")
+		public void os_ecs_que_optaram_por_aceitar_delivery_devem_constar_nessa_lista(Map<String,String>map) throws Throwable {
+		    
+			OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
+			delivery.validarRelatórioWA(map);
+			
+			// Write code here that turns the phrase above into concrete actions
+		    // For automatic transformation, change DataTable to one of
+		    // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
+		    // E,K,V must be a scalar (String, Integer, Date, enum etc)
+		}
 }

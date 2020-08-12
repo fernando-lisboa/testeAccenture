@@ -5,7 +5,7 @@
 #* Data: 07/07/2020
 #* Caminho: Portal Estabelecimento Comercial
 #*/
-@Regressivo
+@Regressivo @ignore
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -16,7 +16,7 @@ Funcionalidade: Antecipacao
   Contexto: 
     Dado que prepara o banco de pid para testes "hml"
 
-@Regressivo @delivery
+  @Regressivo @relatorio1
   Esquema do Cenario: <VSTS> - Realizar solicitação de app  => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     E preencha os dados de PID "<ambiente>"
@@ -33,7 +33,7 @@ Funcionalidade: Antecipacao
 
   @ignore
   Esquema do Cenario: <VSTS> - Realizar solicitação de app com Alimentação apenas  => <Cenario>
-    Dado que estou na logado no portal EC "<user>", "<senha>"
+    Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     E preencha os dados de PID "<ambiente>"
     Quando verificar a label do botao concluir
     Entao devo verificar que não é oferecido a opção de app
@@ -41,3 +41,19 @@ Funcionalidade: Antecipacao
     Exemplos: 
       | VSTS   | Cenario                                                                                 | user           | senha      | Cenario | ambiente |
       | 9999-1 | Realizar credenciamento com solicitação de ifood com ec que contenha apenas alimentação | 972.018.730-16 | Alelo2020@ | Ifood   | hml      |
+
+  @relatorio @ignore
+  Esquema do Cenario: <VSTS> - Extrair  Relatório de solicitação de App via portal no webAdmin   => <Cenario>
+    Dado que estou na logado no portal webadmim EC "22222222222", "12345678!"
+    E pesquise o relatorio de solicitacao de delivery
+    Entao os ecs que optaram por aceitar delivery devem constar nessa lista
+      | cnpj | 54203102000133 |
+      | cnpj1 | 12259140000168 |
+      | cnpj2 | 34742237000160 |
+      | cnpj3 | 37491504000161 |
+      | cnpj4 | 52692228000193 |
+
+    Exemplos: 
+      | VSTS   | Cenario                                                | user           | senha      | Delivery | ambiente | relatorio | cnpj           |
+      | 9999-1 | Extrair relatório de solicitação de delivery           | 222.143.700-48 | Alelo2020@ | Rappy    | hml      | true      | 54203102000133 |
+      | 9999-1 | Fazer download de planilha de solicitação por delivery | 684.175.140-07 | Alelo2020@ | TUDO     | hml      | true      | 12259140000168 |

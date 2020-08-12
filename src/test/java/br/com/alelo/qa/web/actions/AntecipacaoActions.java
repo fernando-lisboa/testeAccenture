@@ -29,7 +29,6 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 	String text;
 
-
 	public void validarSideKickAlert() {
 		try {
 			waitForElementToBeInvisible(loader);
@@ -37,8 +36,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 					.findElements(By.tagName("a"));
 
 			for (Integer y = 1; y <= listAba.size(); y++) {
-				WebElement elAba = webdriver.findElement(
-						By.xpath("/html/body/div[1]/main/body/div/nav/div/div[2]/ul[1]/li[" + y + "]/a"));
+				WebElement elAba = webdriver
+						.findElement(By.xpath("/html/body/div[1]/main/body/div/nav/div/div[2]/ul[1]/li[" + y + "]/a"));
 				elAba.click();
 				waitForElementToBeInvisible(loader);
 				WebElement alertside = webdriver.findElement(By.xpath("//*[@id=\"alertSidekick\"]/div/span"));
@@ -225,14 +224,15 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			cnpj_.click();
 			Thread.sleep(2000);
 
-			WebElement findElement =webdriver.findElement(By.xpath("//div[@class='cnpjComboBox'][contains(.,'"+numCNPJ+"')]"));
+			WebElement findElement = webdriver
+					.findElement(By.xpath("//div[@class='cnpjComboBox'][contains(.,'" + numCNPJ + "')]"));
 			findElement.click();
-			
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
-				}
 
-			waitForElementToBeInvisible(loader);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		waitForElementToBeInvisible(loader);
 	}
 
 	public void validarMensagemContratacao(Boolean Recorrencia, String Cenario, Boolean Modal)
@@ -352,7 +352,8 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	}
 
 	// define recorrecia automática após contratação pontual
-	public void definirRecorrenciaAposContratacao(String cenario, String modal) throws InterruptedException {
+	public void definirRecorrenciaAposContratacao(Boolean operador, String cenario, String modal)
+			throws InterruptedException {
 		if (!PreencheValorCampoSetSelectButton(null, bntConfirmaContratacaoRecorrente, null, 40))
 			fail("Botão confirmar recorrencia não clicável");
 		waitForElementPageToBeClickable(webdriver.findElement(By.id("cardRecurr-DAILY")));
@@ -371,27 +372,39 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		}
 
 		if (botaoDefinirRecebimento.isEnabled())
-			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, botaoDefinirRecebimento);
-		waitForElementPageToLoad(msgSucessoRecorrencia);
+			botaoDefinirRecebimento.click();
+		waitForElementToBeInvisible(loader);		
 
-		Assert.assertTrue("Não efetivou a simulação corretamente",
-				msgSucessoRecorrencia.getText().equals(txtMsgRecorrencia));
-
-		if (modal.equals("antecipe")) {
-			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsgAntecipe);
+		if (operador) {
+			waitForElementPageToBeClickable(btnOkrecorrencia);
+			Assert.assertTrue("Não efetivou a simulação corretamente",
+					msgSucessoRecorrencia.getText().equals(txtMsgRecorrencia));
 		} else {
-			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsg);
+			waitForElementPageToBeClickable(btnOkrecorrencia);
+			Assert.assertTrue("Não efetivou a simulação corretamente",
+					msgSucessoContratacaoRecorrencia.getText().equals(txtMsgContratacaoRecorrencia));
 		}
-		sairDaSimulação(modal);
 
+		
+		if (modal.equals("antecipe") && operador) {
+			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsgAntecipe);
+		} else if(modal.equals("modal") && operador) {
+			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsg);
+		}else {
+			btnOkrecorrencia.click();			
+		}
+		if(operador){
+			sairDaSimulação(modal);
+		}
 	}
 
 	// Valida se ao contrratar recorrencia, volta para o inicio o fecha a sessão
 	public void sairDaSimulação(String modal) throws InterruptedException {
 		Thread.sleep(5000);
-		Assert.assertThat("não simulou recorrencia",acceptHelpSimulation.getText(),is(txtAccetpHelpSimulation));
+		waitForElementToBeInvisible(loader);
+		Assert.assertThat("não simulou recorrencia", acceptHelpSimulation.getText(), is(txtAccetpHelpSimulation));
 		javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, btnOkHelp);
- 		if (driver.getCurrentUrl().contains(modal)) {
+		if (driver.getCurrentUrl().contains(modal)) {
 			Assert.assertTrue("SideKick não está presente na tela após simulação", sideKickSimulation.isDisplayed());
 			System.out.println("Voltou para a tela inicial após o final do teste e manteve o scope OPERADOR");
 			driver.findElement(By.id("nav-dropdown")).click();

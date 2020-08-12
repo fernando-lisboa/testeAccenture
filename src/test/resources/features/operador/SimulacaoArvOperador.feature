@@ -21,7 +21,6 @@ Funcionalidade: Antecipacao
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
     E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>", antecipar "<Recorrencia>" e contratando "<Contratacao>" "<CNPJ>" "<operador>"
-    Entao a validacao do cenario deve conter como resultado "<Resultado>"
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ       | Cenario                          | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                      |
