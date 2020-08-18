@@ -25,8 +25,6 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 	@Dado("^preencha os dados de PID \"([^\"]*)\"$")
 	public void preencha_os_dados_de_PID(String ambiente) throws Throwable {
 		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
-
-
 		delivery.preencherPID(ambiente);
 	}
 
@@ -36,6 +34,12 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 		delivery.verificarDelivery();
 		
 	}
+	@Quando("^nao optar por aceitar delivery e verifico que acessou o painel EC$")
+	public void nao_optar_por_aceitar_delivery_e_verifico_que_acessou_o_painel_EC() throws Throwable {
+		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
+		delivery.avancarSemSelecionarDelivery();
+	}
+	
 
 	@Quando("^optar por aceitar a opcao app \"([^\"]*)\" e clicar em avancar$")
 	public void optar_por_aceitar_a_opcao_app_e_clicar_em_avancar(String cenario) throws Throwable {
@@ -49,12 +53,12 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 		delivery.habilitarEconfirmarMsg();
 	}
 
-	@Entao("^deve gravar no banco de dados a opcao escolhida \"([^\"]*)\", \"([^\"]*)\"$")
-	public void deve_gravar_no_banco_de_dados_a_opcao_escolhida(String ambiente, String plataforma) throws Throwable {
+	@Entao("^deve gravar no banco de dados a opcao escolhida \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
+	public void deve_gravar_no_banco_de_dados_a_opcao_escolhida(String ambiente, String plataforma, String cnpj, String ec) throws Throwable {
 		
 		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
 		
-		delivery.validarBancoDeDados_App(ambiente, plataforma);
+		delivery.validarBancoDeDados_App(ambiente, plataforma, cnpj,ec);
 	}
 
 	@Entao("^devo verificar que não é oferecido a opção de app$")

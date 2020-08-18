@@ -14,5 +14,11 @@ public class LimparPID {
 		System.out.println(sql);
 		return sql;
 	}
+	public StringBuilder deletaSolicitacaoDelivery() {
+		StringBuilder sql = new StringBuilder(
+				"delete from TDSV_ESTBL_COML WHERE nu_cnpj in (28339982000160)");
+		System.out.println(sql);
+		return sql;
+	}
 
 }

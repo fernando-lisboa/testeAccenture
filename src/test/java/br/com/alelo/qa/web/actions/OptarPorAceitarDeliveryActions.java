@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Random;
 
 import org.junit.Assert;
-import org.junit.internal.runners.statements.Fail;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +18,7 @@ import org.openqa.selenium.support.ui.Select;
 import br.com.alelo.integrations.db.ConnBuc;
 import br.com.alelo.integrations.db.ConnSit;
 import br.com.alelo.integrations.db.ConnUsadq;
+import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.CriarUsuarioResetarSenhaPage;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
 
@@ -32,11 +32,12 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 	Random rand = new Random();
 
 	public void validarRelatórioWA(Map<String, String> map) {
-		 map.forEach((k, v) -> System.out.println(String.format("key: %s | value: %s", k, v)));
-		 
+		map.forEach((k, v) -> System.out.println(String.format("key: %s | value: %s", k, v)));
+
 		map.forEach((k, v) -> {
 			try {
-			//		Assert.assertThat("CNPJ diferente do esperado ",v.toString(), is(cnpj));
+				// Assert.assertThat("CNPJ diferente do esperado ",v.toString(),
+				// is(cnpj));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -117,16 +118,15 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		primeiroAcessoConta.sendKeys(Itens.get(3));
 
 		waitForElementPageToBeClickable(btn_primeiroAcessoConfirmar);
-
 		sleep(4000);
-
 		// Confirmar
 		btn_primeiroAcessoConfirmar.click();
-		waitForElementPageToLoad(loader);
+		waitForElementToBeInvisible(loader);
+
 		// Começar
-
-		btn_primeiroAcessoComecar.click();
-
+		sleep(4000);
+		JavaScriptUtils javaSA = new JavaScriptUtils(webdriver);
+		javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, btn_primeiroAcessoComecar);
 		waitForElementToBeInvisible(loader);
 
 	}
@@ -155,33 +155,41 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		List<WebElement> labelList = labelAskDelivery.findElements(By.tagName("h4"));
 
 		Assert.assertTrue("Mensagem de delivery não disponível", labelList.get(0).getText().equals(txtAskDelivery));
-		// Assert.assertTrue("Label do botão diferente de Concluir",
-		// btnConfirmarHabilitar.getText().equals("Concluir"));
+		Assert.assertTrue("Label do botão diferente de Concluir",
+				btnConfirmarHabilitar.getText().toLowerCase().equals("concluir"));
 
 	}
 
 	public void habilitarEconfirmarMsg() {
 		waitForElementPageToBeClickable(btnConfirmarHabilitar);
 		btnConfirmarHabilitar.click();
-		WebElement text = txtCardFeedBack.findElement(By.tagName("h1"));
-		System.out.println(text.getText());
-		Assert.assertThat("Mensagem de confirmação não exibida", text.getText(), is(txtConfirmacao));
-		retornarPortal.click();
-		Assert.assertTrue("NãO RETORNOU PARA O PORTAL NA TELA DE INICIO", webdriver.getCurrentUrl().contains("inicio"));
+		try {
+			Thread.sleep(1000);
+			WebElement text = txtCardFeedBack.findElement(By.tagName("h1"));
+			System.out.println(text.getText());
+			Assert.assertThat("Mensagem de confirmação não exibida", text.getText(), is(txtConfirmacao));
+			retornarPortal.click();
+			Assert.assertTrue("NãO RETORNOU PARA O PORTAL NA TELA DE INICIO",
+					webdriver.getCurrentUrl().contains("inicio"));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
-	public void validarBancoDeDados_App(String ambiente, String idPlataforma) throws Exception {
-		int platform;
+	public void validarBancoDeDados_App(String ambiente, String idPlataforma, String cnpj, String ec) throws Exception {
+		String platform;
 		// Consulta banco de dados para verificação de solicitação de App -
 
 		if (idPlataforma.equals("Ifood")) {
-			platform = 1;
+			platform = "1";
 		} else {
-			platform = 2;
+			platform = "2";
 		}
 
-		String queryItens = "select * from TDSV_ESTBL_COML WHERE ID_PLATF_DLIVRY =" + platform + "";
+		String queryItens = "select * from TDSV_ESTBL_COML WHERE nu_cnpj in (" + cnpj + ") and id_platf_dlivry ="
+				+ platform + "";
 		CommonsActions conn_ation = new CommonsActions();
 		ResultSet returnSelect;
 		List<String> Itens = new ArrayList<>();
@@ -200,17 +208,37 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 			Itens.add(cdEstabelecimento);
 			Itens.add(idPlataformaDelivery);
 
+			Assert.assertThat("Id estabelecimento não preenchido..", idEstabelecimento, is(idEstabelecimento));
+			System.out.println("Recebido= " + idEstabelecimento + " " + idEstabelecimento);
+			Assert.assertThat("Id estabelecimento não preenchido..", nuCnpj, is(cnpj));
+			System.out.println("Recebido= " + nuCnpj + " " + cnpj);
+			Assert.assertThat("Id estabelecimento não preenchido..", cdEstabelecimento, is(ec));
+			System.out.println("Recebido= " + cdEstabelecimento + " " + ec);
+			Assert.assertThat("Id estabelecimento não preenchido..", idPlataformaDelivery, is(platform));
+			System.out.println("Recebido= " + idPlataformaDelivery + " Esperado = " + platform);
+
 			break;
 		}
 
-		// TODO fazer assert Para verificar as tabelas
-		System.out.println();
+		System.out.println("Solicitação de App Delyvery gravada com sucesso");
 
 	}
 
 	public void logout() {
 		webdriver.findElement(By.id("nav-dropdown")).click();
 		webdriver.findElement(By.id("navbarDesktopSair")).click();
+	}
+
+	public void avancarSemSelecionarDelivery() {
+
+		JavaScriptUtils javaSA = new JavaScriptUtils(webdriver);
+		waitForElementPageToBeClickable(btnConfirmarHabilitar);
+		javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, btnConfirmarHabilitar);
+		waitForElementToBeInvisible(loader);
+		Assert.assertTrue("NãO RETORNOU PARA O PORTAL NA TELA DE INICIO",
+				webdriver.getCurrentUrl().contains("inicio"));
+		
+
 	}
 
 }

@@ -298,9 +298,11 @@ public class CommonsActions {
 		if (ambiente.equals("hml")) {
 			consultaBanco(ConnUsadq.getConexao(), pid.deletaPID().toString());
 			consultaBanco(ConnUsadq.getConexao(), pid.deletaPIDIsan().toString());
+			consultaBanco(ConnUsadq.getConexao(), pid.deletaSolicitacaoDelivery().toString());
 		} else {
 			consultaBanco(ConnSit.getConexao(), pid.deletaPID().toString());
 			consultaBanco(ConnSit.getConexao(), pid.deletaPIDIsan().toString());
+			consultaBanco(ConnSit.getConexao(), pid.deletaSolicitacaoDelivery().toString());
 		}
 
 	}

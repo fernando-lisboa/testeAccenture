@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +12,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import br.com.alelo.integrations.db.ConnBuc;
 import br.com.alelo.integrations.db.ConnSit;
 import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.qa.features.steps.LoginSteps;

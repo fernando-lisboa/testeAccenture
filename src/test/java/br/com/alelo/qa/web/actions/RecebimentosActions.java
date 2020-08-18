@@ -13,7 +13,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.RecebimentosPage;
 import br.com.alelo.utils.SimpleCacheManager;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
