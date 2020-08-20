@@ -28,18 +28,16 @@ public class LoginSteps extends ParentSteps {
 
 	@Dado("^que estou na logado no portal EC \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_EC(String user, String senha, String ambiente) throws Throwable {
-		if(ambiente=="hml"){
+		if (ambiente == "hml") {
 			webdriver.get(baseurl); // Abre url
-		}
-		else{
+		} else {
 			props = new PropertiesFile();
 			webdriver.get(props.getValor("baseurlSIT"));
-			
+
 		}
 		login = new LoginActions(webdriver);
 		login.loginGeral(user, senha);
 	}
-	
 
 	@Dado("^que estou na logado no portal EC Operador \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_EC_Operador(String user, String senha) throws Throwable {
@@ -48,8 +46,6 @@ public class LoginSteps extends ParentSteps {
 		login.loginGeral(user, senha);
 		System.out.println("logando..");
 	}
-
-	
 
 	@Dado("^que esteja na tela inicial do portal$")
 	public void que_esteja_na_tela_inicial_do_portal() throws Throwable {
@@ -75,9 +71,9 @@ public class LoginSteps extends ParentSteps {
 
 	@Dado("^que estou na logado no portal webadmim EC \"([^\"]*)\", \"([^\"]*)\"$")
 	public void que_estou_na_logado_no_portal_webadmim_EC(String user, String password) throws Throwable {
-
-		webdriver.get("https://meuestabelecimento-webadmin-hml.siteteste.inf.br/portalec-webadmin/login"); // Abre
-																											// url
+		PropertiesFile props = new PropertiesFile();
+		webdriver.get(props.getValor("baseurlAdm")); // Abre
+														// url
 		// webdriver.get(baseurlAdm); // Abre url
 
 		login = new LoginActions(webdriver);

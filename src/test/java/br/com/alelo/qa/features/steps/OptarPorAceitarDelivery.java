@@ -12,13 +12,13 @@ import cucumber.api.java.pt.Quando;
 
 public class OptarPorAceitarDelivery extends ParentSteps {
 
-
 	CommonsActions comm = new CommonsActions();
 
 	@Dado("^que prepara o banco de pid para testes \"([^\"]*)\"$")
 	public void que_prepara_o_banco_de_pid_para_testes(String ambiente) throws Throwable {
 
 		comm.limparPid(ambiente);
+		
 
 	}
 
@@ -32,14 +32,14 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 	public void verificar_a_label_do_botao_concluir() throws Throwable {
 		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
 		delivery.verificarDelivery();
-		
+
 	}
+
 	@Quando("^nao optar por aceitar delivery e verifico que acessou o painel EC$")
 	public void nao_optar_por_aceitar_delivery_e_verifico_que_acessou_o_painel_EC() throws Throwable {
 		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
 		delivery.avancarSemSelecionarDelivery();
 	}
-	
 
 	@Quando("^optar por aceitar a opcao app \"([^\"]*)\" e clicar em avancar$")
 	public void optar_por_aceitar_a_opcao_app_e_clicar_em_avancar(String cenario) throws Throwable {
@@ -54,11 +54,12 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 	}
 
 	@Entao("^deve gravar no banco de dados a opcao escolhida \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
-	public void deve_gravar_no_banco_de_dados_a_opcao_escolhida(String ambiente, String plataforma, String cnpj, String ec) throws Throwable {
-		
+	public void deve_gravar_no_banco_de_dados_a_opcao_escolhida(String ambiente, String plataforma, String cnpj,
+			String ec) throws Throwable {
+
 		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
-		
-		delivery.validarBancoDeDados_App(ambiente, plataforma, cnpj,ec);
+
+		delivery.validarBancoDeDados_App(ambiente, plataforma, cnpj, ec);
 	}
 
 	@Entao("^devo verificar que não é oferecido a opção de app$")
@@ -66,20 +67,23 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 		System.out.println("EM DESENVOLVIMENTO.....");
 	}
 
-		@Dado("^pesquise o relatorio de solicitacao de delivery$")
-		public void pesquise_o_relatorio_de_solicitacao_de_delivery() throws Throwable {
-		    // Write code here that turns the phrase above into concrete actions
-		}
+	@Dado("^pesquise o relatoriode solicitacao de delivery$")
+	public void pesquise_o_relatoriode_solicitacao_de_delivery() throws Throwable {
+		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
 
-		@Entao("^os ecs que optaram por aceitar delivery devem constar nessa lista$")
-		public void os_ecs_que_optaram_por_aceitar_delivery_devem_constar_nessa_lista(Map<String,String>map) throws Throwable {
-		    
-			OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
-			delivery.validarRelatórioWA(map);
-			
-			// Write code here that turns the phrase above into concrete actions
-		    // For automatic transformation, change DataTable to one of
-		    // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
-		    // E,K,V must be a scalar (String, Integer, Date, enum etc)
-		}
+		delivery.validaRelatorio();
+	}
+
+	@Entao("^os ecs que optaram por aceitar delivery devem constar nessa lista$")
+	public void os_ecs_que_optaram_por_aceitar_delivery_devem_constar_nessa_lista(Map<String, String> map)
+			throws Throwable {
+
+		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
+		delivery.validarRelatórioWA(map);
+
+		// Write code here that turns the phrase above into concrete actions
+		// For automatic transformation, change DataTable to one of
+		// List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
+		// E,K,V must be a scalar (String, Integer, Date, enum etc)
+	}
 }

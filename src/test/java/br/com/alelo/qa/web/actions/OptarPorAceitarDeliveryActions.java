@@ -20,7 +20,9 @@ import br.com.alelo.integrations.db.ConnSit;
 import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.qa.features.support.JavaScriptUtils;
 import br.com.alelo.qa.web.page.CriarUsuarioResetarSenhaPage;
+import br.com.alelo.qa.web.page.ListaRetornoWebAdmin;
 import br.com.alelo.utils.setupTestes.actions.CommonsActions;
+import br.com.alelo.utils.setupTestes.query.QuerySolicitacaoDelivery;
 
 public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage {
 
@@ -30,6 +32,8 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 	}
 
 	Random rand = new Random();
+	CommonsActions conn_ation = new CommonsActions();
+	private List<ListaRetornoWebAdmin> consultaMassa;
 
 	public void validarRelatórioWA(Map<String, String> map) {
 		map.forEach((k, v) -> System.out.println(String.format("key: %s | value: %s", k, v)));
@@ -190,7 +194,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 		String queryItens = "select * from TDSV_ESTBL_COML WHERE nu_cnpj in (" + cnpj + ") and id_platf_dlivry ="
 				+ platform + "";
-		CommonsActions conn_ation = new CommonsActions();
+
 		ResultSet returnSelect;
 		List<String> Itens = new ArrayList<>();
 		if (ambiente.equals("sit")) {
@@ -235,10 +239,110 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		waitForElementPageToBeClickable(btnConfirmarHabilitar);
 		javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, btnConfirmarHabilitar);
 		waitForElementToBeInvisible(loader);
-		Assert.assertTrue("NãO RETORNOU PARA O PORTAL NA TELA DE INICIO",
-				webdriver.getCurrentUrl().contains("inicio"));
-		
+		Assert.assertTrue("NãO RETORNOU PARA O PORTAL NA TELA DE INICIO", webdriver.getCurrentUrl().contains("inicio"));
 
+	}
+
+	public void validaRelatorio() {
+
+		webdriver.findElement(By.id("relatorios-menu")).click();
+		WebElement tabelaListas = webdriver.findElement(By.id("table"));
+		List<ListaRetornoWebAdmin> listawebadminretorno = new ArrayList<ListaRetornoWebAdmin>();
+
+		try {
+			consultaMassa = consultaMassa();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// for (String itembanco : ListaString) {
+		//
+		// listawebadminretornoEsperado.add(new
+		// ListaRetornoWebAdmin(itembancoCNPJ, "Ifood", "123", "19082020"));
+		//
+		// }
+
+		for (WebElement linhaTabelaListas : tabelaListas.findElements(By.tagName("tr"))) {
+			try {
+				List<WebElement> thselements = linhaTabelaListas.findElements(By.tagName("td"));
+
+				String CNPJ = thselements.get(0).getText();
+				String Aplicativos = thselements.get(1).getText();
+				String CodigoEC = thselements.get(2).getText();
+				String Data = thselements.get(3).getText();
+
+				System.out.println(CNPJ + " " + Aplicativos + " " + CodigoEC + " " + Data);
+
+				ListaRetornoWebAdmin listitem = new ListaRetornoWebAdmin(CNPJ, Aplicativos, CodigoEC, Data);
+				listawebadminretorno.add(listitem);
+
+			} catch (Exception e) {
+			}
+		}
+
+		for (ListaRetornoWebAdmin listaResultadoEsperado : consultaMassa) {
+			boolean CNPJEncontrado = false;
+			boolean aplicativoEncontrado = false;
+			boolean txtECEncontrado = false;
+			boolean dataEncontrado = false;
+
+			for (ListaRetornoWebAdmin listaResultadoObtido : listawebadminretorno) {
+				if (listaResultadoEsperado.getCNPJ().equals(listaResultadoObtido.getCNPJ().replaceAll("/", "").replaceAll(".", "").replaceAll("-", ""))) {
+					CNPJEncontrado = true;
+
+					System.out.println(listaResultadoEsperado.Aplicativos + " encontrado com sucesso");
+
+					if (listaResultadoEsperado.getAplicativos().equals(listaResultadoObtido.getAplicativos())) {
+						aplicativoEncontrado = true;
+					}
+
+					if (listaResultadoEsperado.getCodigoEC().equals(listaResultadoObtido.getCodigoEC())) {
+						txtECEncontrado = true;
+					}
+
+					if (listaResultadoEsperado.getData().equals(listaResultadoObtido.getData())) {
+						dataEncontrado = true;
+					}
+
+					break;
+				}
+
+			}
+			if (!CNPJEncontrado || !aplicativoEncontrado || !txtECEncontrado || !dataEncontrado) {
+				System.out.println(listaResultadoEsperado.getCNPJ() + "|" + listaResultadoEsperado.getAplicativos()
+						+ "|" + listaResultadoEsperado.getCodigoEC() + "|" + listaResultadoEsperado.getData()
+						+ " não encontrado");
+			}
+		}
+	}
+
+	private List<ListaRetornoWebAdmin> consultaMassa() throws Exception {
+		Boolean ambiente = false;
+		ResultSet consultaBanco;
+
+		List<ListaRetornoWebAdmin> listawebadminretornoEsperado = new ArrayList<ListaRetornoWebAdmin>();
+		QuerySolicitacaoDelivery queryMassa = new QuerySolicitacaoDelivery();
+		if (ambiente) {
+			consultaBanco = conn_ation.consultaBanco(ConnUsadq.getConexao(),
+					queryMassa.selecionaMassaDelivery().toString());
+		} else {
+			consultaBanco = conn_ation.consultaBanco(ConnSit.getConexao(),
+					queryMassa.selecionaMassaDelivery().toString());
+		}
+
+		while (consultaBanco.next()) {
+			String nuCnpj = consultaBanco.getString("NU_CNPJ");
+			String cdEstabelecimento = consultaBanco.getString("CD_ESTBL_COML");
+			String data = consultaBanco.getString("DT_HORA_INCL");
+			String idPlataformaDelivery = consultaBanco.getString("ID_PLATF_DLIVRY");
+			ListaRetornoWebAdmin listitem = new ListaRetornoWebAdmin(nuCnpj, idPlataformaDelivery, cdEstabelecimento,
+					data);
+			listawebadminretornoEsperado.add(listitem);
+
+		}
+
+		return listawebadminretornoEsperado;
 	}
 
 }

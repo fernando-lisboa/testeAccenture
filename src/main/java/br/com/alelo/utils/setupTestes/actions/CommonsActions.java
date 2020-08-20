@@ -17,7 +17,7 @@ import br.com.alelo.integrations.db.ConnPpoint;
 import br.com.alelo.integrations.db.ConnSit;
 import br.com.alelo.integrations.db.ConnUsadq;
 import br.com.alelo.integrations.db.ConnUsodsadq;
-import br.com.alelo.utils.setupTestes.query.LimparPID;
+import br.com.alelo.utils.setupTestes.query.QuerySolicitacaoDelivery;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoArv;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaBancoIndicadoresPainel;
 import br.com.alelo.utils.setupTestes.query.QueryPreparaTesteExtrato;
@@ -35,7 +35,7 @@ public class CommonsActions {
 	QueryPreparaBancoArv arv = new QueryPreparaBancoArv();
 	WebDriver webdriver;
 	QueryPreparaTesteExtrato extrato = new QueryPreparaTesteExtrato();
-	LimparPID pid = new LimparPID();
+	QuerySolicitacaoDelivery pid = new QuerySolicitacaoDelivery();
 
 	public void preparaBanco(Connection conexao, String query, String idPersonUnit, String status) throws Exception {
 
@@ -193,7 +193,7 @@ public class CommonsActions {
 		consultaBanco(ConnUsadq.getConexao(), arv.roternaDeleteTransArv().toString());
 		consultaBanco(ConnUsadq.getConexao(), arv.retornaInsertTransArv().toString());
 		consultaBanco(ConnUsadq.getConexao(), arv.retornaInsertTxsArv().toString());
-		
+
 		Thread.sleep(2000);
 
 		System.out.println("Banco preparado com sucesso...");
@@ -282,15 +282,17 @@ public class CommonsActions {
 
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteContratoSimulaca().toString());
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteOfertaPlanosSimulacao().toString());
-		//consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaInsertOFertaPlanosSimulacao().toString());
+		// consultaBanco(ConnUsadq.getConexao(),
+		// qPlanos.retornaInsertOFertaPlanosSimulacao().toString());
 
 	}
+
 	public void preparaBancoPlanosSimulacao() throws Exception {
-		
+
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteContratoSimulaca().toString());
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaDeleteOfertaPlanosSimulacao().toString());
 		consultaBanco(ConnUsadq.getConexao(), qPlanos.retornaInsertOFertaPlanosSimulacao().toString());
-		
+
 	}
 
 	public void limparPid(String ambiente) throws Exception {
@@ -306,7 +308,5 @@ public class CommonsActions {
 		}
 
 	}
-	
-	
 
 }
