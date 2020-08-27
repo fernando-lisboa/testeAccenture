@@ -301,10 +301,14 @@ public class CommonsActions {
 			consultaBanco(ConnUsadq.getConexao(), pid.deletaPID().toString());
 			consultaBanco(ConnUsadq.getConexao(), pid.deletaPIDIsan().toString());
 			consultaBanco(ConnUsadq.getConexao(), pid.deletaSolicitacaoDelivery().toString());
+			//consultaBanco(ConnUsadq.getConexao(), pid.deletaMassaDelivery().toString());
+			//consultaBanco(ConnUsadq.getConexao(), pid.insereMassaDelivery().toString());
 		} else {
 			consultaBanco(ConnSit.getConexao(), pid.deletaPID().toString());
 			consultaBanco(ConnSit.getConexao(), pid.deletaPIDIsan().toString());
 			consultaBanco(ConnSit.getConexao(), pid.deletaSolicitacaoDelivery().toString());
+			consultaBanco(ConnUsadq.getConexao(), pid.deletaMassaDelivery().toString());
+			consultaBanco(ConnUsadq.getConexao(), pid.insereMassaDelivery().toString());
 		}
 
 	}

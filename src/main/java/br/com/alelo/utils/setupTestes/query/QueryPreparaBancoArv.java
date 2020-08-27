@@ -93,6 +93,7 @@ public class QueryPreparaBancoArv {
 							.append(" into OWADQ.TARV_RSUMO_OPER_DISPN (ID_PSSOA_UND,NU_RSUMO_OPER_ORIGE,DT_VCTO_RSUMO_OPER,QT_DIA_CORRI,VR_ANTEC_DISP,VR_DESC,DT_PROCM,ID_SOLTC) values ('436623','5200730', TO_CHAR(sysdate+15,'DD/MM/YYYY'),'10','77,08','0',sysdate,null)")
 							.append("  SELECT 1 FROM DUAL ");
 
+					System.out.println(sql);
 					return sql;
 				}
 	

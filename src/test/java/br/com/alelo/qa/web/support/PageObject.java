@@ -296,7 +296,8 @@ public class PageObject {
    
 
 
-    @FindBy(id = "loaderId")
+    //@FindBy(xpath = "xpath = //div[@class='loader-ripple']")
+    @FindBy(id = "divId")
     protected WebElement loader;
 
 }

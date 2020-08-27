@@ -4,7 +4,10 @@ import static java.lang.Thread.sleep;
 import static org.hamcrest.CoreMatchers.is;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -288,21 +291,22 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 			boolean dataEncontrado = false;
 
 			for (ListaRetornoWebAdmin listaResultadoObtido : listawebadminretorno) {
-				if (listaResultadoEsperado.getCNPJ().equals(listaResultadoObtido.getCNPJ().replaceAll("/", "").replaceAll(".", "").replaceAll("-", ""))) {
+				String cnpjFormatado = listaResultadoObtido.getCNPJ().replaceAll("[^\\d ]", "");
+				System.out.println(listaResultadoEsperado.getCNPJ()+ " "+ cnpjFormatado);
+				if (listaResultadoEsperado.getCNPJ().equals(cnpjFormatado)) {
 					CNPJEncontrado = true;
 
-					System.out.println(listaResultadoEsperado.Aplicativos + " encontrado com sucesso");
+					System.out.println(listaResultadoEsperado.CNPJ + " encontrado com sucesso");
 
-					if (listaResultadoEsperado.getAplicativos().equals(listaResultadoObtido.getAplicativos())) {
-						aplicativoEncontrado = true;
-					}
-
+					
 					if (listaResultadoEsperado.getCodigoEC().equals(listaResultadoObtido.getCodigoEC())) {
 						txtECEncontrado = true;
+						System.out.println(listaResultadoEsperado.CodigoEC + " encontrado com sucesso");
 					}
 
 					if (listaResultadoEsperado.getData().equals(listaResultadoObtido.getData())) {
 						dataEncontrado = true;
+						System.out.println(listaResultadoEsperado.getData() + " encontrado com sucesso");
 					}
 
 					break;
@@ -334,8 +338,15 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		while (consultaBanco.next()) {
 			String nuCnpj = consultaBanco.getString("NU_CNPJ");
 			String cdEstabelecimento = consultaBanco.getString("CD_ESTBL_COML");
-			String data = consultaBanco.getString("DT_HORA_INCL");
+			String data = dataAtual();
 			String idPlataformaDelivery = consultaBanco.getString("ID_PLATF_DLIVRY");
+			
+			
+			if(idPlataformaDelivery.equals("1")){
+				idPlataformaDelivery = "iFood";
+			}else{
+				idPlataformaDelivery = "Rappi";
+			}
 			ListaRetornoWebAdmin listitem = new ListaRetornoWebAdmin(nuCnpj, idPlataformaDelivery, cdEstabelecimento,
 					data);
 			listawebadminretornoEsperado.add(listitem);
@@ -343,6 +354,14 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		}
 
 		return listawebadminretornoEsperado;
+	}
+	
+	public String dataAtual() {
+		Calendar data = Calendar.getInstance();
+		data.setTime(new Date());
+		// data.add(Calendar.MONTH, +1);
+		String dataFormatada = new SimpleDateFormat("dd/MM/yyyy").format(data.getTime());
+		return dataFormatada;
 	}
 
 }

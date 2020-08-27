@@ -54,7 +54,7 @@ Funcionalidade: Antecipacao
       | VSTS   | Cenario                                                                                 | user           | senha      | Cenario | ambiente |
       | 9999-1 | Realizar credenciamento com solicitação de ifood com ec que contenha apenas alimentação | 972.018.730-16 | Alelo2020@ | Ifood   | hml      |
 
-  @relatorioWeb
+  @ignore
   Esquema do Cenario: <VSTS> - Extrair  Relatório de solicitação de App Via portal no webAdmin   => <Cenario>
     Dado que estou na logado no portal webadmim EC "22222222222", "12345678!"
     E pesquise o relatoriode solicitacao de delivery
