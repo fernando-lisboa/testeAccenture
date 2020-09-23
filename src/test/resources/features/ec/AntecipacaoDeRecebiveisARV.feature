@@ -5,7 +5,7 @@
 # * Data: 07/07/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @teste
+@Regressivo @ARV
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -16,11 +16,12 @@ Funcionalidade: Antecipacao
   Contexto: 
     Dado que o banco de arv esteja preparado para os testes
 
-  @Regressivo @arvRecorrente
+  @Regressivo @arvModal
   Esquema do Cenario: <VSTS> - Realizar Antecipacao de vendas via Modal => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
     E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>", antecipar "<Recorrencia>" e contratando "<Contratacao>" "<CNPJ>" "<operador>"
+   # Entao fecho a sessao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ       | Cenario                 | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                 | ambiente |
@@ -30,11 +31,12 @@ Funcionalidade: Antecipacao
       | 9999-4 | 387.055.390-13 | Alelo2020@ | 2004240711 | RecorrenteTotal Semanal | false    | true  | false | true        | false       | antecipacao recorrente deve estar ativa   | hml      |
       | 9999-5 | 387.055.390-13 | Alelo2020@ | 2004240711 | Recorrente Desativado   | false    | true  | false | true        | false       | antecipacao recorrente deve estar inativa | hml      |
 
-  @Regressivo
+  @Regressivo @ignore
   Esquema do Cenario: <VSTS> - Realizar Contratação de antecipacao de vendas via tela => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
     E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>", antecipar "<Recorrencia>" e contratando "<Contratacao>" "<CNPJ>" "<operador>"
+   # Entao fecho a sessao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ       | Cenario                 | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                                 | ambiente |
@@ -50,6 +52,7 @@ Funcionalidade: Antecipacao
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"
     E estou usando "<Modal>", se cenario "<Cenario>", devo alterar o valor "<Valor>", antecipar "<Recorrencia>" e contratando "<Contratacao>" "<CNPJ>" "<operador>"
     Entao eu contrato a recorrencia da operacao e valido a mensagen de sucesso "<operador>", "<Cenario>", "<modal>"
+   # Entao fecho a sessao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ       | Cenario            | operador | Modal | Valor | Recorrencia | Contratacao | Resultado                         | ambiente |

@@ -56,9 +56,6 @@ public class RecebimentosPage extends PageObject {
 	@FindBy(xpath = "//b[contains(.,'• 37.491.504/0001-61 - 1010745147')]")
 	protected WebElement ecRecebiveis_3;
 
-	@FindBy(id = "loaderId")
-	protected WebElement loader;
-
 	@FindBy(id = "ScheDay_today")
 	protected WebElement elementoHoje;
 

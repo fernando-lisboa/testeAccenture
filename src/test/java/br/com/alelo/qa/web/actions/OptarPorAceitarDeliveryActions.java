@@ -106,10 +106,12 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		primeiroAcessocnpj.sendKeys(Itens.get(0));
 
 		// Banco
-		WebElement selectBanco = webdriver.findElement(By.id("formInlineBank"));
+		WebElement selectBanco = primeiroAcessoBanco;
 		String banco_completo = "";
 		for (WebElement banco : selectBanco.findElements(By.tagName("option")))
+
 			if (banco.getText().contains(Itens.get(1))) {
+				System.out.println(banco.getText());
 				banco_completo = banco.getText();
 				break;
 			}
@@ -158,12 +160,18 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 	}
 
-	public void verificarDelivery() {
+	public void verificarDelivery(Boolean delivery) {
 		List<WebElement> labelList = labelAskDelivery.findElements(By.tagName("h4"));
 
 		Assert.assertTrue("Mensagem de delivery não disponível", labelList.get(0).getText().equals(txtAskDelivery));
-		Assert.assertTrue("Label do botão diferente de Concluir",
-				btnConfirmarHabilitar.getText().toLowerCase().equals("concluir"));
+
+		if (delivery) {
+			Assert.assertTrue("Label do botão diferente de Concluir",
+					btnConfirmarHabilitar.getText().toLowerCase().equals("finalizar"));
+		}else{
+			Assert.assertTrue("Label do botão diferente de Avançar",
+					btnConfirmarHabilitar.getText().toLowerCase().equals("Finalizar sem Habilitar"));
+		}
 
 	}
 
@@ -247,7 +255,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 	}
 
 	public void validaRelatorio() {
-
+		int contador = 1;
 		webdriver.findElement(By.id("relatorios-menu")).click();
 		WebElement tabelaListas = webdriver.findElement(By.id("table"));
 		List<ListaRetornoWebAdmin> listawebadminretorno = new ArrayList<ListaRetornoWebAdmin>();
@@ -259,13 +267,6 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 			e1.printStackTrace();
 		}
 
-		// for (String itembanco : ListaString) {
-		//
-		// listawebadminretornoEsperado.add(new
-		// ListaRetornoWebAdmin(itembancoCNPJ, "Ifood", "123", "19082020"));
-		//
-		// }
-
 		for (WebElement linhaTabelaListas : tabelaListas.findElements(By.tagName("tr"))) {
 			try {
 				List<WebElement> thselements = linhaTabelaListas.findElements(By.tagName("td"));
@@ -274,8 +275,6 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 				String Aplicativos = thselements.get(1).getText();
 				String CodigoEC = thselements.get(2).getText();
 				String Data = thselements.get(3).getText();
-
-				System.out.println(CNPJ + " " + Aplicativos + " " + CodigoEC + " " + Data);
 
 				ListaRetornoWebAdmin listitem = new ListaRetornoWebAdmin(CNPJ, Aplicativos, CodigoEC, Data);
 				listawebadminretorno.add(listitem);
@@ -291,14 +290,14 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 			boolean dataEncontrado = false;
 
 			for (ListaRetornoWebAdmin listaResultadoObtido : listawebadminretorno) {
+
 				String cnpjFormatado = listaResultadoObtido.getCNPJ().replaceAll("[^\\d ]", "");
-				System.out.println(listaResultadoEsperado.getCNPJ()+ " "+ cnpjFormatado);
+				System.out.println(listaResultadoEsperado.getCNPJ() + " " + cnpjFormatado);
 				if (listaResultadoEsperado.getCNPJ().equals(cnpjFormatado)) {
 					CNPJEncontrado = true;
 
 					System.out.println(listaResultadoEsperado.CNPJ + " encontrado com sucesso");
 
-					
 					if (listaResultadoEsperado.getCodigoEC().equals(listaResultadoObtido.getCodigoEC())) {
 						txtECEncontrado = true;
 						System.out.println(listaResultadoEsperado.CodigoEC + " encontrado com sucesso");
@@ -308,16 +307,20 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 						dataEncontrado = true;
 						System.out.println(listaResultadoEsperado.getData() + " encontrado com sucesso");
 					}
-
+					System.out.println("validação ítem =" + contador);
+					contador = contador + 1;
 					break;
 				}
 
 			}
-			if (!CNPJEncontrado || !aplicativoEncontrado || !txtECEncontrado || !dataEncontrado) {
-				System.out.println(listaResultadoEsperado.getCNPJ() + "|" + listaResultadoEsperado.getAplicativos()
-						+ "|" + listaResultadoEsperado.getCodigoEC() + "|" + listaResultadoEsperado.getData()
-						+ " não encontrado");
-			}
+			// if (!CNPJEncontrado || !aplicativoEncontrado || !txtECEncontrado
+			// || !dataEncontrado) {
+			// System.out.println(listaResultadoEsperado.getCNPJ() + "|" +
+			// listaResultadoEsperado.getAplicativos()
+			// + "|" + listaResultadoEsperado.getCodigoEC() + "|" +
+			// listaResultadoEsperado.getData()
+			// + " não encontrado");
+			// }
 		}
 	}
 
@@ -340,11 +343,10 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 			String cdEstabelecimento = consultaBanco.getString("CD_ESTBL_COML");
 			String data = dataAtual();
 			String idPlataformaDelivery = consultaBanco.getString("ID_PLATF_DLIVRY");
-			
-			
-			if(idPlataformaDelivery.equals("1")){
+
+			if (idPlataformaDelivery.equals("1")) {
 				idPlataformaDelivery = "iFood";
-			}else{
+			} else {
 				idPlataformaDelivery = "Rappi";
 			}
 			ListaRetornoWebAdmin listitem = new ListaRetornoWebAdmin(nuCnpj, idPlataformaDelivery, cdEstabelecimento,
@@ -355,7 +357,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 		return listawebadminretornoEsperado;
 	}
-	
+
 	public String dataAtual() {
 		Calendar data = Calendar.getInstance();
 		data.setTime(new Date());

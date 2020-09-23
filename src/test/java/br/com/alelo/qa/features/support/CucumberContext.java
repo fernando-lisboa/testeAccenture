@@ -56,7 +56,7 @@ public class CucumberContext {
                 capability = DesiredCapabilities.firefox();
                 capability.setBrowserName("firefox");
                 capability.setPlatform(Platform.LINUX);
-                webdriver = new RemoteWebDriver(new URL("https://zalenium-cicd-tools.sao.siteteste.inf.br/wd/hub/"), capability);
+                webdriver = new RemoteWebDriver(new URL("http://10.236.2.4:4444/wd/hub/"), capability);
                 break;
             case "chrome":
                 capability = DesiredCapabilities.chrome();
@@ -64,13 +64,13 @@ public class CucumberContext {
                 capability.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
                 capability.setPlatform(Platform.LINUX);
                 capability.setCapability("name", "Portal_EC");
-                webdriver = new RemoteWebDriver(new URL("https://zalenium-cicd-tools.sao.siteteste.inf.br/wd/hub/"), capability);
+                webdriver = new RemoteWebDriver(new URL("http://10.236.2.4:4444/wd/hub/"), capability);
                 break;
             case "ie":
                 capability = DesiredCapabilities.internetExplorer();
                 capability.setBrowserName("Internet Explorer");
                 capability.setPlatform(Platform.WIN10);
-                webdriver = new RemoteWebDriver(new URL("https://zalenium-cicd-tools.sao.siteteste.inf.br/wd/hub/"), capability);
+                webdriver = new RemoteWebDriver(new URL("http://10.236.2.4:4444/wd/hub/"), capability);
                 break;
             case "safari-local":
                 webdriver = new SafariDriver();
@@ -93,7 +93,7 @@ public class CucumberContext {
                 //options.AddArgument("incognito");
 
                 webdriver = new ChromeDriver(options);
-                webdriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+                webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
                 break;
             case "ghost_zalenium":
             	options = new ChromeOptions();
@@ -101,6 +101,7 @@ public class CucumberContext {
             	WebDriverManager.chromedriver().setup();
             	webdriver = new ChromeDriver(options);
             	break;
+            	
             case "geckodriver":
                 WebDriverManager.firefoxdriver().setup();
                 webdriver = new FirefoxDriver();

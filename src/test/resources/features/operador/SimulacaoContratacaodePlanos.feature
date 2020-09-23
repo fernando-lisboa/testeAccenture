@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @SimulacaoPlanos
+@Regressivo @SimulacaoPlanos @Simulation
 Funcionalidade: Contratação de Planos
   Permite contratar planos
 

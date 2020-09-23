@@ -28,10 +28,10 @@ public class OptarPorAceitarDelivery extends ParentSteps {
 		delivery.preencherPID(ambiente);
 	}
 
-	@Quando("^verificar a label do botao concluir$")
-	public void verificar_a_label_do_botao_concluir() throws Throwable {
-		OptarPorAceitarDeliveryActions delivery = new OptarPorAceitarDeliveryActions(webdriver);
-		delivery.verificarDelivery();
+	@Quando("^verificar a label do botao concluir \"([^\"]*)\"$")
+	public void verificar_a_label_do_botao_concluir(Boolean delivery) throws Throwable {
+		OptarPorAceitarDeliveryActions accept = new OptarPorAceitarDeliveryActions(webdriver);
+		accept.verificarDelivery(delivery);
 
 	}
 

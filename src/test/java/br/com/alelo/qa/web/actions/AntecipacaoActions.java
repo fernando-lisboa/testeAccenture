@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.codec.language.bm.Languages.SomeLanguages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -180,7 +181,10 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
+
 	}
+	
+	
 
 	public void ResultadoEvidencia(String Resultado) throws InterruptedException {
 		Thread.sleep(2000);
@@ -217,7 +221,9 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	}
 
 	public void alterarEstabelecimento(String numCNPJ) throws InterruptedException {
+		Thread.sleep(2000);
 		waitForElementToBeInvisible(loader);
+		
 		Thread.sleep(1000);
 		try {
 			WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
@@ -373,7 +379,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 		if (botaoDefinirRecebimento.isEnabled())
 			botaoDefinirRecebimento.click();
-		waitForElementToBeInvisible(loader);		
+		waitForElementToBeInvisible(loader);
 
 		if (operador) {
 			waitForElementPageToBeClickable(btnOkrecorrencia);
@@ -385,16 +391,15 @@ public class AntecipacaoActions extends AntecipacaoPage {
 					msgSucessoContratacaoRecorrencia.getText().equals(txtMsgContratacaoRecorrencia));
 		}
 
-		
 		if (modal.equals("antecipe") && operador) {
 			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsgAntecipe);
-		} else if(modal.equals("modal") && operador) {
+		} else if (modal.equals("modal") && operador) {
 			javaSA.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, aceptMsg);
-		}else {
-			btnOkrecorrencia.click();			
+		} else {
+			btnOkrecorrencia.click();
 		}
-		if(operador){
-			sairDaSimulação(modal);
+		if (operador) {
+			//sairDaSimulação(modal);
 		}
 	}
 

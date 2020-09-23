@@ -12,9 +12,10 @@ public class RecebimentoSteps extends ParentSteps {
 	
 	@Quando("^eu clicar no menu recebimentos \"([^\"]*)\"$")
 	public void eu_clicar_no_menu_recebimentos(String cnpj) throws Throwable {
+		Thread.sleep(1000);
 		RecebimentosActions actions = new RecebimentosActions(webdriver);
 		AntecipacaoActions AA = new AntecipacaoActions(webdriver);
-		AA.alterarEstabelecimento(cnpj);
+//		AA.alterarEstabelecimento(cnpj);
 		actions.valitarTelaRecebiveis();
 		
 	}

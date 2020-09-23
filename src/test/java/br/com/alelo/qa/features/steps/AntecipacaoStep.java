@@ -77,6 +77,11 @@ public class AntecipacaoStep extends ParentSteps {
 
 	}
 	
+	@Entao("^fecho a sessao$")
+	public void fecho_a_sessao() throws Throwable {
+		AntecipacaoActions AA = new AntecipacaoActions(webdriver);
+		AA.fechaSessaoIsam();
+	}
 	
 
 

@@ -96,6 +96,16 @@ public class AntecipacaoPage extends PageObject {
 
 	@FindBy(id = "divId")
     protected WebElement loader;
+	
+	@FindBy(id = "solucxClose")
+	protected WebElement solucxClose;
+	
+	@FindBy(id = "nav-dropdown")
+	protected WebElement menuUser;
+	
+	@FindBy(id = "navbarDesktopSair")
+	protected WebElement btnSairPortal;
+	
 
 	@FindBy(id = "textNormalSidekick")
 	protected WebElement clicaArv;

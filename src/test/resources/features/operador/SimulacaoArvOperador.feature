@@ -5,7 +5,7 @@
 # * Data: 30/03/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo 
+@Regressivo @Simulation
 Funcionalidade: Antecipacao
   Permite realizar antecipação dos valores a receber
   
@@ -55,13 +55,16 @@ Funcionalidade: Antecipacao
 
     Exemplos: 
       | VSTS   | user           | senha      | CNPJ       | Cenario          | operador | Modal | Valor | Recorrencia | Contratacao | cenario                 | modal    |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador | true     | true  | true  | false       | true        | Recorrente Diário       | inicio   |
+     | 9999-1 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador | true     | true  | true  | false       | true        | Recorrente Diário       | inicio   |
       | 9999-2 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador   | true     | true  | false | false       | true        | RecorrenteTotal Semanal | inicio   |
-      | 9999-1 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador | true     | false | true  | false       | true        | Recorrente Diário       | antecipe |
-      | 9999-2 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador   | true     | false | false | false       | true        | RecorrenteTotal Semanal | antecipe |
+     
+     #Esses testes era para a página de antecipe que não está funcional mais
+     
+      #| 9999-3 | 273.824.010-06 | Alelo2020@ | 2004240711 | Parcial operador | true     | false | true  | false       | true        | Recorrente Diário       | antecipe |
+      #| 9999-4 | 273.824.010-06 | Alelo2020@ | 2004240711 | Total operador   | true     | false | false | false       | true        | RecorrenteTotal Semanal | antecipe |
       
       
-       @SimulacaoSidekick @Ok
+  @SimulacaoSidekick @Ok
   Esquema do Cenario: <VSTS> - Validação da presença do sidekick => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"

@@ -97,7 +97,7 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
     //endregion
 
     //region WebElement [Primeiro Acesso - Telefone]
-    @FindBy(id = "formInlinePhone")
+    @FindBy(id = "telefone")
     public static WebElement primeiroAcessoTelefone;
     //endregion
     //endregion
@@ -109,17 +109,17 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
     //endregion
 
     //region WebElement [Primeiro Acesso - Banco]
-    @FindBy(id = "formInlineBank")
+    @FindBy(xpath = "//*[@id='firstAccess']/div[2]/div[2]/span[1]/select")
     public static WebElement primeiroAcessoBanco;
     //endregion
 
     //region WebElement [Primeiro Acesso - Agência]
-    @FindBy(id = "formInlineAgency")
+    @FindBy(id = "agencia")
     public static WebElement primeiroAcessoAgencia;
     //endregion
 
     //region WebElement [Primeiro Acesso - Conta]
-    @FindBy(id = "formInlineCount")
+    @FindBy(id = "conta")
     public static WebElement primeiroAcessoConta;
     //endregion
 
@@ -228,7 +228,7 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
 	// label da pergunta se quer habilitar delivery
 	@FindBy(id = "deliveryComponent")
 	protected WebElement labelAskDelivery;
-	public String txtAskDelivery = "Deseja aceitar Alelo Refeições nas plataformas de delivery?";
+	public String txtAskDelivery = "Deseja aceitar Alelo Rfeição nas plataformas de delivery?";
 	
 	//msg de confirmação de solicitação de delivery
 	@FindBy(id = "feedbackCard")

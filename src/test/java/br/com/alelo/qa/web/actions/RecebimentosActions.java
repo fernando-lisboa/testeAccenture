@@ -50,7 +50,7 @@ public class RecebimentosActions extends RecebimentosPage {
             String textoDeComparacao = elemento.getText();
             System.out.println(textoDeComparacao);
             if (textoComparacao.equalsIgnoreCase(textoDeComparacao)) {
-                System.out.println("Teste realizado com sucesso.");
+                System.out.println("Testo do elemento comparado com sucesso");
             } else {
                 System.out.println("Erro. \n" + "Mensagem esperada: " + textoComparacao + "\nMensagem obtida: "
                         + textoDeComparacao);
@@ -110,6 +110,7 @@ public class RecebimentosActions extends RecebimentosPage {
         //Assert.assertTrue(!valorEsperado.equals("0,00"));
         String attribute = mesExibido.getAttribute("value");
         String dataEsperada = comm.dataRecebiveis(i).toString();
+        System.out.println(dataEsperada);
         Assert.assertThat(attribute, is(dataEsperada));
         Assert.assertThat(comboProduto.getText(), is(produto));
 
@@ -134,7 +135,8 @@ public class RecebimentosActions extends RecebimentosPage {
                         if (tipo_item.equals("VOU RECEBER") || tipo_item.equals("JÁ RECEBI") || tipo_item.equals("VOU RECEBER HOJE"))
                             if (!spans.get(3).getText().trim().replace("R$ ", "").equals("0,00") && !spans.get(3).getText().trim().replace("R$ ", "").contains("-")) {
                                 item_lista.click();
-                                selecionarProduto(produto, CNPJ, Comprovante);
+                                waitForElementToBeInvisible(loader);
+                                selecionarProduto(produto, Comprovante);
                                 Thread.sleep(1000);
                                // jsWD.JavaScriptAction(JavaScriptUtils.Funcao.click, null, null, pageCnpj.acceptHelp);
                                 menuAgenda.click(); // Agenda
@@ -151,7 +153,7 @@ public class RecebimentosActions extends RecebimentosPage {
             Thread.sleep(200);}
     }
 
-    public void selecionarProduto(String produto, String CNPJ, boolean Comprovante) throws InterruptedException, IOException {
+    public void selecionarProduto(String produto, boolean Comprovante) throws InterruptedException, IOException {
         try {
             waitForElementToBeInvisible(loader);
             switch (produto) {
