@@ -5,7 +5,7 @@
 # * Data: 07/07/2020
 # * Caminho: Portal Estabelecimento Comercial
 # */
-@Regressivo @planos
+@Regressivo @planos1
 Funcionalidade: Contrtatação de planos por canal
   Permite contratar planos oferecido pelo web admim e identificar o canal contratado
   
@@ -31,8 +31,8 @@ Funcionalidade: Contrtatação de planos por canal
     Exemplos: 
       | VSTS  | Cenario                                                     | CNPJ       | ambiente | user           | senha      | operador | contratacao | path                                  | fileName                              | tpPlano | canal       |
       | 99991 | Ofertar planos econtratar pelo canal Portal - 2 dias        | 1015000255 | hml      | 387.055.390-13 | Alelo2020@ | false    | true        | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_Ofertas.xlsx             |      02 | PortalEc    |
-      | 99992 | Ofertar planos econtratar pelo canal Portal - 7 dias        | 1015000255 | hml      | 736.855.880-79 | Alelo2020@ | false    | true        | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_Ofertas.xlsx             |      07 | PortalEc    |
-      | 99994 | Ofertar planos econtratar pelo canal Portal - 15 dias       | 1015000255 | hml      | 736.855.880-79 | Alelo2020@ | false    | true        | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_Ofertas.xlsx             |      15 | PortalEc    |
+      | 99992 | Ofertar planos econtratar pelo canal Portal - 7 dias        | 1015000255 | hml      | 387.055.390-13 | Alelo2020@ | false    | true        | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_Ofertas.xlsx             |      07 | PortalEc    |
+      | 99994 | Ofertar planos econtratar pelo canal Portal - 15 dias       | 1015000255 | hml      | 387.055.390-13 | Alelo2020@ | false    | true        | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_Ofertas.xlsx             |      15 | PortalEc    |
       | 99995 | Ofertar planos e verificar banco de dados - Front de Vendas | 1015000255 | hml      | 387.055.390-13 | Alelo2020@ | false    | false       | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_Ofertas_FrontVendas.xlsx |      02 | FrontVendas |
       | 99996 | Ofertar planos e verificar banco de dados - APP             | 1015000255 | hml      | 387.055.390-13 | Alelo2020@ | false    | false       | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_Ofertas_App.xlsx         |      02 | App         |
 

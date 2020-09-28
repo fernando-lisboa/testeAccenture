@@ -93,7 +93,7 @@ public class CucumberContext {
                 //options.AddArgument("incognito");
 
                 webdriver = new ChromeDriver(options);
-                webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+                webdriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
                 break;
             case "ghost_zalenium":
             	options = new ChromeOptions();

@@ -31,7 +31,7 @@ public class PageObject {
 	protected WebDriver webdriver;
 
 	@Autowired
-	private int maxTimeWaitLoadPage = 20;
+	private int maxTimeWaitLoadPage = 35;
 
 	private WebDriverWait wait;
 
