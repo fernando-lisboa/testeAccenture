@@ -31,7 +31,7 @@ public class WebdriverAnonimous {
 		options.addArguments("incognito");
 		
 		WebDriver driver_Anonimo = new RemoteWebDriver(new URL("http://10.236.2.4:4444/wd/hub/"), capability);
-		//ChromeDriver driver_Anonimo = new ChromeDriver(options);
+//		ChromeDriver driver_Anonimo = new ChromeDriver(options);
 
 		return driver_Anonimo;
 	}

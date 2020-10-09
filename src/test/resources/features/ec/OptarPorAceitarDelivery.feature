@@ -6,7 +6,7 @@
 #* Caminho: Portal Estabelecimento Comercial
 #*/
 @Regressivo @delivery
-Funcionalidade: Antecipacao
+Funcionalidade: Solicitação de aplicaticvo de Delivery no primeiro acesso ao PORTAL
   Permite realizar antecipação dos valores a receber
   
   Eu como usuario

@@ -165,18 +165,16 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 		Assert.assertTrue("Mensagem de delivery não disponível", labelList.get(0).getText().equals(txtAskDelivery));
 
-		if (delivery) {
-			Assert.assertTrue("Label do botão diferente de Concluir",
-					btnConfirmarHabilitar.getText().toLowerCase().equals("finalizar"));
-		}else{
-			Assert.assertTrue("Label do botão diferente de Avançar",
-					btnConfirmarHabilitar.getText().toLowerCase().equals("Finalizar sem Habilitar"));
-		}
+		Assert.assertTrue("Label do botão diferente de Concluir",
+				btnConfirmarHabilitar.getText().toLowerCase().equals("finalizar sem habilitar"));
 
 	}
 
 	public void habilitarEconfirmarMsg() {
+
 		waitForElementPageToBeClickable(btnConfirmarHabilitar);
+		Assert.assertTrue("Label do botão diferente de Avançar",
+				btnConfirmarHabilitar.getText().equalsIgnoreCase("finalizar"));
 		btnConfirmarHabilitar.click();
 		try {
 			Thread.sleep(1000);

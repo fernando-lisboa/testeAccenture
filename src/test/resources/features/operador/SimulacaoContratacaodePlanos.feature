@@ -6,13 +6,13 @@
 # * Caminho: Portal Estabelecimento Comercial
 # */
 @Regressivo @SimulacaoPlanos @Simulation
-Funcionalidade: Contratação de Planos
+Funcionalidade: Simulação de Contratação de Planos
   Permite contratar planos
 
   Contexto: 
     Dado que eu tenha planos disponíveis para cantratação "true"
 
-  @realizar_contratacao
+  @realizar_contratacao_Simulation
   Esquema do Cenario: <VSTS> - Realizar Simulação de contratação de planos => <Cenario>
     Dado que estou na logado no portal EC Operador "<user>", "<senha>"
     E vou pedir ajuda no atendimento e acesso a outra aba do navegador "<operador>"

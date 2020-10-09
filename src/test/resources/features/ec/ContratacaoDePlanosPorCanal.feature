@@ -15,8 +15,8 @@ Funcionalidade: Contrtatação de planos por canal
   Contexto: 
     Dado que estou na logado no portal webadmim EC "22222222222", "12345678!"
 
-  @Regressivo
-  Esquema do Cenario: <VSTS> - Inclusão de planos para um CNPJ e contratacao para o canal PORTAL_EC  => <Cenario>
+  @Regressivo @teste
+  Esquema do Cenario: <VSTS> - Inclusão de planos para um CNPJ e contratacao para o canal PORTAL_EC <Cenario>
     E que eu tenha planos disponíveis para cantratacao "hml"
     Quando efetuar o upload de planilha de planos para um "<CNPJ>" "<path>", "<fileName>"
     Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"

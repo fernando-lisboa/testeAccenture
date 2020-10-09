@@ -6,7 +6,7 @@
 # * Caminho: Portal Estabelecimento Comercial
 # */
 @Regressivo @Simulation
-Funcionalidade: Antecipacao
+Funcionalidade: Simulação de Antecipacao => ARV
   Permite realizar antecipação dos valores a receber
   
   Eu como usuario

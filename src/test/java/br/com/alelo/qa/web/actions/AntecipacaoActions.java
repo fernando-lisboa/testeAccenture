@@ -221,6 +221,11 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	}
 
 	public void alterarEstabelecimento(String numCNPJ) throws InterruptedException {
+		
+		if (solucxClose.isDisplayed()){
+			solucxClose.click();
+			
+		}
 		Thread.sleep(2000);
 		waitForElementToBeInvisible(loader);
 		
@@ -235,7 +240,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			findElement.click();
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("ERRO AO SELECIONAR O CNPJ =>"+"["+numCNPJ+"]"+ e.getMessage());
 		}
 
 		waitForElementToBeInvisible(loader);

@@ -6,7 +6,7 @@
 # * Caminho: Portal Estabelecimento Comercial
 # */
 @Regressivo @Simulation
-Funcionalidade: MeusCNPJS
+Funcionalidade: Simulação de inclusão de CNPJS
   Permite adicionar CNPJS
   
   Eu como usuario

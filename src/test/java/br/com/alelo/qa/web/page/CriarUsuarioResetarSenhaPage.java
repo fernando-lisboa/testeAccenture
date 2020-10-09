@@ -228,7 +228,7 @@ public class CriarUsuarioResetarSenhaPage extends JavaScriptUtils {
 	// label da pergunta se quer habilitar delivery
 	@FindBy(id = "deliveryComponent")
 	protected WebElement labelAskDelivery;
-	public String txtAskDelivery = "Deseja aceitar Alelo Rfeição nas plataformas de delivery?";
+	public String txtAskDelivery = "Deseja aceitar Alelo Refeição nas plataformas de delivery?";
 	
 	//msg de confirmação de solicitação de delivery
 	@FindBy(id = "feedbackCard")

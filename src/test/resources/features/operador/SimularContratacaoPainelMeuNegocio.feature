@@ -6,7 +6,7 @@
 # * Caminho: Portal Estabelecimento Comercial
 # */
 @Regressivo @Simulation @ignore
-Funcionalidade: Painel Meu Negocio
+Funcionalidade: Simulação de Painel Meu Negocio
   Contratação de painel meu negócio
   
   Eu como usuário do portal

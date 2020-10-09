@@ -6,7 +6,7 @@
 # * Caminho: Portal Estabelecimento Comercial
 # */
 @Regressivo @ARV
-Funcionalidade: Antecipacao
+Funcionalidade: Antecipacao de de vendas ARV - PÓS CONTRATAÇÃO E RECORRENTE
   Permite realizar antecipação dos valores a receber
   
   Eu como usuario
