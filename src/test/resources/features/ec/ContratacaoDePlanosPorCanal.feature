@@ -24,7 +24,7 @@ Funcionalidade: Contrtatação de planos por canal
     Quando Contratar o plano ofertado "<tpPlano>" "<contratacao>"
     Entao devo validar que foi gravado no banco de dados o canal de contratacao "<canal>" "<ambiente>"
       | cnpj      | 12259140000168 |
-      | numeroEc  |     1015000255 
+      | numeroEc  |     1015000255 |
       | nomeCanal | PortalEC       |
       | idCanal   |              2 |
 
