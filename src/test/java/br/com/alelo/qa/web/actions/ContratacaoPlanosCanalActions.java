@@ -37,9 +37,14 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 
 		botaoMenu_side_kick.click();
 		menuAssociarLote.click();
-		String usingSystemProperty = System.getProperty("user.dir");
-
-		inputUpload.sendKeys(usingSystemProperty + path + nomeArquivo);
+		try {
+			String usingSystemProperty = System.getProperty("user.dir");
+			String property = System.getProperty("os.name");
+			//inputUpload.sendKeys("\\src\\test\\resources\\armazenador\\IncluirCNPJs_Ofertas.xlsx");
+			inputUpload.sendKeys(usingSystemProperty + path + nomeArquivo);
+		} catch (Exception e) {
+			System.out.println("NÃO FOI POSSÍVEL FAZER O UPLOAD DE ARQUIVO POR QUE ==>  " + e.getMessage());
+		}
 		btnFazerUpload.click();
 		waitForElementPageToBeClickable(btnFazerUpload);
 		waitForElementPageToBeClickable(btnFechar);
@@ -224,20 +229,22 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 
 	}
 
-	public void excluirPlanosOfertados(String user, String password, String path, String fileNameRemove) throws Throwable {
+	public void excluirPlanosOfertados(String user, String password, String path, String fileNameRemove)
+			throws Throwable {
 		LoginSteps login = new LoginSteps();
 		login.que_estou_na_logado_no_portal_webadmim_EC(user, password);
 		ContratacaoPlanosCanalActions CP = new ContratacaoPlanosCanalActions(webdriver);
 		CP.upLoadDePlanilhaDeAcimaQtdeLinhas(path, fileNameRemove);
-		
 
 	}
 
 	public void validarBancoDeDadosCanalAcimaDe3k_linhas(String canal, String ambiente) throws Exception {
-		
-		//TODO montar um foreath para ler a planilha e adicionar os itens numa lista
-		//TODO montar um foreach para ler o banco e validar cada item da planilha
-		
+
+		// TODO montar um foreath para ler a planilha e adicionar os itens numa
+		// lista
+		// TODO montar um foreach para ler o banco e validar cada item da
+		// planilha
+
 		if (ambiente.equals("sit")) {
 			ResultSet teste = conn_ation.consultaBanco(ConnSit.getConexao(), queryPlanos);
 			while (teste.next()) {
@@ -245,7 +252,7 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 				String numeroEc = teste.getString("NU_EC");
 				String nomeCanal = teste.getString("NM_CANAL");
 				String idCanal = teste.getString("ID_CANAL");
-								break;
+				break;
 			}
 		} else {
 
@@ -255,11 +262,11 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 				String numeroEc = teste.getString("NU_EC");
 				String nomeCanal = teste.getString("NM_CANAL");
 				String idCanal = teste.getString("ID_CANAL");
-				
+
 				break;
 			}
 		}
-		
+
 	}
 
 }

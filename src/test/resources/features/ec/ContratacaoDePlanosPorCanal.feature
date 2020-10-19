@@ -54,6 +54,10 @@ Funcionalidade: Contrtatação de planos por canal
     Quando Contratar o plano ofertado "<tpPlano>" "<contratacao>"
     Entao devo validar que foi gravado no banco de dados o canal de contratacao "<canal>" "<ambiente>" e excluo os planos ofertados "<user>", "<senha>", "<path>", "<fileNameRemove>"
 
+    
+
+    
+
     Exemplos: 
       | VSTS  | Cenario                                                   | CNPJ       | ambiente | user           | senha      | operador | contratacao | path                                  | fileName                     | fileNameRemove                  | tpPlano | canal    |
      # | 99991 | Ofertar planos econtratar pelo canal Portal para 3mil ecs | 1015000255 | hml      | 387.055.390-13 | Alelo2020@ | false    | true        | \\src\\test\\resources\\armazenador\\ | IncluirCNPJs_Ofertas_3k.xlsx | excluirPlanilhas_3k_Linhas.xlsx |      02 | PortalEc |

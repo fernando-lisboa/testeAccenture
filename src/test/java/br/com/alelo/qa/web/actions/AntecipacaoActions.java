@@ -222,10 +222,6 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 	public void alterarEstabelecimento(String numCNPJ) throws InterruptedException {
 		
-		if (solucxClose.isDisplayed()){
-			solucxClose.click();
-			
-		}
 		Thread.sleep(2000);
 		waitForElementToBeInvisible(loader);
 		
