@@ -14,6 +14,7 @@ import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -97,13 +98,14 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 
 		// region [Formulario de Primeiro Acesso]Telefone
 		primeiroAcessoTelefone.sendKeys("11960745079");
+		Thread.sleep(2000);
 
-		// CNPJ
-		primeiroAcessocnpj.clear();
+		// // CNPJ		
+		for( int x = 0 ; x < 20; x++)		
+			primeiroAcessocnpj.sendKeys(Keys.ARROW_LEFT);			
+		sleep(1000);
 		primeiroAcessocnpj.sendKeys(Itens.get(0));
 		sleep(1000);
-		primeiroAcessocnpj.clear();
-		primeiroAcessocnpj.sendKeys(Itens.get(0));
 
 		// Banco
 		WebElement selectBanco = primeiroAcessoBanco;
@@ -127,7 +129,7 @@ public class OptarPorAceitarDeliveryActions extends CriarUsuarioResetarSenhaPage
 		primeiroAcessoConta.sendKeys(Itens.get(3));
 
 		waitForElementPageToBeClickable(btn_primeiroAcessoConfirmar);
-		sleep(4000);
+		sleep(2000);
 		// Confirmar
 		btn_primeiroAcessoConfirmar.click();
 		waitForElementToBeInvisible(loader);

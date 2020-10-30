@@ -6,7 +6,7 @@
 # * Caminho: Portal Estabelecimento Comercial
 # */
 
-@ignore
+
 Funcionalidade: Validar Extrato 
   Eu como cliente Alelo quero validar que ao acessar pagina de extrato
   apresente minhas transacoes no periodo filtrado.

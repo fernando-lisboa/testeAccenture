@@ -16,7 +16,7 @@ Funcionalidade: Antecipacao de de vendas ARV - PÓS CONTRATAÇÃO E RECORRENTE
   Contexto: 
     Dado que o banco de arv esteja preparado para os testes
 
-  @Regressivo @arvModal
+  @Regressivo @ARV1
   Esquema do Cenario: <VSTS> - Realizar Antecipacao de vendas via Modal => <Cenario>
     Dado que estou na logado no portal EC "<user>", "<senha>", "<ambiente>"
     Quando seleciono um CNPJ de número "<CNPJ>" no combo Estabelecimento "<operador>"

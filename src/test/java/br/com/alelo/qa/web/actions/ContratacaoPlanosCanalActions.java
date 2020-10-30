@@ -38,9 +38,9 @@ public class ContratacaoPlanosCanalActions extends ContratacaoPlanosCanalPage {
 		botaoMenu_side_kick.click();
 		menuAssociarLote.click();
 		try {
-			/*String usingSystemProperty = System.getProperty("user.dir");
-			String property = System.getProperty("os.name");*/
-			inputUpload.sendKeys("/src/test/resources/armazenador/IncluirCNPJs_Ofertas_App.xlsx");
+			//String usingSystemProperty = System.getProperty("user.dir");
+			
+			inputUpload.sendKeys("armazenador/IncluirCNPJs_Ofertas_App.xlsx");
 			//inputUpload.sendKeys(usingSystemProperty + path + nomeArquivo);
 		} catch (Exception e) {
 			System.out.println("NÃO FOI POSSÍVEL FAZER O UPLOAD DE ARQUIVO POR QUE ==>  " + e.getMessage());

@@ -222,10 +222,9 @@ public class AntecipacaoActions extends AntecipacaoPage {
 
 	public void alterarEstabelecimento(String numCNPJ) throws InterruptedException {
 		
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		waitForElementToBeInvisible(loader);
 		
-		Thread.sleep(1000);
 		try {
 			WebElement cnpj_ = webdriver.findElement(By.id("cnpj"));
 			cnpj_.click();
@@ -240,6 +239,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		}
 
 		waitForElementToBeInvisible(loader);
+		Thread.sleep(1000);
 	}
 
 	public void validarMensagemContratacao(Boolean Recorrencia, String Cenario, Boolean Modal)
@@ -248,13 +248,13 @@ public class AntecipacaoActions extends AntecipacaoPage {
 		// Validação para contratações atraves da tela antecipe
 		if (!Modal) {
 
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			if (Recorrencia) {
 
 				if (Modal) {
 					try {
 
-						Thread.sleep(2000);
+						Thread.sleep(3000);
 						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
@@ -267,7 +267,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 					}
 				} else if (!Modal && !Cenario.contains("operador")) {
 					try {
-						Thread.sleep(2000);
+						Thread.sleep(3000);
 						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
@@ -283,7 +283,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			}
 			if (!Recorrencia && !Cenario.contains("operador")) {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 					List<WebElement> list = modalConfirmacaoContratacaoArvTela.findElements(By.tagName("h2"));
 					String el1 = list.get(0).getText();
 					String el2 = list.get(1).getText();
@@ -306,11 +306,11 @@ public class AntecipacaoActions extends AntecipacaoPage {
 				if (Modal) {
 					try {
 
-						Thread.sleep(1000);
+						Thread.sleep(3000);
 						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
-						Thread.sleep(1000);
+						Thread.sleep(2000);
 						Assert.assertThat("Recorrencia não efetivada...", el1 + " " + el2,
 								is(textoconfirmacaoSimulacao.toUpperCase()));
 					} catch (InterruptedException e) {
@@ -319,7 +319,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 					}
 				} else {
 					try {
-						Thread.sleep(2000);
+						Thread.sleep(3000);
 						List<WebElement> list = confirmacaoSimulacao.findElements(By.tagName("h2"));
 						String el1 = list.get(0).getText();
 						String el2 = list.get(1).getText();
@@ -336,7 +336,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 			// Valida mensagen de sucesso para contratação via Modal
 			if (!Recorrencia && !Cenario.contains("operador")) {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 					List<WebElement> list = modalConfirmacaoContratacaoArv.findElements(By.tagName("h2"));
 					String el1 = list.get(0).getText();
 					String el2 = list.get(1).getText();
@@ -361,6 +361,7 @@ public class AntecipacaoActions extends AntecipacaoPage {
 	// define recorrecia automática após contratação pontual
 	public void definirRecorrenciaAposContratacao(Boolean operador, String cenario, String modal)
 			throws InterruptedException {
+		Thread.sleep(3000);
 		if (!PreencheValorCampoSetSelectButton(null, bntConfirmaContratacaoRecorrente, null, 40))
 			fail("Botão confirmar recorrencia não clicável");
 		waitForElementPageToBeClickable(webdriver.findElement(By.id("cardRecurr-DAILY")));

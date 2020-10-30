@@ -56,6 +56,18 @@ public class PageObject {
 		wait.until(ExpectedConditions.invisibilityOf(element));
 	}
 
+	public static boolean loading() throws InterruptedException {
+		for (int i = 0; i <= 100; i++) {
+			try {
+				if (loader.getAttribute("class").contains("hide"))
+					return true;
+			} catch (Exception e) {
+			}
+			Thread.sleep(1000);
+		}
+		return false;
+	}
+
 	public void validarUrlAtual(String url) {
 		assertEquals(url, webdriver.getCurrentUrl());
 	}
@@ -325,6 +337,6 @@ public class PageObject {
 
 	// @FindBy(xpath = "xpath = //div[@class='loader-ripple']")
 	@FindBy(id = "divId")
-	protected WebElement loader;
+	protected static WebElement loader;
 
 }
