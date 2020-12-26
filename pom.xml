@@ -1,22 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.com.alelo.automacao</groupId>
-	<artifactId>PortalEc_Web</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<groupId>projetoBaseTeste</groupId>
+	<artifactId>TesteDesafio</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.4.RELEASE</version>
 	</parent>
-	<repositories>
-		<repository>
-			<id>alelo-artifactory</id>
-			<name>Codehaus Snapshots</name>
-			<url>http://10.236.2.126:8081/artifactory/libs-release</url>
-		</repository>
-	</repositories>
 	<properties>
 		<!-- got some issues with later Selenium versions -->
 		<selenium-version>3.8.1</selenium-version>
@@ -56,12 +49,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.3</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.11</version>
@@ -95,7 +82,6 @@
 			<artifactId>spring-mock-mvc</artifactId>
 			<version>${restassured-version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -235,12 +221,12 @@
 				<configuration>
 					<sourceJsonReportDirectory>${project.build.directory}/cluecumber-report</sourceJsonReportDirectory>
 					<generatedHtmlReportDirectory>${project.build.directory}/cluecumber-report</generatedHtmlReportDirectory>
-					<customPageTitle>Relatorio de execucao</customPageTitle>
+					<customPageTitle>RELATÓRIO DE EXECUÇÃO DE TESTES - DEFAULT</customPageTitle>
 					<expandBeforeAfterHooks>true</expandBeforeAfterHooks>
 					<expandStepHooks>true</expandStepHooks>
 					<expandDocStrings>true</expandDocStrings>
 					<customParameters>
-						<SQUAD_DeadPool>PORTAL EC WEB</SQUAD_DeadPool>
+						<SQUAD_DeadPool>TESTE DEFAULT</SQUAD_DeadPool>
 					</customParameters>
 					<customCss>src/test/resources/custom/custom.css</customCss>
 				</configuration>
@@ -266,7 +252,7 @@
 					<expandStepHooks>true</expandStepHooks>
 					<expandDocStrings>true</expandDocStrings>
 					<customParameters>
-						<Projeto>Dead_Pool</Projeto>
+						<Projeto>TESTE_PADRÃO</Projeto>
 					</customParameters>
 					<customCss>src/test/resources/custom/custom.css</customCss>
 				</configuration>
